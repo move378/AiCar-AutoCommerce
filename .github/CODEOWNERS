@@ -1,0 +1,22 @@
+# ============================================
+# AiCar-AutoCommerce CODEOWNERS
+# ============================================
+# 팀원 합류 후 branch protection에서
+# "Require review from Code Owners" 활성화 필요
+
+# Infrastructure — PL 승인 필수
+/infra/                 @move378
+
+# Backend (Go)
+/backend/               @move378 @ranio10
+
+# Flutter App
+/flutter_app/           @move378
+
+# Backoffice (Next.js)
+/backoffice/            @ranio10 @Avoler0
+
+# CI/CD & 프로젝트 설정
+/.github/               @move378
+/docker-compose.yml     @move378
+/Makefile               @move378
