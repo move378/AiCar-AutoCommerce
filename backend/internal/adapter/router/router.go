@@ -9,6 +9,8 @@ import (
 func SetupRouter() *gin.Engine {
 	r := gin.Default()
 
+	var authApi app.AuthHandler
+
 	// 미들웨어 설정 (필요시 CORS, 인증 등 추가 가능)
 	// r.Use(CORSMiddleware())
 
@@ -16,7 +18,7 @@ func SetupRouter() *gin.Engine {
 	{
 		userGroup := v1.Group("/users")
 		{
-			userGroup.POST("/init", app.InitUser) // 초기 진입
+			userGroup.POST("/init", authApi.Onboarding) // 초기 진입
 			//userGroup.POST("/refresh", api.RefreshToken) // 토큰 재발급
 		}
 

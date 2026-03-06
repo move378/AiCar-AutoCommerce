@@ -3,46 +3,26 @@ package postgres
 
 import (
 	"context"
-	"errors"
 	"fmt"
-
-	"gorm.io/gorm"
 
 	"backend/internal/domain/entity"
 	"backend/internal/domain/repository"
 	"backend/internal/shared/errs"
 )
 
-type userRepo struct {
+type devicesRepo struct {
 	db *DB
 }
 
-func NewUserRepo(db *DB) repository.UserRepository {
-	return &userRepo{db: db}
+func NewDevices(db *DB) repository.DeviceRepository {
+	return &devicesRepo{db: db}
 }
 
-func (r *userRepo) FindByID(ctx context.Context, id uint) (*entity.User, error) {
-	var user entity.User
-	err := r.db.WithContext(ctx).First(&user, id).Error
-	if err != nil {
-		if errors.Is(err, gorm.ErrRecordNotFound) {
-			return nil, errs.ErrNotFound
-		}
-		return nil, fmt.Errorf("유저 조회 실패: %w", err)
-	}
-	return &user, nil
-}
+func (r *devicesRepo) Create(ctx context.Context, device_id string) (user *entity.Device) {
+	var device entity.Device
 
-func (r *userRepo) FindByEmail(ctx context.Context, email string) (*entity.User, error) {
-	var user entity.User
-	err := r.db.WithContext(ctx).Where("email = ?", email).First(&user).Error
-	if err != nil {
-		if errors.Is(err, gorm.ErrRecordNotFound) {
-			return nil, errs.ErrNotFound
-		}
-		return nil, fmt.Errorf("유저 조회 실패: %w", err)
-	}
-	return &user, nil
+	err := r.db.WithContext(ctx).Create(&device, id).Error
+
 }
 
 func (r *userRepo) Create(ctx context.Context, user *entity.User) error {
