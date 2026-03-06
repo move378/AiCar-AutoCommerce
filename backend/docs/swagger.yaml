@@ -1,0 +1,76 @@
+basePath: /api/v1
+definitions:
+  dto.OnboardingRequest:
+    properties:
+      device_id:
+        description: 필수값
+        type: string
+      device_type:
+        description: 필수값 (ios, android)
+        type: string
+      model_name:
+        type: string
+      os_version:
+        type: string
+    required:
+    - device_id
+    - device_type
+    type: object
+  dto.OnboardingResponse:
+    properties:
+      access_token:
+        type: string
+      refresh_token:
+        type: string
+    type: object
+  response.APIResponse:
+    properties:
+      data:
+        description: 없으면 null 출력
+      message:
+        description: 에러일 때만 보이고, 성공 시(비어있을 때) 아예 숨김
+        type: string
+      status:
+        description: HTTP 상태 코드
+        type: integer
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: AICar AutoCommerce API
+  title: AICar API
+  version: "1.0"
+paths:
+  /auth/onboard:
+    post:
+      consumes:
+      - application/json
+      description: 디바이스 등록 + 유저 생성 + 토큰 발급
+      parameters:
+      - description: 온보딩 요청
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.OnboardingRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.OnboardingResponse'
+        "409":
+          description: 이미 등록된 디바이스
+          schema:
+            $ref: '#/definitions/response.APIResponse'
+        "500":
+          description: 서버 오류
+          schema:
+            $ref: '#/definitions/response.APIResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: 온보딩
+      tags:
+      - auth
+swagger: "2.0"

@@ -1,9 +1,13 @@
-// internal/infra/persistence/postgres/user_repo.go
+// internal/infra/persistence/postgres/devices_repo.go
 package postgres
 
 import (
 	"context"
+	"errors"
 	"fmt"
+
+	"github.com/google/uuid"
+	"gorm.io/gorm"
 
 	"backend/internal/domain/entity"
 	"backend/internal/domain/repository"
@@ -14,39 +18,33 @@ type devicesRepo struct {
 	db *DB
 }
 
-func NewDevices(db *DB) repository.DeviceRepository {
+func NewDeviceRepo(db *DB) repository.DeviceRepository {
 	return &devicesRepo{db: db}
 }
 
-func (r *devicesRepo) Create(ctx context.Context, device_id string) (user *entity.Device) {
+func (r *devicesRepo) FindByDeviceUID(ctx context.Context, deviceUID string) (*entity.Device, error) {
 	var device entity.Device
-
-	err := r.db.WithContext(ctx).Create(&device, id).Error
-
+	err := r.db.WithContext(ctx).Where("device_uid = ?", deviceUID).First(&device).Error
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return nil, errs.ErrNotFound
+		}
+		return nil, fmt.Errorf("디바이스 조회 실패: %w", err)
+	}
+	return &device, nil
 }
 
-func (r *userRepo) Create(ctx context.Context, user *entity.User) error {
-	if err := r.db.WithContext(ctx).Create(user).Error; err != nil {
-		return fmt.Errorf("유저 생성 실패: %w", err)
+func (r *devicesRepo) Create(ctx context.Context, device *entity.Device) error {
+	if err := r.db.WithContext(ctx).Create(device).Error; err != nil {
+		return fmt.Errorf("디바이스 생성 실패: %w", err)
 	}
 	return nil
 }
 
-func (r *userRepo) Update(ctx context.Context, user *entity.User) error {
-	result := r.db.WithContext(ctx).Save(user)
+func (r *devicesRepo) Delete(ctx context.Context, id uuid.UUID) error {
+	result := r.db.WithContext(ctx).Delete(&entity.Device{}, "id = ?", id)
 	if result.Error != nil {
-		return fmt.Errorf("유저 수정 실패: %w", result.Error)
-	}
-	if result.RowsAffected == 0 {
-		return errs.ErrNotFound
-	}
-	return nil
-}
-
-func (r *userRepo) Delete(ctx context.Context, id uint) error {
-	result := r.db.WithContext(ctx).Delete(&entity.User{}, id)
-	if result.Error != nil {
-		return fmt.Errorf("유저 삭제 실패: %w", result.Error)
+		return fmt.Errorf("디바이스 삭제 실패: %w", result.Error)
 	}
 	if result.RowsAffected == 0 {
 		return errs.ErrNotFound

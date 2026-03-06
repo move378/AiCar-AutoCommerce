@@ -1,0 +1,116 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "AICar AutoCommerce API",
+        "title": "AICar API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/api/v1",
+    "paths": {
+        "/auth/onboard": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "디바이스 등록 + 유저 생성 + 토큰 발급",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "auth"
+                ],
+                "summary": "온보딩",
+                "parameters": [
+                    {
+                        "description": "온보딩 요청",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.OnboardingRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.OnboardingResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "이미 등록된 디바이스",
+                        "schema": {
+                            "$ref": "#/definitions/response.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "서버 오류",
+                        "schema": {
+                            "$ref": "#/definitions/response.APIResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "dto.OnboardingRequest": {
+            "type": "object",
+            "required": [
+                "device_id",
+                "device_type"
+            ],
+            "properties": {
+                "device_id": {
+                    "description": "필수값",
+                    "type": "string"
+                },
+                "device_type": {
+                    "description": "필수값 (ios, android)",
+                    "type": "string"
+                },
+                "model_name": {
+                    "type": "string"
+                },
+                "os_version": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.OnboardingResponse": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "type": "string"
+                },
+                "refresh_token": {
+                    "type": "string"
+                }
+            }
+        },
+        "response.APIResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "description": "없으면 null 출력"
+                },
+                "message": {
+                    "description": "에러일 때만 보이고, 성공 시(비어있을 때) 아예 숨김",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "HTTP 상태 코드",
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

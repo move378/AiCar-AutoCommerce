@@ -1,4 +1,3 @@
-// internal/infra/persistence/postgres/user_repo.go
 package postgres
 
 import (
@@ -6,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/google/uuid"
 	"gorm.io/gorm"
 
 	"backend/internal/domain/entity"
@@ -21,9 +21,9 @@ func NewUserRepo(db *DB) repository.UserRepository {
 	return &userRepo{db: db}
 }
 
-func (r *userRepo) FindByID(ctx context.Context, id uint) (*entity.User, error) {
+func (r *userRepo) FindByID(ctx context.Context, id uuid.UUID) (*entity.User, error) {
 	var user entity.User
-	err := r.db.WithContext(ctx).First(&user, id).Error
+	err := r.db.WithContext(ctx).First(&user, "id = ?", id).Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, errs.ErrNotFound
@@ -63,8 +63,8 @@ func (r *userRepo) Update(ctx context.Context, user *entity.User) error {
 	return nil
 }
 
-func (r *userRepo) Delete(ctx context.Context, id uint) error {
-	result := r.db.WithContext(ctx).Delete(&entity.User{}, id)
+func (r *userRepo) Delete(ctx context.Context, id uuid.UUID) error {
+	result := r.db.WithContext(ctx).Delete(&entity.User{}, "id = ?", id)
 	if result.Error != nil {
 		return fmt.Errorf("유저 삭제 실패: %w", result.Error)
 	}

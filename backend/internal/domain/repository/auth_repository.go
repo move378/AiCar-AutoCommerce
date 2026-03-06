@@ -18,11 +18,12 @@ type UserRepository interface {
 
 type DeviceRepository interface {
 	Create(ctx context.Context, device *entity.Device) error
-	FindByDeviceUID(ctx context.Context, deviceUID uuid.UUID)
+	FindByDeviceUID(ctx context.Context, deviceUID string) (*entity.Device, error)
 }
 
 type TokenRepository interface {
 	FindByToken(ctx context.Context, token string) (*entity.RefreshToken, error)
 	Create(ctx context.Context, token *entity.RefreshToken) error
-	Delete(ctx context.Context, id uuid.UUID) error
+	DeleteByToken(ctx context.Context, token string) error      // 찾아서 바로 삭제
+	DeleteByUserID(ctx context.Context, userID uuid.UUID) error // 로그아웃용
 }

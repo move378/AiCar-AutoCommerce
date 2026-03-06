@@ -1,9 +1,4 @@
--- public.tokens definition
-
--- Drop table
-
--- DROP TABLE public.tokens;
-
+-- +goose Up
 CREATE TABLE public.tokens (
 	id uuid DEFAULT gen_random_uuid() NOT NULL,
 	user_id uuid NOT NULL,
@@ -13,7 +8,7 @@ CREATE TABLE public.tokens (
 	CONSTRAINT refresh_tokens_pkey PRIMARY KEY (id)
 );
 
-
--- public.tokens foreign keys
-
 ALTER TABLE public.tokens ADD CONSTRAINT fk_user_tokens FOREIGN KEY (user_id) REFERENCES public.users(id) ON DELETE CASCADE;
+
+-- +goose Down
+DROP TABLE IF EXISTS public.tokens;

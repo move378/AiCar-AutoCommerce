@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
+	"github.com/google/uuid"
 )
 
 func getJWTSecret() ([]byte, error) {
@@ -16,7 +17,7 @@ func getJWTSecret() ([]byte, error) {
 	return []byte(secret), nil
 }
 
-func GenerateTokens(userID string) (string, string, error) {
+func GenerateTokens(userID uuid.UUID) (string, string, error) {
 	jwtSecret, err := getJWTSecret()
 	if err != nil {
 		return "", "", err
