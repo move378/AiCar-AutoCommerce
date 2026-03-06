@@ -1,0 +1,108 @@
+# ============================================
+# OS & Editor
+# ============================================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/settings.json
+.vscode/launch.json
+.idea/
+*.iml
+
+# ============================================
+# Environment & Secrets
+# ============================================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+
+# ============================================
+# Backend (Go)
+# ============================================
+backend/tmp/
+backend/bin/
+backend/vendor/
+*.exe
+*.out
+*.test
+coverage.out
+
+# ============================================
+# Flutter App
+# ============================================
+flutter_app/.dart_tool/
+flutter_app/.packages
+flutter_app/.pub-cache/
+flutter_app/.pub/
+flutter_app/build/
+flutter_app/.flutter-plugins
+flutter_app/.flutter-plugins-dependencies
+flutter_app/.metadata
+flutter_app/pubspec.lock
+
+# Flutter - Android
+flutter_app/android/.gradle/
+flutter_app/android/local.properties
+flutter_app/android/app/debug/
+flutter_app/android/app/profile/
+flutter_app/android/app/release/
+flutter_app/android/key.properties
+
+# Flutter - iOS
+flutter_app/ios/Pods/
+flutter_app/ios/Podfile.lock
+flutter_app/ios/.symlinks/
+flutter_app/ios/Flutter/Flutter.framework
+flutter_app/ios/Flutter/Flutter.podspec
+flutter_app/ios/Runner.xcworkspace/xcshareddata/
+flutter_app/ios/Flutter/ephemeral/
+
+# Flutter - macOS / Web / Linux / Windows
+flutter_app/macos/Pods/
+flutter_app/macos/Flutter/ephemeral/
+flutter_app/linux/flutter/ephemeral/
+flutter_app/windows/flutter/ephemeral/
+
+# ============================================
+# Backoffice (Next.js)
+# ============================================
+backoffice/node_modules/
+backoffice/.next/
+backoffice/out/
+backoffice/.turbo/
+backoffice/coverage/
+
+# ============================================
+# Infrastructure - Terraform
+# ============================================
+# Terraform state (절대 커밋하면 안 됨)
+*.tfstate
+*.tfstate.backup
+*.tfstate.*.backup
+.terraform/
+.terraform.lock.hcl
+
+# Terraform 민감 변수 파일
+*.tfvars
+!*.tfvars.example
+
+# ============================================
+# Infrastructure - Docker
+# ============================================
+docker-compose.override.yml
+
+# ============================================
+# General
+# ============================================
+node_modules/
+dist/
+build/
+coverage/
+*.log
+*.tmp
+*.bak
