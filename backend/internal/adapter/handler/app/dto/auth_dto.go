@@ -17,6 +17,18 @@ type RefreshRequest struct {
 	RefreshToken string `json:"refresh_token" binding:"required"`
 }
 
+type KakaoLoginRequest struct {
+	KakaoAccessToken string `json:"kakao_access_token" binding:"required"`
+}
+
+type GoogleLoginRequest struct {
+	GoogleAccessToken string `json:"google_access_token" binding:"required"`
+}
+
+type AppleLoginRequest struct {
+	IdentityToken string `json:"identity_token" binding:"required"`
+}
+
 // =============================================================================
 // [RESPONSE DTO] - 클라이언트에게 돌려주는 데이터 (Output)
 // =============================================================================
