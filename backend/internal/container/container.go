@@ -9,6 +9,7 @@ type Container struct {
 	AuthUsecase       usecase.AuthUsecase
 	AuthSocialUsecase usecase.AuthSocialUsecase
 	KakaoUsecase      usecase.KakaoUsecase
+	GoogleUsecase     usecase.GoogleUsecase
 }
 
 func NewContainer(db *postgres.DB) *Container {
@@ -22,7 +23,8 @@ func NewContainer(db *postgres.DB) *Container {
 
 	// usecase 생성 후 container에 담아서 반환
 	return &Container{
-		AuthUsecase:  usecase.NewAuthUsecase(userRepo, deviceRepo, tokenRepo),
-		KakaoUsecase: usecase.NewKakaoUsecase(socialUsecase),
+		AuthUsecase:   usecase.NewAuthUsecase(userRepo, deviceRepo, tokenRepo),
+		KakaoUsecase:  usecase.NewKakaoUsecase(socialUsecase),
+		GoogleUsecase: usecase.NewGoogleUsecase(socialUsecase),
 	}
 }

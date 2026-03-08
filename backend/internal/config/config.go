@@ -8,8 +8,9 @@ import (
 )
 
 type Config struct {
-	DB  DBConfig
-	JWT JWTConfig
+	DB   DBConfig
+	JWT  JWTConfig
+	Auth AuthConfig
 	// Redis RedisConfig // 나중에 추가될 것들
 }
 
@@ -19,6 +20,11 @@ type DBConfig struct {
 	Password string
 	Name     string
 	Port     string
+}
+
+type AuthConfig struct {
+	GoogleClientID     string
+	GoogleClientSecret string
 }
 
 type JWTConfig struct {
@@ -53,6 +59,10 @@ func LoadConfig() *Config {
 		},
 		JWT: JWTConfig{
 			Secret: os.Getenv("JWT_SECRET"),
+		},
+		Auth: AuthConfig{
+			GoogleClientID:     os.Getenv("GOOGLE_CLIENT_ID"),
+			GoogleClientSecret: os.Getenv("GOOGLE_CLIENT_SECRET"),
 		},
 	}
 }

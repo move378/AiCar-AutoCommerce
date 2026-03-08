@@ -17,16 +17,8 @@ type RefreshRequest struct {
 	RefreshToken string `json:"refresh_token" binding:"required"`
 }
 
-type KakaoLoginRequest struct {
-	KakaoAccessToken string `json:"kakao_access_token" binding:"required"`
-}
-
-type GoogleLoginRequest struct {
-	GoogleAccessToken string `json:"google_access_token" binding:"required"`
-}
-
-type AppleLoginRequest struct {
-	IdentityToken string `json:"identity_token" binding:"required"`
+type SocialLoginRequest struct {
+	ProviderToken string `json:"provider_token" binding:"required"`
 }
 
 // =============================================================================
