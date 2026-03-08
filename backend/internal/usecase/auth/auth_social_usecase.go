@@ -23,7 +23,7 @@ type SocialUserInfo struct {
 }
 
 type AuthSocialUsecase interface {
-	SocialLoginOrRegister(ctx context.Context, info SocialUserInfo) (*TokenResult, error)
+	SocialLoginOrRegister(ctx context.Context, info SocialUserInfo) (*SocialTokenResult, error)
 }
 
 type authSocialUsecase struct {
@@ -45,14 +45,16 @@ func NewSocialUsecase(
 }
 
 // 소셜 로그인 또는 회원가입 처리
-func (u *authSocialUsecase) SocialLoginOrRegister(ctx context.Context, info SocialUserInfo) (*TokenResult, error) {
+func (u *authSocialUsecase) SocialLoginOrRegister(ctx context.Context, info SocialUserInfo) (*SocialTokenResult, error) {
 	var userID uuid.UUID
+	var isNewUser bool = false
 	result, err := u.providerRepo.FindByProviderID(ctx, info.Provider, info.ProviderID)
 
 	fmt.Printf("소셜 계정 조회 결과: %v, 에러: %v\n", result, err)
 
 	if errors.Is(err, errs.ErrNotFound) {
 		userID = info.UserID
+		isNewUser = true
 		newProvider := &entity.UserAuthProvider{
 			UserID:     userID,
 			Provider:   info.Provider,
@@ -99,8 +101,11 @@ func (u *authSocialUsecase) SocialLoginOrRegister(ctx context.Context, info Soci
 		return nil, fmt.Errorf("리프레시 토큰 저장 실패: %w", err)
 	}
 
-	return &TokenResult{
-		AccessToken:  accessToken,
-		RefreshToken: refreshToken,
+	return &SocialTokenResult{
+		IsNewUser: isNewUser,
+		TokenResult: TokenResult{
+			AccessToken:  accessToken,
+			RefreshToken: refreshToken,
+		},
 	}, nil
 }

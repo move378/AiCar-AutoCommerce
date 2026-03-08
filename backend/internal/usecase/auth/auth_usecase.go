@@ -25,6 +25,11 @@ type TokenResult struct {
 	RefreshToken string
 }
 
+type SocialTokenResult struct {
+	IsNewUser bool
+	TokenResult
+}
+
 type authUsecase struct {
 	userRepo   repository.UserRepository
 	deviceRepo repository.DeviceRepository

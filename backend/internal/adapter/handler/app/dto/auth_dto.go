@@ -39,6 +39,12 @@ type TokenResponse struct {
 	RefreshToken string `json:"refresh_token"`
 }
 
+type SocialTokenResponse struct {
+	IsNewUser    bool   `json:"is_new_user"`
+	AccessToken  string `json:"access_token"`
+	RefreshToken string `json:"refresh_token"`
+}
+
 // OnboardingResponse: 온보딩 성공 시 반환되는 결과입니다.
 // TokenResponse를 임베딩하여 'data' 필드 안에 토큰 정보가 바로 담기게 합니다.
 type OnboardingResponse struct {

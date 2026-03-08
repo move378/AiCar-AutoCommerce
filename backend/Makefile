@@ -24,11 +24,12 @@ setup:
 	go get gorm.io/gorm
 	go get gorm.io/driver/postgres
 	go get github.com/google/uuid
-	go install github.com/pressly/goose/v3/cmd/goose@latest
-	go install github.com/swaggo/swag/cmd/swag@latest
 	go get github.com/swaggo/swag@latest
 	go get github.com/swaggo/gin-swagger@latest
 	go get github.com/swaggo/files@latest
+	go install github.com/air-verse/air@latest
+	go install github.com/pressly/goose/v3/cmd/goose@latest
+	go install github.com/swaggo/swag/cmd/swag@latest
 
 migrate-up:
 	goose -dir migrations postgres "postgres://$(DB_USER):$(DB_PASSWORD)@$(DB_HOST):$(DB_PORT)/$(DB_NAME)?sslmode=disable" up

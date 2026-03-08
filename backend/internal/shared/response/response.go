@@ -10,10 +10,16 @@ type APIResponse struct {
 	Message string `json:"message,omitempty"` // 에러일 때만 보이고, 성공 시(비어있을 때) 아예 숨김
 }
 
-func SendSuccess(c *gin.Context, status int, data any) {
+func SendSuccess(c *gin.Context, status int, data any, message ...string) {
 	c.JSON(status, APIResponse{
 		Status: status,
 		Data:   data,
+		Message: func() string {
+			if len(message) > 0 {
+				return message[0]
+			}
+			return ""
+		}(),
 	})
 }
 

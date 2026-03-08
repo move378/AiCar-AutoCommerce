@@ -3,7 +3,6 @@ package app
 import (
 	"backend/internal/adapter/handler/app/dto"
 	"backend/internal/domain/entity"
-	"backend/internal/shared/auth"
 	"backend/internal/shared/errs"
 	"backend/internal/shared/response"
 	usecase "backend/internal/usecase/auth"
@@ -12,6 +11,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 type AuthHandler struct {
@@ -96,15 +96,12 @@ func (h *AuthHandler) Refresh(c *gin.Context) {
 func (h *AuthHandler) KakaoLogin(c *gin.Context) {
 	var req dto.KakaoLoginRequest
 
-	headerAuth := c.GetHeader("Authorization")
-	token := headerAuth[len("Bearer "):]
-
-	userID, err := auth.ParseAccessToken(token)
-	if err != nil {
+	userID, ok := c.Get("user_id")
+	if !ok {
 		response.SendError(c, http.StatusUnauthorized, "유효하지 않은 액세스 토큰입니다")
 		return
 	}
-	fmt.Printf("파싱된 UserID: %s\n", userID)
+	userUUID := userID.(uuid.UUID)
 
 	// 토큰을 실제로 파싱/검증할 필요가 있다면
 	// h.authUsecase 또는 별도 헬퍼를 이용해 처리하세요
@@ -115,10 +112,18 @@ func (h *AuthHandler) KakaoLogin(c *gin.Context) {
 	}
 
 	fmt.Println("usecase 호출 전")
-	_, err = h.kakaoUsecase.KakaoLogin(c.Request.Context(), userID, req.KakaoAccessToken)
+	result, err := h.kakaoUsecase.KakaoLogin(c.Request.Context(), userUUID, req.KakaoAccessToken)
 
 	if err != nil {
 		response.SendError(c, http.StatusInternalServerError, "카카오 로그인 처리 중 오류가 발생했습니다.")
 		return
 	}
+
+	response.SendSuccess(c, http.StatusAccepted, &dto.SocialTokenResponse{
+		IsNewUser:    result.IsNewUser,
+		AccessToken:  result.TokenResult.AccessToken,
+		RefreshToken: result.TokenResult.RefreshToken,
+	})
+
+	return
 }
