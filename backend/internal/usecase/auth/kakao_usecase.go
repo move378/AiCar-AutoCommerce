@@ -12,8 +12,6 @@ import (
 
 type KakaoUsecase interface {
 	KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAccessToken string) (*SocialTokenResult, error)
-	//GoogleLogin(ctx context.Context, googleAccessToken string) (*TokenResult, error)
-	//AppleLogin(ctx context.Context, identityToken string) (*TokenResult, error)
 }
 
 type kakaoUsecase struct {
@@ -77,14 +75,3 @@ func (u *kakaoUsecase) KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAc
 
 	return u.social.SocialLoginOrRegister(ctx, info)
 }
-
-// {
-//   "id": 12345678,
-//   "kakao_account": {
-//     "email": "test@kakao.com",
-//     "profile": {
-//       "nickname": "홍길동",
-//       "profile_image_url": "https://..."
-//     }
-//   }
-// }

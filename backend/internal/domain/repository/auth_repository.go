@@ -32,3 +32,7 @@ type TokenRepository interface {
 	DeleteByToken(ctx context.Context, token string) error      // 찾아서 바로 삭제
 	DeleteByUserID(ctx context.Context, userID uuid.UUID) error // 로그아웃용
 }
+
+type TxManager interface {
+	Transaction(ctx context.Context, fn func(ctx context.Context) error) error
+}

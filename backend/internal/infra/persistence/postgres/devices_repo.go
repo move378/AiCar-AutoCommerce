@@ -35,7 +35,7 @@ func (r *devicesRepo) FindByDeviceUID(ctx context.Context, deviceUID string) (*e
 }
 
 func (r *devicesRepo) Create(ctx context.Context, device *entity.Device) error {
-	if err := r.db.WithContext(ctx).Create(device).Error; err != nil {
+	if err := GetTx(ctx, r.db).WithContext(ctx).Create(device).Error; err != nil {
 		return fmt.Errorf("디바이스 생성 실패: %w", err)
 	}
 	return nil

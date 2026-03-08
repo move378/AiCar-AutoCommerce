@@ -17,10 +17,11 @@ type User struct {
 	Name       *string    `gorm:"type:varchar(100)"`
 	Gender     *string    `gorm:"type:varchar(10)"`
 	Birth      *time.Time `gorm:"type:date"`
-	Location   *string    `gorm:"type:text"`
 	Email      *string    `gorm:"type:varchar(255);uniqueIndex"`
 	ProfileURL *string    `gorm:"type:text"`
 	Status     string     `gorm:"type:varchar(20);not null;default:'guest';check:status IN ('guest','registered','deleted')"`
+	Latitude   *float64   `gorm:"column:latitude;type:decimal(10,8)" json:"latitude,omitempty"`
+	Longitude  *float64   `gorm:"column:longitude;type:decimal(11,8)" json:"longitude,omitempty"`
 	CreatedAt  time.Time  `gorm:"autoCreateTime"`
 	UpdatedAt  time.Time  `gorm:"autoUpdateTime"`
 	DeletedAt  *time.Time `gorm:"index"`

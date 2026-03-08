@@ -46,7 +46,7 @@ func (r *userRepo) FindByEmail(ctx context.Context, email string) (*entity.User,
 }
 
 func (r *userRepo) Create(ctx context.Context, user *entity.User) error {
-	if err := r.db.WithContext(ctx).Create(user).Error; err != nil {
+	if err := GetTx(ctx, r.db).WithContext(ctx).Create(user).Error; err != nil {
 		return fmt.Errorf("유저 생성 실패: %w", err)
 	}
 	return nil

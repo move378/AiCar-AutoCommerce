@@ -2,6 +2,8 @@ package middleware
 
 import (
 	"backend/internal/shared/auth"
+	"backend/internal/shared/response"
+	"net/http"
 
 	"strings"
 
@@ -14,19 +16,22 @@ func AuthMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		headerAuth := c.GetHeader("Authorization")
 		if headerAuth == "" {
-			c.AbortWithStatusJSON(401, gin.H{"error": "Authorization header is missing"})
+			response.SendError(c, http.StatusUnauthorized, response.CodeUnauthorized, "Authorization header is missing")
+			c.Abort()
 			return
 		}
 
 		ok := strings.HasPrefix(headerAuth, "Bearer ")
 		if !ok {
-			c.AbortWithStatusJSON(401, gin.H{"error": "Authorization header format must be Bearer {token}"})
+			response.SendError(c, http.StatusUnauthorized, response.CodeUnauthorized, "Authorization header format must be Bearer {token}")
+			c.Abort()
 			return
 		}
 		token := headerAuth[len("Bearer "):]
 		userID, err := auth.ParseAccessToken(token)
 		if err != nil {
-			c.AbortWithStatusJSON(401, gin.H{"error": "Invalid token"})
+			response.SendError(c, http.StatusUnauthorized, response.CodeUnauthorized, "Invalid token")
+			c.Abort()
 			return
 		}
 

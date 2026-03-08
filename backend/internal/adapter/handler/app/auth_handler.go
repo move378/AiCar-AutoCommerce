@@ -2,7 +2,6 @@ package app
 
 import (
 	"backend/internal/adapter/handler/app/dto"
-	"backend/internal/domain/entity"
 	"backend/internal/shared/errs"
 	"backend/internal/shared/response"
 	usecase "backend/internal/usecase/auth"
@@ -37,7 +36,9 @@ func NewAuthHandler(
 // @Accept      json
 // @Produce     json
 // @Param       request body dto.OnboardingRequest true "온보딩 요청"
-// @Success     200 {object} dto.OnboardingResponse
+// @Success     200 {object} response.APIResponse{data=dto.OnboardingResponse} "온보딩 성공"
+// @Failure     400 {object} response.APIResponse "잘못된 요청"
+// @Failure     401 {object} response.APIResponse "유효하지 않은 토큰"
 // @Failure     409 {object} response.APIResponse "이미 등록된 디바이스"
 // @Failure     500 {object} response.APIResponse "서버 오류"
 // @Security    ApiKeyAuth
@@ -49,11 +50,13 @@ func (h *AuthHandler) Onboarding(c *gin.Context) {
 		return
 	}
 
-	result, err := h.authUsecase.Onboarding(c.Request.Context(), &entity.Device{
+	result, err := h.authUsecase.Onboarding(c.Request.Context(), &usecase.OnboardingInput{
 		DeviceUID:  req.DeviceID,
 		DeviceType: req.DeviceType,
 		ModelName:  req.ModelName,
 		OSVersion:  req.OSVersion,
+		Latitude:   req.Latitude,
+		Longitude:  req.Longitude,
 	})
 
 	fmt.Println("Onboarding result:", result)
@@ -75,6 +78,18 @@ func (h *AuthHandler) Onboarding(c *gin.Context) {
 	})
 }
 
+// @Summary     토큰 갱신
+// @Description 리프레시 토큰으로 새 액세스/리프레시 토큰 발급
+// @Tags        auth
+// @Accept      json
+// @Produce     json
+// @Param       request body dto.RefreshRequest true "토큰 갱신 요청"
+// @Success     200 {object} response.APIResponse{data=dto.TokenResponse} "토큰 갱신 성공"
+// @Failure     400 {object} response.APIResponse "잘못된 요청"
+// @Failure     401 {object} response.APIResponse "유효하지 않은 토큰"
+// @Failure     404 {object} response.APIResponse "토큰 없음"
+// @Failure     500 {object} response.APIResponse "서버 오류"
+// @Router      /auth/refresh [post]
 func (h *AuthHandler) Refresh(c *gin.Context) {
 	var req dto.RefreshRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -101,6 +116,19 @@ func (h *AuthHandler) Refresh(c *gin.Context) {
 		RefreshToken: result.RefreshToken,
 	})
 }
+
+// @Summary     카카오 로그인
+// @Description 카카오 액세스 토큰으로 소셜 로그인
+// @Tags        auth
+// @Accept      json
+// @Produce     json
+// @Security    BearerAuth
+// @Param       request body dto.SocialLoginRequest true "카카오 로그인 요청"
+// @Success     200 {object} response.APIResponse{data=dto.SocialTokenResponse} "카카오 로그인 성공"
+// @Failure     400 {object} response.APIResponse "잘못된 요청"
+// @Failure     401 {object} response.APIResponse "유효하지 않은 토큰"
+// @Failure     500 {object} response.APIResponse "서버 오류"
+// @Router      /auth/kakao-login [post]
 func (h *AuthHandler) KakaoLogin(c *gin.Context) {
 	var req dto.SocialLoginRequest
 
@@ -134,6 +162,18 @@ func (h *AuthHandler) KakaoLogin(c *gin.Context) {
 	})
 }
 
+// @Summary     구글 로그인
+// @Description 구글 ID 토큰으로 소셜 로그인
+// @Tags        auth
+// @Accept      json
+// @Produce     json
+// @Security    BearerAuth
+// @Param       request body dto.SocialLoginRequest true "구글 로그인 요청"
+// @Success     200 {object} response.APIResponse{data=dto.SocialTokenResponse} "구글 로그인 성공"
+// @Failure     400 {object} response.APIResponse "잘못된 요청"
+// @Failure     401 {object} response.APIResponse "유효하지 않은 토큰"
+// @Failure     500 {object} response.APIResponse "서버 오류"
+// @Router      /auth/google-login [post]
 func (h *AuthHandler) GoogleLogin(c *gin.Context) {
 	var req dto.SocialLoginRequest
 
