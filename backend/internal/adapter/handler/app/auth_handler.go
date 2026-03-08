@@ -3,6 +3,7 @@ package app
 import (
 	"backend/internal/adapter/handler/app/dto"
 	"backend/internal/domain/entity"
+	"backend/internal/shared/auth"
 	"backend/internal/shared/errs"
 	"backend/internal/shared/response"
 	usecase "backend/internal/usecase/auth"
@@ -14,11 +15,12 @@ import (
 )
 
 type AuthHandler struct {
-	authUsecase usecase.AuthUsecase
+	authUsecase  usecase.AuthUsecase
+	kakaoUsecase usecase.KakaoUsecase
 }
 
-func NewAuthHandler(authUsecase usecase.AuthUsecase) *AuthHandler {
-	return &AuthHandler{authUsecase: authUsecase}
+func NewAuthHandler(authUsecase usecase.AuthUsecase, kakaoUsecase usecase.KakaoUsecase) *AuthHandler {
+	return &AuthHandler{authUsecase: authUsecase, kakaoUsecase: kakaoUsecase}
 }
 
 // @Summary     온보딩
@@ -90,4 +92,33 @@ func (h *AuthHandler) Refresh(c *gin.Context) {
 		AccessToken:  result.AccessToken,
 		RefreshToken: result.RefreshToken,
 	})
+}
+func (h *AuthHandler) KakaoLogin(c *gin.Context) {
+	var req dto.KakaoLoginRequest
+
+	headerAuth := c.GetHeader("Authorization")
+	token := headerAuth[len("Bearer "):]
+
+	userID, err := auth.ParseAccessToken(token)
+	if err != nil {
+		response.SendError(c, http.StatusUnauthorized, "유효하지 않은 액세스 토큰입니다")
+		return
+	}
+	fmt.Printf("파싱된 UserID: %s\n", userID)
+
+	// 토큰을 실제로 파싱/검증할 필요가 있다면
+	// h.authUsecase 또는 별도 헬퍼를 이용해 처리하세요
+
+	if err := c.ShouldBindJSON(&req); err != nil {
+		response.SendError(c, http.StatusBadRequest, "카카오 액세스 토큰이 필요합니다.")
+		return
+	}
+
+	fmt.Println("usecase 호출 전")
+	_, err = h.kakaoUsecase.KakaoLogin(c.Request.Context(), userID, req.KakaoAccessToken)
+
+	if err != nil {
+		response.SendError(c, http.StatusInternalServerError, "카카오 로그인 처리 중 오류가 발생했습니다.")
+		return
+	}
 }

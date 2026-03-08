@@ -54,6 +54,8 @@ func (r *userRepo) Create(ctx context.Context, user *entity.User) error {
 
 func (r *userRepo) Update(ctx context.Context, user *entity.User) error {
 	result := r.db.WithContext(ctx).Save(user)
+
+	fmt.Printf("유저 업데이트 시도: ID=%s, 결과: %v, 에러: %v\n", user.ID, result, result.Error)
 	if result.Error != nil {
 		return fmt.Errorf("유저 수정 실패: %w", result.Error)
 	}

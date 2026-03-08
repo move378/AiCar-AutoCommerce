@@ -4,23 +4,37 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"gorm.io/gorm"
 )
 
-// User: 'users' 테이블 (00002_create_users.sql 기준)
+const (
+	UserStatusGuest      = "guest"
+	UserStatusRegistered = "registered"
+	UserStatusDeleted    = "deleted"
+)
+
 type User struct {
-	ID         uuid.UUID      `gorm:"type:uuid;primaryKey;default:gen_random_uuid()" json:"id"`
-	Name       string         `gorm:"size:100" json:"name"`
-	Gender     string         `gorm:"size:10" json:"gender"`
-	Birth      *time.Time     `gorm:"type:date" json:"birth"`
-	Location   string         `gorm:"type:text" json:"location"`
-	OAuthType  string         `gorm:"column:oauth_type;size:20" json:"oauth_type"`
-	OAuthID    string         `gorm:"column:oauth_id;size:255" json:"oauth_id"`
-	Email      *string        `gorm:"size:255;uniqueIndex" json:"email"`
-	ProfileURL string         `gorm:"column:profile_url;type:text" json:"profile_url"`
-	CreatedAt  time.Time      `gorm:"autoCreateTime" json:"created_at"`
-	UpdatedAt  time.Time      `gorm:"autoUpdateTime" json:"updated_at"`
-	DeletedAt  gorm.DeletedAt `gorm:"index" json:"-"`
+	ID         uuid.UUID  `gorm:"type:uuid;default:gen_random_uuid();primaryKey"`
+	Name       *string    `gorm:"type:varchar(100)"`
+	Gender     *string    `gorm:"type:varchar(10)"`
+	Birth      *time.Time `gorm:"type:date"`
+	Location   *string    `gorm:"type:text"`
+	Email      *string    `gorm:"type:varchar(255);uniqueIndex"`
+	ProfileURL *string    `gorm:"type:text"`
+	Status     string     `gorm:"type:varchar(20);not null;default:'guest';check:status IN ('guest','registered','deleted')"`
+	CreatedAt  time.Time  `gorm:"autoCreateTime"`
+	UpdatedAt  time.Time  `gorm:"autoUpdateTime"`
+	DeletedAt  *time.Time `gorm:"index"`
+
+	AuthProviders []UserAuthProvider `gorm:"foreignKey:UserID"`
+}
+type UserAuthProvider struct {
+	ID         uuid.UUID `gorm:"type:uuid;default:gen_random_uuid();primaryKey"`
+	UserID     uuid.UUID `gorm:"type:uuid;not null;index"`
+	Provider   string    `gorm:"type:varchar(20);not null"` // kakao, google, apple, phone
+	ProviderID string    `gorm:"type:varchar(255);not null"`
+	CreatedAt  time.Time `gorm:"autoCreateTime"`
+
+	User User `gorm:"foreignKey:UserID"`
 }
 
 // Device: 'devices' 테이블 (00012_create_devices.sql 기준)

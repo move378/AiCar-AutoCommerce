@@ -14,7 +14,7 @@ import (
 func SetupRouter(c *container.Container) *gin.Engine {
 	r := gin.Default()
 
-	authHandler := app.NewAuthHandler(c.AuthUsecase)
+	authHandler := app.NewAuthHandler(c.AuthUsecase, c.KakaoUsecase)
 
 	// 미들웨어 설정 (필요시 CORS, 인증 등 추가 가능)
 	// r.Use(CORSMiddleware())
@@ -27,7 +27,8 @@ func SetupRouter(c *container.Container) *gin.Engine {
 
 		userGroup := v1.Group("/auth")
 		{
-			userGroup.POST("/onboard", authHandler.Onboarding) // 초기 진입
+			userGroup.POST("/onboard", authHandler.Onboarding)     // 초기 진입
+			userGroup.POST("/kakao-login", authHandler.KakaoLogin) // 카카오 로그인
 			// userGroup.POST("/refresh", authApi.RefreshToken) // 토큰 재발급
 		}
 
