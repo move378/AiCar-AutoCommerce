@@ -8,10 +8,10 @@ import (
 )
 
 type Config struct {
-	DB    DBConfig
-	JWT   JWTConfig
-	Auth  AuthConfig
-	Redis RedisConfig
+	DB   DBConfig
+	JWT  JWTConfig
+	Auth AuthConfig
+	// Redis RedisConfig // 나중에 추가될 것들
 }
 
 type DBConfig struct {
@@ -30,12 +30,6 @@ type AuthConfig struct {
 type JWTConfig struct {
 	Secret     string
 	ExpireHour int
-}
-
-type RedisConfig struct {
-	Host     string
-	Port     string
-	Password string
 }
 
 func LoadConfig() *Config {
@@ -62,11 +56,6 @@ func LoadConfig() *Config {
 			Password: os.Getenv("DB_PASSWORD"),
 			Name:     os.Getenv("DB_NAME"),
 			Port:     os.Getenv("DB_PORT"),
-		},
-		Redis: RedisConfig{
-			Host:     os.Getenv("REDIS_HOST"),
-			Port:     os.Getenv("REDIS_PORT"),
-			Password: os.Getenv("REDIS_PASSWORD"),
 		},
 		JWT: JWTConfig{
 			Secret: os.Getenv("JWT_SECRET"),

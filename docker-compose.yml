@@ -13,14 +13,6 @@ services:
     ports:
       - "5433:5432" # 내 컴퓨터의 5433 포트와 도커의 5432 포트를 연결합니다.
 
-  redis:
-    image: redis:8.6-alpine
-    container_name: aicar-redis
-    restart: always
-    ports:
-      - "6379:6379"
-    command: redis-server --appendonly yes
-
   # 백엔드 서비스 정의
   backend:
     build:
@@ -38,4 +30,3 @@ services:
       - DB_PORT=5432
     depends_on:
       - db
-      - redis
