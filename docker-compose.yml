@@ -9,7 +9,7 @@ services:
     environment:
       POSTGRES_USER: postgres # 접속할 사용자 아이디
       POSTGRES_PASSWORD: 1234 # 접속 비밀번호
-      POSTGRES_DB: aicar # 생성할 데이터베이스 이름
+      POSTGRES_DB: postgres # 생성할 데이터베이스 이름 / 로컬에서는 기본
     ports:
       - "5433:5432" # 내 컴퓨터의 5433 포트와 도커의 5432 포트를 연결합니다.
 
@@ -22,6 +22,8 @@ services:
     command: redis-server --appendonly yes
     environment:
       - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=1234
   # 백엔드 서비스 정의
   # backend:
   #   build:

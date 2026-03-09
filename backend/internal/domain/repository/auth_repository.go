@@ -27,9 +27,8 @@ type DeviceRepository interface {
 }
 
 type TokenRepository interface {
-	FindByToken(ctx context.Context, token string) (*entity.RefreshToken, error)
 	Create(ctx context.Context, token *entity.RefreshToken) error
-	DeleteByToken(ctx context.Context, token string) error      // 찾아서 바로 삭제
+	FindByUserID(ctx context.Context, userID uuid.UUID) (*entity.RefreshToken, error)
 	DeleteByUserID(ctx context.Context, userID uuid.UUID) error // 로그아웃용
 }
 

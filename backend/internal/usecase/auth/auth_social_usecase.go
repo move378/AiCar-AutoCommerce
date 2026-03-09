@@ -1,6 +1,7 @@
 package auth
 
 import (
+	"backend/internal/config"
 	"backend/internal/domain/entity"
 	"backend/internal/domain/repository"
 	"backend/internal/shared/auth"
@@ -83,6 +84,8 @@ func (u *authSocialUsecase) upsertUser(ctx context.Context, userID uuid.UUID, in
 func (u *authSocialUsecase) SocialLoginOrRegister(ctx context.Context, info SocialUserInfo) (*SocialTokenResult, error) {
 	var userID uuid.UUID
 	var isNewUser bool = false
+
+	cfg := config.LoadConfig()
 	result, err := u.providerRepo.FindByProviderID(ctx, info.Provider, info.ProviderID)
 
 	if errors.Is(err, errs.ErrNotFound) {
@@ -108,7 +111,7 @@ func (u *authSocialUsecase) SocialLoginOrRegister(ctx context.Context, info Soci
 		return nil, fmt.Errorf("유저 정보 업데이트 실패: %w", err)
 	}
 
-	accessToken, refreshToken, err := auth.GenerateTokens(userID)
+	accessToken, refreshToken, err := auth.GenerateTokens(cfg, userID)
 
 	if err != nil {
 		return nil, fmt.Errorf("JWT 생성 실패: %w", err)

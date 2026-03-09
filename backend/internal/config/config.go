@@ -3,6 +3,8 @@ package config
 import (
 	"log"
 	"os"
+	"strconv"
+	"time"
 
 	"github.com/joho/godotenv"
 )
@@ -28,8 +30,10 @@ type AuthConfig struct {
 }
 
 type JWTConfig struct {
-	Secret     string
-	ExpireHour int
+	AccessSecret      string
+	RefreshSecret     string
+	AccessExpiration  time.Duration
+	RefreshExpiration time.Duration
 }
 
 type RedisConfig struct {
@@ -55,6 +59,9 @@ func LoadConfig() *Config {
 		log.Printf("✅ %s 설정 파일을 로드했습니다.", envFile)
 	}
 
+	accessExp, _ := strconv.Atoi(os.Getenv("JWT_ACCESS_EXPIRATION"))
+	refreshExp, _ := strconv.Atoi(os.Getenv("JWT_REFRESH_EXPIRATION"))
+
 	return &Config{
 		DB: DBConfig{
 			Host:     os.Getenv("DB_HOST"),
@@ -69,7 +76,10 @@ func LoadConfig() *Config {
 			Password: os.Getenv("REDIS_PASSWORD"),
 		},
 		JWT: JWTConfig{
-			Secret: os.Getenv("JWT_SECRET"),
+			AccessSecret:      os.Getenv("JWT_ACCESS_SECRET"),
+			RefreshSecret:     os.Getenv("JWT_REFRESH_SECRET"),
+			AccessExpiration:  time.Duration(accessExp) * time.Minute,
+			RefreshExpiration: time.Duration(refreshExp) * time.Hour,
 		},
 		Auth: AuthConfig{
 			GoogleClientID:     os.Getenv("GOOGLE_CLIENT_ID"),

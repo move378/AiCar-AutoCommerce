@@ -9,6 +9,7 @@ import (
 
 	"github.com/google/uuid"
 
+	"backend/internal/config"
 	"backend/internal/domain/entity"
 	"backend/internal/domain/repository"
 	"backend/internal/shared/auth"
@@ -63,6 +64,7 @@ type OnboardingInput struct {
 // Onboarding: 디바이스 등록 + 유저 생성 + 토큰 발급
 func (u *authUsecase) Onboarding(ctx context.Context, device *OnboardingInput) (*TokenResult, error) {
 	// 1. 이미 등록된 디바이스인지 확인
+	cfg := config.LoadConfig()
 	existing, err := u.deviceRepo.FindByDeviceUID(ctx, device.DeviceUID)
 	if err != nil && !errors.Is(err, errs.ErrNotFound) {
 		return nil, fmt.Errorf("디바이스 조회 실패: %w", err)
@@ -101,30 +103,36 @@ func (u *authUsecase) Onboarding(ctx context.Context, device *OnboardingInput) (
 	}
 
 	// 4. 토큰 발급
-	return u.generateTokens(ctx, user.ID)
+	return u.generateTokens(ctx, cfg, user.ID)
 }
 
 // Refresh: 리프레시 토큰 검증 + 새 토큰 발급
 func (u *authUsecase) Refresh(ctx context.Context, refreshToken string) (*TokenResult, error) {
-	token, err := u.tokenRepo.FindByToken(ctx, refreshToken)
+	cfg := config.LoadConfig()
+	userID, err := auth.ParseRefreshToken(refreshToken)
 	if err != nil {
+		fmt.Println("리프레시 토큰 검증 실패:", err)
+		return nil, errs.ErrUnauthorized
+	}
+	token, err := u.tokenRepo.FindByUserID(ctx, userID)
+
+	fmt.Println("토큰 조회 결과:", token, "err:", err)
+	if err != nil {
+		fmt.Println("토큰 조회 실패:", err)
 		return nil, errs.ErrUnauthorized
 	}
 
-	if time.Now().After(token.ExpiresAt) {
-		return nil, errs.ErrUnauthorized
-	}
-
-	if err := u.tokenRepo.DeleteByToken(ctx, refreshToken); err != nil {
+	if err := u.tokenRepo.DeleteByUserID(ctx, userID); err != nil {
+		fmt.Println("토큰 삭제 실패:", err)
 		return nil, fmt.Errorf("토큰 삭제 실패: %w", err)
 	}
 
-	return u.generateTokens(ctx, token.UserID)
+	return u.generateTokens(ctx, cfg, token.UserID)
 }
 
 // generateTokens: 액세스/리프레시 토큰 생성 + 저장
-func (u *authUsecase) generateTokens(ctx context.Context, userID uuid.UUID) (*TokenResult, error) {
-	accessToken, refreshToken, tokenErr := auth.GenerateTokens(userID) // JWT 생성
+func (u *authUsecase) generateTokens(ctx context.Context, cfg *config.Config, userID uuid.UUID) (*TokenResult, error) {
+	accessToken, refreshToken, tokenErr := auth.GenerateTokens(cfg, userID) // JWT 생성
 
 	if tokenErr != nil {
 		return nil, fmt.Errorf("토큰 생성 실패: %w", tokenErr)
@@ -133,7 +141,7 @@ func (u *authUsecase) generateTokens(ctx context.Context, userID uuid.UUID) (*To
 	if err := u.tokenRepo.Create(ctx, &entity.RefreshToken{
 		UserID:    userID,
 		Token:     refreshToken,
-		ExpiresAt: time.Now().Add(30 * 24 * time.Hour), // 30일
+		ExpiresAt: time.Now().Add(cfg.JWT.RefreshExpiration), // 설정된 기간에 따라 달라짐
 	}); err != nil {
 		return nil, fmt.Errorf("토큰 저장 실패: %w", err)
 	}

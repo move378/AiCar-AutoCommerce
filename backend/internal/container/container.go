@@ -17,15 +17,15 @@ func NewContainer(db *postgres.DB, rdb *redis.Redis) *Container {
 	// repo 생성
 	userRepo := postgres.NewUserRepo(db)
 	deviceRepo := postgres.NewDeviceRepo(db)
-	tokenRepo := postgres.NewTokenRepo(rdb)
+	tokenCache := redis.NewTokenCache(rdb)
 	socialRepo := postgres.NewAuthSocialRepo(db)
 	txManager := db
 
-	socialUsecase := usecase.NewSocialUsecase(userRepo, socialRepo, tokenRepo)
+	socialUsecase := usecase.NewSocialUsecase(userRepo, socialRepo, tokenCache)
 
 	// usecase 생성 후 container에 담아서 반환
 	return &Container{
-		AuthUsecase:   usecase.NewAuthUsecase(userRepo, deviceRepo, tokenRepo, txManager),
+		AuthUsecase:   usecase.NewAuthUsecase(userRepo, deviceRepo, tokenCache, txManager),
 		KakaoUsecase:  usecase.NewKakaoUsecase(socialUsecase),
 		GoogleUsecase: usecase.NewGoogleUsecase(socialUsecase),
 	}
