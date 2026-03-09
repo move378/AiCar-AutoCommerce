@@ -93,5 +93,4 @@ func ParseAccessToken(tokenStr string) (uuid.UUID, error) {
 	}
 
 	return userId, nil
-
 }

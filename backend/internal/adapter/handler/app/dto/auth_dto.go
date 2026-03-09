@@ -4,43 +4,38 @@ package dto
 // [REQUEST DTO] - 클라이언트로부터 받는 데이터 (Input)
 // =============================================================================
 
-// OnboardingRequest: 앱 최초 진입 시 온보딩에 필요한 정보를 담습니다.
 type OnboardingRequest struct {
-	DeviceID   string `json:"device_id" binding:"required"`   // 필수값
-	DeviceType string `json:"device_type" binding:"required"` // 필수값 (ios, android)
-	ModelName  string `json:"model_name"`
-	OSVersion  string `json:"os_version"`
+	DeviceID   string   `json:"device_id" binding:"required" example:"ANDROID-DEVICE-789"`
+	DeviceType string   `json:"device_type" binding:"required,oneof=ios android" example:"android" enums:"ios,android"`
+	ModelName  string   `json:"model_name" example:"Galaxy S24"`
+	OSVersion  string   `json:"os_version" example:"14.0"`
+	Latitude   *float64 `json:"latitude" example:"37.5665"`
+	Longitude  *float64 `json:"longitude" example:"126.9780"`
 }
 
-// RefreshRequest: 토큰 갱신 요청 시 필요한 정보입니다.
 type RefreshRequest struct {
-	RefreshToken string `json:"refresh_token" binding:"required"`
+	RefreshToken string `json:"refresh_token" binding:"required" example:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."`
 }
 
-type KakaoLoginRequest struct {
-	KakaoAccessToken string `json:"kakao_access_token" binding:"required"`
-}
-
-type GoogleLoginRequest struct {
-	GoogleAccessToken string `json:"google_access_token" binding:"required"`
-}
-
-type AppleLoginRequest struct {
-	IdentityToken string `json:"identity_token" binding:"required"`
+type SocialLoginRequest struct {
+	ProviderToken string `json:"provider_token" binding:"required" example:"ya29.a0AfH6SMBx..."`
 }
 
 // =============================================================================
 // [RESPONSE DTO] - 클라이언트에게 돌려주는 데이터 (Output)
 // =============================================================================
 
-// TokenResponse: 모든 인증 관련 API에서 공통으로 사용될 토큰 구조입니다.
 type TokenResponse struct {
-	AccessToken  string `json:"access_token"`
-	RefreshToken string `json:"refresh_token"`
+	AccessToken  string `json:"access_token" example:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."`
+	RefreshToken string `json:"refresh_token" example:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."`
 }
 
-// OnboardingResponse: 온보딩 성공 시 반환되는 결과입니다.
-// TokenResponse를 임베딩하여 'data' 필드 안에 토큰 정보가 바로 담기게 합니다.
+type SocialTokenResponse struct {
+	IsNewUser    bool   `json:"is_new_user" example:"true"`
+	AccessToken  string `json:"access_token" example:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."`
+	RefreshToken string `json:"refresh_token" example:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."`
+}
+
 type OnboardingResponse struct {
-	TokenResponse // AccessToken, RefreshToken 필드를 그대로 가져옴
+	TokenResponse
 }

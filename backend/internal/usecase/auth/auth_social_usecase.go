@@ -23,7 +23,7 @@ type SocialUserInfo struct {
 }
 
 type AuthSocialUsecase interface {
-	SocialLoginOrRegister(ctx context.Context, info SocialUserInfo) (*TokenResult, error)
+	SocialLoginOrRegister(ctx context.Context, info SocialUserInfo) (*SocialTokenResult, error)
 }
 
 type authSocialUsecase struct {
@@ -44,15 +44,50 @@ func NewSocialUsecase(
 	}
 }
 
-// 소셜 로그인 또는 회원가입 처리
-func (u *authSocialUsecase) SocialLoginOrRegister(ctx context.Context, info SocialUserInfo) (*TokenResult, error) {
-	var userID uuid.UUID
-	result, err := u.providerRepo.FindByProviderID(ctx, info.Provider, info.ProviderID)
+func filterUserInfo(info SocialUserInfo, existingUser *entity.User) SocialUserInfo {
+	if existingUser.Email == nil {
+		existingUser.Email = info.Email
+	}
+	if existingUser.Name == nil {
+		existingUser.Name = info.Name
+	}
+	if existingUser.ProfileURL == nil {
+		existingUser.ProfileURL = info.ProfileURL
+	}
+	return SocialUserInfo{
+		UserID:     existingUser.ID,
+		Provider:   info.Provider,
+		ProviderID: info.ProviderID,
+		Email:      existingUser.Email,
+		Name:       existingUser.Name,
+		ProfileURL: existingUser.ProfileURL,
+	}
+}
 
-	fmt.Printf("소셜 계정 조회 결과: %v, 에러: %v\n", result, err)
+func (u *authSocialUsecase) upsertUser(ctx context.Context, userID uuid.UUID, info SocialUserInfo) error {
+	existingUser, err := u.userRepo.FindByID(ctx, userID)
+	if err != nil {
+		return fmt.Errorf("유저 조회 실패: %w", err)
+	}
+
+	filterUserInfo(info, existingUser)
+	existingUser.Status = "registered" // 상태 업데이트
+	if err := u.userRepo.Update(ctx, existingUser); err != nil {
+		return fmt.Errorf("유저 정보 업데이트 실패: %w", err)
+	}
+
+	return nil
+}
+
+// 소셜 로그인 또는 회원가입 처리
+func (u *authSocialUsecase) SocialLoginOrRegister(ctx context.Context, info SocialUserInfo) (*SocialTokenResult, error) {
+	var userID uuid.UUID
+	var isNewUser bool = false
+	result, err := u.providerRepo.FindByProviderID(ctx, info.Provider, info.ProviderID)
 
 	if errors.Is(err, errs.ErrNotFound) {
 		userID = info.UserID
+		isNewUser = true
 		newProvider := &entity.UserAuthProvider{
 			UserID:     userID,
 			Provider:   info.Provider,
@@ -63,22 +98,14 @@ func (u *authSocialUsecase) SocialLoginOrRegister(ctx context.Context, info Soci
 			return nil, fmt.Errorf("소셜 계정 생성 실패: %w", err)
 		}
 
-		updateUser := &entity.User{
-			ID:         userID,
-			Email:      info.Email,
-			Name:       info.Name,
-			ProfileURL: info.ProfileURL,
-			Status:     "registered",
-		}
-
-		if err := u.userRepo.Update(ctx, updateUser); err != nil {
-			return nil, fmt.Errorf("유저 정보 업데이트 실패: %w", err)
-		}
-
 	} else if err != nil {
 		return nil, fmt.Errorf("소셜 계정 조회 실패: %w", err)
 	} else {
 		userID = result.UserID
+	}
+
+	if err := u.upsertUser(ctx, userID, info); err != nil {
+		return nil, fmt.Errorf("유저 정보 업데이트 실패: %w", err)
 	}
 
 	accessToken, refreshToken, err := auth.GenerateTokens(userID)
@@ -99,8 +126,11 @@ func (u *authSocialUsecase) SocialLoginOrRegister(ctx context.Context, info Soci
 		return nil, fmt.Errorf("리프레시 토큰 저장 실패: %w", err)
 	}
 
-	return &TokenResult{
-		AccessToken:  accessToken,
-		RefreshToken: refreshToken,
+	return &SocialTokenResult{
+		IsNewUser: isNewUser,
+		TokenResult: TokenResult{
+			AccessToken:  accessToken,
+			RefreshToken: refreshToken,
+		},
 	}, nil
 }

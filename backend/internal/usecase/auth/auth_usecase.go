@@ -16,7 +16,7 @@ import (
 )
 
 type AuthUsecase interface {
-	Onboarding(ctx context.Context, device *entity.Device) (*TokenResult, error)
+	Onboarding(ctx context.Context, device *OnboardingInput) (*TokenResult, error)
 	Refresh(ctx context.Context, refreshToken string) (*TokenResult, error)
 }
 
@@ -25,26 +25,43 @@ type TokenResult struct {
 	RefreshToken string
 }
 
+type SocialTokenResult struct {
+	IsNewUser bool
+	TokenResult
+}
+
 type authUsecase struct {
 	userRepo   repository.UserRepository
 	deviceRepo repository.DeviceRepository
 	tokenRepo  repository.TokenRepository
+	txManager  repository.TxManager
 }
 
 func NewAuthUsecase(
 	userRepo repository.UserRepository,
 	deviceRepo repository.DeviceRepository,
 	tokenRepo repository.TokenRepository,
+	txManager repository.TxManager,
 ) AuthUsecase {
 	return &authUsecase{
 		userRepo:   userRepo,
 		deviceRepo: deviceRepo,
 		tokenRepo:  tokenRepo,
+		txManager:  txManager,
 	}
 }
 
+type OnboardingInput struct {
+	DeviceUID  string
+	DeviceType string
+	ModelName  string
+	OSVersion  string
+	Latitude   *float64
+	Longitude  *float64
+}
+
 // Onboarding: 디바이스 등록 + 유저 생성 + 토큰 발급
-func (u *authUsecase) Onboarding(ctx context.Context, device *entity.Device) (*TokenResult, error) {
+func (u *authUsecase) Onboarding(ctx context.Context, device *OnboardingInput) (*TokenResult, error) {
 	// 1. 이미 등록된 디바이스인지 확인
 	existing, err := u.deviceRepo.FindByDeviceUID(ctx, device.DeviceUID)
 	if err != nil && !errors.Is(err, errs.ErrNotFound) {
@@ -55,21 +72,32 @@ func (u *authUsecase) Onboarding(ctx context.Context, device *entity.Device) (*T
 	}
 
 	// 2. 유저 생성
-	user := &entity.User{}
-
-	if err := u.userRepo.Create(ctx, user); err != nil {
-		return nil, fmt.Errorf("유저 생성 실패: %w", err)
+	user := &entity.User{
+		Latitude:  device.Latitude,
+		Longitude: device.Longitude,
 	}
 
-	// 3. 디바이스 생성
-	d := &entity.Device{
-		UserID:     user.ID,
-		DeviceUID:  device.DeviceUID,
-		DeviceType: device.DeviceType,
-		ModelName:  device.ModelName,
-	}
-	if err := u.deviceRepo.Create(ctx, d); err != nil {
-		return nil, fmt.Errorf("디바이스 생성 실패: %w", err)
+	err = u.txManager.Transaction(ctx, func(ctx context.Context) error {
+		if err := u.userRepo.Create(ctx, user); err != nil {
+			return fmt.Errorf("유저 생성 실패: %w", err)
+		}
+
+		d := &entity.Device{
+			UserID:     user.ID,
+			DeviceUID:  device.DeviceUID,
+			DeviceType: device.DeviceType,
+			ModelName:  device.ModelName,
+		}
+
+		if err := u.deviceRepo.Create(ctx, d); err != nil {
+			return fmt.Errorf("디바이스 생성 실패: %w", err)
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		return nil, err
 	}
 
 	// 4. 토큰 발급

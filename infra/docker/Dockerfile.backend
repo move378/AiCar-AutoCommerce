@@ -1,0 +1,15 @@
+FROM golang:1.26-alpine
+RUN apk add --no-cache git make
+
+WORKDIR /app
+# 여기서 핵심! 코드는 한 단계 위(..)의 backend 폴더에 있습니다.
+# 하지만 빌드 컨텍스트를 backend로 잡을 것이기 때문에 경로는 그대로 둡니다.
+COPY backend/go.mod backend/go.sum ./
+RUN go mod download
+
+RUN go install github.com/air-verse/air@latest
+RUN go install github.com/pressly/goose/v3/cmd/goose@latest
+RUN go install github.com/swaggo/swag/cmd/swag@latest
+
+COPY backend/ .
+CMD ["air"]

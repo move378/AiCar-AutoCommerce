@@ -11,9 +11,7 @@ import (
 )
 
 type KakaoUsecase interface {
-	KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAccessToken string) (*TokenResult, error)
-	//GoogleLogin(ctx context.Context, googleAccessToken string) (*TokenResult, error)
-	//AppleLogin(ctx context.Context, identityToken string) (*TokenResult, error)
+	KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAccessToken string) (*SocialTokenResult, error)
 }
 
 type kakaoUsecase struct {
@@ -39,7 +37,7 @@ type KakaoUser struct {
 	} `json:"kakao_account"`
 }
 
-func (u *kakaoUsecase) KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAccessToken string) (*TokenResult, error) {
+func (u *kakaoUsecase) KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAccessToken string) (*SocialTokenResult, error) {
 	// 1. 카카오 API를 통해 사용자 정보 조회
 	// 2. 사용자 정보로 유저 생성 또는 조회
 	// 3. 토큰 발급 및 저장
@@ -77,14 +75,3 @@ func (u *kakaoUsecase) KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAc
 
 	return u.social.SocialLoginOrRegister(ctx, info)
 }
-
-// {
-//   "id": 12345678,
-//   "kakao_account": {
-//     "email": "test@kakao.com",
-//     "profile": {
-//       "nickname": "홍길동",
-//       "profile_image_url": "https://..."
-//     }
-//   }
-// }
