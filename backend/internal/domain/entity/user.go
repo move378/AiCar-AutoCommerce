@@ -28,6 +28,11 @@ type User struct {
 
 	AuthProviders []SocialProvider `gorm:"foreignKey:UserID"`
 }
+
+func (SocialProvider) TableName() string {
+	return "user_auth_providers"
+}
+
 type SocialProvider struct {
 	ID         uuid.UUID `gorm:"type:uuid;default:gen_random_uuid();primaryKey"`
 	UserID     uuid.UUID `gorm:"type:uuid;not null;index"`
