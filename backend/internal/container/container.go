@@ -1,6 +1,7 @@
 package container
 
 import (
+	"backend/internal/domain/repository"
 	"backend/internal/infra/persistence/postgres"
 	"backend/internal/infra/persistence/redis"
 	usecase "backend/internal/usecase/auth"
@@ -11,6 +12,7 @@ type Container struct {
 	AuthSocialUsecase usecase.AuthSocialUsecase
 	KakaoUsecase      usecase.KakaoUsecase
 	GoogleUsecase     usecase.GoogleUsecase
+	TokenCache        repository.TokenRepository
 }
 
 func NewContainer(db *postgres.DB, rdb *redis.Redis) *Container {
@@ -28,5 +30,6 @@ func NewContainer(db *postgres.DB, rdb *redis.Redis) *Container {
 		AuthUsecase:   usecase.NewAuthUsecase(userRepo, deviceRepo, tokenCache, txManager),
 		KakaoUsecase:  usecase.NewKakaoUsecase(socialUsecase),
 		GoogleUsecase: usecase.NewGoogleUsecase(socialUsecase),
+		TokenCache:    tokenCache,
 	}
 }

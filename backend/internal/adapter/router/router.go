@@ -27,8 +27,7 @@ func SetupRouter(c *container.Container) *gin.Engine {
 
 	public := v1.Group("/")
 	private := v1.Group("/")
-	private.Use(middleware.AuthMiddleware())
-
+	private.Use(middleware.AuthMiddleware(c.TokenCache))
 	{
 		// Public Routes
 		publicAuth := public.Group("/auth")
@@ -43,6 +42,7 @@ func SetupRouter(c *container.Container) *gin.Engine {
 			privateAuth.POST("/kakao-login", authHandler.KakaoLogin)
 			privateAuth.POST("/google-login", authHandler.GoogleLogin)
 			// privateAuth.POST("/apple-login", authHandler.AppleLogin)
+			privateAuth.POST("/logout", authHandler.Logout)
 		}
 
 		// Private Cars (나중에)

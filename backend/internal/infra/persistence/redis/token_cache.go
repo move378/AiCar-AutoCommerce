@@ -46,8 +46,31 @@ func (r *tokenCache) DeleteByToken(ctx context.Context, token string) error {
 
 func (r *tokenCache) DeleteByUserID(ctx context.Context, userID uuid.UUID) error {
 	err := r.rdb.Del(ctx, "rt:"+userID.String()).Err()
+
+	fmt.Println("리프레쉬 삭제", err)
 	if err != nil {
 		return fmt.Errorf("토큰 삭제 실패: %w", err)
 	}
 	return nil
+}
+
+func (r *tokenCache) AddToBlacklist(ctx context.Context, token string, expiration time.Duration) error {
+	err := r.rdb.Set(ctx, "bl:"+token, "blacklisted", expiration).Err()
+
+	if err != nil {
+		return fmt.Errorf("토큰 블랙리스트 추가 실패: %w", err)
+	}
+
+	return nil
+}
+
+func (r *tokenCache) IsBlacklisted(ctx context.Context, token string) (bool, error) {
+	val, err := r.rdb.Get(ctx, "bl:"+token).Result()
+	if err == goredis.Nil {
+		return false, nil
+	}
+	if err != nil {
+		return false, fmt.Errorf("Redis 서버 오류 블랙리스트 조회 실패: %w", err)
+	}
+	return val == "blacklisted", nil
 }

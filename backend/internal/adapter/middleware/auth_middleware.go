@@ -1,18 +1,18 @@
 package middleware
 
 import (
+	"backend/internal/domain/repository"
 	"backend/internal/shared/auth"
 	"backend/internal/shared/response"
+	"fmt"
 	"net/http"
 
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	// "github.com/golang-jwt/jwt/v5"
-	// "github.com/your_project/internal/shared/response"
 )
 
-func AuthMiddleware() gin.HandlerFunc {
+func AuthMiddleware(tokenCache repository.TokenRepository) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		headerAuth := c.GetHeader("Authorization")
 		if headerAuth == "" {
@@ -28,14 +28,29 @@ func AuthMiddleware() gin.HandlerFunc {
 			return
 		}
 		token := headerAuth[len("Bearer "):]
-		userID, err := auth.ParseAccessToken(token)
+		userID, _, err := auth.ParseAccessToken(token)
 		if err != nil {
 			response.SendError(c, http.StatusUnauthorized, response.CodeUnauthorized, "Invalid token")
 			c.Abort()
 			return
 		}
 
+		// 블랙리스트 확인
+		isBlacklist, err := tokenCache.IsBlacklisted(c, token)
+		fmt.Println("블랙임?", isBlacklist)
+		if err != nil {
+			response.SendError(c, http.StatusUnauthorized, response.CodeUnauthorized, "Error occurred while checking token status")
+			c.Abort()
+			return
+		}
+		if isBlacklist {
+			response.SendError(c, http.StatusUnauthorized, response.CodeUnauthorized, "Token is blacklisted")
+			c.Abort()
+			return
+		}
+
 		c.Set("user_id", userID)
+		c.Set("access_token", token)
 		c.Next()
 	}
 }

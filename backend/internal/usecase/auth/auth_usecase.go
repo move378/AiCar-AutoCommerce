@@ -18,6 +18,7 @@ import (
 
 type AuthUsecase interface {
 	Onboarding(ctx context.Context, device *OnboardingInput) (*TokenResult, error)
+	Logout(ctx context.Context, accessToken string) error
 	Refresh(ctx context.Context, refreshToken string) (*TokenResult, error)
 }
 
@@ -34,20 +35,20 @@ type SocialTokenResult struct {
 type authUsecase struct {
 	userRepo   repository.UserRepository
 	deviceRepo repository.DeviceRepository
-	tokenRepo  repository.TokenRepository
+	tokenCache repository.TokenRepository
 	txManager  repository.TxManager
 }
 
 func NewAuthUsecase(
 	userRepo repository.UserRepository,
 	deviceRepo repository.DeviceRepository,
-	tokenRepo repository.TokenRepository,
+	tokenCache repository.TokenRepository,
 	txManager repository.TxManager,
 ) AuthUsecase {
 	return &authUsecase{
 		userRepo:   userRepo,
 		deviceRepo: deviceRepo,
-		tokenRepo:  tokenRepo,
+		tokenCache: tokenCache,
 		txManager:  txManager,
 	}
 }
@@ -106,15 +107,33 @@ func (u *authUsecase) Onboarding(ctx context.Context, device *OnboardingInput) (
 	return u.generateTokens(ctx, cfg, user.ID)
 }
 
+// Logout: 액세스 토큰 블랙리스트 + 리프레쉬 토큰 삭제
+func (u *authUsecase) Logout(ctx context.Context, accessToken string) error {
+	userId, ttl, err := auth.ParseAccessToken(accessToken)
+
+	if err != nil {
+		return errs.ErrUnauthorized
+	}
+	if err := u.tokenCache.AddToBlacklist(ctx, accessToken, ttl); err != nil {
+		return fmt.Errorf("블랙리스트 등록 실패: %w", err)
+	}
+
+	if err := u.tokenCache.DeleteByUserID(ctx, userId); err != nil {
+		return fmt.Errorf("리프레시 토큰 삭제 실패: %w", err)
+	}
+
+	return nil
+}
+
 // Refresh: 리프레시 토큰 검증 + 새 토큰 발급
 func (u *authUsecase) Refresh(ctx context.Context, refreshToken string) (*TokenResult, error) {
 	cfg := config.LoadConfig()
-	userID, err := auth.ParseRefreshToken(refreshToken)
+	userID, _, err := auth.ParseRefreshToken(refreshToken)
 	if err != nil {
 		fmt.Println("리프레시 토큰 검증 실패:", err)
 		return nil, errs.ErrUnauthorized
 	}
-	token, err := u.tokenRepo.FindByUserID(ctx, userID)
+	token, err := u.tokenCache.FindByUserID(ctx, userID)
 
 	fmt.Println("토큰 조회 결과:", token, "err:", err)
 	if err != nil {
@@ -122,7 +141,7 @@ func (u *authUsecase) Refresh(ctx context.Context, refreshToken string) (*TokenR
 		return nil, errs.ErrUnauthorized
 	}
 
-	if err := u.tokenRepo.DeleteByUserID(ctx, userID); err != nil {
+	if err := u.tokenCache.DeleteByUserID(ctx, userID); err != nil {
 		fmt.Println("토큰 삭제 실패:", err)
 		return nil, fmt.Errorf("토큰 삭제 실패: %w", err)
 	}
@@ -138,7 +157,7 @@ func (u *authUsecase) generateTokens(ctx context.Context, cfg *config.Config, us
 		return nil, fmt.Errorf("토큰 생성 실패: %w", tokenErr)
 	}
 
-	if err := u.tokenRepo.Create(ctx, &entity.RefreshToken{
+	if err := u.tokenCache.Create(ctx, &entity.RefreshToken{
 		UserID:    userID,
 		Token:     refreshToken,
 		ExpiresAt: time.Now().Add(cfg.JWT.RefreshExpiration), // 설정된 기간에 따라 달라짐

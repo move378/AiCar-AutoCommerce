@@ -4,6 +4,7 @@ package repository
 import (
 	"backend/internal/domain/entity"
 	"context"
+	"time"
 
 	"github.com/google/uuid"
 )
@@ -30,6 +31,8 @@ type TokenRepository interface {
 	Create(ctx context.Context, token *entity.RefreshToken) error
 	FindByUserID(ctx context.Context, userID uuid.UUID) (*entity.RefreshToken, error)
 	DeleteByUserID(ctx context.Context, userID uuid.UUID) error // 로그아웃용
+	AddToBlacklist(ctx context.Context, token string, expiration time.Duration) error
+	IsBlacklisted(ctx context.Context, token string) (bool, error)
 }
 
 type TxManager interface {
