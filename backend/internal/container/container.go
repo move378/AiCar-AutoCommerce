@@ -12,7 +12,7 @@ type Container struct {
 	AuthSocialUsecase usecase.AuthSocialUsecase
 	KakaoUsecase      usecase.KakaoUsecase
 	GoogleUsecase     usecase.GoogleUsecase
-	TokenCache        repository.TokenRepository
+	TokenCache        repository.TokenCacheRepository
 }
 
 func NewContainer(db *postgres.DB, rdb *redis.Redis) *Container {
@@ -24,12 +24,13 @@ func NewContainer(db *postgres.DB, rdb *redis.Redis) *Container {
 	txManager := db
 
 	socialUsecase := usecase.NewSocialUsecase(userRepo, socialRepo, tokenCache)
+	socialCache := redis.NewSocialCache(rdb)
 
 	// usecase 생성 후 container에 담아서 반환
 	return &Container{
 		AuthUsecase:   usecase.NewAuthUsecase(userRepo, deviceRepo, tokenCache, txManager),
-		KakaoUsecase:  usecase.NewKakaoUsecase(socialUsecase),
-		GoogleUsecase: usecase.NewGoogleUsecase(socialUsecase),
+		KakaoUsecase:  usecase.NewKakaoUsecase(socialUsecase, socialCache),
+		GoogleUsecase: usecase.NewGoogleUsecase(socialUsecase, socialCache),
 		TokenCache:    tokenCache,
 	}
 }

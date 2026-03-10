@@ -16,7 +16,7 @@ type tokenCache struct {
 	rdb *Redis
 }
 
-func NewTokenCache(rdb *Redis) repository.TokenRepository {
+func NewTokenCache(rdb *Redis) repository.TokenCacheRepository {
 	return &tokenCache{rdb: rdb}
 }
 

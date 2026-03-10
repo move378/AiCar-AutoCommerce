@@ -12,7 +12,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func AuthMiddleware(tokenCache repository.TokenRepository) gin.HandlerFunc {
+func AuthMiddleware(tokenCache repository.TokenCacheRepository) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		headerAuth := c.GetHeader("Authorization")
 		if headerAuth == "" {

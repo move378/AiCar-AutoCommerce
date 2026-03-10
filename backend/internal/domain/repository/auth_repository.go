@@ -17,9 +17,14 @@ type UserRepository interface {
 	Delete(ctx context.Context, id uuid.UUID) error
 }
 
-type UserAuthProviderRepository interface {
-	FindByProviderID(ctx context.Context, provider string, providerID string) (*entity.UserAuthProvider, error)
-	Create(ctx context.Context, authProvider *entity.UserAuthProvider) error
+type SocialProviderRepository interface {
+	FindByProviderID(ctx context.Context, provider string, providerID string) (*entity.SocialProvider, error)
+	Create(ctx context.Context, authProvider *entity.SocialProvider) error
+}
+
+type SocialCacheRepository interface {
+	Create(ctx context.Context, providerToken string, social *entity.SocialUserInfo) error
+	FindByProviderToken(ctx context.Context, providerToken string) (*entity.SocialUserInfo, error)
 }
 
 type DeviceRepository interface {
@@ -27,7 +32,7 @@ type DeviceRepository interface {
 	FindByDeviceUID(ctx context.Context, deviceUID string) (*entity.Device, error)
 }
 
-type TokenRepository interface {
+type TokenCacheRepository interface {
 	Create(ctx context.Context, token *entity.RefreshToken) error
 	FindByUserID(ctx context.Context, userID uuid.UUID) (*entity.RefreshToken, error)
 	DeleteByUserID(ctx context.Context, userID uuid.UUID) error // 로그아웃용

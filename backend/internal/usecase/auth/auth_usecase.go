@@ -35,14 +35,14 @@ type SocialTokenResult struct {
 type authUsecase struct {
 	userRepo   repository.UserRepository
 	deviceRepo repository.DeviceRepository
-	tokenCache repository.TokenRepository
+	tokenCache repository.TokenCacheRepository
 	txManager  repository.TxManager
 }
 
 func NewAuthUsecase(
 	userRepo repository.UserRepository,
 	deviceRepo repository.DeviceRepository,
-	tokenCache repository.TokenRepository,
+	tokenCache repository.TokenCacheRepository,
 	txManager repository.TxManager,
 ) AuthUsecase {
 	return &authUsecase{

@@ -26,9 +26,9 @@ type User struct {
 	UpdatedAt  time.Time  `gorm:"autoUpdateTime"`
 	DeletedAt  *time.Time `gorm:"index"`
 
-	AuthProviders []UserAuthProvider `gorm:"foreignKey:UserID"`
+	AuthProviders []SocialProvider `gorm:"foreignKey:UserID"`
 }
-type UserAuthProvider struct {
+type SocialProvider struct {
 	ID         uuid.UUID `gorm:"type:uuid;default:gen_random_uuid();primaryKey"`
 	UserID     uuid.UUID `gorm:"type:uuid;not null;index"`
 	Provider   string    `gorm:"type:varchar(20);not null"` // kakao, google, apple, phone
@@ -36,6 +36,22 @@ type UserAuthProvider struct {
 	CreatedAt  time.Time `gorm:"autoCreateTime"`
 
 	User User `gorm:"foreignKey:UserID"`
+}
+
+type SocialProviderCache struct {
+	ProviderID string
+	Email      *string
+	Name       *string
+	ProfileURL *string
+}
+
+type SocialUserInfo struct {
+	UserID     uuid.UUID
+	Provider   string
+	ProviderID string
+	Email      *string
+	Name       *string
+	ProfileURL *string
 }
 
 // Device: 'devices' 테이블 (00012_create_devices.sql 기준)
