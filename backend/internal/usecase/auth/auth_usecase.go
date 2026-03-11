@@ -18,6 +18,7 @@ import (
 
 type AuthUsecase interface {
 	Onboarding(ctx context.Context, device *OnboardingInput) (*TokenResult, error)
+	OnboardingRefresh(ctx context.Context, deviceUID string) (*TokenResult, error)
 	Logout(ctx context.Context, accessToken string) error
 	Refresh(ctx context.Context, refreshToken string) (*TokenResult, error)
 }
@@ -104,6 +105,34 @@ func (u *authUsecase) Onboarding(ctx context.Context, device *OnboardingInput) (
 	}
 
 	// 4. 토큰 발급
+	return u.generateTokens(ctx, cfg, user.ID)
+}
+
+func (u *authUsecase) OnboardingRefresh(ctx context.Context, deviceUID string) (*TokenResult, error) {
+	cfg := config.LoadConfig()
+	device, err := u.deviceRepo.FindByDeviceUID(ctx, deviceUID)
+
+	if errors.Is(err, errs.ErrNotFound) {
+		return nil, errs.ErrNotFound
+	}
+	if err != nil {
+		return nil, fmt.Errorf("디바이스 조회 실패: %w", err)
+	}
+
+	user, userErr := u.userRepo.FindByID(ctx, device.UserID)
+
+	if userErr != nil {
+		return nil, fmt.Errorf("유저 조회 실패: %w", userErr)
+	}
+
+	if user.Status != "guest" {
+		return nil, errs.ErrForbidden
+	}
+
+	if err := u.tokenCache.DeleteByUserID(ctx, user.ID); err != nil && !errors.Is(err, errs.ErrNotFound) {
+		return nil, fmt.Errorf("토큰 삭제 실패: %w", err)
+	}
+
 	return u.generateTokens(ctx, cfg, user.ID)
 }
 

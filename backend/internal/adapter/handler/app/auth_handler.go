@@ -46,7 +46,7 @@ func NewAuthHandler(
 func (h *AuthHandler) Onboarding(c *gin.Context) {
 	var req dto.OnboardingRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
-		response.SendError(c, http.StatusBadRequest, response.CodeBadRequest, "요청 데이터가 올바르지 않습니다")
+		response.SendError(c, http.StatusBadRequest, response.CodeBadRequest, "요청 데이터가 올바르지 않습니다.")
 		return
 	}
 
@@ -75,6 +75,37 @@ func (h *AuthHandler) Onboarding(c *gin.Context) {
 			AccessToken:  result.AccessToken,
 			RefreshToken: result.RefreshToken,
 		},
+	})
+}
+
+func (h *AuthHandler) OnboardingRefresh(c *gin.Context) {
+	var req dto.OnboardingRefreshRequest
+
+	if err := c.ShouldBindJSON(&req); err != nil {
+		response.SendError(c, http.StatusBadRequest, response.CodeBadRequest, "요청 데이터가 올바르지 않습니다.")
+		return
+	}
+
+	result, err := h.authUsecase.OnboardingRefresh(c.Request.Context(), req.DeviceID)
+
+	if errors.Is(err, errs.ErrNotFound) {
+		response.SendError(c, http.StatusNotFound, response.CodeNotFound, "디바이스를 찾을 수 없습니다")
+		return
+	}
+
+	if errors.Is(err, errs.ErrForbidden) {
+		response.SendError(c, http.StatusForbidden, response.CodeForbidden, "이미 회원가입된 유저입니다")
+		return
+	}
+
+	if err != nil {
+		response.SendError(c, http.StatusInternalServerError, response.CodeInternalError, "토큰 재발급 실패")
+		return
+	}
+
+	response.SendSuccess(c, http.StatusOK, response.CodeSuccess, dto.TokenResponse{
+		AccessToken:  result.AccessToken,
+		RefreshToken: result.RefreshToken,
 	})
 }
 

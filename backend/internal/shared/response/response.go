@@ -20,6 +20,7 @@ const (
 	CodeInternalError   = "INTERNAL_SERVER_ERROR"
 	CodeLoginSuccess    = "LOGIN_SUCCESS"
 	CodeRegisterSuccess = "REGISTER_SUCCESS"
+	CodeForbidden       = "FORBIDDEN"
 )
 
 func SendSuccess(c *gin.Context, status int, code string, data any, message ...string) {

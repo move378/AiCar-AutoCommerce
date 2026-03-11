@@ -13,6 +13,10 @@ type OnboardingRequest struct {
 	Longitude  *float64 `json:"longitude" example:"126.9780"`
 }
 
+type OnboardingRefreshRequest struct {
+	DeviceID string `json:"device_id" binding:"required" example:"ANDROID-DEVICE-789"`
+}
+
 type RefreshRequest struct {
 	RefreshToken string `json:"refresh_token" binding:"required" example:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."`
 }

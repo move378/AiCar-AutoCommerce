@@ -33,6 +33,7 @@ func SetupRouter(c *container.Container) *gin.Engine {
 		publicAuth := public.Group("/auth")
 		{
 			publicAuth.POST("/onboard", authHandler.Onboarding)
+			publicAuth.POST("/onboard/refresh", authHandler.OnboardingRefresh)
 			publicAuth.POST("/refresh", authHandler.Refresh)
 		}
 
