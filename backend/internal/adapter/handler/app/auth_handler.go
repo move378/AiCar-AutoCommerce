@@ -178,8 +178,12 @@ func (h *AuthHandler) KakaoLogin(c *gin.Context) {
 		return
 	}
 
-	fmt.Println("usecase 호출 전")
 	result, err := h.kakaoUsecase.KakaoLogin(c.Request.Context(), userUUID, req.ProviderToken)
+
+	if errors.Is(err, errs.ErrNotFound) {
+		response.SendError(c, http.StatusNotFound, response.CodeNotFound, "디바이스 유저를 찾을 수 없습니다")
+		return
+	}
 
 	if err != nil {
 		response.SendError(c, http.StatusInternalServerError, response.CodeInternalError, "카카오 로그인 처리 중 오류가 발생했습니다.")
@@ -221,6 +225,12 @@ func (h *AuthHandler) GoogleLogin(c *gin.Context) {
 	}
 
 	result, err := h.googleUsecase.GoogleLogin(c.Request.Context(), userUUID, req.ProviderToken)
+
+	if errors.Is(err, errs.ErrNotFound) {
+		response.SendError(c, http.StatusNotFound, response.CodeNotFound, "디바이스 유저를 찾을 수 없습니다")
+		return
+	}
+
 	if err != nil {
 		response.SendError(c, http.StatusInternalServerError, response.CodeInternalError, "구글 로그인 처리 중 오류가 발생했습니다.")
 		return

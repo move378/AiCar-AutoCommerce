@@ -58,6 +58,7 @@ func filterUserInfo(info entity.SocialUserInfo, existingUser *entity.User) entit
 
 func (u *authSocialUsecase) upsertUser(ctx context.Context, userID uuid.UUID, info entity.SocialUserInfo) error {
 	existingUser, err := u.userRepo.FindByID(ctx, userID)
+
 	if err != nil {
 		return fmt.Errorf("유저 조회 실패: %w", err)
 	}
