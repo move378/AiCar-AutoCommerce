@@ -18,12 +18,12 @@ type GoogleUsecase interface {
 }
 
 type googleUsecase struct {
-	social      AuthSocialUsecase
+	social      SocialUsecase
 	socialCache repository.SocialCacheRepository
 }
 
 func NewGoogleUsecase(
-	social AuthSocialUsecase,
+	social SocialUsecase,
 	socialCache repository.SocialCacheRepository,
 ) GoogleUsecase {
 	return &googleUsecase{

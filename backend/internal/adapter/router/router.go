@@ -1,7 +1,7 @@
 package router
 
 import (
-	"backend/internal/adapter/handler/app"
+	"backend/internal/adapter/handler/app/auth"
 	"backend/internal/adapter/middleware"
 	"backend/internal/container"
 
@@ -15,7 +15,7 @@ import (
 func SetupRouter(c *container.Container) *gin.Engine {
 	r := gin.Default()
 
-	authHandler := app.NewAuthHandler(c.AuthUsecase, c.KakaoUsecase, c.GoogleUsecase)
+	authHandler := auth.NewAuthHandler(c.AuthUsecase, c.UserUsecase, c.KakaoUsecase, c.GoogleUsecase)
 
 	// 미들웨어 설정 (필요시 CORS, 인증 등 추가 가능)
 	// r.Use(CORSMiddleware())
@@ -39,11 +39,17 @@ func SetupRouter(c *container.Container) *gin.Engine {
 
 		// Private Routes
 		privateAuth := private.Group("/auth")
+		privateUser := private.Group("/user")
 		{
 			privateAuth.POST("/kakao-login", authHandler.KakaoLogin)
 			privateAuth.POST("/google-login", authHandler.GoogleLogin)
 			// privateAuth.POST("/apple-login", authHandler.AppleLogin)
-			privateAuth.POST("/logout", authHandler.Logout)
+
+		}
+
+		{
+			privateUser.POST("/logout", authHandler.Logout)
+			privateUser.GET("/profile", authHandler.GetProfile)
 		}
 
 		// Private Cars (나중에)

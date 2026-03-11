@@ -17,12 +17,12 @@ type KakaoUsecase interface {
 }
 
 type kakaoUsecase struct {
-	social      AuthSocialUsecase
+	social      SocialUsecase
 	socialCache repository.SocialCacheRepository
 }
 
 func NewKakaoUsecase(
-	social AuthSocialUsecase,
+	social SocialUsecase,
 	socialCache repository.SocialCacheRepository,
 ) KakaoUsecase {
 	return &kakaoUsecase{
@@ -43,18 +43,18 @@ type KakaoUser struct {
 }
 
 func (u *kakaoUsecase) KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAccessToken string) (*SocialTokenResult, error) {
-	cached, cachedErr := u.socialCache.FindByProviderToken(ctx, kakaoAccessToken)
-	if cachedErr == nil && cached != nil {
-		info := entity.SocialUserInfo{
-			UserID:     userID,
-			Provider:   "kakao",
-			ProviderID: cached.ProviderID,
-			Email:      cached.Email,
-			Name:       cached.Name,
-			ProfileURL: cached.ProfileURL,
-		}
-		return u.social.SocialLoginOrRegister(ctx, info)
-	}
+	// cached, cachedErr := u.socialCache.FindByProviderToken(ctx, kakaoAccessToken)
+	// if cachedErr == nil && cached != nil {
+	// 	info := entity.SocialUserInfo{
+	// 		UserID:     userID,
+	// 		Provider:   "kakao",
+	// 		ProviderID: cached.ProviderID,
+	// 		Email:      cached.Email,
+	// 		Name:       cached.Name,
+	// 		ProfileURL: cached.ProfileURL,
+	// 	}
+	// 	return u.social.SocialLoginOrRegister(ctx, info)
+	// }
 
 	req, err := http.NewRequest("GET", "https://kapi.kakao.com/v2/user/me", nil)
 	if err != nil {
@@ -80,6 +80,7 @@ func (u *kakaoUsecase) KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAc
 		Name:       &user.KakaoAccount.Profile.Nickname,
 		ProfileURL: &user.KakaoAccount.Profile.ProfileImage,
 	}
+	fmt.Println("카카오 바디 ???????? :", string(body))
 
 	// 캐시 저장
 	_ = u.socialCache.Create(ctx, kakaoAccessToken, &entity.SocialUserInfo{

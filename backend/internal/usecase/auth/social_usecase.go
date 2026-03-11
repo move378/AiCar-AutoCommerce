@@ -14,11 +14,11 @@ import (
 	"github.com/google/uuid"
 )
 
-type AuthSocialUsecase interface {
+type SocialUsecase interface {
 	SocialLoginOrRegister(ctx context.Context, info entity.SocialUserInfo) (*SocialTokenResult, error)
 }
 
-type authSocialUsecase struct {
+type socialUsecase struct {
 	userRepo     repository.UserRepository
 	providerRepo repository.SocialProviderRepository
 	tokenCache   repository.TokenCacheRepository
@@ -28,8 +28,8 @@ func NewSocialUsecase(
 	userRepo repository.UserRepository,
 	providerRepo repository.SocialProviderRepository,
 	tokenCache repository.TokenCacheRepository,
-) AuthSocialUsecase {
-	return &authSocialUsecase{
+) SocialUsecase {
+	return &socialUsecase{
 		userRepo:     userRepo,
 		providerRepo: providerRepo,
 		tokenCache:   tokenCache,
@@ -56,7 +56,7 @@ func filterUserInfo(info entity.SocialUserInfo, existingUser *entity.User) entit
 	}
 }
 
-func (u *authSocialUsecase) upsertUser(ctx context.Context, userID uuid.UUID, info entity.SocialUserInfo) error {
+func (u *socialUsecase) upsertUser(ctx context.Context, userID uuid.UUID, info entity.SocialUserInfo) error {
 	existingUser, err := u.userRepo.FindByID(ctx, userID)
 
 	if err != nil {
@@ -73,7 +73,7 @@ func (u *authSocialUsecase) upsertUser(ctx context.Context, userID uuid.UUID, in
 }
 
 // 소셜 로그인 또는 회원가입 처리
-func (u *authSocialUsecase) SocialLoginOrRegister(ctx context.Context, info entity.SocialUserInfo) (*SocialTokenResult, error) {
+func (u *socialUsecase) SocialLoginOrRegister(ctx context.Context, info entity.SocialUserInfo) (*SocialTokenResult, error) {
 	var userID uuid.UUID
 	var isNewUser bool = false
 
