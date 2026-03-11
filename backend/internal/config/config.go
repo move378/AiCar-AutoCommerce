@@ -3,15 +3,17 @@ package config
 import (
 	"log"
 	"os"
+	"strconv"
+	"time"
 
 	"github.com/joho/godotenv"
 )
 
 type Config struct {
-	DB   DBConfig
-	JWT  JWTConfig
-	Auth AuthConfig
-	// Redis RedisConfig // 나중에 추가될 것들
+	DB    DBConfig
+	JWT   JWTConfig
+	Auth  AuthConfig
+	Redis RedisConfig
 }
 
 type DBConfig struct {
@@ -28,8 +30,16 @@ type AuthConfig struct {
 }
 
 type JWTConfig struct {
-	Secret     string
-	ExpireHour int
+	AccessSecret      string
+	RefreshSecret     string
+	AccessExpiration  time.Duration
+	RefreshExpiration time.Duration
+}
+
+type RedisConfig struct {
+	Host     string
+	Port     string
+	Password string
 }
 
 func LoadConfig() *Config {
@@ -49,6 +59,9 @@ func LoadConfig() *Config {
 		log.Printf("✅ %s 설정 파일을 로드했습니다.", envFile)
 	}
 
+	accessExp, _ := strconv.Atoi(os.Getenv("JWT_ACCESS_EXPIRATION"))
+	refreshExp, _ := strconv.Atoi(os.Getenv("JWT_REFRESH_EXPIRATION"))
+
 	return &Config{
 		DB: DBConfig{
 			Host:     os.Getenv("DB_HOST"),
@@ -57,8 +70,16 @@ func LoadConfig() *Config {
 			Name:     os.Getenv("DB_NAME"),
 			Port:     os.Getenv("DB_PORT"),
 		},
+		Redis: RedisConfig{
+			Host:     os.Getenv("REDIS_HOST"),
+			Port:     os.Getenv("REDIS_PORT"),
+			Password: os.Getenv("REDIS_PASSWORD"),
+		},
 		JWT: JWTConfig{
-			Secret: os.Getenv("JWT_SECRET"),
+			AccessSecret:      os.Getenv("JWT_ACCESS_SECRET"),
+			RefreshSecret:     os.Getenv("JWT_REFRESH_SECRET"),
+			AccessExpiration:  time.Duration(accessExp) * time.Minute,
+			RefreshExpiration: time.Duration(refreshExp) * time.Hour,
 		},
 		Auth: AuthConfig{
 			GoogleClientID:     os.Getenv("GOOGLE_CLIENT_ID"),

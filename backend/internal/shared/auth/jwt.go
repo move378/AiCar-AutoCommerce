@@ -1,6 +1,7 @@
 package auth
 
 import (
+	"backend/internal/config"
 	"errors"
 	"fmt"
 	"os"
@@ -10,39 +11,51 @@ import (
 	"github.com/google/uuid"
 )
 
-func getJWTSecret() ([]byte, error) {
-	secret := os.Getenv("JWT_SECRET")
+func getJWTAccessSecret() ([]byte, error) {
+	secret := os.Getenv("JWT_ACCESS_SECRET")
 	if secret == "" {
-		return nil, errors.New("JWT_SECRET is not set in .env file")
+		return nil, errors.New("JWT_ACCESS_SECRET is not set in .env file")
 	}
 	return []byte(secret), nil
 }
 
-func GenerateTokens(userID uuid.UUID) (string, string, error) {
-	jwtSecret, err := getJWTSecret()
+func getJWTRefreshSecret() ([]byte, error) {
+	secret := os.Getenv("JWT_ACCESS_SECRET")
+	if secret == "" {
+		return nil, errors.New("JWT_ACCESS_SECRET is not set in .env file")
+	}
+	return []byte(secret), nil
+}
+
+func GenerateTokens(cfg *config.Config, userID uuid.UUID) (string, string, error) {
+	jwtAccessSecret, err := getJWTAccessSecret()
 	if err != nil {
 		return "", "", err
 	}
 
 	accessTokenClaims := jwt.MapClaims{
 		"user_id": userID,
-		"exp":     time.Now().Add(time.Hour * 24).Unix(), // 테스트때문에 24시간으로 해뒀음 후에 1시간
+		"exp":     time.Now().Add(cfg.JWT.AccessExpiration).Unix(), // 테스트때문에 24시간으로 해뒀음 후에 1시간
 		"iat":     time.Now().Unix(),
 	}
 
 	atObj := jwt.NewWithClaims(jwt.SigningMethodHS256, accessTokenClaims)
-	acessToken, err := atObj.SignedString(jwtSecret)
+	acessToken, err := atObj.SignedString(jwtAccessSecret)
 	if err != nil {
 		return "", "", err
 	}
 
+	refreshSecret, err := getJWTRefreshSecret()
+	if err != nil {
+		return "", "", err
+	}
 	refreshTokenClaims := jwt.MapClaims{
 		"user_id": userID,
-		"exp":     time.Now().Add(time.Hour * 24 * 7).Unix(),
+		"exp":     time.Now().Add(cfg.JWT.RefreshExpiration).Unix(),
 		"iat":     time.Now().Unix(),
 	}
 	rtObj := jwt.NewWithClaims(jwt.SigningMethodHS256, refreshTokenClaims)
-	refreshToken, err := rtObj.SignedString(jwtSecret)
+	refreshToken, err := rtObj.SignedString(refreshSecret)
 	if err != nil {
 		return "", "", err
 	}
@@ -51,7 +64,7 @@ func GenerateTokens(userID uuid.UUID) (string, string, error) {
 
 }
 
-func parseToken(tokenStr string, secret []byte) (uuid.UUID, error) {
+func parseToken(tokenStr string, secret []byte) (uuid.UUID, time.Duration, error) {
 	token, err := jwt.Parse(tokenStr, func(t *jwt.Token) (interface{}, error) {
 		if _, ok := t.Method.(*jwt.SigningMethodHMAC); !ok {
 			return nil, fmt.Errorf("unexpected signing method")
@@ -59,38 +72,58 @@ func parseToken(tokenStr string, secret []byte) (uuid.UUID, error) {
 		return secret, nil
 	})
 
+	fmt.Println("남은 토큰 시간 : ", 12341234)
+
 	if err != nil {
-		return uuid.Nil, fmt.Errorf("토큰 파싱 실패: %w", err)
+		return uuid.Nil, 0, fmt.Errorf("토큰 파싱 실패: %w", err)
 	}
 
 	claims, ok := token.Claims.(jwt.MapClaims)
+
 	if !ok || !token.Valid {
-		return uuid.Nil, fmt.Errorf("유효하지 않은 토큰")
+		return uuid.Nil, 0, fmt.Errorf("유효하지 않은 토큰")
 	}
 
 	userIDStr, ok := claims["user_id"].(string)
 	if !ok {
-		return uuid.Nil, fmt.Errorf("user_id 추출 실패")
+		return uuid.Nil, 0, fmt.Errorf("user_id 추출 실패")
 	}
 
 	userID, err := uuid.Parse(userIDStr)
 	if err != nil {
-		return uuid.Nil, fmt.Errorf("user_id 파싱 실패: %w", err)
+		return uuid.Nil, 0, fmt.Errorf("user_id 파싱 실패: %w", err)
 	}
 
-	return userID, nil
+	ttl := time.Until(time.Unix(int64(claims["exp"].(float64)), 0))
+	fmt.Println("토큰의 남은 시간", ttl)
+
+	return userID, ttl, nil
 }
 
-func ParseAccessToken(tokenStr string) (uuid.UUID, error) {
-	jwtSecret, err := getJWTSecret()
+func ParseAccessToken(tokenStr string) (uuid.UUID, time.Duration, error) {
+	jwtSecret, err := getJWTAccessSecret()
 	if err != nil {
-		return uuid.Nil, err
+		return uuid.Nil, 0, err
 	}
 
-	userId, err := parseToken(tokenStr, jwtSecret)
+	userId, ttl, err := parseToken(tokenStr, jwtSecret)
 	if err != nil {
-		return uuid.Nil, err
+		return uuid.Nil, 0, err
 	}
 
-	return userId, nil
+	return userId, ttl, nil
+}
+
+func ParseRefreshToken(tokenStr string) (uuid.UUID, time.Duration, error) {
+	jwtSecret, err := getJWTRefreshSecret()
+	if err != nil {
+		return uuid.Nil, 0, err
+	}
+
+	userId, ttl, err := parseToken(tokenStr, jwtSecret)
+	if err != nil {
+		return uuid.Nil, 0, err
+	}
+
+	return userId, ttl, nil
 }
