@@ -17,7 +17,10 @@ CREATE TABLE vehicles_trims (
     wheelbase INT,
     curb_weight INT,
     transmission VARCHAR(100),
-    image_url TEXT
+    image_url TEXT,
+    top_speed INT,
+    doors SMALLINT,
+    UNIQUE (model_id, trim_name)
 );
 
 -- +goose Down

@@ -6,7 +6,9 @@ CREATE TABLE vehicles_ice_specs (
     fuel_eff_combined DECIMAL(4,1),
     fuel_eff_city DECIMAL(4,1),
     fuel_eff_highway DECIMAL(4,1),
-    energy_grade INT
+    energy_grade INT,
+    cylinder SMALLINT,
+    UNIQUE (trim_id)
 );
 
 -- +goose Down

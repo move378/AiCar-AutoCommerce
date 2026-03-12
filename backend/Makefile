@@ -32,5 +32,8 @@ migrate-up:
 migrate-down:
 	goose -dir migrations postgres "postgres://$(DB_USER):$(DB_PASSWORD)@$(DB_HOST):$(DB_PORT)/$(DB_NAME)?sslmode=disable" down
 
+migrate-reset:
+	goose -dir migrations postgres "postgres://$(DB_USER):$(DB_PASSWORD)@$(DB_HOST):$(DB_PORT)/$(DB_NAME)?sslmode=disable" reset
+
 swagger:
 	swag init -g cmd/api/main.go

@@ -114,3 +114,6 @@ venv/
 # Python 컴파일 파일 제외
 __pycache__/
 *.pyc
+
+# 유저 섹션 제외
+crawlers/benz/sessions/
