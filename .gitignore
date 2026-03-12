@@ -106,3 +106,11 @@ coverage/
 *.log
 *.tmp
 *.bak
+
+# 가상환경 폴더 제외
+venv/
+.venv/
+
+# Python 컴파일 파일 제외
+__pycache__/
+*.pyc

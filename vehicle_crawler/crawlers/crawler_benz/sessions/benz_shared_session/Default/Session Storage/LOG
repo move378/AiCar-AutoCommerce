@@ -1,0 +1,5 @@
+2026/03/12-17:35:47.627 54525 Creating DB /Users/avoler/Desktop/Private/Jung/car_collector/crawlers/crawler_benz/sessions/benz_shared_session/Default/Session Storage since it was missing.
+2026/03/12-17:35:47.629 54525 Reusing MANIFEST /Users/avoler/Desktop/Private/Jung/car_collector/crawlers/crawler_benz/sessions/benz_shared_session/Default/Session Storage/MANIFEST-000001
+2026/03/12-17:36:11.412 5452e Level-0 table #5: started
+2026/03/12-17:36:11.416 5452e Level-0 table #5: 27781 bytes OK
+2026/03/12-17:36:11.419 5452e Delete type=0 #3

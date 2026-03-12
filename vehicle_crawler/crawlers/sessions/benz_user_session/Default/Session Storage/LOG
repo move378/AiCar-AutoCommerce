@@ -1,0 +1,6 @@
+2026/03/12-14:00:48.629 1eafd Reusing MANIFEST /Users/avoler/Desktop/Private/Jung/car_collector/crawlers/sessions/benz_user_session/Default/Session Storage/MANIFEST-000001
+2026/03/12-14:00:48.630 1eafd Recovering log #31
+2026/03/12-14:00:48.631 1eafd Reusing old log /Users/avoler/Desktop/Private/Jung/car_collector/crawlers/sessions/benz_user_session/Default/Session Storage/000031.log 
+2026/03/12-14:04:48.636 1eb00 Level-0 table #36: started
+2026/03/12-14:04:48.640 1eb00 Level-0 table #36: 12050 bytes OK
+2026/03/12-14:04:48.643 1eb00 Delete type=0 #31
