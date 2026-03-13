@@ -42,6 +42,12 @@ type RedisConfig struct {
 	Password string
 }
 
+type RedisConfig struct {
+	Host     string
+	Port     string
+	Password string
+}
+
 func LoadConfig() *Config {
 	env := os.Getenv("APP_ENV")
 
