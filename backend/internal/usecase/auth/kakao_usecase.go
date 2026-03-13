@@ -1,6 +1,8 @@
 package auth
 
 import (
+	"backend/internal/domain/entity"
+	"backend/internal/domain/repository"
 	"context"
 	"fmt"
 	"io"
@@ -15,14 +17,17 @@ type KakaoUsecase interface {
 }
 
 type kakaoUsecase struct {
-	social AuthSocialUsecase
+	social      SocialUsecase
+	socialCache repository.SocialCacheRepository
 }
 
 func NewKakaoUsecase(
-	social AuthSocialUsecase,
+	social SocialUsecase,
+	socialCache repository.SocialCacheRepository,
 ) KakaoUsecase {
 	return &kakaoUsecase{
-		social: social,
+		social:      social,
+		socialCache: socialCache,
 	}
 }
 
@@ -38,13 +43,20 @@ type KakaoUser struct {
 }
 
 func (u *kakaoUsecase) KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAccessToken string) (*SocialTokenResult, error) {
-	// 1. 카카오 API를 통해 사용자 정보 조회
-	// 2. 사용자 정보로 유저 생성 또는 조회
-	// 3. 토큰 발급 및 저장
-	// 4. 결과 반환
+	// cached, cachedErr := u.socialCache.FindByProviderToken(ctx, kakaoAccessToken)
+	// if cachedErr == nil && cached != nil {
+	// 	info := entity.SocialUserInfo{
+	// 		UserID:     userID,
+	// 		Provider:   "kakao",
+	// 		ProviderID: cached.ProviderID,
+	// 		Email:      cached.Email,
+	// 		Name:       cached.Name,
+	// 		ProfileURL: cached.ProfileURL,
+	// 	}
+	// 	return u.social.SocialLoginOrRegister(ctx, info)
+	// }
 
 	req, err := http.NewRequest("GET", "https://kapi.kakao.com/v2/user/me", nil)
-
 	if err != nil {
 		return nil, fmt.Errorf("요청 생성 실패: %w", err)
 	}
@@ -54,17 +66,13 @@ func (u *kakaoUsecase) KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAc
 	if err != nil {
 		return nil, fmt.Errorf("요청 실행 실패: %w", err)
 	}
-
 	defer resp.Body.Close()
 
 	body, _ := io.ReadAll(resp.Body)
 	user := &KakaoUser{}
 	err = json.Unmarshal(body, user)
 
-	fmt.Println("unmarshal err:", err)
-	fmt.Println("body:", string(body))
-
-	info := SocialUserInfo{
+	info := entity.SocialUserInfo{
 		UserID:     userID,
 		Provider:   "kakao",
 		ProviderID: fmt.Sprintf("%d", user.ID),
@@ -72,6 +80,16 @@ func (u *kakaoUsecase) KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAc
 		Name:       &user.KakaoAccount.Profile.Nickname,
 		ProfileURL: &user.KakaoAccount.Profile.ProfileImage,
 	}
+	fmt.Println("카카오 바디 ???????? :", string(body))
+
+	// 캐시 저장
+	_ = u.socialCache.Create(ctx, kakaoAccessToken, &entity.SocialUserInfo{
+		Provider:   "kakao",
+		ProviderID: info.ProviderID,
+		Email:      info.Email,
+		Name:       info.Name,
+		ProfileURL: info.ProfileURL,
+	})
 
 	return u.social.SocialLoginOrRegister(ctx, info)
 }

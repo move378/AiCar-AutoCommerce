@@ -1,6 +1,7 @@
 package auth
 
 import (
+	"backend/internal/config"
 	"backend/internal/domain/entity"
 	"backend/internal/domain/repository"
 	"backend/internal/shared/auth"
@@ -13,38 +14,29 @@ import (
 	"github.com/google/uuid"
 )
 
-type SocialUserInfo struct {
-	UserID     uuid.UUID
-	Provider   string
-	ProviderID string
-	Email      *string
-	Name       *string
-	ProfileURL *string
+type SocialUsecase interface {
+	SocialLoginOrRegister(ctx context.Context, info entity.SocialUserInfo) (*SocialTokenResult, error)
 }
 
-type AuthSocialUsecase interface {
-	SocialLoginOrRegister(ctx context.Context, info SocialUserInfo) (*SocialTokenResult, error)
-}
-
-type authSocialUsecase struct {
+type socialUsecase struct {
 	userRepo     repository.UserRepository
-	providerRepo repository.UserAuthProviderRepository
-	tokenRepo    repository.TokenRepository
+	providerRepo repository.SocialProviderRepository
+	tokenCache   repository.TokenCacheRepository
 }
 
 func NewSocialUsecase(
 	userRepo repository.UserRepository,
-	providerRepo repository.UserAuthProviderRepository,
-	tokenRepo repository.TokenRepository,
-) AuthSocialUsecase {
-	return &authSocialUsecase{
+	providerRepo repository.SocialProviderRepository,
+	tokenCache repository.TokenCacheRepository,
+) SocialUsecase {
+	return &socialUsecase{
 		userRepo:     userRepo,
 		providerRepo: providerRepo,
-		tokenRepo:    tokenRepo,
+		tokenCache:   tokenCache,
 	}
 }
 
-func filterUserInfo(info SocialUserInfo, existingUser *entity.User) SocialUserInfo {
+func filterUserInfo(info entity.SocialUserInfo, existingUser *entity.User) entity.SocialUserInfo {
 	if existingUser.Email == nil {
 		existingUser.Email = info.Email
 	}
@@ -54,7 +46,7 @@ func filterUserInfo(info SocialUserInfo, existingUser *entity.User) SocialUserIn
 	if existingUser.ProfileURL == nil {
 		existingUser.ProfileURL = info.ProfileURL
 	}
-	return SocialUserInfo{
+	return entity.SocialUserInfo{
 		UserID:     existingUser.ID,
 		Provider:   info.Provider,
 		ProviderID: info.ProviderID,
@@ -64,8 +56,9 @@ func filterUserInfo(info SocialUserInfo, existingUser *entity.User) SocialUserIn
 	}
 }
 
-func (u *authSocialUsecase) upsertUser(ctx context.Context, userID uuid.UUID, info SocialUserInfo) error {
+func (u *socialUsecase) upsertUser(ctx context.Context, userID uuid.UUID, info entity.SocialUserInfo) error {
 	existingUser, err := u.userRepo.FindByID(ctx, userID)
+
 	if err != nil {
 		return fmt.Errorf("유저 조회 실패: %w", err)
 	}
@@ -80,15 +73,18 @@ func (u *authSocialUsecase) upsertUser(ctx context.Context, userID uuid.UUID, in
 }
 
 // 소셜 로그인 또는 회원가입 처리
-func (u *authSocialUsecase) SocialLoginOrRegister(ctx context.Context, info SocialUserInfo) (*SocialTokenResult, error) {
+func (u *socialUsecase) SocialLoginOrRegister(ctx context.Context, info entity.SocialUserInfo) (*SocialTokenResult, error) {
 	var userID uuid.UUID
 	var isNewUser bool = false
+
+	cfg := config.LoadConfig()
+
 	result, err := u.providerRepo.FindByProviderID(ctx, info.Provider, info.ProviderID)
 
 	if errors.Is(err, errs.ErrNotFound) {
 		userID = info.UserID
 		isNewUser = true
-		newProvider := &entity.UserAuthProvider{
+		newProvider := &entity.SocialProvider{
 			UserID:     userID,
 			Provider:   info.Provider,
 			ProviderID: info.ProviderID,
@@ -108,17 +104,17 @@ func (u *authSocialUsecase) SocialLoginOrRegister(ctx context.Context, info Soci
 		return nil, fmt.Errorf("유저 정보 업데이트 실패: %w", err)
 	}
 
-	accessToken, refreshToken, err := auth.GenerateTokens(userID)
+	accessToken, refreshToken, err := auth.GenerateTokens(cfg, userID)
 
 	if err != nil {
 		return nil, fmt.Errorf("JWT 생성 실패: %w", err)
 	}
 
-	if err := u.tokenRepo.DeleteByUserID(ctx, userID); err != nil {
+	if err := u.tokenCache.DeleteByUserID(ctx, userID); err != nil {
 		return nil, fmt.Errorf("기존 토큰 삭제 실패: %w", err)
 	}
 
-	if err := u.tokenRepo.Create(ctx, &entity.RefreshToken{
+	if err := u.tokenCache.Create(ctx, &entity.RefreshToken{
 		UserID:    userID,
 		Token:     refreshToken,
 		ExpiresAt: time.Now().Add(time.Hour * 24 * 7),

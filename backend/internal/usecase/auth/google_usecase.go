@@ -2,6 +2,8 @@ package auth
 
 import (
 	"backend/internal/config"
+	"backend/internal/domain/entity"
+	"backend/internal/domain/repository"
 	"context"
 	"fmt"
 	"io"
@@ -16,14 +18,17 @@ type GoogleUsecase interface {
 }
 
 type googleUsecase struct {
-	social AuthSocialUsecase
+	social      SocialUsecase
+	socialCache repository.SocialCacheRepository
 }
 
 func NewGoogleUsecase(
-	social AuthSocialUsecase,
+	social SocialUsecase,
+	socialCache repository.SocialCacheRepository,
 ) GoogleUsecase {
 	return &googleUsecase{
-		social: social,
+		social:      social,
+		socialCache: socialCache,
 	}
 }
 
@@ -41,10 +46,19 @@ func (u *googleUsecase) GoogleLogin(ctx context.Context, userID uuid.UUID, googl
 	if authConfig.GoogleClientID == "" || authConfig.GoogleClientSecret == "" {
 		return nil, fmt.Errorf("구글 OAuth 설정이 누락되었습니다")
 	}
-	// 1. 구글 API를 통해 사용자 정보 조회
-	// 2. 사용자 정보로 유저 생성 또는 조회
-	// 3. 토큰 발급 및 저장
-	// 4. 결과 반환
+
+	cached, cachedErr := u.socialCache.FindByProviderToken(ctx, googleAccessToken)
+	if cachedErr == nil && cached != nil {
+		info := entity.SocialUserInfo{
+			UserID:     userID,
+			Provider:   "kakao",
+			ProviderID: cached.ProviderID,
+			Email:      cached.Email,
+			Name:       cached.Name,
+			ProfileURL: cached.ProfileURL,
+		}
+		return u.social.SocialLoginOrRegister(ctx, info)
+	}
 
 	req, err := http.NewRequest("GET", "https://www.googleapis.com/oauth2/v2/userinfo", nil)
 
@@ -64,10 +78,7 @@ func (u *googleUsecase) GoogleLogin(ctx context.Context, userID uuid.UUID, googl
 	user := &GoogleUser{}
 	err = json.Unmarshal(body, user)
 
-	fmt.Println("unmarshal err:", err)
-	fmt.Println("body:", string(body))
-
-	info := SocialUserInfo{
+	info := entity.SocialUserInfo{
 		UserID:     userID,
 		Provider:   "google",
 		ProviderID: fmt.Sprintf("%v", user.ID),
@@ -76,7 +87,14 @@ func (u *googleUsecase) GoogleLogin(ctx context.Context, userID uuid.UUID, googl
 		ProfileURL: &user.Picture,
 	}
 
-	fmt.Printf("Email: %s, Name: %s, ProfileURL: %s\n", *info.Email, *info.Name, *info.ProfileURL)
+	// 캐시 저장
+	_ = u.socialCache.Create(ctx, googleAccessToken, &entity.SocialUserInfo{
+		Provider:   "kakao",
+		ProviderID: info.ProviderID,
+		Email:      info.Email,
+		Name:       info.Name,
+		ProfileURL: info.ProfileURL,
+	})
 
 	return u.social.SocialLoginOrRegister(ctx, info)
 }

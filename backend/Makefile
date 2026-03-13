@@ -14,7 +14,7 @@ run:
 	$(SET_ENV) go run cmd/api/main.go
 
 dev:
-	set APP_ENV=local && air -c .air.windows.toml
+	set APP_ENV=local && air -c .air.local.toml
 
 setup:
 	@echo "Installing libraries..."

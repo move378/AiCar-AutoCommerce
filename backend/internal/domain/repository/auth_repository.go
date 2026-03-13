@@ -4,6 +4,7 @@ package repository
 import (
 	"backend/internal/domain/entity"
 	"context"
+	"time"
 
 	"github.com/google/uuid"
 )
@@ -16,9 +17,14 @@ type UserRepository interface {
 	Delete(ctx context.Context, id uuid.UUID) error
 }
 
-type UserAuthProviderRepository interface {
-	FindByProviderID(ctx context.Context, provider string, providerID string) (*entity.UserAuthProvider, error)
-	Create(ctx context.Context, authProvider *entity.UserAuthProvider) error
+type SocialProviderRepository interface {
+	FindByProviderID(ctx context.Context, provider string, providerID string) (*entity.SocialProvider, error)
+	Create(ctx context.Context, authProvider *entity.SocialProvider) error
+}
+
+type SocialCacheRepository interface {
+	Create(ctx context.Context, providerToken string, social *entity.SocialUserInfo) error
+	FindByProviderToken(ctx context.Context, providerToken string) (*entity.SocialUserInfo, error)
 }
 
 type DeviceRepository interface {
@@ -26,11 +32,12 @@ type DeviceRepository interface {
 	FindByDeviceUID(ctx context.Context, deviceUID string) (*entity.Device, error)
 }
 
-type TokenRepository interface {
-	FindByToken(ctx context.Context, token string) (*entity.RefreshToken, error)
+type TokenCacheRepository interface {
 	Create(ctx context.Context, token *entity.RefreshToken) error
-	DeleteByToken(ctx context.Context, token string) error      // 찾아서 바로 삭제
+	FindByUserID(ctx context.Context, userID uuid.UUID) (*entity.RefreshToken, error)
 	DeleteByUserID(ctx context.Context, userID uuid.UUID) error // 로그아웃용
+	AddToBlacklist(ctx context.Context, token string, expiration time.Duration) error
+	IsBlacklisted(ctx context.Context, token string) (bool, error)
 }
 
 type TxManager interface {
