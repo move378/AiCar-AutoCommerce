@@ -7,7 +7,7 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 
 from config import DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD
-from db.parser.benz.benz_summary_parser import VehicleData
+from vehicle_crawler.db.parser.benz._ import VehicleData
 
 
 # ──────────────────────────────────────────────

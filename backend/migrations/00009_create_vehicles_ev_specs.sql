@@ -7,7 +7,7 @@ CREATE TABLE vehicles_ev_specs (
     eff_city DECIMAL(3,1),
     eff_highway DECIMAL(3,1),
     energy_grade INT,
-    UNIQUE (trim_id)
+    CONSTRAINT uq_vehicles_ev_specs_trim_id UNIQUE (trim_id)
 );
 
 -- +goose Down

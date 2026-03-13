@@ -4,7 +4,7 @@ from playwright.sync_api import sync_playwright
 
 from crawlers.benz.summary_crawler import run_summary_crawler
 from crawlers.benz.inventory_crwaler import run_inventory_crawler
-from db.parser.benz.benz_summary_parser import parse
+from vehicle_crawler.db.parser.benz._ import parse
 from db.parser.benz.benz_inventory_parser import enrich
 from db.db import save
 

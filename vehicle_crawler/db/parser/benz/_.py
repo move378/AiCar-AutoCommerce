@@ -93,6 +93,10 @@ class VehicleData:
     ev_spec: Optional[EvSpecData] = None
     options: list[OptionData] = field(default_factory=list)
 
+@dataclass
+class VehicleModel:
+    
+
 
 # ──────────────────────────────────────────────
 # 유틸
@@ -124,6 +128,9 @@ def get_tech_value(tech_groups: list, tech_id: str) -> Optional[str]:
     return None
 
 
+def _init_brand():
+    return BrandData(name="Mercedes-Benz", country="독일")
+
 # ──────────────────────────────────────────────
 # 옵션 파서
 # ──────────────────────────────────────────────
@@ -149,6 +156,28 @@ def _parse_options(summary: dict) -> list[OptionData]:
                 ))
 
     return options
+
+
+def summary_parser() -> list[VehicleData]:
+    vehicles = []
+    brand = _init_brand()
+
+    for model_name in os.listdir(BENZ_SUMMARY_DIR):
+        summary_file = os.path.join(BENZ_SUMMARY_DIR, model_name, "summary.json")
+        if not os.path.exists(summary_file):
+            continue
+
+        with open(summary_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        try:
+
+            
+            
+
+        except Exception as e:
+            print(f"[서머리 파서 오류] {model_name}: {e}")
+            continue
 
 
 # ──────────────────────────────────────────────

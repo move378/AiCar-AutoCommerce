@@ -8,7 +8,7 @@ CREATE TABLE vehicles_ice_specs (
     fuel_eff_highway DECIMAL(4,1),
     energy_grade INT,
     cylinder SMALLINT,
-    UNIQUE (trim_id)
+    CONSTRAINT uq_vehicles_ice_specs_trim_id UNIQUE (trim_id)
 );
 
 -- +goose Down
