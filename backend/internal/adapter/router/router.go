@@ -15,13 +15,17 @@ import (
 func SetupRouter(c *container.Container) *gin.Engine {
 	r := gin.Default()
 
-	authHandler := auth.NewAuthHandler(c.AuthUsecase, c.UserUsecase, c.KakaoUsecase, c.GoogleUsecase)
+	authHandler := auth.NewAuthHandler(c.AuthUsecase, c.UserUsecase, c.KakaoUsecase, c.GoogleUsecase, c.AppleUsecase)
 
 	// 미들웨어 설정 (필요시 CORS, 인증 등 추가 가능)
 	// r.Use(CORSMiddleware())
 
 	// Swagger UI 설정
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
+
+	//애플 테스트 html
+	r.StaticFile("/apple-test", "./apple-test.html")
 
 	v1 := r.Group("/api/v1")
 
@@ -43,7 +47,7 @@ func SetupRouter(c *container.Container) *gin.Engine {
 		{
 			privateAuth.POST("/kakao-login", authHandler.KakaoLogin)
 			privateAuth.POST("/google-login", authHandler.GoogleLogin)
-			// privateAuth.POST("/apple-login", authHandler.AppleLogin)
+			privateAuth.POST("/apple-login", authHandler.AppleLogin)
 
 		}
 
@@ -60,6 +64,6 @@ func SetupRouter(c *container.Container) *gin.Engine {
 		//     carGroup.GET("/recommend", api.GetRecommendCars)
 		// }
 	}
-
+	
 	return r
 }
