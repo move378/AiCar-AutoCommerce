@@ -25,6 +25,11 @@ type SocialLoginRequest struct {
 	ProviderToken string `json:"provider_token" binding:"required" example:"ya29.a0AfH6SMBx..."`
 }
 
+type AppleLoginRequest struct {
+	UserName string `json:"user_name" example:"홍길동"`
+	IdentityToken string `json:"identity_token" binding:"required" example:"ya29.a0AfH6SMBx..."`
+}
+
 // =============================================================================
 // [RESPONSE DTO] - 클라이언트에게 돌려주는 데이터 (Output)
 // =============================================================================

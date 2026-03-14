@@ -6,15 +6,20 @@ ENVIRONMENT ?= local
 # OS 감지
 ifeq ($(OS),Windows_NT)
     SET_ENV = set APP_ENV=$(ENVIRONMENT) &&
+	OS = windows
 else
     SET_ENV = APP_ENV=$(ENVIRONMENT)
+	OS = mac
 endif
 
 run:
 	$(SET_ENV) go run cmd/api/main.go
 
 dev:
-	set APP_ENV=local && air -c .air.local.toml
+	$(SET_ENV) air -c .air.$(OS).toml
+
+ngrok:
+	ngrok http --url=glaucescent-babette-untolled.ngrok-free.dev 8080
 
 setup:
 	@echo "Installing libraries..."

@@ -23,6 +23,10 @@ func SetupRouter(c *container.Container) *gin.Engine {
 	// Swagger UI 설정
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
+
+	//애플 테스트 html
+	r.StaticFile("/apple-test", "./apple-test.html")
+
 	v1 := r.Group("/api/v1")
 
 	public := v1.Group("/")
@@ -43,7 +47,7 @@ func SetupRouter(c *container.Container) *gin.Engine {
 		{
 			privateAuth.POST("/kakao-login", authHandler.KakaoLogin)
 			privateAuth.POST("/google-login", authHandler.GoogleLogin)
-			// privateAuth.POST("/apple-login", authHandler.AppleLogin)
+			privateAuth.POST("/apple-login", authHandler.AppleLogin)
 
 		}
 
@@ -60,6 +64,6 @@ func SetupRouter(c *container.Container) *gin.Engine {
 		//     carGroup.GET("/recommend", api.GetRecommendCars)
 		// }
 	}
-
+	
 	return r
 }
