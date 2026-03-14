@@ -16,6 +16,7 @@ type AuthHandler struct {
 	authUsecase   usecase.AuthUsecase
 	kakaoUsecase  usecase.KakaoUsecase
 	googleUsecase usecase.GoogleUsecase
+	appleUsecase  usecase.AppleUsecase
 	userUsecase   usecase.UserUsecase
 }
 
@@ -23,12 +24,14 @@ func NewAuthHandler(
 	authUsecase usecase.AuthUsecase,
 	userUsecase usecase.UserUsecase,
 	kakaoUsecase usecase.KakaoUsecase,
-	googleUsecase usecase.GoogleUsecase) *AuthHandler {
+	googleUsecase usecase.GoogleUsecase,
+	appleUsecase usecase.AppleUsecase) *AuthHandler {
 	return &AuthHandler{
 		authUsecase:   authUsecase,
 		userUsecase:   userUsecase,
 		kakaoUsecase:  kakaoUsecase,
 		googleUsecase: googleUsecase,
+		appleUsecase:  appleUsecase,
 	}
 }
 

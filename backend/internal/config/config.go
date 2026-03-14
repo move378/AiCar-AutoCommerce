@@ -27,6 +27,7 @@ type DBConfig struct {
 type AuthConfig struct {
 	GoogleClientID     string
 	GoogleClientSecret string
+	AppleClientID      string
 }
 
 type JWTConfig struct {
@@ -84,6 +85,7 @@ func LoadConfig() *Config {
 		Auth: AuthConfig{
 			GoogleClientID:     os.Getenv("GOOGLE_CLIENT_ID"),
 			GoogleClientSecret: os.Getenv("GOOGLE_CLIENT_SECRET"),
+			AppleClientID:      os.Getenv("APPLE_CLIENT_ID"),
 		},
 	}
 }

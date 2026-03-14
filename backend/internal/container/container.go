@@ -1,6 +1,7 @@
 package container
 
 import (
+	"backend/internal/config"
 	"backend/internal/domain/repository"
 	"backend/internal/infra/persistence/postgres"
 	"backend/internal/infra/persistence/redis"
@@ -13,6 +14,7 @@ type Container struct {
 	SocialUsecase usecase.SocialUsecase
 	KakaoUsecase  usecase.KakaoUsecase
 	GoogleUsecase usecase.GoogleUsecase
+	AppleUsecase  usecase.AppleUsecase
 	TokenCache    repository.TokenCacheRepository
 }
 
@@ -27,12 +29,16 @@ func NewContainer(db *postgres.DB, rdb *redis.Redis) *Container {
 	socialUsecase := usecase.NewSocialUsecase(userRepo, socialRepo, tokenCache)
 	socialCache := redis.NewSocialCache(rdb)
 
+	// config 로드
+	cfg := config.LoadConfig()
+
 	// usecase 생성 후 container에 담아서 반환
 	return &Container{
 		AuthUsecase:   usecase.NewAuthUsecase(userRepo, deviceRepo, tokenCache, txManager),
 		UserUsecase:   usecase.NewUserUsecase(userRepo),
 		KakaoUsecase:  usecase.NewKakaoUsecase(socialUsecase, socialCache),
 		GoogleUsecase: usecase.NewGoogleUsecase(socialUsecase, socialCache),
+		AppleUsecase:  usecase.NewAppleUsecase(socialUsecase, socialCache, cfg.Auth.AppleClientID),
 		TokenCache:    tokenCache,
 	}
 }
