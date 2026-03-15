@@ -18,16 +18,16 @@ type GoogleUsecase interface {
 }
 
 type googleUsecase struct {
-	social      SocialUsecase
+	user        UserUsecase
 	socialCache repository.SocialCacheRepository
 }
 
 func NewGoogleUsecase(
-	social SocialUsecase,
+	user UserUsecase,
 	socialCache repository.SocialCacheRepository,
 ) GoogleUsecase {
 	return &googleUsecase{
-		social:      social,
+		user:        user,
 		socialCache: socialCache,
 	}
 }
@@ -57,7 +57,7 @@ func (u *googleUsecase) GoogleLogin(ctx context.Context, userID uuid.UUID, googl
 			Name:       cached.Name,
 			ProfileURL: cached.ProfileURL,
 		}
-		return u.social.SocialLoginOrRegister(ctx, info)
+		return u.user.SocialLoginOrRegister(ctx, info)
 	}
 
 	req, err := http.NewRequest("GET", "https://www.googleapis.com/oauth2/v2/userinfo", nil)
@@ -96,5 +96,5 @@ func (u *googleUsecase) GoogleLogin(ctx context.Context, userID uuid.UUID, googl
 		ProfileURL: info.ProfileURL,
 	})
 
-	return u.social.SocialLoginOrRegister(ctx, info)
+	return u.user.SocialLoginOrRegister(ctx, info)
 }

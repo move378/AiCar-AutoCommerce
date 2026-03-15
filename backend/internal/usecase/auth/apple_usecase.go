@@ -3,7 +3,7 @@ package auth
 import (
 	"backend/internal/domain/entity"
 	"backend/internal/domain/repository"
-	"backend/internal/shared/auth"
+	"backend/internal/shared/token"
 	"context"
 	"fmt"
 
@@ -15,18 +15,18 @@ type AppleUsecase interface {
 }
 
 type appleUsecase struct {
-	social      SocialUsecase
+	user        UserUsecase
 	socialCache repository.SocialCacheRepository
 	clientID    string // cfg.APPLE_CLIENT_ID가 담길 곳
 }
 
 func NewAppleUsecase(
-	social SocialUsecase,
+	user UserUsecase,
 	socialCache repository.SocialCacheRepository,
 	clientID string, // 컨테이너에서 cfg.APPLE_CLIENT_ID를 넘겨받음
 ) AppleUsecase {
 	return &appleUsecase{
-		social:      social,
+		user:        user,
 		socialCache: socialCache,
 		clientID:    clientID,
 	}
@@ -43,22 +43,22 @@ func (u *appleUsecase) AppleLogin(ctx context.Context, userID uuid.UUID, identit
 			Email:      cached.Email,
 			Name:       cached.Name,
 		}
-		return u.social.SocialLoginOrRegister(ctx, info)
+		return u.user.SocialLoginOrRegister(ctx, info)
 	}
 
 	// 2. 분리된 유틸 함수 호출하여 검증 및 디코딩
-	claims, err := auth.VerifyAppleIdentityToken(identityToken, u.clientID)
+	claims, err := token.VerifyAppleIdentityToken(identityToken, u.clientID)
 	if err != nil {
 		return nil, fmt.Errorf("apple auth failed: %w", err)
 	}
 
 	// 3. 엔티티 매핑 (앱 기반이므로 sub를 ProviderID로 사용)
 	info := entity.SocialUserInfo{
-		UserID:     userID,        // 현재 디바이스 임시 유저
+		UserID:     userID, // 현재 디바이스 임시 유저
 		Provider:   "apple",
-		ProviderID: claims.Sub,     // 불변 고유 ID
+		ProviderID: claims.Sub, // 불변 고유 ID
 		Email:      &claims.Email,
-		Name:       name,           // 프론트에서 받은 이름
+		Name:       name, // 프론트에서 받은 이름
 	}
 
 	// 4. 캐시 저장
@@ -70,5 +70,5 @@ func (u *appleUsecase) AppleLogin(ctx context.Context, userID uuid.UUID, identit
 	})
 
 	// 5. 공통 로직 실행 (임시 유저 -> 정식 유저 전환)
-	return u.social.SocialLoginOrRegister(ctx, info)
+	return u.user.SocialLoginOrRegister(ctx, info)
 }

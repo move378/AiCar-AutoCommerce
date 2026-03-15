@@ -1,6 +1,10 @@
-package auth
+package token
 
 import (
+	"backend/internal/config"
+	"backend/internal/domain/entity"
+	"backend/internal/domain/repository"
+	"context"
 	"crypto/rsa"
 	"encoding/base64"
 	"encoding/binary"
@@ -8,15 +12,44 @@ import (
 	"fmt"
 	"math/big"
 	"net/http"
+	"time"
 
 	"github.com/golang-jwt/jwt/v5"
+	"github.com/google/uuid"
 )
+
+type TokenResult struct {
+	AccessToken  string
+	RefreshToken string
+}
 
 // AppleClaims: 애플 Identity Token 내부에 담긴 데이터 구조
 type AppleClaims struct {
 	Email string `json:"email"`
 	Sub   string `json:"sub"` // 애플 유저 고유 ID
 	jwt.RegisteredClaims
+}
+
+// GenerateAndStoreTokens: 액세스/리프레시 토큰 생성 + 저장
+func GenerateAndStoreTokens(ctx context.Context, cfg *config.Config, tokenCache repository.TokenCacheRepository, userID uuid.UUID) (*TokenResult, error) {
+	accessToken, refreshToken, tokenErr := GenerateTokens(cfg, userID)
+
+	if tokenErr != nil {
+		return nil, fmt.Errorf("토큰 생성 실패: %w", tokenErr)
+	}
+
+	if err := tokenCache.Create(ctx, &entity.RefreshToken{
+		UserID:    userID,
+		Token:     refreshToken,
+		ExpiresAt: time.Now().Add(cfg.JWT.RefreshExpiration),
+	}); err != nil {
+		return nil, fmt.Errorf("토큰 저장 실패: %w", err)
+	}
+
+	return &TokenResult{
+		AccessToken:  accessToken,
+		RefreshToken: refreshToken,
+	}, nil
 }
 
 // VerifyAppleIdentityToken: 애플 공개키를 가져와 토큰의 유효성을 검증하고 데이터를 반환합니다.

@@ -53,7 +53,7 @@ func (h *AuthHandler) Onboarding(c *gin.Context) {
 		return
 	}
 
-	result, err := h.authUsecase.Onboarding(c.Request.Context(), &usecase.OnboardingInput{
+	result, err := h.userUsecase.Onboarding(c.Request.Context(), &usecase.OnboardingInput{
 		DeviceUID:  req.DeviceID,
 		DeviceType: req.DeviceType,
 		ModelName:  req.ModelName,
