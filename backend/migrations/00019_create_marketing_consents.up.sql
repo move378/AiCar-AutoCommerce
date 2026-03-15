@@ -1,0 +1,12 @@
+-- +goose Up
+CREATE TABLE marketing_consents (
+    id BIGSERIAL PRIMARY KEY,
+    device_id VARCHAR(100) NOT NULL UNIQUE,
+    marketing_agreed BOOLEAN NOT NULL,
+    agreed_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- +goose Down
+DROP TABLE IF EXISTS marketing_consents;
