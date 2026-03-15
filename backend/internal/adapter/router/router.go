@@ -53,7 +53,8 @@ func SetupRouter(c *container.Container) *gin.Engine {
 
 		{
 			privateUser.POST("/logout", authHandler.Logout)
-			privateUser.GET("/profile", authHandler.GetProfile)
+			privateUser.GET("/me", authHandler.GetProfile)
+			privateAuth.DELETE("/me",authHandler.DeleteAccount)
 		}
 
 		// Private Cars (나중에)

@@ -1,0 +1,3279 @@
+{
+    "step": "SUMMARY",
+    "navigation": {
+        "navigationCategories": [
+            {
+                "id": "VARIANTS",
+                "name": "버전",
+                "cardinality": "NOT_DEFINED",
+                "categoryViewType": "DEFAULT",
+                "categoryViewConfiguration": {
+                    "categoryViewType": "DEFAULT",
+                    "stageV2": {
+                        "view": "EXTERIOR_360",
+                        "perspective": "BE020",
+                        "state": [
+                            "SZT",
+                            "DZO"
+                        ]
+                    }
+                },
+                "subcategories": [
+                    {
+                        "id": "LINES",
+                        "name": "스타일",
+                        "cardinality": "ONE_OR_NONE",
+                        "categoryViewType": "SPECIAL_EQUIPMENT",
+                        "categoryViewConfiguration": {
+                            "categoryViewType": "SPECIAL_EQUIPMENT",
+                            "stageV2": {
+                                "view": "EXTERIOR_360",
+                                "perspective": "BE020",
+                                "state": [
+                                    "SZT",
+                                    "DZO"
+                                ]
+                            }
+                        },
+                        "subcategories": [
+                            {
+                                "id": "ZK017",
+                                "name": "익스테리어 라인",
+                                "cardinality": "EXACTLY_ONE",
+                                "categoryViewType": "DEFAULT",
+                                "categoryViewConfiguration": {
+                                    "categoryViewType": "DEFAULT",
+                                    "stageV2": {
+                                        "view": "EXTERIOR_360",
+                                        "perspective": "BE020",
+                                        "state": [
+                                            "SZT",
+                                            "DZO"
+                                        ]
+                                    }
+                                },
+                                "componentIds": [
+                                    "PC-PMB",
+                                    "PC-PME"
+                                ],
+                                "fixationInformation": {
+                                    "affectsFurtherSelection": true
+                                },
+                                "contains": "LINES_EXTERIOR",
+                                "incompatible": false,
+                                "preSelect": true
+                            },
+                            {
+                                "id": "LINE_ADD_ON_EXTERIOR",
+                                "name": "익스테리어 확장",
+                                "cardinality": "ARBITRARY",
+                                "categoryViewType": "DEFAULT",
+                                "categoryViewConfiguration": {
+                                    "categoryViewType": "DEFAULT",
+                                    "stageV2": {
+                                        "view": "EXTERIOR_360",
+                                        "perspective": "BE020",
+                                        "state": [
+                                            "SZT",
+                                            "DZO"
+                                        ]
+                                    }
+                                },
+                                "componentIds": [
+                                    "SA-327"
+                                ],
+                                "fixationInformation": {
+                                    "affectsFurtherSelection": true
+                                },
+                                "contains": "PACKAGES_EXTERIOR",
+                                "incompatible": false,
+                                "preSelect": false
+                            }
+                        ],
+                        "contains": "LINES",
+                        "incompatible": false,
+                        "preSelect": true
+                    }
+                ],
+                "contains": "VARIANTS",
+                "incompatible": false,
+                "preSelect": false
+            },
+            {
+                "id": "EXTERIOR",
+                "name": "익스테리어",
+                "cardinality": "NOT_DEFINED",
+                "categoryViewType": "DEFAULT",
+                "categoryViewConfiguration": {
+                    "categoryViewType": "DEFAULT",
+                    "stageV2": {
+                        "view": "EXTERIOR_360",
+                        "perspective": "BE020",
+                        "state": [
+                            "SZT",
+                            "DZO"
+                        ]
+                    }
+                },
+                "subcategories": [
+                    {
+                        "id": "PAINTS",
+                        "name": "색상",
+                        "cardinality": "EXACTLY_ONE",
+                        "categoryViewType": "SINGLE_CHOICE",
+                        "categoryViewConfiguration": {
+                            "categoryViewType": "SINGLE_CHOICE",
+                            "stageV2": {
+                                "view": "EXTERIOR_360",
+                                "perspective": "BE040",
+                                "state": [
+                                    "SZT",
+                                    "DZO"
+                                ]
+                            }
+                        },
+                        "subcategories": [
+                            {
+                                "id": "ZK101",
+                                "cardinality": "NOT_DEFINED",
+                                "categoryViewType": "SINGLE_CHOICE",
+                                "categoryViewConfiguration": {
+                                    "categoryViewType": "SINGLE_CHOICE",
+                                    "stageV2": {
+                                        "view": "EXTERIOR_360",
+                                        "perspective": "BE040",
+                                        "state": [
+                                            "SZT",
+                                            "DZO"
+                                        ]
+                                    }
+                                },
+                                "componentIds": [
+                                    "LU-659"
+                                ],
+                                "fixationInformation": {
+                                    "filteredBy": [
+                                        "PC-PMB"
+                                    ],
+                                    "affectsFurtherSelection": false
+                                },
+                                "contains": "PAINTS",
+                                "incompatible": true,
+                                "preSelect": true
+                            },
+                            {
+                                "id": "ZK020",
+                                "name": "MANUFAKTUR 페인트",
+                                "cardinality": "NOT_DEFINED",
+                                "categoryViewType": "SINGLE_CHOICE",
+                                "categoryViewConfiguration": {
+                                    "categoryViewType": "SINGLE_CHOICE",
+                                    "stageV2": {
+                                        "view": "EXTERIOR_360",
+                                        "perspective": "BE040",
+                                        "state": [
+                                            "SZT",
+                                            "DZO"
+                                        ]
+                                    }
+                                },
+                                "componentIds": [
+                                    "LU-393"
+                                ],
+                                "contains": "PAINTS",
+                                "incompatible": false,
+                                "preSelect": false
+                            }
+                        ],
+                        "fixationInformation": {
+                            "filteredBy": [
+                                "PC-PMB"
+                            ],
+                            "affectsFurtherSelection": false
+                        },
+                        "contains": "PAINTS",
+                        "incompatible": false,
+                        "preSelect": true
+                    },
+                    {
+                        "id": "WHEELS",
+                        "name": "휠",
+                        "cardinality": "EXACTLY_ONE",
+                        "categoryViewType": "SINGLE_CHOICE",
+                        "categoryViewConfiguration": {
+                            "categoryViewType": "SINGLE_CHOICE",
+                            "stageV2": {
+                                "view": "EXTERIOR_360",
+                                "perspective": "BE090",
+                                "state": [
+                                    "SZT",
+                                    "DZO"
+                                ]
+                            }
+                        },
+                        "subcategories": [
+                            {
+                                "id": "21_INCH",
+                                "name": "53,3 cm (21\")",
+                                "cardinality": "ARBITRARY",
+                                "categoryViewType": "SINGLE_CHOICE",
+                                "categoryViewConfiguration": {
+                                    "categoryViewType": "SINGLE_CHOICE",
+                                    "stageV2": {
+                                        "view": "EXTERIOR_360",
+                                        "perspective": "BE090",
+                                        "state": [
+                                            "SZT",
+                                            "DZO"
+                                        ]
+                                    }
+                                },
+                                "componentIds": [
+                                    "SA-R29",
+                                    "SA-R76"
+                                ],
+                                "contains": "WHEELS",
+                                "incompatible": false,
+                                "preSelect": true
+                            }
+                        ],
+                        "contains": "WHEELS",
+                        "incompatible": false,
+                        "preSelect": false
+                    },
+                    {
+                        "id": "CABRIO_ROOF",
+                        "name": "소프트 탑",
+                        "cardinality": "ONE_OR_NONE",
+                        "categoryViewType": "DEFAULT",
+                        "categoryViewConfiguration": {
+                            "categoryViewType": "DEFAULT",
+                            "stageV2": {
+                                "view": "EXTERIOR_360",
+                                "perspective": "BE090",
+                                "state": [
+                                    "SZT",
+                                    "DZG"
+                                ]
+                            }
+                        },
+                        "componentIds": [
+                            "SA-756"
+                        ],
+                        "contains": "CABRIO_ROOF",
+                        "incompatible": false,
+                        "preSelect": false
+                    }
+                ],
+                "fixationInformation": {
+                    "filteredBy": [
+                        "PC-PMB"
+                    ],
+                    "affectsFurtherSelection": false
+                },
+                "contains": "EXTERIOR",
+                "incompatible": false,
+                "preSelect": false,
+                "standardComponentIds": [
+                    "LU-393",
+                    "SA-R29",
+                    "SA-R01",
+                    "SA-B51",
+                    "SA-318",
+                    "SA-756",
+                    "SA-874",
+                    "PC-P49",
+                    "SA-249",
+                    "SA-500",
+                    "SA-666",
+                    "SA-524",
+                    "SA-588",
+                    "SA-5B6"
+                ]
+            },
+            {
+                "id": "INTERIOR",
+                "name": "인테리어",
+                "cardinality": "NOT_DEFINED",
+                "categoryViewType": "DEFAULT",
+                "categoryViewConfiguration": {
+                    "categoryViewType": "DEFAULT",
+                    "stageV2": {
+                        "view": "INTERIOR_360",
+                        "perspective": "BIS1",
+                        "state": [
+                            "SZT"
+                        ]
+                    }
+                },
+                "subcategories": [
+                    {
+                        "id": "TRIMS",
+                        "name": "트림",
+                        "cardinality": "ONE_OR_NONE",
+                        "categoryViewType": "SINGLE_CHOICE",
+                        "categoryViewConfiguration": {
+                            "categoryViewType": "SINGLE_CHOICE",
+                            "stageV2": {
+                                "view": "INTERIOR_360",
+                                "perspective": "BIS1",
+                                "state": [
+                                    "SZT"
+                                ]
+                            }
+                        },
+                        "subcategories": [
+                            {
+                                "id": "ZK049",
+                                "name": "트림",
+                                "cardinality": "ONE_OR_NONE",
+                                "categoryViewType": "SINGLE_CHOICE",
+                                "categoryViewConfiguration": {
+                                    "categoryViewType": "SINGLE_CHOICE",
+                                    "stageV2": {
+                                        "view": "INTERIOR_360",
+                                        "perspective": "BIS1",
+                                        "state": [
+                                            "SZT"
+                                        ]
+                                    }
+                                },
+                                "componentIds": [
+                                    "SA-72H"
+                                ],
+                                "contains": "TRIMS",
+                                "incompatible": false,
+                                "preSelect": true
+                            }
+                        ],
+                        "contains": "TRIMS",
+                        "incompatible": false,
+                        "preSelect": true
+                    },
+                    {
+                        "id": "STEERING_WHEEL",
+                        "name": "스티어링 휠",
+                        "cardinality": "ARBITRARY",
+                        "categoryViewType": "DEFAULT",
+                        "categoryViewConfiguration": {
+                            "categoryViewType": "DEFAULT",
+                            "stageV2": {
+                                "view": "INTERIOR_360",
+                                "perspective": "BIS1",
+                                "state": [
+                                    "SZT"
+                                ]
+                            }
+                        },
+                        "subcategories": [
+                            {
+                                "id": "STEERING_WHEEL_STEERING_WHEEL",
+                                "name": "스티어링 휠",
+                                "cardinality": "EXACTLY_ONE",
+                                "categoryViewType": "DEFAULT",
+                                "categoryViewConfiguration": {
+                                    "categoryViewType": "DEFAULT",
+                                    "stageV2": {
+                                        "view": "INTERIOR_360",
+                                        "perspective": "BIS1",
+                                        "state": [
+                                            "SZT"
+                                        ]
+                                    }
+                                },
+                                "componentIds": [
+                                    "SA-L2B",
+                                    "SA-L2D"
+                                ],
+                                "contains": "INTERIOR",
+                                "incompatible": false,
+                                "preSelect": true
+                            }
+                        ],
+                        "contains": "INTERIOR",
+                        "incompatible": false,
+                        "preSelect": false,
+                        "standardComponentIds": [
+                            "SA-L2D",
+                            "SA-443"
+                        ]
+                    }
+                ],
+                "contains": "INTERIOR",
+                "incompatible": false,
+                "preSelect": false,
+                "standardComponentIds": [
+                    "AU-509",
+                    "PC-P64",
+                    "SA-275",
+                    "SA-399",
+                    "SA-401",
+                    "SA-403",
+                    "SA-572",
+                    "SA-72H",
+                    "SA-L2D",
+                    "SA-443",
+                    "SA-891",
+                    "PC-PBR",
+                    "SA-U14",
+                    "SA-543",
+                    "SA-581",
+                    "PC-P53",
+                    "SA-60U",
+                    "SA-309",
+                    "SA-6U3",
+                    "SA-881",
+                    "SA-887",
+                    "SA-942",
+                    "SA-943",
+                    "SA-B08",
+                    "SA-U25",
+                    "SA-U35"
+                ]
+            },
+            {
+                "id": "ASSISTANCESYSTEMS_SAFETY",
+                "name": "운전자 보조 시스템 및 안전",
+                "cardinality": "ARBITRARY",
+                "categoryViewType": "DEFAULT",
+                "categoryViewConfiguration": {
+                    "categoryViewType": "DEFAULT",
+                    "stageV2": {
+                        "view": "INTERIOR_360",
+                        "perspective": "BIS1",
+                        "state": [
+                            "SZT"
+                        ]
+                    }
+                },
+                "subcategories": [
+                    {
+                        "id": "SAFETY",
+                        "name": "안전성",
+                        "cardinality": "ARBITRARY",
+                        "categoryViewType": "DEFAULT",
+                        "categoryViewConfiguration": {
+                            "categoryViewType": "DEFAULT",
+                            "stageV2": {
+                                "view": "INTERIOR_360",
+                                "perspective": "BIS1",
+                                "state": [
+                                    "SZT"
+                                ]
+                            }
+                        },
+                        "subcategories": [
+                            {
+                                "id": "LOCKING_SYSTEMS",
+                                "name": "잠금 시스템",
+                                "cardinality": "ARBITRARY",
+                                "categoryViewType": "DEFAULT",
+                                "categoryViewConfiguration": {
+                                    "categoryViewType": "DEFAULT",
+                                    "stageV2": {
+                                        "view": "EXTERIOR_360",
+                                        "perspective": "BE020",
+                                        "state": [
+                                            "SZT",
+                                            "DZO"
+                                        ]
+                                    }
+                                },
+                                "componentIds": [
+                                    "SA-871"
+                                ],
+                                "contains": "EXTERIOR",
+                                "incompatible": false,
+                                "preSelect": true
+                            },
+                            {
+                                "id": "PASSENGER_SAFETY",
+                                "name": "승객 안전",
+                                "cardinality": "ARBITRARY",
+                                "categoryViewType": "DEFAULT",
+                                "categoryViewConfiguration": {
+                                    "categoryViewType": "DEFAULT",
+                                    "stageV2": {
+                                        "view": "INTERIOR_360",
+                                        "perspective": "BIS1",
+                                        "state": [
+                                            "SZT"
+                                        ]
+                                    }
+                                },
+                                "componentIds": [
+                                    "PS-292#"
+                                ],
+                                "contains": "INTERIOR",
+                                "incompatible": false,
+                                "preSelect": false
+                            }
+                        ],
+                        "contains": "INTERIOR",
+                        "incompatible": false,
+                        "preSelect": true,
+                        "standardComponentLabels": [
+                            "MB.DRIVE_INCLUDES"
+                        ],
+                        "standardComponentIds": [
+                            "SA-871",
+                            "SA-889",
+                            "SA-893",
+                            "SA-B69",
+                            "PS-292#",
+                            "SA-299",
+                            "SA-351",
+                            "SA-634",
+                            "SA-U10",
+                            "PC-P82",
+                            "SA-233",
+                            "SA-551",
+                            "SA-852",
+                            "SA-U60"
+                        ],
+                        "highlightComponentsIds": [
+                            "SA-871"
+                        ]
+                    }
+                ],
+                "contains": "INTERIOR",
+                "incompatible": false,
+                "preSelect": false,
+                "standardComponentLabels": [
+                    "MB.DRIVE_INCLUDES"
+                ],
+                "standardComponentIds": [
+                    "PC-P20",
+                    "SA-243",
+                    "SA-262",
+                    "SA-266",
+                    "SA-272",
+                    "SA-475",
+                    "SA-513",
+                    "SA-628",
+                    "SA-K32",
+                    "SA-K33",
+                    "SA-K34",
+                    "PC-PBH",
+                    "SA-235",
+                    "SA-501",
+                    "SA-507",
+                    "SA-871",
+                    "SA-889",
+                    "SA-893",
+                    "SA-B69",
+                    "PS-292#",
+                    "SA-299",
+                    "SA-351",
+                    "SA-634",
+                    "SA-U10",
+                    "PC-P82",
+                    "SA-233",
+                    "SA-551",
+                    "SA-852",
+                    "SA-U60"
+                ]
+            },
+            {
+                "id": "CHASSIS",
+                "name": "파워트레인 및 섀시",
+                "cardinality": "ARBITRARY",
+                "categoryViewType": "DEFAULT",
+                "categoryViewConfiguration": {
+                    "categoryViewType": "DEFAULT",
+                    "stageV2": {
+                        "view": "EXTERIOR_360",
+                        "perspective": "BE020",
+                        "state": [
+                            "SZT",
+                            "DZO"
+                        ]
+                    }
+                },
+                "subcategories": [
+                    {
+                        "id": "CHASSIS_CHASSIS",
+                        "name": "서스펜션",
+                        "cardinality": "ARBITRARY",
+                        "categoryViewType": "DEFAULT",
+                        "categoryViewConfiguration": {
+                            "categoryViewType": "DEFAULT",
+                            "stageV2": {
+                                "view": "EXTERIOR_360",
+                                "perspective": "BE020",
+                                "state": [
+                                    "SZT",
+                                    "DZO"
+                                ]
+                            }
+                        },
+                        "subcategories": [
+                            {
+                                "id": "CHASSIS_SYSTEMS",
+                                "name": "서스펜션 시스템",
+                                "cardinality": "ARBITRARY",
+                                "categoryViewType": "DEFAULT",
+                                "categoryViewConfiguration": {
+                                    "categoryViewType": "DEFAULT",
+                                    "stageV2": {
+                                        "view": "EXTERIOR_360",
+                                        "perspective": "BE020",
+                                        "state": [
+                                            "SZT",
+                                            "DZO"
+                                        ]
+                                    }
+                                },
+                                "componentIds": [
+                                    "SA-479"
+                                ],
+                                "contains": "EXTERIOR",
+                                "incompatible": false,
+                                "preSelect": true
+                            }
+                        ],
+                        "contains": "EXTERIOR",
+                        "incompatible": false,
+                        "preSelect": true,
+                        "standardComponentIds": [
+                            "SA-470",
+                            "SA-479",
+                            "SA-B06",
+                            "SA-201"
+                        ],
+                        "highlightComponentsIds": [
+                            "SA-479"
+                        ]
+                    }
+                ],
+                "contains": "EXTERIOR",
+                "incompatible": false,
+                "preSelect": false,
+                "standardComponentIds": [
+                    "SA-470",
+                    "SA-479",
+                    "SA-B06",
+                    "SA-201",
+                    "GC-421",
+                    "SA-467",
+                    "SA-670"
+                ]
+            }
+        ],
+        "hasLengths": false
+    },
+    "vehicle": {
+        "vehicleId": "ko_KR__2329811_KR1__AU-509_GC-421_LE-L_LU-393_MJ-806_PC-P20-P49-P53-P64-P82-PBG-PBH-PBR-PMB_PS-292#-953#_SA-01U-14U-16U-17U-201-233-235-243-249-25B-262-266-272-275-299-309-318-321-32U-351-355-365-367-37U-382-399-401-403-438-443-464-467-470-475-479-49U-500-501-507-513-524-528-537-543-551-572-581-588-5B6-60U-628-634-666-670-673-6U3-72B-72H-756-79B-811-835-852-868-871-874-881-887-889-891-893-896-897-942-943-986-B06-B08-B51-B69-K32-K33-K34-L2D-R01-R29-U10-U14-U19-U25-U35-U60_SC-0U9-1B6-1S6-2S8-2U8-31U-3B4-466-4S1-4S6-502-6P5-8S5-8V8-K15-K31-PVN-R6M",
+        "name": "Mercedes-Maybach SL 680 Monogram Series",
+        "baumuster": "2329811",
+        "nst": "KR1",
+        "modelId": "2329811_KR1",
+        "modelYear": "806",
+        "typeClass": "Z232",
+        "vehicleClass": "SL",
+        "vehicleClassId": "SL-KLASSE",
+        "vehicleBody": "MAYBACH",
+        "vehicleBodyId": "MAYBACH",
+        "runoutVehicle": false,
+        "mediaSource": "PPM",
+        "productGroup": "PC",
+        "colorId": "LU-393",
+        "colorGroup": "Red",
+        "ocapiInformation": {
+            "technicalValues": [
+                {
+                    "id": "combustionPowerKw",
+                    "label": "마력",
+                    "value": "430 kW",
+                    "rawValue": "430"
+                },
+                {
+                    "id": "fuelType",
+                    "label": "연료 유형",
+                    "value": "가솔린",
+                    "rawValue": "가솔린"
+                },
+                {
+                    "id": "emissionStandard",
+                    "label": "배기 가스 규범",
+                    "value": "Euro 6e-bis",
+                    "rawValue": "Euro 6e-bis"
+                },
+                {
+                    "id": "electricPowerKw",
+                    "label": "전기 출력 (kw)",
+                    "value": "0 kW",
+                    "rawValue": "0"
+                },
+                {
+                    "id": "maxWeight",
+                    "label": "공차 중량",
+                    "value": "2,195 kg",
+                    "rawValue": "2195"
+                },
+                {
+                    "id": "seats",
+                    "label": "좌석",
+                    "value": "2",
+                    "rawValue": "2"
+                }
+            ]
+        },
+        "priceInformation": {
+            "currencyISO": "KRW",
+            "basePrice": {
+                "price": 342600000.0,
+                "formattedPrice": "342,600,000 KRW",
+                "netPrice": 311454545.45,
+                "formattedNetPrice": "311,454,545 KRW",
+                "currencyISO": "KRW"
+            },
+            "configurationPrice": {
+                "price": 342600000.0,
+                "formattedPrice": "342,600,000 KRW",
+                "netPrice": 311454545.45,
+                "formattedNetPrice": "311,454,545 KRW",
+                "currencyISO": "KRW"
+            },
+            "totalOptionPrice": {
+                "price": 0.0,
+                "formattedPrice": "0 KRW",
+                "netPrice": 0.0,
+                "formattedNetPrice": "0 KRW",
+                "currencyISO": "KRW"
+            }
+        },
+        "stageV2": {
+            "cosyId": "COSY-EU-100-1713d0VXqbWdqtyO67PobzIr3eWsrrCsdRRzwQZvkwZbMw3SGtxX2tsd1ZpcUfwMuXGEuymJ0l34JOB2Ng1bApjkbI5uVmMQC3qE7kzNRJ9m7jxaShKVFSt%25vq9vjyLRDG6YaxW09rH1dItn8wfQ2oiZEqpM4FlRjTg92YE6PDpSoSeWu0htsd4hQcUfg%25cXGEPamJ0le4fOB2sQObApUdpI5uGfDQC30X1kzNBJ9m7jAOShKV5Hw%25vq4t9yLRgc6YaxPXprH1eHrn8wsAxoiZU7NM4FGSMTg90hO6PDBroSeWAtItsd5%25GcUfS%25uXGEtadJ0lc4lOB2XSqbApJYbI5u841QC3ig2kzN4tKm7jgaFhKVBSL%25vqAvTyLR5OmYaxCNqrH1zmtn8w7hwoiZKMXM4FvTjTg9L6k6PDaGbSeWH0Stsd8BGcUfiA1XGEWbSJ0lCYAOB2zM%25bAp7oMIkbX1ZxYcTg9Ukm6tTuweSc67gItsdKHTcUfv8fXGEHarJ0lUHVOB2GQnbAp0TbI5uBfuQC3AkOkzN561m7jCSuhKVztn%25vq72DyLRlGXYaxHaWrH18H1n8wi8boiZ45pM4FgKuTg9Px26PKNCZnX2f3SNsh2BD2DkSW9wUwopoL24PvEa2zq7dXrCgQ",
+            "hasImageError": false,
+            "metaData": {
+                "baseInfo": {
+                    "baseUrl": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/232981/806/iris.webp",
+                    "initialStageView": "EXTERIOR_360",
+                    "fallbackImageUrl": "https://media.oneweb.mercedes-benz.com/iris/europe/iris.png?q=COSY-EU-100-1713d0VXq0WFqtyO67PobzIr3eWsrrCsdRRzwQZQ9vZbMw3SGtGeOtsd8hTcUfAyYXOc6VRjgkrHAlGqhTWFEnliXEbox1JnwxV449pTuZkwuoQ3pE7EJxJeRB5PVsRiD4sQ76WSyN8GQq&&fb=1&IMGT=P27&POV=BIS1,BI1,PZM&BKGND=9",
+                    "backgrounds": [
+                        {
+                            "id": "MUSEUM",
+                            "states": {
+                                "DAY": {
+                                    "id": "DAY",
+                                    "backgroundUrl": "https://media.oneweb.mercedes-benz.com/images/static/v1/10464/f/c7/df69f588188fabd8130af1752c74acbdcb141.jpg",
+                                    "stageViewState": "SZT"
+                                },
+                                "NIGHT": {
+                                    "id": "NIGHT",
+                                    "backgroundUrl": "https://media.oneweb.mercedes-benz.com/images/static/v1/10464/4/b5/cc9446d823c4e814109de9f73019e19b15d06.jpg",
+                                    "stageViewState": "SZN"
+                                }
+                            }
+                        }
+                    ]
+                },
+                "views": {
+                    "EXTERIOR_360": {
+                        "initialModeConfig": {
+                            "perspective": "BE020",
+                            "state": [
+                                "SZT",
+                                "DZO"
+                            ]
+                        },
+                        "perspectives": [
+                            "BE000",
+                            "BE010",
+                            "BE020",
+                            "BE030",
+                            "BE040",
+                            "BE050",
+                            "BE060",
+                            "BE070",
+                            "BE080",
+                            "BE090",
+                            "BE100",
+                            "BE110",
+                            "BE120",
+                            "BE130",
+                            "BE140",
+                            "BE150",
+                            "BE160",
+                            "BE170",
+                            "BE180",
+                            "BE190",
+                            "BE200",
+                            "BE210",
+                            "BE220",
+                            "BE230",
+                            "BE240",
+                            "BE250",
+                            "BE260",
+                            "BE270",
+                            "BE280",
+                            "BE290",
+                            "BE300",
+                            "BE310",
+                            "BE320",
+                            "BE330",
+                            "BE340",
+                            "BE350"
+                        ],
+                        "previewImageParameters": [
+                            {
+                                "key": "BKGND",
+                                "value": "15"
+                            },
+                            {
+                                "key": "IMGT",
+                                "value": "W27"
+                            },
+                            {
+                                "key": "POV",
+                                "value": "BE020"
+                            },
+                            {
+                                "key": "cp",
+                                "value": "o1Yw6tbhjdvotoOJyaA8nQ"
+                            }
+                        ],
+                        "states": [
+                            {
+                                "states": [
+                                    "SZT",
+                                    "SZN"
+                                ]
+                            },
+                            {
+                                "states": [
+                                    "DZO",
+                                    "DZG"
+                                ]
+                            }
+                        ],
+                        "imageTypes": [
+                            {
+                                "value": "W27",
+                                "mimeType": "image/webp"
+                            }
+                        ],
+                        "additionalParameters": [
+                            {
+                                "key": "BKGND",
+                                "value": "9"
+                            },
+                            {
+                                "key": "uni",
+                                "value": "m"
+                            },
+                            {
+                                "key": "cp",
+                                "value": "o1Yw6tbhjdvotoOJyaA8nQ"
+                            }
+                        ],
+                        "fullScreenDefinition": {
+                            "perspectives": [
+                                "BE000",
+                                "BE010",
+                                "BE020",
+                                "BE030",
+                                "BE040",
+                                "BE050",
+                                "BE060",
+                                "BE070",
+                                "BE080",
+                                "BE090",
+                                "BE100",
+                                "BE110",
+                                "BE120",
+                                "BE130",
+                                "BE140",
+                                "BE150",
+                                "BE160",
+                                "BE170",
+                                "BE180",
+                                "BE190",
+                                "BE200",
+                                "BE210",
+                                "BE220",
+                                "BE230",
+                                "BE240",
+                                "BE250",
+                                "BE260",
+                                "BE270",
+                                "BE280",
+                                "BE290",
+                                "BE300",
+                                "BE310",
+                                "BE320",
+                                "BE330",
+                                "BE340",
+                                "BE350"
+                            ],
+                            "states": [
+                                {
+                                    "states": [
+                                        "SZT",
+                                        "SZN"
+                                    ]
+                                },
+                                {
+                                    "states": [
+                                        "DZO",
+                                        "DZG"
+                                    ]
+                                }
+                            ],
+                            "additionalParameters": [
+                                {
+                                    "key": "BKGND",
+                                    "value": "15"
+                                },
+                                {
+                                    "key": "cp",
+                                    "value": "o1Yw6tbhjdvotoOJyaA8nQ"
+                                }
+                            ],
+                            "imageType": {
+                                "value": "A27",
+                                "mimeType": "image/jpeg"
+                            }
+                        }
+                    },
+                    "INTERIOR": {
+                        "initialModeConfig": {
+                            "perspective": "BI1",
+                            "state": [
+                                "SZT"
+                            ]
+                        },
+                        "perspectives": [
+                            "BI1",
+                            "BI2",
+                            "BI4",
+                            "BET1"
+                        ],
+                        "previewImageParameters": [
+                            {
+                                "key": "BKGND",
+                                "value": "15"
+                            },
+                            {
+                                "key": "IMGT",
+                                "value": "W27"
+                            },
+                            {
+                                "key": "POV",
+                                "value": "BI1"
+                            },
+                            {
+                                "key": "cp",
+                                "value": "o1Yw6tbhjdvotoOJyaA8nQ"
+                            }
+                        ],
+                        "states": [
+                            {
+                                "states": [
+                                    "SZT",
+                                    "SZN"
+                                ]
+                            }
+                        ],
+                        "imageTypes": [
+                            {
+                                "value": "W27",
+                                "mimeType": "image/webp"
+                            }
+                        ],
+                        "additionalParameters": [
+                            {
+                                "key": "fb",
+                                "value": "1"
+                            },
+                            {
+                                "key": "BKGND",
+                                "value": "15"
+                            },
+                            {
+                                "key": "cp",
+                                "value": "o1Yw6tbhjdvotoOJyaA8nQ"
+                            }
+                        ]
+                    },
+                    "INTERIOR_360": {
+                        "initialModeConfig": {
+                            "perspective": "BIS1",
+                            "state": [
+                                "SZT"
+                            ]
+                        },
+                        "perspectives": [
+                            "BIS1",
+                            "BIS2",
+                            "BIS3",
+                            "BIS4",
+                            "BIS5",
+                            "BIS6"
+                        ],
+                        "states": [
+                            {
+                                "states": [
+                                    "SZT",
+                                    "SZN"
+                                ]
+                            }
+                        ],
+                        "imageTypes": [
+                            {
+                                "value": "W27",
+                                "mimeType": "image/webp"
+                            }
+                        ],
+                        "additionalParameters": [
+                            {
+                                "key": "BKGND",
+                                "value": "15"
+                            },
+                            {
+                                "key": "cp",
+                                "value": "o1Yw6tbhjdvotoOJyaA8nQ"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "plsInformationSection": {
+            "technicalData": {
+                "engine": {
+                    "type": "COMBUSTOR",
+                    "driveCycle": {
+                        "wltp": {
+                            "emission": {}
+                        }
+                    }
+                }
+            }
+        },
+        "brand": "Mercedes-Maybach"
+    },
+    "summary": {
+        "configurationOverview": {
+            "standard": {
+                "categories": [
+                    {
+                        "id": "VARIANTS",
+                        "name": "버전",
+                        "components": [
+                            {
+                                "id": "PC-PMB",
+                                "name": "레드 앰비언스 패키지",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "VARIANTS",
+                                    "LINES",
+                                    "ZK017"
+                                ],
+                                "includedComponents": [
+                                    {
+                                        "id": "LU-393",
+                                        "name": "MANUFAKTUR 가넷 레드 메탈릭",
+                                        "path": [
+                                            "EXTERIOR",
+                                            "PAINTS",
+                                            "ZK020"
+                                        ],
+                                        "standard": false,
+                                        "enabled": true,
+                                        "selected": false,
+                                        "price": {
+                                            "price": 0.0,
+                                            "formattedPrice": "0 KRW",
+                                            "netPrice": 0.0,
+                                            "formattedNetPrice": "0 KRW",
+                                            "currencyISO": "KRW"
+                                        },
+                                        "filteredByFixation": false,
+                                        "requiresMercedesMe": false,
+                                        "highlighted": false
+                                    },
+                                    {
+                                        "id": "SA-60U",
+                                        "name": "MANUFAKTUR 마이크로컷 루프라이너, 크리스탈 화이트",
+                                        "path": [
+                                            "INTERIOR",
+                                            "INTERIOR_EXTRAS",
+                                            "CEILING"
+                                        ],
+                                        "standard": false,
+                                        "enabled": true,
+                                        "selected": false,
+                                        "price": {
+                                            "price": 0.0,
+                                            "formattedPrice": "0 KRW",
+                                            "netPrice": 0.0,
+                                            "formattedNetPrice": "0 KRW",
+                                            "currencyISO": "KRW"
+                                        },
+                                        "filteredByFixation": false,
+                                        "requiresMercedesMe": false,
+                                        "highlighted": false
+                                    },
+                                    {
+                                        "id": "AU-509",
+                                        "name": "MANUFAKTUR 익스클루시브 나파 가죽, 크리스탈 화이트",
+                                        "path": [
+                                            "INTERIOR",
+                                            "UPHOLSTERIES",
+                                            "ZK032"
+                                        ],
+                                        "standard": false,
+                                        "enabled": true,
+                                        "selected": false,
+                                        "price": {
+                                            "price": 0.0,
+                                            "formattedPrice": "0 KRW",
+                                            "netPrice": 0.0,
+                                            "formattedNetPrice": "0 KRW",
+                                            "currencyISO": "KRW"
+                                        },
+                                        "filteredByFixation": false,
+                                        "requiresMercedesMe": false,
+                                        "highlighted": false
+                                    },
+                                    {
+                                        "id": "SA-756",
+                                        "name": "MAYBACH 패턴이 적용된 패브릭 소프트 탑, 블랙",
+                                        "path": [
+                                            "EXTERIOR",
+                                            "CABRIO_ROOF"
+                                        ],
+                                        "standard": false,
+                                        "enabled": true,
+                                        "selected": false,
+                                        "price": {
+                                            "price": 0.0,
+                                            "formattedPrice": "0 KRW",
+                                            "netPrice": 0.0,
+                                            "formattedNetPrice": "0 KRW",
+                                            "currencyISO": "KRW"
+                                        },
+                                        "filteredByFixation": false,
+                                        "requiresMercedesMe": false,
+                                        "highlighted": false
+                                    },
+                                    {
+                                        "id": "SA-L2D",
+                                        "name": "다기능 스티어링 휠, 우드/가죽",
+                                        "path": [
+                                            "INTERIOR",
+                                            "STEERING_WHEEL",
+                                            "STEERING_WHEEL_STEERING_WHEEL"
+                                        ],
+                                        "standard": false,
+                                        "enabled": true,
+                                        "selected": false,
+                                        "price": {
+                                            "price": 0.0,
+                                            "formattedPrice": "0 KRW",
+                                            "netPrice": 0.0,
+                                            "formattedNetPrice": "0 KRW",
+                                            "currencyISO": "KRW"
+                                        },
+                                        "filteredByFixation": false,
+                                        "requiresMercedesMe": false,
+                                        "highlighted": false
+                                    },
+                                    {
+                                        "id": "SA-72H",
+                                        "name": "실버 크롬 트림",
+                                        "path": [
+                                            "INTERIOR",
+                                            "TRIMS",
+                                            "ZK049"
+                                        ],
+                                        "standard": false,
+                                        "enabled": true,
+                                        "selected": false,
+                                        "price": {
+                                            "price": 0.0,
+                                            "formattedPrice": "0 KRW",
+                                            "netPrice": 0.0,
+                                            "formattedNetPrice": "0 KRW",
+                                            "currencyISO": "KRW"
+                                        },
+                                        "filteredByFixation": false,
+                                        "requiresMercedesMe": false,
+                                        "highlighted": false
+                                    }
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            }
+                        ],
+                        "categoryViewConfiguration": {
+                            "categoryViewType": "DEFAULT",
+                            "stageV2": {
+                                "view": "EXTERIOR_360",
+                                "perspective": "BE020",
+                                "state": [
+                                    "SZT",
+                                    "DZO"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "id": "EXTERIOR",
+                        "name": "익스테리어",
+                        "components": [
+                            {
+                                "id": "SA-R29",
+                                "name": "21인치 MAYBACH 멀티 스포크 단조 휠",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "EXTERIOR",
+                                    "WHEELS",
+                                    "21_INCH"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-588",
+                                "name": "AMG 라이트 디스플레이",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "EXTERIOR",
+                                    "EXTERIOR_EXTRAS",
+                                    "EXTERIOR_EXTRAS_OTHERS"
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-318",
+                                "name": "디지털 라이트",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "EXTERIOR",
+                                    "HEADLIGHTS",
+                                    "HEADLIGHTS_HEADLIGHTS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-874",
+                                "name": "매직 비젼 컨트롤",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "EXTERIOR",
+                                    "EXTERIOR_EXTRAS",
+                                    "GLASS_AND_ROOF",
+                                    "GLASS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-5B6",
+                                "name": "발광 라디에이터 그릴",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "EXTERIOR",
+                                    "EXTERIOR_EXTRAS",
+                                    "EXTERIOR_EXTRAS_OTHERS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-R01",
+                                "name": "썸머 타이어",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "EXTERIOR",
+                                    "TYRES",
+                                    "TYRES_TYRES"
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-666",
+                                "name": "운송 보호용 패키지",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "EXTERIOR",
+                                    "EXTERIOR_EXTRAS",
+                                    "ZK002"
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-B51",
+                                "name": "타이어핏",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "EXTERIOR",
+                                    "TYRES",
+                                    "TYRES_EXTRAS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-524",
+                                "name": "트랜스포트 프로텍션",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "EXTERIOR",
+                                    "EXTERIOR_EXTRAS",
+                                    "EXTERIOR_EXTRAS_OTHERS",
+                                    "EXTERIOR_EXTRAS_OTHERS_OTHERS"
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            }
+                        ],
+                        "categoryViewConfiguration": {
+                            "categoryViewType": "DEFAULT",
+                            "stageV2": {
+                                "view": "EXTERIOR_360",
+                                "perspective": "BE020",
+                                "state": [
+                                    "SZT",
+                                    "DZO"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "id": "INTERIOR",
+                        "name": "인테리어",
+                        "components": [
+                            {
+                                "id": "SA-572",
+                                "name": "ISOFIX",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "INTERIOR",
+                                    "SEATS",
+                                    "ZK005"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "PC-P53",
+                                "name": "공기 청정 패키지",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "INTERIOR",
+                                    "INTERIOR_EXTRAS",
+                                    "CLIMATE_CONTROL"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-887",
+                                "name": "독립 트렁크 잠금장치",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "INTERIOR",
+                                    "INTERIOR_EXTRAS",
+                                    "STORAGE_AND_TRUNK"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-U14",
+                                "name": "럭셔리 플로어 매트",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "INTERIOR",
+                                    "INTERIOR_EXTRAS",
+                                    "FOOTWELL",
+                                    "FOOT_MATS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "PC-P64",
+                                "name": "메모리 패키지",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "INTERIOR",
+                                    "SEATS",
+                                    "SEATS_COMFORT_PACKAGES"
+                                ],
+                                "includedComponents": [
+                                    {
+                                        "id": "PC-P49",
+                                        "name": "미러 패키지",
+                                        "includedComponents": [
+                                            {
+                                                "id": "SA-249",
+                                                "name": "사이드 및 룸 미러 눈부심 방지",
+                                                "path": [
+                                                    "EXTERIOR",
+                                                    "EXTERIOR_EXTRAS",
+                                                    "MIRRORS"
+                                                ],
+                                                "standard": false,
+                                                "enabled": true,
+                                                "selected": false,
+                                                "price": {
+                                                    "price": 0.0,
+                                                    "formattedPrice": "0 KRW",
+                                                    "netPrice": 0.0,
+                                                    "formattedNetPrice": "0 KRW",
+                                                    "currencyISO": "KRW"
+                                                },
+                                                "filteredByFixation": false,
+                                                "requiresMercedesMe": false,
+                                                "highlighted": false
+                                            },
+                                            {
+                                                "id": "SA-500",
+                                                "name": "전동 접이식 눈부심 방지 사이드 미러",
+                                                "path": [
+                                                    "EXTERIOR",
+                                                    "EXTERIOR_EXTRAS",
+                                                    "MIRRORS"
+                                                ],
+                                                "standard": false,
+                                                "enabled": true,
+                                                "selected": false,
+                                                "price": {
+                                                    "price": 0.0,
+                                                    "formattedPrice": "0 KRW",
+                                                    "netPrice": 0.0,
+                                                    "formattedNetPrice": "0 KRW",
+                                                    "currencyISO": "KRW"
+                                                },
+                                                "filteredByFixation": false,
+                                                "requiresMercedesMe": false,
+                                                "highlighted": false
+                                            }
+                                        ],
+                                        "path": [
+                                            "EXTERIOR",
+                                            "EXTERIOR_EXTRAS",
+                                            "MIRRORS"
+                                        ],
+                                        "standard": false,
+                                        "enabled": true,
+                                        "selected": false,
+                                        "price": {
+                                            "price": 0.0,
+                                            "formattedPrice": "0 KRW",
+                                            "netPrice": 0.0,
+                                            "formattedNetPrice": "0 KRW",
+                                            "currencyISO": "KRW"
+                                        },
+                                        "filteredByFixation": false,
+                                        "requiresMercedesMe": false,
+                                        "highlighted": false
+                                    }
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-275",
+                                "name": "메모리 패키지",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "INTERIOR",
+                                    "SEATS",
+                                    "SEATS_COMFORT_PACKAGES"
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-U25",
+                                "name": "발광 도어 실 패널  \"MAYBACH\" 레터링",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "INTERIOR",
+                                    "INTERIOR_EXTRAS",
+                                    "INTERIOR_EXTRAS_OTHERS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-U35",
+                                "name": "소켓",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "INTERIOR",
+                                    "INTERIOR_EXTRAS",
+                                    "INTERIOR_EXTRAS_OTHERS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-B08",
+                                "name": "아시아용 경적",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "INTERIOR",
+                                    "INTERIOR_EXTRAS",
+                                    "INTERIOR_EXTRAS_OTHERS"
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-891",
+                                "name": "앰비언트 라이트",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "INTERIOR",
+                                    "AMBIENT",
+                                    "AMBIENT_LIGHTS"
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "PC-PBR",
+                                "name": "에너자이징 패키지 플러스",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "INTERIOR",
+                                    "AMBIENT",
+                                    "AMBIENT_OTHERS"
+                                ],
+                                "includedComponents": [
+                                    {
+                                        "id": "SA-399",
+                                        "name": "멀티컨투어 시트",
+                                        "path": [
+                                            "INTERIOR",
+                                            "SEATS",
+                                            "SEATS_SEATS"
+                                        ],
+                                        "standard": false,
+                                        "enabled": true,
+                                        "selected": false,
+                                        "price": {
+                                            "price": 0.0,
+                                            "formattedPrice": "0 KRW",
+                                            "netPrice": 0.0,
+                                            "formattedNetPrice": "0 KRW",
+                                            "currencyISO": "KRW"
+                                        },
+                                        "filteredByFixation": false,
+                                        "requiresMercedesMe": false,
+                                        "highlighted": false
+                                    },
+                                    {
+                                        "id": "SA-401",
+                                        "name": "앞좌석 열선 및 통풍 시트",
+                                        "path": [
+                                            "INTERIOR",
+                                            "SEATS",
+                                            "SEATS_SEATS"
+                                        ],
+                                        "standard": false,
+                                        "enabled": true,
+                                        "selected": false,
+                                        "price": {
+                                            "price": 0.0,
+                                            "formattedPrice": "0 KRW",
+                                            "netPrice": 0.0,
+                                            "formattedNetPrice": "0 KRW",
+                                            "currencyISO": "KRW"
+                                        },
+                                        "filteredByFixation": false,
+                                        "requiresMercedesMe": false,
+                                        "highlighted": false
+                                    }
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-403",
+                                "name": "에어스카프",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "INTERIOR",
+                                    "SEATS",
+                                    "SEATS_SEATS"
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-443",
+                                "name": "열선 스티어링 휠",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "INTERIOR",
+                                    "STEERING_WHEEL",
+                                    "STEERING_WHEEL_OTHERS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-6U3",
+                                "name": "오토매틱 트렁크 세퍼레이터",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "INTERIOR",
+                                    "INTERIOR_EXTRAS",
+                                    "STORAGE_AND_TRUNK"
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-581",
+                                "name": "자동 온도 조절 시스템",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "INTERIOR",
+                                    "INTERIOR_EXTRAS",
+                                    "CLIMATE_CONTROL",
+                                    "CLIMATE_AUTOMATIC"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-881",
+                                "name": "전동 트렁크",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "INTERIOR",
+                                    "INTERIOR_EXTRAS",
+                                    "STORAGE_AND_TRUNK"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-309",
+                                "name": "컵 홀더",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "INTERIOR",
+                                    "INTERIOR_EXTRAS",
+                                    "STORAGE_AND_TRUNK"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-943",
+                                "name": "톨 정산 시스템",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "INTERIOR",
+                                    "INTERIOR_EXTRAS",
+                                    "INTERIOR_EXTRAS_OTHERS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-942",
+                                "name": "트렁크 패키지",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "INTERIOR",
+                                    "INTERIOR_EXTRAS",
+                                    "STORAGE_AND_TRUNK"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-543",
+                                "name": "풀 아웃 선바이저",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "INTERIOR",
+                                    "INTERIOR_EXTRAS",
+                                    "SUN_PROTECTION"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            }
+                        ],
+                        "categoryViewConfiguration": {
+                            "categoryViewType": "DEFAULT",
+                            "stageV2": {
+                                "view": "INTERIOR_360",
+                                "perspective": "BIS1",
+                                "state": [
+                                    "SZT"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "id": "MULTIMEDIA",
+                        "name": "멀티미디어",
+                        "components": [
+                            {
+                                "id": "PC-PBG",
+                                "name": "MBUX 내비게이션 프리미엄",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "NAVIGATION"
+                                ],
+                                "includedComponents": [
+                                    {
+                                        "id": "SA-365",
+                                        "name": "내비게이션",
+                                        "path": [
+                                            "MULTIMEDIA",
+                                            "MULTIMEDIA_MULTIMEDIA",
+                                            "NAVIGATION"
+                                        ],
+                                        "standard": false,
+                                        "enabled": true,
+                                        "selected": false,
+                                        "price": {
+                                            "price": 0.0,
+                                            "formattedPrice": "0 KRW",
+                                            "netPrice": 0.0,
+                                            "formattedNetPrice": "0 KRW",
+                                            "currencyISO": "KRW"
+                                        },
+                                        "filteredByFixation": false,
+                                        "requiresMercedesMe": false,
+                                        "highlighted": false
+                                    },
+                                    {
+                                        "id": "SC-502",
+                                        "name": "온라인 지도 업데이트",
+                                        "standard": false,
+                                        "enabled": true,
+                                        "selected": false,
+                                        "price": {
+                                            "price": 0.0,
+                                            "formattedPrice": "0 KRW",
+                                            "netPrice": 0.0,
+                                            "formattedNetPrice": "0 KRW",
+                                            "currencyISO": "KRW"
+                                        },
+                                        "filteredByFixation": false,
+                                        "requiresMercedesMe": false,
+                                        "highlighted": false
+                                    }
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-528",
+                                "name": "MBUX 멀티미디어 시스템",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "MULTIMEDIA_CONNECTED_CARS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-U19",
+                                "name": "MBUX 증강 현실 내비게이션",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "NAVIGATION"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-355",
+                                "name": "MBUX 확장 기능",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "DISPLAY"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-72B",
+                                "name": "USB 패키지 플러스",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "SMARTPHONE_INTEGRATION"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-464",
+                                "name": "계기반",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "DISPLAY",
+                                    "DRIVER_DISPLAY"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-01U",
+                                "name": "내비게이션 서비스",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "NAVIGATION"
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-673",
+                                "name": "대용량 배터리",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "SPECIAL_EQUIPMENT",
+                                    "ZKL04",
+                                    "ZK010"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-537",
+                                "name": "디지털 라디오",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "SOUND"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-37U",
+                                "name": "리모트 서비스",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "MULTIMEDIA_CONNECTED_CARS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-811",
+                                "name": "부메스터 3D 서라운드 사운드 시스템",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "SOUND",
+                                    "SOUND_SYSTEMS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-32U",
+                                "name": "사운드 개인화",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "SOUND"
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-868",
+                                "name": "센트럴 디스플레이",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "DISPLAY",
+                                    "MULTIMEDIA_DISPLAY"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-896",
+                                "name": "스마트폰 디지털 키 프리인스톨레이션",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "SMARTPHONE_INTEGRATION"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-14U",
+                                "name": "스마트폰 통합 패키지",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "SMARTPHONE_INTEGRATION"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-17U",
+                                "name": "안드로이드 오토",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "SMARTPHONE_INTEGRATION"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-897",
+                                "name": "앞좌석 무선 충전 시스템",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "SMARTPHONE_INTEGRATION"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-16U",
+                                "name": "애플 카플레이",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "SMARTPHONE_INTEGRATION"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-49U",
+                                "name": "엔터테인먼트 플러스 프리인스톨레이션",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "MULTIMEDIA_CONNECTED_CARS"
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-321",
+                                "name": "지문 스캐너",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "DISPLAY"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-382",
+                                "name": "커뮤니케이션 모듈",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "MULTIMEDIA_CONNECTED_CARS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-79B",
+                                "name": "프리-인스톨레이션 디지털 라디오",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "SOUND"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-367",
+                                "name": "프리-인스톨레이션 실시간 교통 정보",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "NAVIGATION"
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-438",
+                                "name": "헤드업 디스플레이",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "MULTIMEDIA",
+                                    "MULTIMEDIA_MULTIMEDIA",
+                                    "DISPLAY",
+                                    "HEAD_UP_DISPLAYS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            }
+                        ],
+                        "categoryViewConfiguration": {
+                            "categoryViewType": "DEFAULT",
+                            "stageV2": {
+                                "view": "INTERIOR_360",
+                                "perspective": "BIS1",
+                                "state": [
+                                    "SZT"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "id": "ASSISTANCESYSTEMS_SAFETY",
+                        "name": "운전자 보조 시스템 및 안전",
+                        "components": [
+                            {
+                                "id": "PS-292#",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "SAFETY",
+                                    "PASSENGER_SAFETY"
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-351",
+                                "name": "eCall",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "SAFETY",
+                                    "PASSENGER_SAFETY"
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-299",
+                                "name": "PRE-SAFE® 시스템",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "SAFETY",
+                                    "PASSENGER_SAFETY"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-K34",
+                                "name": "경로 기반 속도 조절",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "ASSISTANCESYSTEMS",
+                                    "DRIVING",
+                                    "DRIVING_ASSISTANTS_OTHERS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-266",
+                                "name": "교차로 어시스트 기능이 포함된 디스트로닉 플러스",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "ASSISTANCESYSTEMS",
+                                    "DRIVING",
+                                    "DRIVING_ASSISTANTS_OTHERS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-513",
+                                "name": "교통 표지판 어시스트",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "ASSISTANCESYSTEMS",
+                                    "DRIVING",
+                                    "DRIVING_ASSISTANTS_OTHERS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-634",
+                                "name": "구급상자 삭제",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "SAFETY",
+                                    "PASSENGER_SAFETY"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-U10",
+                                "name": "동반석 에어백 자동 해제 장치",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "SAFETY",
+                                    "PASSENGER_SAFETY"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "PC-P20",
+                                "name": "드라이빙 어시스턴스 패키지",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "ASSISTANCESYSTEMS",
+                                    "DRIVING",
+                                    "DRIVING_ASSISTANTS_SYSTEMS"
+                                ],
+                                "includedComponents": [
+                                    {
+                                        "id": "SA-233",
+                                        "name": "디스트로닉 플러스",
+                                        "path": [
+                                            "ASSISTANCESYSTEMS_SAFETY",
+                                            "SAFETY",
+                                            "VEHICLE_SAFETY"
+                                        ],
+                                        "standard": false,
+                                        "enabled": true,
+                                        "selected": false,
+                                        "price": {
+                                            "price": 0.0,
+                                            "formattedPrice": "0 KRW",
+                                            "netPrice": 0.0,
+                                            "formattedNetPrice": "0 KRW",
+                                            "currencyISO": "KRW"
+                                        },
+                                        "filteredByFixation": false,
+                                        "requiresMercedesMe": false,
+                                        "highlighted": false
+                                    }
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-U60",
+                                "name": "액티브 보닛",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "SAFETY",
+                                    "VEHICLE_SAFETY"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-K32",
+                                "name": "액티브 차선 변경 어시스트",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "ASSISTANCESYSTEMS",
+                                    "DRIVING",
+                                    "DRIVING_ASSISTANTS_OTHERS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-243",
+                                "name": "액티브 차선 이탈 방지 어시스트",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "ASSISTANCESYSTEMS",
+                                    "DRIVING",
+                                    "DRIVING_ASSISTANTS_OTHERS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-628",
+                                "name": "어댑티브 상향등 어시스트 플러스",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "ASSISTANCESYSTEMS",
+                                    "DRIVING",
+                                    "DRIVING_ASSISTANTS_OTHERS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "PC-PBH",
+                                "name": "원격 주차 패키지",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "ASSISTANCESYSTEMS",
+                                    "PARKING",
+                                    "PARKING_ASSISTANTS_SYSTEMS"
+                                ],
+                                "includedComponents": [
+                                    {
+                                        "id": "SA-501",
+                                        "name": "360° 카메라",
+                                        "path": [
+                                            "ASSISTANCESYSTEMS_SAFETY",
+                                            "ASSISTANCESYSTEMS",
+                                            "PARKING",
+                                            "PARKING_ASSISTANTS_OTHERS"
+                                        ],
+                                        "standard": false,
+                                        "enabled": true,
+                                        "selected": false,
+                                        "price": {
+                                            "price": 0.0,
+                                            "formattedPrice": "0 KRW",
+                                            "netPrice": 0.0,
+                                            "formattedNetPrice": "0 KRW",
+                                            "currencyISO": "KRW"
+                                        },
+                                        "filteredByFixation": false,
+                                        "requiresMercedesMe": false,
+                                        "highlighted": false
+                                    },
+                                    {
+                                        "id": "SA-507",
+                                        "name": "메모리 주차 어시스트",
+                                        "path": [
+                                            "ASSISTANCESYSTEMS_SAFETY",
+                                            "ASSISTANCESYSTEMS",
+                                            "PARKING",
+                                            "PARKING_ASSISTANTS_OTHERS"
+                                        ],
+                                        "standard": false,
+                                        "enabled": true,
+                                        "selected": false,
+                                        "price": {
+                                            "price": 0.0,
+                                            "formattedPrice": "0 KRW",
+                                            "netPrice": 0.0,
+                                            "formattedNetPrice": "0 KRW",
+                                            "currencyISO": "KRW"
+                                        },
+                                        "filteredByFixation": false,
+                                        "requiresMercedesMe": false,
+                                        "highlighted": false
+                                    },
+                                    {
+                                        "id": "SA-235",
+                                        "name": "액티브 주차 어시스트",
+                                        "path": [
+                                            "ASSISTANCESYSTEMS_SAFETY",
+                                            "ASSISTANCESYSTEMS",
+                                            "PARKING",
+                                            "PARKING_ASSISTANTS_OTHERS"
+                                        ],
+                                        "standard": false,
+                                        "enabled": true,
+                                        "selected": false,
+                                        "price": {
+                                            "price": 0.0,
+                                            "formattedPrice": "0 KRW",
+                                            "netPrice": 0.0,
+                                            "formattedNetPrice": "0 KRW",
+                                            "currencyISO": "KRW"
+                                        },
+                                        "filteredByFixation": false,
+                                        "requiresMercedesMe": false,
+                                        "highlighted": false
+                                    }
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-K33",
+                                "name": "재 출발 시간 연장",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "ASSISTANCESYSTEMS",
+                                    "DRIVING",
+                                    "DRIVING_ASSISTANTS_OTHERS"
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "PC-P82",
+                                "name": "차량 손상 및 도난 알림 패키지 플러스",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "SAFETY",
+                                    "VEHICLE_SAFETY"
+                                ],
+                                "includedComponents": [
+                                    {
+                                        "id": "SA-551",
+                                        "name": "도난 방지 경보 시스템",
+                                        "path": [
+                                            "ASSISTANCESYSTEMS_SAFETY",
+                                            "SAFETY",
+                                            "VEHICLE_SAFETY"
+                                        ],
+                                        "standard": false,
+                                        "enabled": true,
+                                        "selected": false,
+                                        "price": {
+                                            "price": 0.0,
+                                            "formattedPrice": "0 KRW",
+                                            "netPrice": 0.0,
+                                            "formattedNetPrice": "0 KRW",
+                                            "currencyISO": "KRW"
+                                        },
+                                        "filteredByFixation": false,
+                                        "requiresMercedesMe": false,
+                                        "highlighted": false
+                                    },
+                                    {
+                                        "id": "SA-852",
+                                        "name": "사이렌 경적음",
+                                        "path": [
+                                            "ASSISTANCESYSTEMS_SAFETY",
+                                            "SAFETY",
+                                            "VEHICLE_SAFETY"
+                                        ],
+                                        "standard": false,
+                                        "enabled": true,
+                                        "selected": false,
+                                        "price": {
+                                            "price": 0.0,
+                                            "formattedPrice": "0 KRW",
+                                            "netPrice": 0.0,
+                                            "formattedNetPrice": "0 KRW",
+                                            "currencyISO": "KRW"
+                                        },
+                                        "filteredByFixation": false,
+                                        "requiresMercedesMe": false,
+                                        "highlighted": false
+                                    }
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-B69",
+                                "name": "차량 키, 로즈골드/크롬",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "SAFETY",
+                                    "LOCKING_SYSTEMS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-272",
+                                "name": "충돌 회피 매뉴버링 서포트",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "ASSISTANCESYSTEMS",
+                                    "DRIVING",
+                                    "DRIVING_ASSISTANTS_OTHERS"
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-889",
+                                "name": "키레스 고",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "SAFETY",
+                                    "LOCKING_SYSTEMS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-893",
+                                "name": "키레스 고 스타팅 버튼",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "SAFETY",
+                                    "LOCKING_SYSTEMS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-475",
+                                "name": "타이어 공기압 경보 장치 (TPMS)",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "ASSISTANCESYSTEMS",
+                                    "DRIVING",
+                                    "DRIVING_ASSISTANTS_OTHERS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-871",
+                                "name": "핸즈 프리 액세스",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "SAFETY",
+                                    "LOCKING_SYSTEMS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-262",
+                                "name": "후측방 레이더 센서",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "ASSISTANCESYSTEMS_SAFETY",
+                                    "ASSISTANCESYSTEMS",
+                                    "DRIVING",
+                                    "DRIVING_ASSISTANTS_OTHERS"
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            }
+                        ],
+                        "categoryViewConfiguration": {
+                            "categoryViewType": "DEFAULT",
+                            "stageV2": {
+                                "view": "INTERIOR_360",
+                                "perspective": "BIS1",
+                                "state": [
+                                    "SZT"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "id": "CHASSIS",
+                        "name": "파워트레인 및 섀시",
+                        "components": [
+                            {
+                                "id": "SA-470",
+                                "name": "AMG 액티브 라이드 컨트롤 서스펜션",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "CHASSIS",
+                                    "CHASSIS_CHASSIS",
+                                    "CHASSIS_SYSTEMS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-467",
+                                "name": "AMG 전자식 리어 액슬 리미티드 슬립 디퍼렌셜",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "CHASSIS",
+                                    "CHASSIS_OTHERS"
+                                ],
+                                "editable": false,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-201",
+                                "name": "리어 액슬 스티어링 (2.5°)",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "CHASSIS",
+                                    "CHASSIS_CHASSIS",
+                                    "REAR_AXLE_STEERING"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-B06",
+                                "name": "브레이크 캘리퍼, 실버",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "CHASSIS",
+                                    "CHASSIS_CHASSIS",
+                                    "BRAKES"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "GC-421",
+                                "name": "자동 9단 변속기",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "CHASSIS",
+                                    "CHASSIS_OTHERS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-670",
+                                "name": "잔여 엔진 열 활용",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "CHASSIS",
+                                    "CHASSIS_OTHERS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            },
+                            {
+                                "id": "SA-479",
+                                "name": "프론트 액슬 리프트 시스템",
+                                "price": {
+                                    "price": 0.0,
+                                    "formattedPrice": "0 KRW",
+                                    "netPrice": 0.0,
+                                    "formattedNetPrice": "0 KRW",
+                                    "currencyISO": "KRW"
+                                },
+                                "componentPath": [
+                                    "CHASSIS",
+                                    "CHASSIS_CHASSIS",
+                                    "CHASSIS_SYSTEMS"
+                                ],
+                                "editable": true,
+                                "requiresMercedesMe": false
+                            }
+                        ],
+                        "categoryViewConfiguration": {
+                            "categoryViewType": "DEFAULT",
+                            "stageV2": {
+                                "view": "EXTERIOR_360",
+                                "perspective": "BE020",
+                                "state": [
+                                    "SZT",
+                                    "DZO"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "highlights": [
+                    "SA-479",
+                    "SA-871"
+                ]
+            },
+            "optional": {},
+            "priceInformation": {
+                "currencyISO": "KRW",
+                "basePrice": {
+                    "price": 342600000.0,
+                    "formattedPrice": "342,600,000 KRW",
+                    "netPrice": 311454545.45,
+                    "formattedNetPrice": "311,454,545 KRW",
+                    "currencyISO": "KRW"
+                },
+                "configurationPrice": {
+                    "price": 342600000.0,
+                    "formattedPrice": "342,600,000 KRW",
+                    "netPrice": 311454545.45,
+                    "formattedNetPrice": "311,454,545 KRW",
+                    "currencyISO": "KRW"
+                },
+                "totalOptionPrice": {
+                    "price": 0.0,
+                    "formattedPrice": "0 KRW",
+                    "netPrice": 0.0,
+                    "formattedNetPrice": "0 KRW",
+                    "currencyISO": "KRW"
+                }
+            }
+        },
+        "efficiencyInformationSection": {},
+        "technicalInformationSection": {
+            "technicalInformationGroup": [
+                {
+                    "label": "출력",
+                    "technicalValues": [
+                        {
+                            "id": "technicalInformation.engine.fuelType",
+                            "label": "연료 유형",
+                            "value": "가솔린",
+                            "rawValue": "가솔린",
+                            "workbenchIcon": "fuel"
+                        },
+                        {
+                            "id": "technicalInformation.engine.cylinder",
+                            "label": "실린더 수",
+                            "value": "V8",
+                            "rawValue": "V8"
+                        },
+                        {
+                            "id": "technicalInformation.engine.capacity",
+                            "label": "배기량",
+                            "value": "3,982 cc",
+                            "unit": "cc",
+                            "rawValue": "3982"
+                        },
+                        {
+                            "id": "technicalInformation.transmission.name",
+                            "label": "변속기",
+                            "value": "자동 9단 변속기",
+                            "rawValue": "자동 9단 변속기",
+                            "workbenchIcon": "gear"
+                        },
+                        {
+                            "id": "technicalInformation.transmission.transmissionCategory",
+                            "label": "기어박스 카테고리",
+                            "value": "자동",
+                            "rawValue": "자동",
+                            "workbenchIcon": "gear"
+                        },
+                        {
+                            "id": "technicalInformation.acceleration",
+                            "label": "가속력 (0->100km/h：초)",
+                            "value": "4.1 s",
+                            "unit": "s",
+                            "rawValue": "4.1",
+                            "workbenchIcon": "mileage-xs"
+                        },
+                        {
+                            "id": "technicalInformation.topSpeed",
+                            "label": "최고속도",
+                            "value": "260 km/h",
+                            "unit": "km/h",
+                            "rawValue": "260"
+                        }
+                    ]
+                },
+                {
+                    "label": "치수",
+                    "technicalValues": [
+                        {
+                            "id": "technicalInformation.dimensions.length",
+                            "label": "길이",
+                            "value": "4,697 mm",
+                            "unit": "mm",
+                            "rawValue": "4697"
+                        },
+                        {
+                            "id": "technicalInformation.dimensions.widthWithoutMirrors",
+                            "label": "전폭(사이드 미러 제외)",
+                            "value": "1,915 mm",
+                            "unit": "mm",
+                            "rawValue": "1915"
+                        },
+                        {
+                            "id": "technicalInformation.dimensions.height",
+                            "label": "높이",
+                            "value": "1,358 mm",
+                            "unit": "mm",
+                            "rawValue": "1358"
+                        }
+                    ]
+                },
+                {
+                    "label": "세부 내용",
+                    "technicalValues": [
+                        {
+                            "id": "technicalInformation.seats",
+                            "label": "좌석",
+                            "value": "2",
+                            "rawValue": "2"
+                        },
+                        {
+                            "id": "technicalInformation.doors",
+                            "label": "도어 수",
+                            "value": "2",
+                            "rawValue": "2"
+                        },
+                        {
+                            "id": "technicalInformation.capacityWithReserve",
+                            "label": "탱크 용량(기본)",
+                            "value": "70 L",
+                            "unit": "L",
+                            "rawValue": "70"
+                        }
+                    ]
+                }
+            ]
+        },
+        "energyConsumptionLabelingSection": {},
+        "tags": [
+            {
+                "id": "technicalInformation.engine.fuelType",
+                "label": "연료 유형",
+                "value": "가솔린",
+                "rawValue": "가솔린",
+                "workbenchIcon": "fuel"
+            },
+            {
+                "id": "technicalInformation.transmission.transmissionType",
+                "label": "변속기",
+                "value": "자동",
+                "rawValue": "자동",
+                "workbenchIcon": "gear"
+            }
+        ]
+    }
+}

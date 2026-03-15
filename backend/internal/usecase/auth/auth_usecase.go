@@ -19,7 +19,6 @@ import (
 type AuthUsecase interface {
 	Onboarding(ctx context.Context, device *OnboardingInput) (*TokenResult, error)
 	OnboardingRefresh(ctx context.Context, deviceUID string) (*TokenResult, error)
-	Logout(ctx context.Context, accessToken string) error
 	Refresh(ctx context.Context, refreshToken string) (*TokenResult, error)
 }
 
@@ -136,23 +135,7 @@ func (u *authUsecase) OnboardingRefresh(ctx context.Context, deviceUID string) (
 	return u.generateTokens(ctx, cfg, user.ID)
 }
 
-// Logout: 액세스 토큰 블랙리스트 + 리프레쉬 토큰 삭제
-func (u *authUsecase) Logout(ctx context.Context, accessToken string) error {
-	userId, ttl, err := auth.ParseAccessToken(accessToken)
 
-	if err != nil {
-		return errs.ErrUnauthorized
-	}
-	if err := u.tokenCache.AddToBlacklist(ctx, accessToken, ttl); err != nil {
-		return fmt.Errorf("블랙리스트 등록 실패: %w", err)
-	}
-
-	if err := u.tokenCache.DeleteByUserID(ctx, userId); err != nil {
-		return fmt.Errorf("리프레시 토큰 삭제 실패: %w", err)
-	}
-
-	return nil
-}
 
 // Refresh: 리프레시 토큰 검증 + 새 토큰 발급
 func (u *authUsecase) Refresh(ctx context.Context, refreshToken string) (*TokenResult, error) {
