@@ -45,11 +45,11 @@ func (r *userRepo) FindByEmail(ctx context.Context, email string) (*entity.User,
 	return &user, nil
 }
 
-func (r *userRepo) Create(ctx context.Context, user *entity.User) error {
+func (r *userRepo) Create(ctx context.Context, user *entity.User) (*entity.User, error) {
 	if err := GetTx(ctx, r.db).WithContext(ctx).Create(user).Error; err != nil {
-		return fmt.Errorf("유저 생성 실패: %w", err)
+		return nil, fmt.Errorf("유저 생성 실패: %w", err)
 	}
-	return nil
+	return user, nil
 }
 
 func (r *userRepo) Update(ctx context.Context, user *entity.User) error {
@@ -66,7 +66,7 @@ func (r *userRepo) Update(ctx context.Context, user *entity.User) error {
 }
 
 func (r *userRepo) Delete(ctx context.Context, id uuid.UUID) error {
-	result := r.db.WithContext(ctx).Delete(&entity.User{}, "id = ?", id)
+	result := GetTx(ctx, r.db).WithContext(ctx).Delete(&entity.User{}, "id = ?", id)
 	if result.Error != nil {
 		return fmt.Errorf("유저 삭제 실패: %w", result.Error)
 	}

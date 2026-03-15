@@ -84,7 +84,7 @@ func (u *userUsecase) Onboarding(ctx context.Context, device *OnboardingInput) (
 	}
 
 	err = u.txManager.Transaction(ctx, func(ctx context.Context) error {
-		if err := u.userRepo.Create(ctx, user); err != nil {
+		if _, err := u.userRepo.Create(ctx, user); err != nil {
 			return fmt.Errorf("유저 생성 실패: %w", err)
 		}
 
@@ -156,30 +156,42 @@ func (u *userUsecase) GetProfile(ctx context.Context, accessToken string) (*Prof
 }
 
 func (u *userUsecase) DeleteAccount(ctx context.Context, userID uuid.UUID) error {
-	_, userErr := u.userRepo.FindByID(ctx, userID)
+	var newUser *entity.User
+	var newUserErr error
+	user, userErr := u.userRepo.FindByID(ctx, userID)
 
 	if userErr != nil {
 		return fmt.Errorf("유저 정보 조회 실패: %w", userErr)
 	}
 
-	// err = u.txManager.Transaction(ctx, func(ctx context.Context) error {
-	// 	if err := u.userRepo.Delete(ctx, user); err != nil {
-	// 		return fmt.Errorf("유저 생성 실패: %w", err)
-	// 	}
+	if err := u.txManager.Transaction(ctx, func(ctx context.Context) error {
+		if err := u.socialRepo.DeleteByUserID(ctx, userID); err != nil {
+			return fmt.Errorf("소셜 유저 삭제 실패: %w", err)
+		}
 
-	// 	d := &entity.Device{
-	// 		UserID:     user.ID,
-	// 		DeviceUID:  device.DeviceUID,
-	// 		DeviceType: device.DeviceType,
-	// 		ModelName:  device.ModelName,
-	// 	}
+		us := &entity.User{
+			Latitude:  user.Latitude,
+			Longitude: user.Longitude,
+		}
 
-	// 	if err := u.deviceRepo.Create(ctx, d); err != nil {
-	// 		return fmt.Errorf("디바이스 생성 실패: %w", err)
-	// 	}
+		newUser, newUserErr = u.userRepo.Create(ctx, us)
 
-	// 	return nil
-	// })
+		if newUserErr != nil {
+			return fmt.Errorf("유저 생성 실패: %w", newUserErr)
+		}
+
+		if err := u.deviceRepo.UpdateUserID(ctx, userID, newUser.ID); err != nil {
+			return fmt.Errorf("디바이스 유저 아이디 업데이트 실패: %w", err)
+		}
+
+		if err := u.userRepo.Delete(ctx, userID); err != nil {
+			return fmt.Errorf("유저 삭제 실패: %w", err)
+		}
+
+		return nil
+	}); err != nil {
+		return fmt.Errorf("회원 탈퇴 실패: %w", userErr)
+	}
 
 	return nil
 }

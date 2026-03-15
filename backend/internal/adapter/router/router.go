@@ -23,7 +23,6 @@ func SetupRouter(c *container.Container) *gin.Engine {
 	// Swagger UI 설정
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-
 	//애플 테스트 html
 	r.StaticFile("/apple-test", "./apple-test.html")
 
@@ -54,7 +53,7 @@ func SetupRouter(c *container.Container) *gin.Engine {
 		{
 			privateUser.POST("/logout", authHandler.Logout)
 			privateUser.GET("/me", authHandler.GetProfile)
-			privateAuth.DELETE("/me",authHandler.DeleteAccount)
+			privateUser.DELETE("/me", authHandler.DeleteAccount)
 		}
 
 		// Private Cars (나중에)
@@ -65,6 +64,6 @@ func SetupRouter(c *container.Container) *gin.Engine {
 		//     carGroup.GET("/recommend", api.GetRecommendCars)
 		// }
 	}
-	
+
 	return r
 }

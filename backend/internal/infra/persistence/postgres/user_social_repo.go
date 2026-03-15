@@ -43,7 +43,7 @@ func (r *socialRepo) FindByProviderID(ctx context.Context, provider string, prov
 }
 
 func (r *socialRepo) DeleteByUserID(ctx context.Context, userID uuid.UUID) error {
-	if err := r.db.WithContext(ctx).Delete(&entity.SocialProvider{}, "user_id = ?", userID).Error; err != nil {
+	if err := GetTx(ctx, r.db).WithContext(ctx).Delete(&entity.SocialProvider{}, "user_id = ?", userID).Error; err != nil {
 		return fmt.Errorf("소셜 유저 데이터 삭제 실패 %w", err)
 	}
 
