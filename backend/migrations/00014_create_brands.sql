@@ -1,0 +1,10 @@
+-- +goose Up
+CREATE TABLE brands (
+    id UUID PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- +goose Down
+DROP TABLE IF EXISTS brands;
