@@ -1,8 +1,10 @@
 package router
 
 import (
-	"backend/internal/adapter/handler/app"
-	brandhandler "backend/internal/adapter/handler/brand"
+
+	"backend/internal/adapter/handler/app/auth"
+	"backend/internal/adapter/middleware"
+  brandhandler "backend/internal/adapter/handler/brand"
 	carhandler "backend/internal/adapter/handler/car"
 	mycarhandler "backend/internal/adapter/handler/mycar"
 	"backend/internal/container"
@@ -17,15 +19,25 @@ import (
 func SetupRouter(c *container.Container) *gin.Engine {
 	r := gin.Default()
 
-	authHandler := app.NewAuthHandler(c.AuthUsecase, c.KakaoUsecase)
-	marketingConsentHandler := app.NewMarketingConsentHandler(c.MarketingConsentUsecase)
+
+	authHandler := auth.NewAuthHandler(c.AuthUsecase, c.UserUsecase, c.KakaoUsecase, c.GoogleUsecase, c.AppleUsecase)
+  marketingConsentHandler := app.NewMarketingConsentHandler(c.MarketingConsentUsecase)
 	carHandler := carhandler.NewHandler(c.CarUsecase)
 	brandHandler := brandhandler.NewHandler(c.BrandUsecase)
 	myCarHandler := mycarhandler.NewHandler(c.MyCarUsecase)
 
+
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
+
+	//애플 테스트 html
+	r.StaticFile("/apple-test", "./apple-test.html")
+
 	v1 := r.Group("/api/v1")
+
+	public := v1.Group("/")
+	private := v1.Group("/")
+	private.Use(middleware.AuthMiddleware(c.TokenCache))
 	{
 		userGroup := v1.Group("/auth")
 		{
@@ -49,7 +61,37 @@ func SetupRouter(c *container.Container) *gin.Engine {
 		{
 			brandGroup.GET("", brandHandler.List)
 		}
-	}
+		// Public Routes
+		publicAuth := public.Group("/auth")
+		{
+			publicAuth.POST("/onboard", authHandler.Onboarding)
+			publicAuth.POST("/onboard/refresh", authHandler.OnboardingRefresh)
+			publicAuth.POST("/refresh", authHandler.Refresh)
+		}
 
+		// Private Routes
+		privateAuth := private.Group("/auth")
+		privateUser := private.Group("/user")
+		{
+			privateAuth.POST("/kakao-login", authHandler.KakaoLogin)
+			privateAuth.POST("/google-login", authHandler.GoogleLogin)
+			privateAuth.POST("/apple-login", authHandler.AppleLogin)
+
+		}
+
+		{
+			privateUser.POST("/logout", authHandler.Logout)
+			privateUser.GET("/profile", authHandler.GetProfile)
+		}
+
+		// Private Cars (나중에)
+		// privateCars := private.Group("/cars")
+		// [차량 관련 경로 - 나중에 추가할 곳]
+		// carGroup := v1.Group("/cars")
+		// {
+		//     carGroup.GET("/recommend", api.GetRecommendCars)
+		// }
+	}
+	
 	return r
 }

@@ -18,6 +18,14 @@ const docTemplate = `{
         "/api/v1/auth/agreed": {
             "post": {
                 "description": "사용자의 마케팅 활용 동의 여부를 저장하거나 수정한다.",
+        "/auth/google-login": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "구글 ID 토큰으로 소셜 로그인",
                 "consumes": [
                     "application/json"
                 ],
@@ -31,11 +39,16 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "description": "마케팅 활용 동의 요청",
+                "summary": "구글 로그인",
+                "parameters": [
+                    {
+                        "description": "구글 로그인 요청",
                         "name": "request",
                         "in": "body",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/dto.MarketingConsentRequest"
+                            "$ref": "#/definitions/dto.SocialLoginRequest"
                         }
                     }
                 ],
@@ -56,6 +69,108 @@ const docTemplate = `{
                         "description": "Internal Server Error",
                         "schema": {
                             "$ref": "#/definitions/dto.MarketingConsentResponse"
+                        "description": "구글 로그인 성공",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.APIResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.SocialTokenResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "잘못된 요청",
+                        "schema": {
+                            "$ref": "#/definitions/response.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "유효하지 않은 토큰",
+                        "schema": {
+                            "$ref": "#/definitions/response.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "서버 오류",
+                        "schema": {
+                            "$ref": "#/definitions/response.APIResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/kakao-login": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "카카오 액세스 토큰으로 소셜 로그인",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "auth"
+                ],
+                "summary": "카카오 로그인",
+                "parameters": [
+                    {
+                        "description": "카카오 로그인 요청",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.SocialLoginRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "카카오 로그인 성공",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.APIResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.SocialTokenResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "잘못된 요청",
+                        "schema": {
+                            "$ref": "#/definitions/response.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "유효하지 않은 토큰",
+                        "schema": {
+                            "$ref": "#/definitions/response.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "서버 오류",
+                        "schema": {
+                            "$ref": "#/definitions/response.APIResponse"
                         }
                     }
                 }
@@ -92,9 +207,33 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "온보딩 성공",
                         "schema": {
-                            "$ref": "#/definitions/dto.OnboardingResponse"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.APIResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.OnboardingResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "잘못된 요청",
+                        "schema": {
+                            "$ref": "#/definitions/response.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "유효하지 않은 토큰",
+                        "schema": {
+                            "$ref": "#/definitions/response.APIResponse"
                         }
                     },
                     "409": {
@@ -143,6 +282,12 @@ const docTemplate = `{
         "/cars/{id}/images": {
             "get": {
                 "description": "차량 이미지를 조회합니다.",
+        "/auth/refresh": {
+            "post": {
+                "description": "리프레시 토큰으로 새 액세스/리프레시 토큰 발급",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -157,21 +302,63 @@ const docTemplate = `{
                         "name": "id",
                         "in": "path",
                         "required": true
+                    "auth"
+                ],
+                "summary": "토큰 갱신",
+                "parameters": [
+                    {
+                        "description": "토큰 갱신 요청",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.RefreshRequest"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
+
+                        "description": "토큰 갱신 성공",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": true
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.APIResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.TokenResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "잘못된 요청",
+                        "schema": {
+                            "$ref": "#/definitions/response.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "유효하지 않은 토큰",
+                        "schema": {
+                            "$ref": "#/definitions/response.APIResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "토큰 없음",
+                        "schema": {
+                            "$ref": "#/definitions/response.APIResponse"
                         }
                     },
                     "500": {
-                        "description": "Internal Server Error",
+                        "description": "서버 오류",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": true
+                            "$ref": "#/definitions/response.APIResponse"
+
                         }
                     }
                 }
@@ -212,18 +399,32 @@ const docTemplate = `{
             ],
             "properties": {
                 "device_id": {
-                    "description": "필수값",
-                    "type": "string"
+                    "type": "string",
+                    "example": "ANDROID-DEVICE-789"
                 },
                 "device_type": {
-                    "description": "필수값 (ios, android)",
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                        "ios",
+                        "android"
+                    ],
+                    "example": "android"
+                },
+                "latitude": {
+                    "type": "number",
+                    "example": 37.5665
+                },
+                "longitude": {
+                    "type": "number",
+                    "example": 126.978
                 },
                 "model_name": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Galaxy S24"
                 },
                 "os_version": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "14.0"
                 }
             }
         },
@@ -231,18 +432,78 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "access_token": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
                 },
                 "refresh_token": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                }
+            }
+        },
+        "dto.RefreshRequest": {
+            "type": "object",
+            "required": [
+                "refresh_token"
+            ],
+            "properties": {
+                "refresh_token": {
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                }
+            }
+        },
+        "dto.SocialLoginRequest": {
+            "type": "object",
+            "required": [
+                "provider_token"
+            ],
+            "properties": {
+                "provider_token": {
+                    "type": "string",
+                    "example": "ya29.a0AfH6SMBx..."
+                }
+            }
+        },
+        "dto.SocialTokenResponse": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                },
+                "is_new_user": {
+                    "type": "boolean",
+                    "example": true
+                },
+                "refresh_token": {
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                }
+            }
+        },
+        "dto.TokenResponse": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                },
+                "refresh_token": {
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
                 }
             }
         },
         "response.APIResponse": {
             "type": "object",
             "properties": {
+                "code": {
+                    "description": "애플리케이션 레벨의 상태 코드 (예: \"SUCCESS\", \"ERROR\", \"VALIDATION_ERROR\" 등)",
+                    "type": "string"
+                },
                 "data": {
-                    "description": "없으면 null 출력"
+                    "description": "데이터 없으면 null 출력"
                 },
                 "message": {
                     "description": "에러일 때만 보이고, 성공 시(비어있을 때) 아예 숨김",
@@ -253,6 +514,13 @@ const docTemplate = `{
                     "type": "integer"
                 }
             }
+        }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
     }
 }`

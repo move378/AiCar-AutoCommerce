@@ -19,14 +19,25 @@ definitions:
   dto.OnboardingRequest:
     properties:
       device_id:
-        description: 필수값
+        example: ANDROID-DEVICE-789
         type: string
       device_type:
-        description: 필수값 (ios, android)
+        enum:
+        - ios
+        - android
+        example: android
         type: string
+      latitude:
+        example: 37.5665
+        type: number
+      longitude:
+        example: 126.978
+        type: number
       model_name:
+        example: Galaxy S24
         type: string
       os_version:
+        example: "14.0"
         type: string
     required:
     - device_id
@@ -35,14 +46,57 @@ definitions:
   dto.OnboardingResponse:
     properties:
       access_token:
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
         type: string
       refresh_token:
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+        type: string
+    type: object
+  dto.RefreshRequest:
+    properties:
+      refresh_token:
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+        type: string
+    required:
+    - refresh_token
+    type: object
+  dto.SocialLoginRequest:
+    properties:
+      provider_token:
+        example: ya29.a0AfH6SMBx...
+        type: string
+    required:
+    - provider_token
+    type: object
+  dto.SocialTokenResponse:
+    properties:
+      access_token:
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+        type: string
+      is_new_user:
+        example: true
+        type: boolean
+      refresh_token:
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+        type: string
+    type: object
+  dto.TokenResponse:
+    properties:
+      access_token:
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+        type: string
+      refresh_token:
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
         type: string
     type: object
   response.APIResponse:
     properties:
+      code:
+        description: '애플리케이션 레벨의 상태 코드 (예: "SUCCESS", "ERROR", "VALIDATION_ERROR"
+          등)'
+        type: string
       data:
-        description: 없으면 null 출력
+        description: 데이터 없으면 null 출력
       message:
         description: 에러일 때만 보이고, 성공 시(비어있을 때) 아예 숨김
         type: string
@@ -64,11 +118,19 @@ paths:
       description: 사용자의 마케팅 활용 동의 여부를 저장하거나 수정한다.
       parameters:
       - description: 마케팅 활용 동의 요청
+  /auth/google-login:
+    post:
+      consumes:
+      - application/json
+      description: 구글 ID 토큰으로 소셜 로그인
+      parameters:
+      - description: 구글 로그인 요청
         in: body
         name: request
         required: true
         schema:
           $ref: '#/definitions/dto.MarketingConsentRequest'
+          $ref: '#/definitions/dto.SocialLoginRequest'
       produces:
       - application/json
       responses:
@@ -85,6 +147,70 @@ paths:
           schema:
             $ref: '#/definitions/dto.MarketingConsentResponse'
       summary: 마케팅 활용 동의 저장
+          description: 구글 로그인 성공
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.APIResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/dto.SocialTokenResponse'
+              type: object
+        "400":
+          description: 잘못된 요청
+          schema:
+            $ref: '#/definitions/response.APIResponse'
+        "401":
+          description: 유효하지 않은 토큰
+          schema:
+            $ref: '#/definitions/response.APIResponse'
+        "500":
+          description: 서버 오류
+          schema:
+            $ref: '#/definitions/response.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: 구글 로그인
+      tags:
+      - auth
+  /auth/kakao-login:
+    post:
+      consumes:
+      - application/json
+      description: 카카오 액세스 토큰으로 소셜 로그인
+      parameters:
+      - description: 카카오 로그인 요청
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.SocialLoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 카카오 로그인 성공
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.APIResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/dto.SocialTokenResponse'
+              type: object
+        "400":
+          description: 잘못된 요청
+          schema:
+            $ref: '#/definitions/response.APIResponse'
+        "401":
+          description: 유효하지 않은 토큰
+          schema:
+            $ref: '#/definitions/response.APIResponse'
+        "500":
+          description: 서버 오류
+          schema:
+            $ref: '#/definitions/response.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: 카카오 로그인
       tags:
       - auth
   /auth/onboard:
@@ -103,9 +229,22 @@ paths:
       - application/json
       responses:
         "200":
-          description: OK
+          description: 온보딩 성공
           schema:
-            $ref: '#/definitions/dto.OnboardingResponse'
+            allOf:
+            - $ref: '#/definitions/response.APIResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/dto.OnboardingResponse'
+              type: object
+        "400":
+          description: 잘못된 요청
+          schema:
+            $ref: '#/definitions/response.APIResponse'
+        "401":
+          description: 유효하지 않은 토큰
+          schema:
+            $ref: '#/definitions/response.APIResponse'
         "409":
           description: 이미 등록된 디바이스
           schema:
@@ -147,6 +286,18 @@ paths:
         name: id
         required: true
         type: string
+  /auth/refresh:
+    post:
+      consumes:
+      - application/json
+      description: 리프레시 토큰으로 새 액세스/리프레시 토큰 발급
+      parameters:
+      - description: 토큰 갱신 요청
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.RefreshRequest'
       produces:
       - application/json
       responses:
@@ -163,4 +314,36 @@ paths:
       summary: 차량 이미지 조회
       tags:
       - cars
+          description: 토큰 갱신 성공
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.APIResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/dto.TokenResponse'
+              type: object
+        "400":
+          description: 잘못된 요청
+          schema:
+            $ref: '#/definitions/response.APIResponse'
+        "401":
+          description: 유효하지 않은 토큰
+          schema:
+            $ref: '#/definitions/response.APIResponse'
+        "404":
+          description: 토큰 없음
+          schema:
+            $ref: '#/definitions/response.APIResponse'
+        "500":
+          description: 서버 오류
+          schema:
+            $ref: '#/definitions/response.APIResponse'
+      summary: 토큰 갱신
+      tags:
+      - auth
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"
