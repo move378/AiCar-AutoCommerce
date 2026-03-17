@@ -2,8 +2,8 @@ package middleware
 
 import (
 	"backend/internal/domain/repository"
-	"backend/internal/shared/auth"
 	"backend/internal/shared/response"
+	token "backend/internal/shared/token"
 	"fmt"
 	"net/http"
 
@@ -27,8 +27,8 @@ func AuthMiddleware(tokenCache repository.TokenCacheRepository) gin.HandlerFunc 
 			c.Abort()
 			return
 		}
-		token := headerAuth[len("Bearer "):]
-		userID, _, err := auth.ParseAccessToken(token)
+		accessToken := headerAuth[len("Bearer "):]
+		userID, _, err := token.ParseAccessToken(accessToken)
 		if err != nil {
 			response.SendError(c, http.StatusUnauthorized, response.CodeUnauthorized, "Invalid token")
 			c.Abort()
@@ -36,7 +36,7 @@ func AuthMiddleware(tokenCache repository.TokenCacheRepository) gin.HandlerFunc 
 		}
 
 		// 블랙리스트 확인
-		isBlacklist, err := tokenCache.IsBlacklisted(c, token)
+		isBlacklist, err := tokenCache.IsBlacklisted(c, accessToken)
 		fmt.Println("블랙임?", isBlacklist)
 		if err != nil {
 			response.SendError(c, http.StatusUnauthorized, response.CodeUnauthorized, "Error occurred while checking token status")
@@ -50,7 +50,7 @@ func AuthMiddleware(tokenCache repository.TokenCacheRepository) gin.HandlerFunc 
 		}
 
 		c.Set("user_id", userID)
-		c.Set("access_token", token)
+		c.Set("access_token", accessToken)
 		c.Next()
 	}
 }

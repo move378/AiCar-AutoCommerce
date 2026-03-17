@@ -9,29 +9,29 @@ import (
 	"github.com/google/uuid"
 )
 
+type DeviceRepository interface {
+	Create(ctx context.Context, device *entity.Device) error
+	FindByDeviceUID(ctx context.Context, deviceUID string) (*entity.Device, error)
+	UpdateUserID(ctx context.Context, userID uuid.UUID, newUserID uuid.UUID) error
+}
 type UserRepository interface {
 	FindByID(ctx context.Context, id uuid.UUID) (*entity.User, error)
 	FindByEmail(ctx context.Context, email string) (*entity.User, error)
-	Create(ctx context.Context, user *entity.User) error
+	Create(ctx context.Context, user *entity.User) (*entity.User, error)
 	Update(ctx context.Context, user *entity.User) error
 	Delete(ctx context.Context, id uuid.UUID) error
 }
 
-type SocialProviderRepository interface {
+type SocialRepository interface {
 	FindByProviderID(ctx context.Context, provider string, providerID string) (*entity.SocialProvider, error)
 	Create(ctx context.Context, authProvider *entity.SocialProvider) error
+	DeleteByUserID(ctx context.Context, userID uuid.UUID) error
 }
 
 type SocialCacheRepository interface {
 	Create(ctx context.Context, providerToken string, social *entity.SocialUserInfo) error
 	FindByProviderToken(ctx context.Context, providerToken string) (*entity.SocialUserInfo, error)
 }
-
-type DeviceRepository interface {
-	Create(ctx context.Context, device *entity.Device) error
-	FindByDeviceUID(ctx context.Context, deviceUID string) (*entity.Device, error)
-}
-
 type TokenCacheRepository interface {
 	Create(ctx context.Context, token *entity.RefreshToken) error
 	FindByUserID(ctx context.Context, userID uuid.UUID) (*entity.RefreshToken, error)

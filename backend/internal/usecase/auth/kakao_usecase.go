@@ -17,16 +17,16 @@ type KakaoUsecase interface {
 }
 
 type kakaoUsecase struct {
-	social      SocialUsecase
+	user        UserUsecase
 	socialCache repository.SocialCacheRepository
 }
 
 func NewKakaoUsecase(
-	social SocialUsecase,
+	user UserUsecase,
 	socialCache repository.SocialCacheRepository,
 ) KakaoUsecase {
 	return &kakaoUsecase{
-		social:      social,
+		user:        user,
 		socialCache: socialCache,
 	}
 }
@@ -53,7 +53,7 @@ func (u *kakaoUsecase) KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAc
 	// 		Name:       cached.Name,
 	// 		ProfileURL: cached.ProfileURL,
 	// 	}
-	// 	return u.social.SocialLoginOrRegister(ctx, info)
+	// 	return u.user.SocialLoginOrRegister(ctx, info)
 	// }
 
 	req, err := http.NewRequest("GET", "https://kapi.kakao.com/v2/user/me", nil)
@@ -91,5 +91,5 @@ func (u *kakaoUsecase) KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAc
 		ProfileURL: info.ProfileURL,
 	})
 
-	return u.social.SocialLoginOrRegister(ctx, info)
+	return u.user.SocialLoginOrRegister(ctx, info)
 }

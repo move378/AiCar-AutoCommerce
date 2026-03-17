@@ -41,6 +41,16 @@ func (r *devicesRepo) Create(ctx context.Context, device *entity.Device) error {
 	return nil
 }
 
+func (r *devicesRepo) UpdateUserID(ctx context.Context, userID uuid.UUID, newUserID uuid.UUID) error {
+	if err := GetTx(ctx, r.db).WithContext(ctx).
+		Model(&entity.Device{}).
+		Where("user_id = ?", userID).
+		Updates(map[string]interface{}{"user_id": newUserID}).Error; err != nil {
+		return fmt.Errorf("디바이스 유저ID 업데이트 실패: %w", err)
+	}
+	return nil
+}
+
 func (r *devicesRepo) Delete(ctx context.Context, id uuid.UUID) error {
 	result := r.db.WithContext(ctx).Delete(&entity.Device{}, "id = ?", id)
 	if result.Error != nil {

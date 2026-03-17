@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/google/uuid"
 	"gorm.io/gorm"
 
 	"backend/internal/domain/entity"
@@ -12,15 +13,22 @@ import (
 	"backend/internal/shared/errs"
 )
 
-type authSocialRepo struct {
+type socialRepo struct {
 	db *DB
 }
 
-func NewAuthSocialRepo(db *DB) repository.SocialProviderRepository {
-	return &authSocialRepo{db: db}
+func NewSocialRepo(db *DB) repository.SocialRepository {
+	return &socialRepo{db: db}
 }
 
-func (r *authSocialRepo) FindByProviderID(ctx context.Context, provider string, providerID string) (*entity.SocialProvider, error) {
+func (r *socialRepo) Create(ctx context.Context, authProvider *entity.SocialProvider) error {
+	if err := r.db.WithContext(ctx).Create(authProvider).Error; err != nil {
+		return fmt.Errorf("소셜 계정 생성 실패: %w", err)
+	}
+	return nil
+}
+
+func (r *socialRepo) FindByProviderID(ctx context.Context, provider string, providerID string) (*entity.SocialProvider, error) {
 	var authProvider entity.SocialProvider
 	err := r.db.WithContext(ctx).
 		Where("provider = ? AND provider_id = ?", provider, providerID).
@@ -33,9 +41,11 @@ func (r *authSocialRepo) FindByProviderID(ctx context.Context, provider string, 
 	}
 	return &authProvider, nil
 }
-func (r *authSocialRepo) Create(ctx context.Context, authProvider *entity.SocialProvider) error {
-	if err := r.db.WithContext(ctx).Create(authProvider).Error; err != nil {
-		return fmt.Errorf("소셜 계정 생성 실패: %w", err)
+
+func (r *socialRepo) DeleteByUserID(ctx context.Context, userID uuid.UUID) error {
+	if err := GetTx(ctx, r.db).WithContext(ctx).Delete(&entity.SocialProvider{}, "user_id = ?", userID).Error; err != nil {
+		return fmt.Errorf("소셜 유저 데이터 삭제 실패 %w", err)
 	}
+
 	return nil
 }

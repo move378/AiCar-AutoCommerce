@@ -1,0 +1,3411 @@
+[
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "GLC",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "GLC 220 d 4MATIC",
+      "baumuster": "2546051",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "806",
+      "base_price": 81200000,
+      "fuel_type": "디젤",
+      "seating_capacity": 5,
+      "max_output": 145,
+      "acceleration_0_100": 8.0,
+      "top_speed": 219,
+      "length": 4716,
+      "width": 1890,
+      "height": 1640,
+      "curb_weight": 2550,
+      "transmission": "자동",
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1993,
+        "fuel_tank_capacity": 62,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254605/806_056/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZUnRZbMw3SGtGyUtsd1JpcUfwFuXGEZT3J0l34JOB2Ng1bApjkyI5uVmJQC3qhQkzNRtbm7jx2vhKV1bW%25vqwylyLRZimYaxF4YrH19gOn8wfOFoiZEiEM4Fl4wTg92zO6PDp7NSeWuXjtsd3YQcUfNrqXGEj9RJ0lVDZOB2qbcbApUnyI5uG5IQC30grkzNB%25km7jAyjhKV5pV%25vqCIdyLRgcDYaxPXSrH1eHrn8wsAxoiZU71M4FGTlTg906V6PDBSlSeWAhhtsd6vDcUfSM1XGEvaXJ0lLHxOB2aMFbApHTxI5u8Q%25QC3ivwkzN4obm7j06vhKVBXM%25vqAujyLR5QmYaxCkErH1zmin8w7oxoiZKMIM4FvslTg9LUO6PDaG6SeWH0Wtsd8BGcUfiA1XGEWyjJ0ldYhOB2fQcbAp7nyI5uK6YQC3vSTkzNL6Sm%25kbFDZoOtsdB%25ycJtj9GXOcLsEJ0l4YfOB2igSbAp0ApI5uB5ZQC3ACWkzN5Pwm7jCGDhKVzYE%25vq7rcyLRKOyYaxvOorH1LOWn8waepoiZ3bXM4FgIJTg9Pg26PDePoSeWsehtsdUvTcUfG8fXGE0iRJ0lBIxOB2AMqbA4wHEcmqN1IwCu0E10pnIu2fzfXRXPq0Agjeq89i3mtHBr&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254605/806_056/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZUnRZbMw3SGtGyUtsd1JpcUfwFuXGEZT3J0l34JOB2Ng1bApjkyI5uVmJQC3qhQkzNRtbm7jx2vhKV1bW%25vqwylyLRZimYaxF4YrH19gOn8wfOFoiZEiEM4Fl4wTg92zO6PDp7NSeWuXjtsd3YQcUfNrqXGEj9RJ0lVDZOB2qbcbApUnyI5uG5IQC30grkzNB%25km7jAyjhKV5pV%25vqCIdyLRgcDYaxPXSrH1eHrn8wsAxoiZU71M4FGTlTg906V6PDBSlSeWAhhtsd6vDcUfSM1XGEvaXJ0lLHxOB2aMFbApHTxI5u8Q%25QC3ivwkzN4obm7j06vhKVBXM%25vqAujyLR5QmYaxCkErH1zmin8w7oxoiZKMIM4FvslTg9LUO6PDaG6SeWH0Wtsd8BGcUfiA1XGEWyjJ0ldYhOB2fQcbAp7nyI5uK6YQC3vSTkzNL6Sm%25kbFDZoOtsdB%25ycJtj9GXOcLsEJ0l4YfOB2igSbAp0ApI5uB5ZQC3ACWkzN5Pwm7jCGDhKVzYE%25vq7rcyLRKOyYaxvOorH1LOWn8waepoiZ3bXM4FgIJTg9Pg26PDePoSeWsehtsdUvTcUfG8fXGE0iRJ0lBIxOB2AMqbA4wHEcmqN1IwCu0E10pnIu2fzfXRXPq0Agjeq89i3mtHBr&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254605/806_056/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZUnRZbMw3SGtGyUtsd1JpcUfwFuXGEZT3J0l34JOB2Ng1bApjkyI5uVmJQC3qhQkzNRtbm7jx2vhKV1bW%25vqwylyLRZimYaxF4YrH19gOn8wfOFoiZEiEM4Fl4wTg92zO6PDp7NSeWuXjtsd3YQcUfNrqXGEj9RJ0lVDZOB2qbcbApUnyI5uG5IQC30grkzNB%25km7jAyjhKV5pV%25vqCIdyLRgcDYaxPXSrH1eHrn8wsAxoiZU71M4FGTlTg906V6PDBSlSeWAhhtsd6vDcUfSM1XGEvaXJ0lLHxOB2aMFbApHTxI5u8Q%25QC3ivwkzN4obm7j06vhKVBXM%25vqAujyLR5QmYaxCkErH1zmin8w7oxoiZKMIM4FvslTg9LUO6PDaG6SeWH0Wtsd8BGcUfiA1XGEWyjJ0ldYhOB2fQcbAp7nyI5uK6YQC3vSTkzNL6Sm%25kbFDZoOtsdB%25ycJtj9GXOcLsEJ0l4YfOB2igSbAp0ApI5uB5ZQC3ACWkzN5Pwm7jCGDhKVzYE%25vq7rcyLRKOyYaxvOorH1LOWn8waepoiZ3bXM4FgIJTg9Pg26PDePoSeWsehtsdUvTcUfG8fXGE0iRJ0lBIxOB2AMqbA4wHEcmqN1IwCu0E10pnIu2fzfXRXPq0Agjeq89i3mtHBr&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "GLE",
+      "classification": "준대형",
+      "segment": "E-Segment"
+    },
+    "trim": {
+      "name": "GLE 300 d 4MATIC",
+      "baumuster": "1671091",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "806",
+      "base_price": 116600000,
+      "fuel_type": "디젤",
+      "seating_capacity": 5,
+      "max_output": 198,
+      "acceleration_0_100": 6.9,
+      "top_speed": 230,
+      "length": 4924,
+      "width": 2010,
+      "height": 1797,
+      "curb_weight": 2970,
+      "transmission": "자동",
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1993,
+        "fuel_tank_capacity": 85,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/167109/806_056/iris.webp?q=COSY-EU-100-1713d0VXqaSFqtyO67PobzIr3eWsrrCsdRRzwQZQ9vZbMw3SGtGyUtsd2HdcUfp8qXGEuiYJ0l3ItOB2NQObApjTXI5uVfzQC3qXFkzNwTYm7jZ7ohKVFsM%25vqCtTyLRzLyYax7NYrH1KnOn8wsOfoiZUbXM4FG4MTg90vZ6PDBSbSeWAtRtsd5cpcUfSLWXGEtbSJ0lLHJOB2a8RbApenCI5us5xQC3Uh7kzNGJKm7j0hShKVBHF%25vqA8lyLRjc6YaxVoYrH1gObnMr%25E2fchI5uKMTQmIwlzkhQg59m7jGyvhKVUs9%25vq7vlyLRKG6YaxvNxrH1LmOn8wiOcoiZ4bIM4Fg4rTg9Pzn6PDeSoSevjzFoJpENtjvaKUNjWmtdDZGZMuMapgeLlHp7RKfJnzPk&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/167109/806_056/iris.webp?q=COSY-EU-100-1713d0VXqaSFqtyO67PobzIr3eWsrrCsdRRzwQZQ9vZbMw3SGtGyUtsd2HdcUfp8qXGEuiYJ0l3ItOB2NQObApjTXI5uVfzQC3qXFkzNwTYm7jZ7ohKVFsM%25vqCtTyLRzLyYax7NYrH1KnOn8wsOfoiZUbXM4FG4MTg90vZ6PDBSbSeWAtRtsd5cpcUfSLWXGEtbSJ0lLHJOB2a8RbApenCI5us5xQC3Uh7kzNGJKm7j0hShKVBHF%25vqA8lyLRjc6YaxVoYrH1gObnMr%25E2fchI5uKMTQmIwlzkhQg59m7jGyvhKVUs9%25vq7vlyLRKG6YaxvNxrH1LmOn8wiOcoiZ4bIM4Fg4rTg9Pzn6PDeSoSevjzFoJpENtjvaKUNjWmtdDZGZMuMapgeLlHp7RKfJnzPk&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/167109/806_056/iris.webp?q=COSY-EU-100-1713d0VXqaSFqtyO67PobzIr3eWsrrCsdRRzwQZQ9vZbMw3SGtGyUtsd2HdcUfp8qXGEuiYJ0l3ItOB2NQObApjTXI5uVfzQC3qXFkzNwTYm7jZ7ohKVFsM%25vqCtTyLRzLyYax7NYrH1KnOn8wsOfoiZUbXM4FG4MTg90vZ6PDBSbSeWAtRtsd5cpcUfSLWXGEtbSJ0lLHJOB2a8RbApenCI5us5xQC3Uh7kzNGJKm7j0hShKVBHF%25vqA8lyLRjc6YaxVoYrH1gObnMr%25E2fchI5uKMTQmIwlzkhQg59m7jGyvhKVUs9%25vq7vlyLRKG6YaxvNxrH1LmOn8wiOcoiZ4bIM4Fg4rTg9Pzn6PDeSoSevjzFoJpENtjvaKUNjWmtdDZGZMuMapgeLlHp7RKfJnzPk&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "E-Class",
+      "classification": "준대형",
+      "segment": "E-Segment"
+    },
+    "trim": {
+      "name": "E 200 AVANTGARDE",
+      "baumuster": "2140501",
+      "body_type": "Sedan",
+      "body_type_code": "LIMOUSINE",
+      "model_year": "806",
+      "base_price": 76500000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 150,
+      "acceleration_0_100": 7.5,
+      "top_speed": 240,
+      "length": 4949,
+      "width": 1880,
+      "height": 1468,
+      "curb_weight": 2450,
+      "transmission": "자동",
+      "doors": 4,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1999,
+        "fuel_tank_capacity": 66,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214050/806/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtxmFtsd2HtcUfpF0XGEuTRJ0l3CJOB2Nz2bApRiyI5ux4ZQC30MrkzNBzkm7jA2jhKViSM%25vq4BjyLRgYFYaxPJ8rH1yC%25n8w0AEoiZBkoM4FvIPTg9LxZ6PDaroSeWHtItsd8c%25cUfiAkXGE5YrJbXSqxVh6n8wPbIoTnlR4M6o58FTg97zp6PD4PDSeWgejtsdRs3cUfGU6XGE0GYJ0lB4lOB2AQ1bA4wHEcmqN1IwCJ0MFspnIu2fzfXRXPq0Agjeq89i3mtHBr&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214050/806/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtxmFtsd2HtcUfpF0XGEuTRJ0l3CJOB2Nz2bApRiyI5ux4ZQC30MrkzNBzkm7jA2jhKViSM%25vq4BjyLRgYFYaxPJ8rH1yC%25n8w0AEoiZBkoM4FvIPTg9LxZ6PDaroSeWHtItsd8c%25cUfiAkXGE5YrJbXSqxVh6n8wPbIoTnlR4M6o58FTg97zp6PD4PDSeWgejtsdRs3cUfGU6XGE0GYJ0lB4lOB2AQ1bA4wHEcmqN1IwCJ0MFspnIu2fzfXRXPq0Agjeq89i3mtHBr&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214050/806/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtxmFtsd2HtcUfpF0XGEuTRJ0l3CJOB2Nz2bApRiyI5ux4ZQC30MrkzNBzkm7jA2jhKViSM%25vq4BjyLRgYFYaxPJ8rH1yC%25n8w0AEoiZBkoM4FvIPTg9LxZ6PDaroSeWHtItsd8c%25cUfiAkXGE5YrJbXSqxVh6n8wPbIoTnlR4M6o58FTg97zp6PD4PDSeWgejtsdRs3cUfGU6XGE0GYJ0lB4lOB2AQ1bA4wHEcmqN1IwCJ0MFspnIu2fzfXRXPq0Agjeq89i3mtHBr&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "GLC",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "GLC 300 4MATIC Coupé AMG Line",
+      "baumuster": "2543471",
+      "body_type": "Coupé",
+      "body_type_code": "COUPE",
+      "model_year": "806",
+      "base_price": 95700000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 190,
+      "acceleration_0_100": 6.3,
+      "top_speed": 246,
+      "length": 4764,
+      "width": 1890,
+      "height": 1605,
+      "curb_weight": 2510,
+      "transmission": "자동",
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1999,
+        "fuel_tank_capacity": 62,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254347/806_056/iris.webp?q=COSY-EU-100-1713d0VXqaSFqtyO67PobzIr3eWsrrCsdRRzwQZg9pZbMw3SGtGyUtsd1JpcUfwFuXGEZT3J0l34JOB2Ng1bApjkyI5uVmJQC3qhQkzNRtbm7jx2vhKV1bW%25vqwylyLRZimYaxF4YrH19gOn8wfOFoiZEiEM4Fl4wTg92gk6PDp7bSeWuKjtsd3vpcUfNOqXGEjnmJ0lVoxOB2qW1bApRd9I5uxQJQC30MrkzNBzkm7jAeohKV5Yh%25vqCrqyLRz3RYax7kErH1Knin8wsOfoiZUbXM4FG4MTg90gE6PDB7FSeWAa9tsd5c3cUfCX1XGEzYYJ0lcHfOB2a8ObApHT9I5u861QC3iXOkzN4JKm7jgaFhKVPTh%25vqAtayLR5LDYaxCbSrH1zjRn8w7hyoiZK%25pM4FvyPTg9L6Z6PDaSmSeWH0utsd8BQcUfiAcXGE45EJ0lgCAOB2PzFbApEnRI5uloYQC32hOkzNLTnm7jacohKVHXt%25vq8u%25yLRiXJYnymdEWSkOB2znobQOxf5IkbiBuQC3sM3kzNetDm7jC7fhKVzsF%25vq7UcyLRKA6Yaxv5ErH1LMun8waTboiZHkoM4F8kSTg9ikl6PD40jSeWqmItsdR4zcUfG%25kXGE0GjJ0lB0rOB2A8cbAp5iCI5uC4MQC3zs3kzN7U9m7jKyDhKVvXF%25vGdeNQnF1WydaR75xLqtyRV3H3k9kBF7v0wAFslUxnIeKS&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254347/806_056/iris.webp?q=COSY-EU-100-1713d0VXqaSFqtyO67PobzIr3eWsrrCsdRRzwQZg9pZbMw3SGtGyUtsd1JpcUfwFuXGEZT3J0l34JOB2Ng1bApjkyI5uVmJQC3qhQkzNRtbm7jx2vhKV1bW%25vqwylyLRZimYaxF4YrH19gOn8wfOFoiZEiEM4Fl4wTg92gk6PDp7bSeWuKjtsd3vpcUfNOqXGEjnmJ0lVoxOB2qW1bApRd9I5uxQJQC30MrkzNBzkm7jAeohKV5Yh%25vqCrqyLRz3RYax7kErH1Knin8wsOfoiZUbXM4FG4MTg90gE6PDB7FSeWAa9tsd5c3cUfCX1XGEzYYJ0lcHfOB2a8ObApHT9I5u861QC3iXOkzN4JKm7jgaFhKVPTh%25vqAtayLR5LDYaxCbSrH1zjRn8w7hyoiZK%25pM4FvyPTg9L6Z6PDaSmSeWH0utsd8BQcUfiAcXGE45EJ0lgCAOB2PzFbApEnRI5uloYQC32hOkzNLTnm7jacohKVHXt%25vq8u%25yLRiXJYnymdEWSkOB2znobQOxf5IkbiBuQC3sM3kzNetDm7jC7fhKVzsF%25vq7UcyLRKA6Yaxv5ErH1LMun8waTboiZHkoM4F8kSTg9ikl6PD40jSeWqmItsdR4zcUfG%25kXGE0GjJ0lB0rOB2A8cbAp5iCI5uC4MQC3zs3kzN7U9m7jKyDhKVvXF%25vGdeNQnF1WydaR75xLqtyRV3H3k9kBF7v0wAFslUxnIeKS&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254347/806_056/iris.webp?q=COSY-EU-100-1713d0VXqaSFqtyO67PobzIr3eWsrrCsdRRzwQZg9pZbMw3SGtGyUtsd1JpcUfwFuXGEZT3J0l34JOB2Ng1bApjkyI5uVmJQC3qhQkzNRtbm7jx2vhKV1bW%25vqwylyLRZimYaxF4YrH19gOn8wfOFoiZEiEM4Fl4wTg92gk6PDp7bSeWuKjtsd3vpcUfNOqXGEjnmJ0lVoxOB2qW1bApRd9I5uxQJQC30MrkzNBzkm7jAeohKV5Yh%25vqCrqyLRz3RYax7kErH1Knin8wsOfoiZUbXM4FG4MTg90gE6PDB7FSeWAa9tsd5c3cUfCX1XGEzYYJ0lcHfOB2a8ObApHT9I5u861QC3iXOkzN4JKm7jgaFhKVPTh%25vqAtayLR5LDYaxCbSrH1zjRn8w7hyoiZK%25pM4FvyPTg9L6Z6PDaSmSeWH0utsd8BQcUfiAcXGE45EJ0lgCAOB2PzFbApEnRI5uloYQC32hOkzNLTnm7jacohKVHXt%25vq8u%25yLRiXJYnymdEWSkOB2znobQOxf5IkbiBuQC3sM3kzNetDm7jC7fhKVzsF%25vq7UcyLRKA6Yaxv5ErH1LMun8waTboiZHkoM4F8kSTg9ikl6PD40jSeWqmItsdR4zcUfG%25kXGE0GjJ0lB0rOB2A8cbAp5iCI5uC4MQC3zs3kzN7U9m7jKyDhKVvXF%25vGdeNQnF1WydaR75xLqtyRV3H3k9kBF7v0wAFslUxnIeKS&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "GLE",
+      "classification": "준대형",
+      "segment": "E-Segment"
+    },
+    "trim": {
+      "name": "Mercedes-AMG GLE 53 4MATIC+",
+      "baumuster": "1671611",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "805",
+      "base_price": 161100000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 320,
+      "acceleration_0_100": 5.0,
+      "top_speed": 250,
+      "length": 4937,
+      "width": 2018,
+      "height": 1782,
+      "curb_weight": 3050,
+      "transmission": "자동",
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 2999,
+        "fuel_tank_capacity": 85,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "6"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/167161/805_055/iris.webp?q=COSY-EU-100-1713d0VXqrEFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyjtsd2HdcUfp8qXGEuiYJ0l3ItOB2NQObApjTXI5uVfzQC3qXFkzNwznm7jZeohKVFHt%25vqCtTyLRzLyYax758rH1KMrn8wvVnoiZLMIM4FGIlTg90QO6PDBP6SeWAe2tsd5ZxcUfCXkXGEzJwJ0l7OrOB2X8EbApJkXI5u84IQC3igwkzN4Jbm7jgOFhKVBSW%25vqAv9yLR5nHYaxCkhrH1zmin8w7oboiZKeEM4FvsjTg9wQO6PDZkoSeWFXStsdBsGcUfAyYXOc6VRjmTrH1gObnMrEqioTnAHNM4FKTPTg97xq6PD4PqSeWgKItsdPZdcUfeMyXGE1QNJ0lBYhOB2ArnbAp5iCI5uC4MQC3zhFkzN7mbm7jKh3hKVXSW%25vGdeNQnF1WydGBUa8FqtyRV3H3k9kBF7v0wAFslUxnIeKS&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/167161/805_055/iris.webp?q=COSY-EU-100-1713d0VXqrEFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyjtsd2HdcUfp8qXGEuiYJ0l3ItOB2NQObApjTXI5uVfzQC3qXFkzNwznm7jZeohKVFHt%25vqCtTyLRzLyYax758rH1KMrn8wvVnoiZLMIM4FGIlTg90QO6PDBP6SeWAe2tsd5ZxcUfCXkXGEzJwJ0l7OrOB2X8EbApJkXI5u84IQC3igwkzN4Jbm7jgOFhKVBSW%25vqAv9yLR5nHYaxCkhrH1zmin8w7oboiZKeEM4FvsjTg9wQO6PDZkoSeWFXStsdBsGcUfAyYXOc6VRjmTrH1gObnMrEqioTnAHNM4FKTPTg97xq6PD4PqSeWgKItsdPZdcUfeMyXGE1QNJ0lBYhOB2ArnbAp5iCI5uC4MQC3zhFkzN7mbm7jKh3hKVXSW%25vGdeNQnF1WydGBUa8FqtyRV3H3k9kBF7v0wAFslUxnIeKS&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/167161/805_055/iris.webp?q=COSY-EU-100-1713d0VXqrEFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyjtsd2HdcUfp8qXGEuiYJ0l3ItOB2NQObApjTXI5uVfzQC3qXFkzNwznm7jZeohKVFHt%25vqCtTyLRzLyYax758rH1KMrn8wvVnoiZLMIM4FGIlTg90QO6PDBP6SeWAe2tsd5ZxcUfCXkXGEzJwJ0l7OrOB2X8EbApJkXI5u84IQC3igwkzN4Jbm7jgOFhKVBSW%25vqAv9yLR5nHYaxCkhrH1zmin8w7oboiZKeEM4FvsjTg9wQO6PDZkoSeWFXStsdBsGcUfAyYXOc6VRjmTrH1gObnMrEqioTnAHNM4FKTPTg97xq6PD4PqSeWgKItsdPZdcUfeMyXGE1QNJ0lBYhOB2ArnbAp5iCI5uC4MQC3zhFkzN7mbm7jKh3hKVXSW%25vGdeNQnF1WydGBUa8FqtyRV3H3k9kBF7v0wAFslUxnIeKS&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "E-Class",
+      "classification": "준대형",
+      "segment": "E-Segment"
+    },
+    "trim": {
+      "name": "E 450 4MATIC EXCLUSIVE",
+      "baumuster": "2140611",
+      "body_type": "Sedan",
+      "body_type_code": "LIMOUSINE",
+      "model_year": "806",
+      "base_price": 128200000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 280,
+      "acceleration_0_100": 4.5,
+      "top_speed": 250,
+      "length": 4949,
+      "width": 1880,
+      "height": 1469,
+      "curb_weight": 2585,
+      "transmission": "자동",
+      "doors": 4,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 2999,
+        "fuel_tank_capacity": 66,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "6"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214061/806_056/iris.webp?q=COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd1v9cUfpUyXGEuiXJ0l3DAOB2NS1bApj7bI5uVKuQC31CpkzNwPnm7jZeDhKV5SM%25vqCv%25yLRznRYax7bSrH1eJtn8ws8WoiZUMXM4FGQPTg9oxV6PDC%25uSeWzn3tsd8hGcUfiUNXGE49jJ0lgDfOB2PScbApetlI5usQYQC3UkTkzNGLnm7jaSthymI9WFMbcUfAyYXOcVD0JbXaUxOB2i8RbAp0iXI5uB4IQC3D0gkzN7zbm7jK7ShKVv0V%25vqLrdyL0fsjko9wdYfHhKJi9RcYxqN8NmDmA9KLBZ59U2G1oQsvt&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214061/806_056/iris.webp?q=COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd1v9cUfpUyXGEuiXJ0l3DAOB2NS1bApj7bI5uVKuQC31CpkzNwPnm7jZeDhKV5SM%25vqCv%25yLRznRYax7bSrH1eJtn8ws8WoiZUMXM4FGQPTg9oxV6PDC%25uSeWzn3tsd8hGcUfiUNXGE49jJ0lgDfOB2PScbApetlI5usQYQC3UkTkzNGLnm7jaSthymI9WFMbcUfAyYXOcVD0JbXaUxOB2i8RbAp0iXI5uB4IQC3D0gkzN7zbm7jK7ShKVv0V%25vqLrdyL0fsjko9wdYfHhKJi9RcYxqN8NmDmA9KLBZ59U2G1oQsvt&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214061/806_056/iris.webp?q=COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd1v9cUfpUyXGEuiXJ0l3DAOB2NS1bApj7bI5uVKuQC31CpkzNwPnm7jZeDhKV5SM%25vqCv%25yLRznRYax7bSrH1eJtn8ws8WoiZUMXM4FGQPTg9oxV6PDC%25uSeWzn3tsd8hGcUfiUNXGE49jJ0lgDfOB2PScbApetlI5usQYQC3UkTkzNGLnm7jaSthymI9WFMbcUfAyYXOcVD0JbXaUxOB2i8RbAp0iXI5uB4IQC3D0gkzN7zbm7jK7ShKVv0V%25vqLrdyL0fsjko9wdYfHhKJi9RcYxqN8NmDmA9KLBZ59U2G1oQsvt&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "S-Class",
+      "classification": "대형",
+      "segment": "F-Segment"
+    },
+    "trim": {
+      "name": "S 580 4MATIC Sedan long",
+      "baumuster": "2231761",
+      "body_type": "Long",
+      "body_type_code": "LIMOUSINE_LANG",
+      "model_year": "806",
+      "base_price": 258600000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 370,
+      "acceleration_0_100": 4.4,
+      "top_speed": 250,
+      "length": 5289,
+      "width": 1954,
+      "height": 1503,
+      "curb_weight": 2820,
+      "transmission": "자동",
+      "doors": 4,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 3982,
+        "fuel_tank_capacity": 76,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "V8"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223176/806/iris.webp?q=COSY-EU-100-1713d0VXqbWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2vtcUfp8cXGEuiBJ0l3IrOB2NS1bApjtCI5uVQJQC3qvQkzNRLdm7jZ6IhKVFKN%25vq9UTyLRDGmYaxW0ErH1dItn8wvOcoiZLbYM4FaIPTg9HgT6PD8LoSeWiahtsd4JtcUfgOqXGEPbwJ0leohOB2sMcbApUTbI5uLoYQC3aMQkzNH%25wm7j8ymhKVipM%25vq4ukyLRgYmYaxPrprH1yJ6n8wY8WoiZB5lM4FAKuTg95Yp6PDCSuSeWz0Rtsd8hGcUfiUNXGE4nEJ0lgDfOB2PS2bApetlI5usQYQC3UkTkzNGLnm7j0avhKVBHN%25vqNtayLRjc2YaxVohrH1gJln8wPbIoTnylpEX%25QC3vT6khQZ27m%25kPCvhKV0KE%25vqGUXyLRKG6YaxvbYrH18J1n8wiO3oiZ4iIM4FgCuTg9Pv36PKNCZnX2f3SNsQ3sxmDkSW9wUwopoL24PvEa2zq7dXrCgQ&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223176/806/iris.webp?q=COSY-EU-100-1713d0VXqbWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2vtcUfp8cXGEuiBJ0l3IrOB2NS1bApjtCI5uVQJQC3qvQkzNRLdm7jZ6IhKVFKN%25vq9UTyLRDGmYaxW0ErH1dItn8wvOcoiZLbYM4FaIPTg9HgT6PD8LoSeWiahtsd4JtcUfgOqXGEPbwJ0leohOB2sMcbApUTbI5uLoYQC3aMQkzNH%25wm7j8ymhKVipM%25vq4ukyLRgYmYaxPrprH1yJ6n8wY8WoiZB5lM4FAKuTg95Yp6PDCSuSeWz0Rtsd8hGcUfiUNXGE4nEJ0lgDfOB2PS2bApetlI5usQYQC3UkTkzNGLnm7j0avhKVBHN%25vqNtayLRjc2YaxVohrH1gJln8wPbIoTnylpEX%25QC3vT6khQZ27m%25kPCvhKV0KE%25vqGUXyLRKG6YaxvbYrH18J1n8wiO3oiZ4iIM4FgCuTg9Pv36PKNCZnX2f3SNsQ3sxmDkSW9wUwopoL24PvEa2zq7dXrCgQ&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223176/806/iris.webp?q=COSY-EU-100-1713d0VXqbWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2vtcUfp8cXGEuiBJ0l3IrOB2NS1bApjtCI5uVQJQC3qvQkzNRLdm7jZ6IhKVFKN%25vq9UTyLRDGmYaxW0ErH1dItn8wvOcoiZLbYM4FaIPTg9HgT6PD8LoSeWiahtsd4JtcUfgOqXGEPbwJ0leohOB2sMcbApUTbI5uLoYQC3aMQkzNH%25wm7j8ymhKVipM%25vq4ukyLRgYmYaxPrprH1yJ6n8wY8WoiZB5lM4FAKuTg95Yp6PDCSuSeWz0Rtsd8hGcUfiUNXGE4nEJ0lgDfOB2PS2bApetlI5usQYQC3UkTkzNGLnm7j0avhKVBHN%25vqNtayLRjc2YaxVohrH1gJln8wPbIoTnylpEX%25QC3vT6khQZ27m%25kPCvhKV0KE%25vqGUXyLRKG6YaxvbYrH18J1n8wiO3oiZ4iIM4FgCuTg9Pv36PKNCZnX2f3SNsQ3sxmDkSW9wUwopoL24PvEa2zq7dXrCgQ&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "S-Class",
+      "classification": "대형",
+      "segment": "F-Segment"
+    },
+    "trim": {
+      "name": "S 450 4MATIC Sedan long",
+      "baumuster": "2231611",
+      "body_type": "Long",
+      "body_type_code": "LIMOUSINE_LANG",
+      "model_year": "806",
+      "base_price": 191600000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 280,
+      "acceleration_0_100": 5.0,
+      "top_speed": 250,
+      "length": 5289,
+      "width": 1954,
+      "height": 1503,
+      "curb_weight": 2820,
+      "transmission": "자동",
+      "doors": 4,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 2999,
+        "fuel_tank_capacity": 65,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "6"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223161/806/iris.webp?q=COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2vtcUfp8cXGEubYJ0l36xOB2NS5bApjIXI5uVKIQC3qvWkzNwTbm7jZ73hKVFsM%25vq9UdyLRDO6Yax7XSrH1KJ%25n8wv8noiZL7gM4FaKwTg9HtT6PD8cqSeWiyItsd5hQcUfCUuXGEzbjJ0l7IJOB2KbcbApvI9I5uOo%25QC3ig7kzN4PZm7j06vhKVBKF%25vqAujyLR5QRYaxCrSrH1znOn8w7PcoiZKegM4F1IPTg9wQV6PDZcoSeW0eStsdB%25ycJtTjqNkMYax4JOroYfV8nMrBa2oiZ7bYM4FzC2Tg9ihT6PDekqSeWseMtsdUs%25cUfGLqXGE0iRJ08xLdSQjuROxAyRACjlYO2EW5WtVt4jU0i3gjaZHpQ6LGy&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223161/806/iris.webp?q=COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2vtcUfp8cXGEubYJ0l36xOB2NS5bApjIXI5uVKIQC3qvWkzNwTbm7jZ73hKVFsM%25vq9UdyLRDO6Yax7XSrH1KJ%25n8wv8noiZL7gM4FaKwTg9HtT6PD8cqSeWiyItsd5hQcUfCUuXGEzbjJ0l7IJOB2KbcbApvI9I5uOo%25QC3ig7kzN4PZm7j06vhKVBKF%25vqAujyLR5QRYaxCrSrH1znOn8w7PcoiZKegM4F1IPTg9wQV6PDZcoSeW0eStsdB%25ycJtTjqNkMYax4JOroYfV8nMrBa2oiZ7bYM4FzC2Tg9ihT6PDekqSeWseMtsdUs%25cUfGLqXGE0iRJ08xLdSQjuROxAyRACjlYO2EW5WtVt4jU0i3gjaZHpQ6LGy&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223161/806/iris.webp?q=COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2vtcUfp8cXGEubYJ0l36xOB2NS5bApjIXI5uVKIQC3qvWkzNwTbm7jZ73hKVFsM%25vq9UdyLRDO6Yax7XSrH1KJ%25n8wv8noiZL7gM4FaKwTg9HtT6PD8cqSeWiyItsd5hQcUfCUuXGEzbjJ0l7IJOB2KbcbApvI9I5uOo%25QC3ig7kzN4PZm7j06vhKVBKF%25vqAujyLR5QRYaxCrSrH1znOn8w7PcoiZKegM4F1IPTg9wQV6PDZcoSeW0eStsdB%25ycJtTjqNkMYax4JOroYfV8nMrBa2oiZ7bYM4FzC2Tg9ihT6PDekqSeWseMtsdUs%25cUfGLqXGE0iRJ08xLdSQjuROxAyRACjlYO2EW5WtVt4jU0i3gjaZHpQ6LGy&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "C-Class",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "C 200 AVANTGARDE",
+      "baumuster": "2060501",
+      "body_type": "Sedan",
+      "body_type_code": "LIMOUSINE",
+      "model_year": "806",
+      "base_price": 64300000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 150,
+      "acceleration_0_100": 7.3,
+      "top_speed": 246,
+      "length": 4751,
+      "width": 1820,
+      "height": 1438,
+      "curb_weight": null,
+      "transmission": "자동",
+      "doors": 4,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1999,
+        "fuel_tank_capacity": 66,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/206050/806/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle9tsd2HtcUfp8qXGEubmJ0l3ItOB2NMcbApjdCI5uVcZQC3qkWkzNRL6m7jZ6qhKVFKF%25vq9UTyLRDGfYaxWbSrH1KJtn8wv8noiZL6oM4FaRFTg90Q26PDBPlSeWAK9tsd5c3cUfCX1XGEtiSJ0lLHqOB2aMFbApenCI5usf2QC3UkrkzNGm6m7j0aohKVBHV%25vqA8ayLR5i2Yax4JOroYhfldtmbAp7oMIkb1ECQmI4A7kzNUTNm7jsGOhKVzKV%25vq7vdyLRlYHYaxHahrH18B%25n8wiT2oiCpBxySfD2Mpg1oQ3vZbMFwRPRYEY7fHizWKfAN59S%25B8O&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/206050/806/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle9tsd2HtcUfp8qXGEubmJ0l3ItOB2NMcbApjdCI5uVcZQC3qkWkzNRL6m7jZ6qhKVFKF%25vq9UTyLRDGfYaxWbSrH1KJtn8wv8noiZL6oM4FaRFTg90Q26PDBPlSeWAK9tsd5c3cUfCX1XGEtiSJ0lLHqOB2aMFbApenCI5usf2QC3UkrkzNGm6m7j0aohKVBHV%25vqA8ayLR5i2Yax4JOroYhfldtmbAp7oMIkb1ECQmI4A7kzNUTNm7jsGOhKVzKV%25vq7vdyLRlYHYaxHahrH18B%25n8wiT2oiCpBxySfD2Mpg1oQ3vZbMFwRPRYEY7fHizWKfAN59S%25B8O&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/206050/806/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle9tsd2HtcUfp8qXGEubmJ0l3ItOB2NMcbApjdCI5uVcZQC3qkWkzNRL6m7jZ6qhKVFKF%25vq9UTyLRDGfYaxWbSrH1KJtn8wv8noiZL6oM4FaRFTg90Q26PDBPlSeWAK9tsd5c3cUfCX1XGEtiSJ0lLHqOB2aMFbApenCI5usf2QC3UkrkzNGm6m7j0aohKVBHV%25vqA8ayLR5i2Yax4JOroYhfldtmbAp7oMIkb1ECQmI4A7kzNUTNm7jsGOhKVzKV%25vq7vdyLRlYHYaxHahrH18B%25n8wiT2oiCpBxySfD2Mpg1oQ3vZbMFwRPRYEY7fHizWKfAN59S%25B8O&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "EQB",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "EQB 300 4MATIC AMG Line",
+      "baumuster": "2436081",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "806",
+      "base_price": 84300000,
+      "fuel_type": "전기",
+      "seating_capacity": 5,
+      "max_output": 168,
+      "acceleration_0_100": 8.0,
+      "top_speed": 160,
+      "length": 4684,
+      "width": 1834,
+      "height": 1694,
+      "curb_weight": 2580,
+      "transmission": null,
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": null,
+      "ev_spec": {
+        "battery_capacity": null,
+        "max_range": null,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null
+      },
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/243608/806/iris.webp?q=COSY-EU-100-1713d0VXqNEFqtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtlaWtsd2HVcUfp8yXGEubSJ0l3IJOB2NMcbApjtwI5ux4YQC31SrkzNBzkm7jAymhKV5XN%25vqCu%25yLRgcDYaxPXSrH1eHrn8ws8WoiZUqNM4FGR1Tg906O6PDBSsSeWTm9tsd7vVcUfKM6XGEvTVJ0lL%25lOB2Pr5bApeARI5use1QC3UXQkzNGJdm7j0hShKVBHF%25vqA8lyLRjnmYaxVbWrH1gObnMr%25E2fchI5uKMTQmIwlzkhQg5Km7jscWhKVzYt%25vqECCyLRaLXYaxH0hrH18Bin8wiT2oiZ4kIM4FgRrTg735wrcldu63ejuwuB9Q6DF1s1n2nvligKfLlCVzWcY54I&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/243608/806/iris.webp?q=COSY-EU-100-1713d0VXqNEFqtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtlaWtsd2HVcUfp8yXGEubSJ0l3IJOB2NMcbApjtwI5ux4YQC31SrkzNBzkm7jAymhKV5XN%25vqCu%25yLRgcDYaxPXSrH1eHrn8ws8WoiZUqNM4FGR1Tg906O6PDBSsSeWTm9tsd7vVcUfKM6XGEvTVJ0lL%25lOB2Pr5bApeARI5use1QC3UXQkzNGJdm7j0hShKVBHF%25vqA8lyLRjnmYaxVbWrH1gObnMr%25E2fchI5uKMTQmIwlzkhQg5Km7jscWhKVzYt%25vqECCyLRaLXYaxH0hrH18Bin8wiT2oiZ4kIM4FgRrTg735wrcldu63ejuwuB9Q6DF1s1n2nvligKfLlCVzWcY54I&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/243608/806/iris.webp?q=COSY-EU-100-1713d0VXqNEFqtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtlaWtsd2HVcUfp8yXGEubSJ0l3IJOB2NMcbApjtwI5ux4YQC31SrkzNBzkm7jAymhKV5XN%25vqCu%25yLRgcDYaxPXSrH1eHrn8ws8WoiZUqNM4FGR1Tg906O6PDBSsSeWTm9tsd7vVcUfKM6XGEvTVJ0lL%25lOB2Pr5bApeARI5use1QC3UXQkzNGJdm7j0hShKVBHF%25vqA8lyLRjnmYaxVbWrH1gObnMr%25E2fchI5uKMTQmIwlzkhQg5Km7jscWhKVzYt%25vqECCyLRaLXYaxH0hrH18Bin8wiT2oiZ4kIM4FgRrTg735wrcldu63ejuwuB9Q6DF1s1n2nvligKfLlCVzWcY54I&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "GLS",
+      "classification": "대형",
+      "segment": "F-Segment"
+    },
+    "trim": {
+      "name": "GLS 450 4MATIC",
+      "baumuster": "1679591",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "805",
+      "base_price": 157100000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 7,
+      "max_output": 280,
+      "acceleration_0_100": 6.1,
+      "top_speed": 250,
+      "length": 5209,
+      "width": 1956,
+      "height": 1823,
+      "curb_weight": 3230,
+      "transmission": "자동",
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 2999,
+        "fuel_tank_capacity": 90,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "6"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/167959/805_055/iris.webp?q=COSY-EU-100-1713d0VXq0WFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyjtsd2vGcUfp8fXGEuiRJ0l34rOB2NQcbApjkbI5uV6JQC3qE7kzNRJ9m7jxafhKVFKM%25vq9UTyLRDiXYax7XSrH1KJ%25n8wv8noiZL7gM4FaKjTg9HtT6PD8cqSeWiwStsd4c%25cUfC%25NXGEzymJ0l70JOB2KBjbApvkbI5uLQYQC3akOkzNHmdm7j8hShKVksN%25vqmrkyLRsGyYaxU0drH1Gm%25n8w0hEoiZKbpM4Fv4lTg9Lt36PDacsSeWHnWtsd8oGcUfiX0XGE4JYJ0lgCVOB2PzFbApe7lI5uloYQC32MOkzNp%25km7jaSthymI9WFMbcUfAyYXOcVD0JbXaUhOB2gg%25bAp4TZI5uBo2QC3ACWkzN5Pnm7jCGohKVzpV%25vq7IcyLRlMdYaxHXSrH18JOn8wiA4oiZ451M4FgTrTg735wrcldu637vz0j39Q6DF1s1n2nvligKfLlCVzWcY54I&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/167959/805_055/iris.webp?q=COSY-EU-100-1713d0VXq0WFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyjtsd2vGcUfp8fXGEuiRJ0l34rOB2NQcbApjkbI5uV6JQC3qE7kzNRJ9m7jxafhKVFKM%25vq9UTyLRDiXYax7XSrH1KJ%25n8wv8noiZL7gM4FaKjTg9HtT6PD8cqSeWiwStsd4c%25cUfC%25NXGEzymJ0l70JOB2KBjbApvkbI5uLQYQC3akOkzNHmdm7j8hShKVksN%25vqmrkyLRsGyYaxU0drH1Gm%25n8w0hEoiZKbpM4Fv4lTg9Lt36PDacsSeWHnWtsd8oGcUfiX0XGE4JYJ0lgCVOB2PzFbApe7lI5uloYQC32MOkzNp%25km7jaSthymI9WFMbcUfAyYXOcVD0JbXaUhOB2gg%25bAp4TZI5uBo2QC3ACWkzN5Pnm7jCGohKVzpV%25vq7IcyLRlMdYaxHXSrH18JOn8wiA4oiZ451M4FgTrTg735wrcldu637vz0j39Q6DF1s1n2nvligKfLlCVzWcY54I&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/167959/805_055/iris.webp?q=COSY-EU-100-1713d0VXq0WFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyjtsd2vGcUfp8fXGEuiRJ0l34rOB2NQcbApjkbI5uV6JQC3qE7kzNRJ9m7jxafhKVFKM%25vq9UTyLRDiXYax7XSrH1KJ%25n8wv8noiZL7gM4FaKjTg9HtT6PD8cqSeWiwStsd4c%25cUfC%25NXGEzymJ0l70JOB2KBjbApvkbI5uLQYQC3akOkzNHmdm7j8hShKVksN%25vqmrkyLRsGyYaxU0drH1Gm%25n8w0hEoiZKbpM4Fv4lTg9Lt36PDacsSeWHnWtsd8oGcUfiX0XGE4JYJ0lgCVOB2PzFbApe7lI5uloYQC32MOkzNp%25km7jaSthymI9WFMbcUfAyYXOcVD0JbXaUhOB2gg%25bAp4TZI5uBo2QC3ACWkzN5Pnm7jCGohKVzpV%25vq7IcyLRlMdYaxHXSrH18JOn8wiA4oiZ451M4FgTrTg735wrcldu637vz0j39Q6DF1s1n2nvligKfLlCVzWcY54I&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "S-Class",
+      "classification": "대형",
+      "segment": "F-Segment"
+    },
+    "trim": {
+      "name": "S 350 d 4MATIC",
+      "baumuster": "2230211",
+      "body_type": "Sedan",
+      "body_type_code": "LIMOUSINE",
+      "model_year": "806",
+      "base_price": 152600000,
+      "fuel_type": "디젤",
+      "seating_capacity": 5,
+      "max_output": 230,
+      "acceleration_0_100": 5.5,
+      "top_speed": 250,
+      "length": 5179,
+      "width": 1954,
+      "height": 1503,
+      "curb_weight": 2820,
+      "transmission": "자동",
+      "doors": 4,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 2989,
+        "fuel_tank_capacity": 65,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "6"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223021/806/iris.webp?q=COSY-EU-100-1713d0VXq0WFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2HtcUfpOyXGEuTRJ0l3OtOB2NzObApj79I5ux52QC31grkzNwP9m7jZcohKV5SM%25vqCv%25yLRzAHYax75qrH1KMrn8wsOcoiZUidM4FGSlTg90tT6PDBSoSeWAtRtsd7vGcUfi%250XGE4GjJ0lgDfOB2PScbApetpI5usQYQC3UkTkzNGLnm7j0avhKV3SL%25vqNtlyLRjnmYax4aYrH1gObnMr%25E2fchI5uKMTQmIwlzkhQg5bm7jG6IhKVUs9%25vq7J%25yLRl3DYaxHahrH18HOn8wiA2oiZ47pM4zuA1YtEWpTuPbpkoEFIT9ZxexrlrKE847dvE5jCDtyAib&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223021/806/iris.webp?q=COSY-EU-100-1713d0VXq0WFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2HtcUfpOyXGEuTRJ0l3OtOB2NzObApj79I5ux52QC31grkzNwP9m7jZcohKV5SM%25vqCv%25yLRzAHYax75qrH1KMrn8wsOcoiZUidM4FGSlTg90tT6PDBSoSeWAtRtsd7vGcUfi%250XGE4GjJ0lgDfOB2PScbApetpI5usQYQC3UkTkzNGLnm7j0avhKV3SL%25vqNtlyLRjnmYax4aYrH1gObnMr%25E2fchI5uKMTQmIwlzkhQg5bm7jG6IhKVUs9%25vq7J%25yLRl3DYaxHahrH18HOn8wiA2oiZ47pM4zuA1YtEWpTuPbpkoEFIT9ZxexrlrKE847dvE5jCDtyAib&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223021/806/iris.webp?q=COSY-EU-100-1713d0VXq0WFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2HtcUfpOyXGEuTRJ0l3OtOB2NzObApj79I5ux52QC31grkzNwP9m7jZcohKV5SM%25vqCv%25yLRzAHYax75qrH1KMrn8wsOcoiZUidM4FGSlTg90tT6PDBSoSeWAtRtsd7vGcUfi%250XGE4GjJ0lgDfOB2PScbApetpI5usQYQC3UkTkzNGLnm7j0avhKV3SL%25vqNtlyLRjnmYax4aYrH1gObnMr%25E2fchI5uKMTQmIwlzkhQg5bm7jG6IhKVUs9%25vq7J%25yLRl3DYaxHahrH18HOn8wiA2oiZ47pM4zuA1YtEWpTuPbpkoEFIT9ZxexrlrKE847dvE5jCDtyAib&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "CLE",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "CLE 200 Coupé AMG Line",
+      "baumuster": "2363501",
+      "body_type": "Coupé",
+      "body_type_code": "COUPE",
+      "model_year": "806",
+      "base_price": 75700000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 4,
+      "max_output": 150,
+      "acceleration_0_100": 7.4,
+      "top_speed": 240,
+      "length": 4850,
+      "width": 1861,
+      "height": 1423,
+      "curb_weight": 2265,
+      "transmission": "자동",
+      "doors": 2,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1999,
+        "fuel_tank_capacity": 66,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/236350/806/iris.webp?q=COSY-EU-100-1713d0VXqaWeqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7oI5ux5xQC31CpkzNwPnm7jZeDhKV5SM%25vqCv%25yLRznyYax7NxrH1eJtn8ws8WoiZUMEM4FAm2Tg95Yn6PDCGNSeWHmUtsd8ZDcUfiXkXGE4JYJ0lgChOB2Pz2bApe7CI5usKDQC3UnpkzNLt6m7jaSthymI9WFMbcUfAyYXOcVD0JbXaUJOB2gW2bAp4TZI5uB4MQC3D0ZkzN7P9m7jKevhKVv0V%25vGdeNQnF1WydaX%255E5qtyRV3H3k9kBF7v0wAFslUxnIeKS&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/236350/806/iris.webp?q=COSY-EU-100-1713d0VXqaWeqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7oI5ux5xQC31CpkzNwPnm7jZeDhKV5SM%25vqCv%25yLRznyYax7NxrH1eJtn8ws8WoiZUMEM4FAm2Tg95Yn6PDCGNSeWHmUtsd8ZDcUfiXkXGE4JYJ0lgChOB2Pz2bApe7CI5usKDQC3UnpkzNLt6m7jaSthymI9WFMbcUfAyYXOcVD0JbXaUJOB2gW2bAp4TZI5uB4MQC3D0ZkzN7P9m7jKevhKVv0V%25vGdeNQnF1WydaX%255E5qtyRV3H3k9kBF7v0wAFslUxnIeKS&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/236350/806/iris.webp?q=COSY-EU-100-1713d0VXqaWeqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7oI5ux5xQC31CpkzNwPnm7jZeDhKV5SM%25vqCv%25yLRznyYax7NxrH1eJtn8ws8WoiZUMEM4FAm2Tg95Yn6PDCGNSeWHmUtsd8ZDcUfiXkXGE4JYJ0lgChOB2Pz2bApe7CI5usKDQC3UnpkzNLt6m7jaSthymI9WFMbcUfAyYXOcVD0JbXaUJOB2gW2bAp4TZI5uB4MQC3D0ZkzN7P9m7jKevhKVv0V%25vGdeNQnF1WydaX%255E5qtyRV3H3k9kBF7v0wAFslUxnIeKS&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "S-Class",
+      "classification": "대형",
+      "segment": "F-Segment"
+    },
+    "trim": {
+      "name": "S 450 4MATIC Sedan",
+      "baumuster": "2230611",
+      "body_type": "Sedan",
+      "body_type_code": "LIMOUSINE",
+      "model_year": "806",
+      "base_price": 159600000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 270,
+      "acceleration_0_100": 5.1,
+      "top_speed": 250,
+      "length": 5179,
+      "width": 1954,
+      "height": 1503,
+      "curb_weight": 2795,
+      "transmission": "자동",
+      "doors": 4,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 2999,
+        "fuel_tank_capacity": 65,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "6"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223061/806/iris.webp?q=COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2HtcUfpOyXGEuTRJ0l3OtOB2NzObApj79I5ux52QC31grkzNwP9m7jZcohKV5SM%25vqCv%25yLRzAHYax75qrH1KMrn8wvQcoiZUbXM4FG4fTg90t26PDBc6SeWAtMtsd5cxcUfKL0XGEvTSJ0lgYAOB2PBqbApedlI5uscJQC3UX3kzNGmnm7j0hShKVBHM%25vqA8ayLRjcHYaxVXprH1qM%25n8wRQfoiZeioM4FsQkTSMrp32OYm7jaSthym9uv%25Yhs7TyLRAcmYaxBblrH1LIrn8wuvWoiZ4iIM4FgCuTg9Pze6PDe7mSeWsajtsLV79MOuljcVGmjyBudhcfWF0FT3THuPsa28uKxvEOo7em&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223061/806/iris.webp?q=COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2HtcUfpOyXGEuTRJ0l3OtOB2NzObApj79I5ux52QC31grkzNwP9m7jZcohKV5SM%25vqCv%25yLRzAHYax75qrH1KMrn8wvQcoiZUbXM4FG4fTg90t26PDBc6SeWAtMtsd5cxcUfKL0XGEvTSJ0lgYAOB2PBqbApedlI5uscJQC3UX3kzNGmnm7j0hShKVBHM%25vqA8ayLRjcHYaxVXprH1qM%25n8wRQfoiZeioM4FsQkTSMrp32OYm7jaSthym9uv%25Yhs7TyLRAcmYaxBblrH1LIrn8wuvWoiZ4iIM4FgCuTg9Pze6PDe7mSeWsajtsLV79MOuljcVGmjyBudhcfWF0FT3THuPsa28uKxvEOo7em&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223061/806/iris.webp?q=COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2HtcUfpOyXGEuTRJ0l3OtOB2NzObApj79I5ux52QC31grkzNwP9m7jZcohKV5SM%25vqCv%25yLRzAHYax75qrH1KMrn8wvQcoiZUbXM4FG4fTg90t26PDBc6SeWAtMtsd5cxcUfKL0XGEvTSJ0lgYAOB2PBqbApedlI5uscJQC3UX3kzNGmnm7j0hShKVBHM%25vqA8ayLRjcHYaxVXprH1qM%25n8wRQfoiZeioM4FsQkTSMrp32OYm7jaSthym9uv%25Yhs7TyLRAcmYaxBblrH1LIrn8wuvWoiZ4iIM4FgCuTg9Pze6PDe7mSeWsajtsLV79MOuljcVGmjyBudhcfWF0FT3THuPsa28uKxvEOo7em&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "GLC",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "GLC 300 4MATIC AVANTGARDE",
+      "baumuster": "2546471",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "806",
+      "base_price": 81400000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 190,
+      "acceleration_0_100": 6.2,
+      "top_speed": 240,
+      "length": 4716,
+      "width": 1890,
+      "height": 1640,
+      "curb_weight": 2510,
+      "transmission": "자동",
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1999,
+        "fuel_tank_capacity": 62,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254647/806_056/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZUnRZbMw3SGtGyUtsd1JpcUfwFuXGEZT3J0l34JOB2Ng1bApjkyI5uVmJQC3qhQkzNRtbm7jx2vhKV1bW%25vqwylyLRZimYaxF4YrH19gOn8wfOFoiZEiEM4Fl4wTg92zO6PDp7NSeWuK2tsd3JVcUfNrkXGEjnRJ0lVDxOB2qWFbApRIXI5uGoYQC30CQkzNBPnm7jAymhKV5YV%25vqCuqyLRzQfYaxPXWrH1eJtn8ws8noiZUidM4FGCwTg90vZ6PDBSpSeWAtRtsd5%25%25cUfSLWXGEtTwJ0lLHJOB2a81bApHT9I5u861QC3ikykzN4LZm7jgMIhKVBSL%25vqAv9yLR5O6YaxCNqrH1zm%25n8w7h2oiZK%25gM4FvTwTg9L6k6PDaGpSeWH0Itsd8BtcUfiAfXGE45BJ0lgCZOB2frqbApEnyI5ulmJQC3vMrkzNLtnm7jacShKVHtc%25YhQDd9TIXGE5YrJbXqWBOIJHG5bApPTRI5ugecQC3AC3kzN5z9m7jC7fhKVzsF%25vq7BdyLRKn2YaxvoJrH1LIrn8waIToiZHIfM4F8U3Tg9jQO6PDekbSeWseutsdUsTcUfGUyXGE0aSJ0lB4lOB2Ag1bAp5kwI5uC6xQCPFi2J%25xVZkF7NA2jz3MkNulKlO1OsxACeqUx4Wgj%25Xi5o&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254647/806_056/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZUnRZbMw3SGtGyUtsd1JpcUfwFuXGEZT3J0l34JOB2Ng1bApjkyI5uVmJQC3qhQkzNRtbm7jx2vhKV1bW%25vqwylyLRZimYaxF4YrH19gOn8wfOFoiZEiEM4Fl4wTg92zO6PDp7NSeWuK2tsd3JVcUfNrkXGEjnRJ0lVDxOB2qWFbApRIXI5uGoYQC30CQkzNBPnm7jAymhKV5YV%25vqCuqyLRzQfYaxPXWrH1eJtn8ws8noiZUidM4FGCwTg90vZ6PDBSpSeWAtRtsd5%25%25cUfSLWXGEtTwJ0lLHJOB2a81bApHT9I5u861QC3ikykzN4LZm7jgMIhKVBSL%25vqAv9yLR5O6YaxCNqrH1zm%25n8w7h2oiZK%25gM4FvTwTg9L6k6PDaGpSeWH0Itsd8BtcUfiAfXGE45BJ0lgCZOB2frqbApEnyI5ulmJQC3vMrkzNLtnm7jacShKVHtc%25YhQDd9TIXGE5YrJbXqWBOIJHG5bApPTRI5ugecQC3AC3kzN5z9m7jC7fhKVzsF%25vq7BdyLRKn2YaxvoJrH1LIrn8waIToiZHIfM4F8U3Tg9jQO6PDekbSeWseutsdUsTcUfGUyXGE0aSJ0lB4lOB2Ag1bAp5kwI5uC6xQCPFi2J%25xVZkF7NA2jz3MkNulKlO1OsxACeqUx4Wgj%25Xi5o&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254647/806_056/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZUnRZbMw3SGtGyUtsd1JpcUfwFuXGEZT3J0l34JOB2Ng1bApjkyI5uVmJQC3qhQkzNRtbm7jx2vhKV1bW%25vqwylyLRZimYaxF4YrH19gOn8wfOFoiZEiEM4Fl4wTg92zO6PDp7NSeWuK2tsd3JVcUfNrkXGEjnRJ0lVDxOB2qWFbApRIXI5uGoYQC30CQkzNBPnm7jAymhKV5YV%25vqCuqyLRzQfYaxPXWrH1eJtn8ws8noiZUidM4FGCwTg90vZ6PDBSpSeWAtRtsd5%25%25cUfSLWXGEtTwJ0lLHJOB2a81bApHT9I5u861QC3ikykzN4LZm7jgMIhKVBSL%25vqAv9yLR5O6YaxCNqrH1zm%25n8w7h2oiZK%25gM4FvTwTg9L6k6PDaGpSeWH0Itsd8BtcUfiAfXGE45BJ0lgCZOB2frqbApEnyI5ulmJQC3vMrkzNLtnm7jacShKVHtc%25YhQDd9TIXGE5YrJbXqWBOIJHG5bApPTRI5ugecQC3AC3kzN5z9m7jC7fhKVzsF%25vq7BdyLRKn2YaxvoJrH1LIrn8waIToiZHIfM4F8U3Tg9jQO6PDekbSeWseutsdUsTcUfGUyXGE0aSJ0lB4lOB2Ag1bAp5kwI5uC6xQCPFi2J%25xVZkF7NA2jz3MkNulKlO1OsxACeqUx4Wgj%25Xi5o&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "S-Class",
+      "classification": "대형",
+      "segment": "F-Segment"
+    },
+    "trim": {
+      "name": "Mercedes-AMG S 63 E Performance",
+      "baumuster": "2231821",
+      "body_type": "Long",
+      "body_type_code": "LIMOUSINE_LANG",
+      "model_year": "806",
+      "base_price": 297600000,
+      "fuel_type": "하이브리드 (가솔린)",
+      "seating_capacity": 5,
+      "max_output": 590,
+      "acceleration_0_100": 3.3,
+      "top_speed": 250,
+      "length": 5336,
+      "width": 1921,
+      "height": 1515,
+      "curb_weight": 3145,
+      "transmission": "자동",
+      "doors": 4,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 3982,
+        "fuel_tank_capacity": 76,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "V8"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223182/806/iris.webp?q=COSY-EU-100-1713d0VXqbEFqtyO67PobzIr3eWsrrCsdRRzwQZx3pZbMw3SGtle2tsd2vtcUfp8cXGEuiBJ0l3IrOB2NS1bApjtCI5uVQJQC3qvQkzNRLdm7jZ6IhKVFKN%25vq9UTyLRDGmYaxW0ErH1dItn8wvOcoiZLbYM4FaIPTg9HgT6PD8LoSeWiaUtsd4JtcUfgOqXGEPbwJ0leohOB2Kr%25bApvnbI5uLmxQC3ahQkzNHlnm7j8hIhKVi%25E%25vqmvZyLRsGHYaxU0drH1GCln8w0hyoiZB%25lM4FAT2Tg9LQe6PDaPpSeWHyWtsd8ZDcUfiMfXGE4TdJ0lgOhOB2PbnbApe7yI5usKzQC3UvpkzNpTKm7ju6fhKV3YQ%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80bI5uecIQC3PEHkzN5Pnm7jCcmhKVfic%25vqLtlyLRaLXYaxH08rH18Cln8wioxoiCpBxySfD2MpgO2gZRZbMFwRPRYEY7fHizWKfAN59S%25B8O&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223182/806/iris.webp?q=COSY-EU-100-1713d0VXqbEFqtyO67PobzIr3eWsrrCsdRRzwQZx3pZbMw3SGtle2tsd2vtcUfp8cXGEuiBJ0l3IrOB2NS1bApjtCI5uVQJQC3qvQkzNRLdm7jZ6IhKVFKN%25vq9UTyLRDGmYaxW0ErH1dItn8wvOcoiZLbYM4FaIPTg9HgT6PD8LoSeWiaUtsd4JtcUfgOqXGEPbwJ0leohOB2Kr%25bApvnbI5uLmxQC3ahQkzNHlnm7j8hIhKVi%25E%25vqmvZyLRsGHYaxU0drH1GCln8w0hyoiZB%25lM4FAT2Tg9LQe6PDaPpSeWHyWtsd8ZDcUfiMfXGE4TdJ0lgOhOB2PbnbApe7yI5usKzQC3UvpkzNpTKm7ju6fhKV3YQ%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80bI5uecIQC3PEHkzN5Pnm7jCcmhKVfic%25vqLtlyLRaLXYaxH08rH18Cln8wioxoiCpBxySfD2MpgO2gZRZbMFwRPRYEY7fHizWKfAN59S%25B8O&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223182/806/iris.webp?q=COSY-EU-100-1713d0VXqbEFqtyO67PobzIr3eWsrrCsdRRzwQZx3pZbMw3SGtle2tsd2vtcUfp8cXGEuiBJ0l3IrOB2NS1bApjtCI5uVQJQC3qvQkzNRLdm7jZ6IhKVFKN%25vq9UTyLRDGmYaxW0ErH1dItn8wvOcoiZLbYM4FaIPTg9HgT6PD8LoSeWiaUtsd4JtcUfgOqXGEPbwJ0leohOB2Kr%25bApvnbI5uLmxQC3ahQkzNHlnm7j8hIhKVi%25E%25vqmvZyLRsGHYaxU0drH1GCln8w0hyoiZB%25lM4FAT2Tg9LQe6PDaPpSeWHyWtsd8ZDcUfiMfXGE4TdJ0lgOhOB2PbnbApe7yI5usKzQC3UvpkzNpTKm7ju6fhKV3YQ%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80bI5uecIQC3PEHkzN5Pnm7jCcmhKVfic%25vqLtlyLRaLXYaxH08rH18Cln8wioxoiCpBxySfD2MpgO2gZRZbMFwRPRYEY7fHizWKfAN59S%25B8O&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "GLC",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "Mercedes-AMG GLC 43 4MATIC",
+      "baumuster": "2546871",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "805",
+      "base_price": 101100000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 310,
+      "acceleration_0_100": 4.8,
+      "top_speed": 250,
+      "length": 4749,
+      "width": 1920,
+      "height": 1635,
+      "curb_weight": 2550,
+      "transmission": "자동",
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1991,
+        "fuel_tank_capacity": 62,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254687/805_055/iris.webp?q=COSY-EU-100-1713d0VXq0EFqtyO67PobzIr3eWsrrCsdRRzwQZUnRZbMw3SGtGyjtsd1JpcUfwFuXGEZT3J0l3YhOB2NrjbApjPbI5uVeZQC3qhrkzNR%25bm7jxymhKV1XQ%25vqwuayLRZQfYaxFrprH19g%25n8wDPnoiZWeIM4FlIDTg92g26PDpPFSeWuehtsd3vQcUfNLqXGEja3J0lV4rOB2qQ1bApRTyI5ux6ZQC31EFkzNwldm7jZhIhKV5SM%25vqCv%25yLRzG6Yax7oYrH1KM1n8wvQboiZLqZM4FayuTg90Q26PDBkbSeWAeStsd5spcUfCLWXGEzJmJ0l7OZOB2X8EbApJtRI5u84IQC3igFkzN4tZm7jgOIhKVPbL%25vqeIDyLRsifYaxU4drH1Gcrn8w7O2oiZKiEM4FvSPTg9LhO6PDa1FSeWHnMtsd8oVcUfiM0XGE4JYJ0lgCVOB2Pz%25bApe7bI5usKuQC3Uv7kzNGLdm7ju6ZhKV3SM%25vqNrkyLRic6Yax4X8rH1gItn8wPQboiZeIQM6oY2ulJykzNL6Sm%25kFpKhymezQ%25vqBuqyLR03PYaxvaprH1LBdn8waz2oiZH6NM4F8SQTg9ihT6PD4hcSeWghptsdPAycUfeZ%25XGEshyJ0lwYhOB2ZsBbAp5nyI5uC5xQC3zCTkzN7Pbm7jKevhKVv0V%25vqLBdyLRanfYaxHoprH18Idn8wioxoiZkbpM4zuA1YtEWpTuP981FgFIT9ZxexrlrKE847dvE5jCDtyAib&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254687/805_055/iris.webp?q=COSY-EU-100-1713d0VXq0EFqtyO67PobzIr3eWsrrCsdRRzwQZUnRZbMw3SGtGyjtsd1JpcUfwFuXGEZT3J0l3YhOB2NrjbApjPbI5uVeZQC3qhrkzNR%25bm7jxymhKV1XQ%25vqwuayLRZQfYaxFrprH19g%25n8wDPnoiZWeIM4FlIDTg92g26PDpPFSeWuehtsd3vQcUfNLqXGEja3J0lV4rOB2qQ1bApRTyI5ux6ZQC31EFkzNwldm7jZhIhKV5SM%25vqCv%25yLRzG6Yax7oYrH1KM1n8wvQboiZLqZM4FayuTg90Q26PDBkbSeWAeStsd5spcUfCLWXGEzJmJ0l7OZOB2X8EbApJtRI5u84IQC3igFkzN4tZm7jgOIhKVPbL%25vqeIDyLRsifYaxU4drH1Gcrn8w7O2oiZKiEM4FvSPTg9LhO6PDa1FSeWHnMtsd8oVcUfiM0XGE4JYJ0lgCVOB2Pz%25bApe7bI5usKuQC3Uv7kzNGLdm7ju6ZhKV3SM%25vqNrkyLRic6Yax4X8rH1gItn8wPQboiZeIQM6oY2ulJykzNL6Sm%25kFpKhymezQ%25vqBuqyLR03PYaxvaprH1LBdn8waz2oiZH6NM4F8SQTg9ihT6PD4hcSeWghptsdPAycUfeZ%25XGEshyJ0lwYhOB2ZsBbAp5nyI5uC5xQC3zCTkzN7Pbm7jKevhKVv0V%25vqLBdyLRanfYaxHoprH18Idn8wioxoiZkbpM4zuA1YtEWpTuP981FgFIT9ZxexrlrKE847dvE5jCDtyAib&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254687/805_055/iris.webp?q=COSY-EU-100-1713d0VXq0EFqtyO67PobzIr3eWsrrCsdRRzwQZUnRZbMw3SGtGyjtsd1JpcUfwFuXGEZT3J0l3YhOB2NrjbApjPbI5uVeZQC3qhrkzNR%25bm7jxymhKV1XQ%25vqwuayLRZQfYaxFrprH19g%25n8wDPnoiZWeIM4FlIDTg92g26PDpPFSeWuehtsd3vQcUfNLqXGEja3J0lV4rOB2qQ1bApRTyI5ux6ZQC31EFkzNwldm7jZhIhKV5SM%25vqCv%25yLRzG6Yax7oYrH1KM1n8wvQboiZLqZM4FayuTg90Q26PDBkbSeWAeStsd5spcUfCLWXGEzJmJ0l7OZOB2X8EbApJtRI5u84IQC3igFkzN4tZm7jgOIhKVPbL%25vqeIDyLRsifYaxU4drH1Gcrn8w7O2oiZKiEM4FvSPTg9LhO6PDa1FSeWHnMtsd8oVcUfiM0XGE4JYJ0lgCVOB2Pz%25bApe7bI5usKuQC3Uv7kzNGLdm7ju6ZhKV3SM%25vqNrkyLRic6Yax4X8rH1gItn8wPQboiZeIQM6oY2ulJykzNL6Sm%25kFpKhymezQ%25vqBuqyLR03PYaxvaprH1LBdn8waz2oiZH6NM4F8SQTg9ihT6PD4hcSeWghptsdPAycUfeZ%25XGEshyJ0lwYhOB2ZsBbAp5nyI5uC5xQC3zCTkzN7Pbm7jKevhKVv0V%25vqLBdyLRanfYaxHoprH18Idn8wioxoiZkbpM4zuA1YtEWpTuP981FgFIT9ZxexrlrKE847dvE5jCDtyAib&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "EQS",
+      "classification": "대형",
+      "segment": "F-Segment"
+    },
+    "trim": {
+      "name": "EQS 450 4MATIC SUV",
+      "baumuster": "2966241",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "806",
+      "base_price": 164600000,
+      "fuel_type": "전기",
+      "seating_capacity": 5,
+      "max_output": 265,
+      "acceleration_0_100": 6.2,
+      "top_speed": 210,
+      "length": 5125,
+      "width": 1959,
+      "height": 1742,
+      "curb_weight": 3410,
+      "transmission": null,
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": null,
+      "ev_spec": {
+        "battery_capacity": null,
+        "max_range": null,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null
+      },
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/296624/806_056/iris.webp?q=COSY-EU-100-1713d0VXq0WFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd1HpcUfwOuXGEZ93J0lF6NOB29zmbApjnyI5uV5ZQC3qsQkzNRU9m7jxyohKV1YQ%25vqwr%25yLRZOmYaxFNhrH19jin8wDhyoiZW%25pM4FdslTg9fUn6PDEG6SeWl0Wtsd2B%25cUfN%25yXGEjGdJ0lVHhOB2q82bApRiwI5ux4zQC31SrkzNwt9m7jZ2DhKVFHt%25vqCtTyLRzLyYax75SrH1KCin8wvz3oiZL6oM4FaSFTg9HY36PD8SmSeWAmutsd5hQcUfCUcXGEzG3J0l74xOB2KQObApvd9I5uLQYQC3akQkzNHmdm7j8avhKVitM%25vq46qyLRhGVYax%255xrH1GBrn8w0A2oiZB5lM4FAyuTg95Yp6PDCGuSeWzQMtsd8hGcUfiUNXGE4iVJ0lgDVOB2PS%25bApetXI5usczQC3UXpkzNGmkm7j0hShKVBHF%25vqA8TyLR5iHYaxC4prH1zgRn8wROyoiZx6oM4FsmJTg9UhT6PDG%25mSeW0h%25tXSMNV3QoyLRiXJYnydjHroY0Lln8wzOxoiZC5lM4F84FTg9ig36PD4PqSeWgKutsdPvQcUfeO1XGEsbYJ0lUoJOB2GorbAp0MqI5uBTLQC3ATxkzN56Ym7jCHWhKVfSM%25vqLtTyLRaLDYaxHahrH18HOn8wiA2oiZ47XM4FgSQTg735wrcldu63eSTwM59Q6DF1s1n2nvligKfLlCVzWcY54I&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/296624/806_056/iris.webp?q=COSY-EU-100-1713d0VXq0WFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd1HpcUfwOuXGEZ93J0lF6NOB29zmbApjnyI5uV5ZQC3qsQkzNRU9m7jxyohKV1YQ%25vqwr%25yLRZOmYaxFNhrH19jin8wDhyoiZW%25pM4FdslTg9fUn6PDEG6SeWl0Wtsd2B%25cUfN%25yXGEjGdJ0lVHhOB2q82bApRiwI5ux4zQC31SrkzNwt9m7jZ2DhKVFHt%25vqCtTyLRzLyYax75SrH1KCin8wvz3oiZL6oM4FaSFTg9HY36PD8SmSeWAmutsd5hQcUfCUcXGEzG3J0l74xOB2KQObApvd9I5uLQYQC3akQkzNHmdm7j8avhKVitM%25vq46qyLRhGVYax%255xrH1GBrn8w0A2oiZB5lM4FAyuTg95Yp6PDCGuSeWzQMtsd8hGcUfiUNXGE4iVJ0lgDVOB2PS%25bApetXI5usczQC3UXpkzNGmkm7j0hShKVBHF%25vqA8TyLR5iHYaxC4prH1zgRn8wROyoiZx6oM4FsmJTg9UhT6PDG%25mSeW0h%25tXSMNV3QoyLRiXJYnydjHroY0Lln8wzOxoiZC5lM4F84FTg9ig36PD4PqSeWgKutsdPvQcUfeO1XGEsbYJ0lUoJOB2GorbAp0MqI5uBTLQC3ATxkzN56Ym7jCHWhKVfSM%25vqLtTyLRaLDYaxHahrH18HOn8wiA2oiZ47XM4FgSQTg735wrcldu63eSTwM59Q6DF1s1n2nvligKfLlCVzWcY54I&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/296624/806_056/iris.webp?q=COSY-EU-100-1713d0VXq0WFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd1HpcUfwOuXGEZ93J0lF6NOB29zmbApjnyI5uV5ZQC3qsQkzNRU9m7jxyohKV1YQ%25vqwr%25yLRZOmYaxFNhrH19jin8wDhyoiZW%25pM4FdslTg9fUn6PDEG6SeWl0Wtsd2B%25cUfN%25yXGEjGdJ0lVHhOB2q82bApRiwI5ux4zQC31SrkzNwt9m7jZ2DhKVFHt%25vqCtTyLRzLyYax75SrH1KCin8wvz3oiZL6oM4FaSFTg9HY36PD8SmSeWAmutsd5hQcUfCUcXGEzG3J0l74xOB2KQObApvd9I5uLQYQC3akQkzNHmdm7j8avhKVitM%25vq46qyLRhGVYax%255xrH1GBrn8w0A2oiZB5lM4FAyuTg95Yp6PDCGuSeWzQMtsd8hGcUfiUNXGE4iVJ0lgDVOB2PS%25bApetXI5usczQC3UXpkzNGmkm7j0hShKVBHF%25vqA8TyLR5iHYaxC4prH1zgRn8wROyoiZx6oM4FsmJTg9UhT6PDG%25mSeW0h%25tXSMNV3QoyLRiXJYnydjHroY0Lln8wzOxoiZC5lM4F84FTg9ig36PD4PqSeWgKutsdPvQcUfeO1XGEsbYJ0lUoJOB2GorbAp0MqI5uBTLQC3ATxkzN56Ym7jCHWhKVfSM%25vqLtTyLRaLDYaxHahrH18HOn8wiA2oiZ47XM4FgSQTg735wrcldu63eSTwM59Q6DF1s1n2nvligKfLlCVzWcY54I&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "CLE",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "CLE 450 4MATIC Cabriolet AMG Line",
+      "baumuster": "2364611",
+      "body_type": "Cabriolet",
+      "body_type_code": "CABRIOLET",
+      "model_year": "806",
+      "base_price": 102600000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 4,
+      "max_output": 280,
+      "acceleration_0_100": 4.7,
+      "top_speed": 250,
+      "length": 4850,
+      "width": 1861,
+      "height": 1424,
+      "curb_weight": 2495,
+      "transmission": "자동",
+      "doors": 2,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 2999,
+        "fuel_tank_capacity": 66,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "6"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/236461/806/iris.webp?q=COSY-EU-100-1713d0VXq0WLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7oI5ux5xQC31CpkzNwPnm7jZeDhKVFHt%25vqCtTyLRzcyYax7oYrH1KM1n8wvVwoiZUbXM4FG4fTg90626PDMI6SeWzXutsd7YNcUfKM6XGEv5RJ0lgYAOB2PBqbApedlI5usQMQC3UvrkzNGLNm7j0avhKVBHE%25vqA6jyLRiOXYax4JOroYhfldtmbAp7oMIkb1ECQmI4AQkzNUTNm7jscWhKVzsM%25vq7UcyLRlzLYaxH0ErH18Bin8wizwoiZ4epM4zuA1YtEWpTuPkMcsEFIT9ZxexrlrKE847dvE5jCDtyAib&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/236461/806/iris.webp?q=COSY-EU-100-1713d0VXq0WLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7oI5ux5xQC31CpkzNwPnm7jZeDhKVFHt%25vqCtTyLRzcyYax7oYrH1KM1n8wvVwoiZUbXM4FG4fTg90626PDMI6SeWzXutsd7YNcUfKM6XGEv5RJ0lgYAOB2PBqbApedlI5usQMQC3UvrkzNGLNm7j0avhKVBHE%25vqA6jyLRiOXYax4JOroYhfldtmbAp7oMIkb1ECQmI4AQkzNUTNm7jscWhKVzsM%25vq7UcyLRlzLYaxH0ErH18Bin8wizwoiZ4epM4zuA1YtEWpTuPkMcsEFIT9ZxexrlrKE847dvE5jCDtyAib&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/236461/806/iris.webp?q=COSY-EU-100-1713d0VXq0WLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7oI5ux5xQC31CpkzNwPnm7jZeDhKVFHt%25vqCtTyLRzcyYax7oYrH1KM1n8wvVwoiZUbXM4FG4fTg90626PDMI6SeWzXutsd7YNcUfKM6XGEv5RJ0lgYAOB2PBqbApedlI5usQMQC3UvrkzNGLNm7j0avhKVBHE%25vqA6jyLRiOXYax4JOroYhfldtmbAp7oMIkb1ECQmI4AQkzNUTNm7jscWhKVzsM%25vq7UcyLRlzLYaxH0ErH18Bin8wizwoiZ4epM4zuA1YtEWpTuPkMcsEFIT9ZxexrlrKE847dvE5jCDtyAib&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "CLA",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "CLA 250 4MATIC AMG Line Coupé",
+      "baumuster": "1183471",
+      "body_type": "Coupé",
+      "body_type_code": "COUPE",
+      "model_year": "806",
+      "base_price": 63700000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 165,
+      "acceleration_0_100": 6.4,
+      "top_speed": 250,
+      "length": 4688,
+      "width": 1830,
+      "height": 1427,
+      "curb_weight": 2120,
+      "transmission": "자동",
+      "doors": 4,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1991,
+        "fuel_tank_capacity": 51,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/118347/806_056/iris.webp?q=COSY-EU-100-1713d0VXqNEFqtyO67PobzIr3eWsrrCsdRRzwQZg9pZbMw3SGtGyUtsd2sDcUfp8fXGEuiRJ0l34rOB2NQcbApjkbI5uV6JQC3qE7kzNRJ9m7jxhfhKVFKF%25vq9JTyLRzcDYax7aYrH1KMrn8wvQxoiZUbEM4FG4MTg90gE6PDBSpSeWTm9tsd6HTcUfKM6XGEvhXJ0lgYAOB2PSObApet9I5usQMQC3UvWkzNptwm7jaSthymI9WFMbcUfAyYXOcVD0JbXaUhOB2gQ2bAp4TZI5u9V7QC3zgOkzN7PKm7jKe3hKVvXt%25vqLukyL0fsjko9wdYf0hzC1aRcYxqN8NmDmA9KLBZ59U2G1oQsvt&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/118347/806_056/iris.webp?q=COSY-EU-100-1713d0VXqNEFqtyO67PobzIr3eWsrrCsdRRzwQZg9pZbMw3SGtGyUtsd2sDcUfp8fXGEuiRJ0l34rOB2NQcbApjkbI5uV6JQC3qE7kzNRJ9m7jxhfhKVFKF%25vq9JTyLRzcDYax7aYrH1KMrn8wvQxoiZUbEM4FG4MTg90gE6PDBSpSeWTm9tsd6HTcUfKM6XGEvhXJ0lgYAOB2PSObApet9I5usQMQC3UvWkzNptwm7jaSthymI9WFMbcUfAyYXOcVD0JbXaUhOB2gQ2bAp4TZI5u9V7QC3zgOkzN7PKm7jKe3hKVvXt%25vqLukyL0fsjko9wdYf0hzC1aRcYxqN8NmDmA9KLBZ59U2G1oQsvt&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/118347/806_056/iris.webp?q=COSY-EU-100-1713d0VXqNEFqtyO67PobzIr3eWsrrCsdRRzwQZg9pZbMw3SGtGyUtsd2sDcUfp8fXGEuiRJ0l34rOB2NQcbApjkbI5uV6JQC3qE7kzNRJ9m7jxhfhKVFKF%25vq9JTyLRzcDYax7aYrH1KMrn8wvQxoiZUbEM4FG4MTg90gE6PDBSpSeWTm9tsd6HTcUfKM6XGEvhXJ0lgYAOB2PSObApet9I5usQMQC3UvWkzNptwm7jaSthymI9WFMbcUfAyYXOcVD0JbXaUhOB2gQ2bAp4TZI5u9V7QC3zgOkzN7PKm7jKe3hKVvXt%25vqLukyL0fsjko9wdYf0hzC1aRcYxqN8NmDmA9KLBZ59U2G1oQsvt&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "S-Class",
+      "classification": "대형",
+      "segment": "F-Segment"
+    },
+    "trim": {
+      "name": "S 500 4MATIC Sedan long",
+      "baumuster": "2231631",
+      "body_type": "Long",
+      "body_type_code": "LIMOUSINE_LANG",
+      "model_year": "806",
+      "base_price": 213600000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 330,
+      "acceleration_0_100": 4.7,
+      "top_speed": 250,
+      "length": 5320,
+      "width": 1954,
+      "height": 1503,
+      "curb_weight": 2820,
+      "transmission": "자동",
+      "doors": 4,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 2999,
+        "fuel_tank_capacity": 65,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "6"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223163/806/iris.webp?q=COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2vtcUfp8cXGEubYJ0l36xOB2NS5bApjIXI5uVKIQC3qvWkzNwTbm7jZ73hKVFsM%25vq9UdyLRDO6Yax7XSrH1KJ%25n8wv8noiZL7gM4FaKwTg9HtT6PD8cqSeWiyItsd5hQcUfC%25cXGEzG3J0l7IVOB2KQObApvdyI5uLQJQC3akWkzN4PZm7jgOIhKVPb9%25vqe8lyLR5cHYaxCaWrH1zI1n8w7VxoiZK%25ZM4FvTJTg9L6k6PDaGbSeWH0Utsd9hGcUfD%251XGEWbSJ0ldoVOB2zBObAp7oMIkbX1ZxYcTg9Ukm6tTuweSc67gRtsdHHxcUfarRXGEsnXJ0lw7FOB2ArFbAp5AoI5uC4ZQC3zg7kzN7P6m7jKGDhKUWP3IrZxD%25WL6DLHjVS%25qjuauQFQ0ZzKG1BZeEsRrbP76&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223163/806/iris.webp?q=COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2vtcUfp8cXGEubYJ0l36xOB2NS5bApjIXI5uVKIQC3qvWkzNwTbm7jZ73hKVFsM%25vq9UdyLRDO6Yax7XSrH1KJ%25n8wv8noiZL7gM4FaKwTg9HtT6PD8cqSeWiyItsd5hQcUfC%25cXGEzG3J0l7IVOB2KQObApvdyI5uLQJQC3akWkzN4PZm7jgOIhKVPb9%25vqe8lyLR5cHYaxCaWrH1zI1n8w7VxoiZK%25ZM4FvTJTg9L6k6PDaGbSeWH0Utsd9hGcUfD%251XGEWbSJ0ldoVOB2zBObAp7oMIkbX1ZxYcTg9Ukm6tTuweSc67gRtsdHHxcUfarRXGEsnXJ0lw7FOB2ArFbAp5AoI5uC4ZQC3zg7kzN7P6m7jKGDhKUWP3IrZxD%25WL6DLHjVS%25qjuauQFQ0ZzKG1BZeEsRrbP76&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223163/806/iris.webp?q=COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2vtcUfp8cXGEubYJ0l36xOB2NS5bApjIXI5uVKIQC3qvWkzNwTbm7jZ73hKVFsM%25vq9UdyLRDO6Yax7XSrH1KJ%25n8wv8noiZL7gM4FaKwTg9HtT6PD8cqSeWiyItsd5hQcUfC%25cXGEzG3J0l7IVOB2KQObApvdyI5uLQJQC3akWkzN4PZm7jgOIhKVPb9%25vqe8lyLR5cHYaxCaWrH1zI1n8w7VxoiZK%25ZM4FvTJTg9L6k6PDaGbSeWH0Utsd9hGcUfD%251XGEWbSJ0ldoVOB2zBObAp7oMIkbX1ZxYcTg9Ukm6tTuweSc67gRtsdHHxcUfarRXGEsnXJ0lw7FOB2ArFbAp5AoI5uC4ZQC3zg7kzN7P6m7jKGDhKUWP3IrZxD%25WL6DLHjVS%25qjuauQFQ0ZzKG1BZeEsRrbP76&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "S-Class",
+      "classification": "대형",
+      "segment": "F-Segment"
+    },
+    "trim": {
+      "name": "Mercedes-Maybach S 580 4MATIC",
+      "baumuster": "2239761",
+      "body_type": "MAYBACH",
+      "body_type_code": "MAYBACH",
+      "model_year": "806",
+      "base_price": 315600000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 370,
+      "acceleration_0_100": 4.8,
+      "top_speed": 250,
+      "length": 5469,
+      "width": 1921,
+      "height": 1510,
+      "curb_weight": 2910,
+      "transmission": "자동",
+      "doors": 4,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 3982,
+        "fuel_tank_capacity": 76,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "V8"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223976/806/iris.webp?q=COSY-EU-100-1713d0VXqbSFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2vtcUfp8cXGEuiBJ0l3IrOB2NS1bApjtCI5uVQJQC3qvQkzNRLdm7jZ6IhKVFSL%25vq9vjyLRDG6YaxW0hrH1dBln8wfQcoiZLbXM4FaIrTg9HQe6PD8P6SeWiaMtsd4H%25cUfgOcXGEPbRJ0leIZOB2sM%25bApUTXI5uG6IQC3aMrkzNHTkm7j8yZhKViYh%25vq4uTyLRg3mYaxPrhrH1enun8wsXyoiZridM4FnT2Tg95zV6PDC7uSeWzajtsd7oNcUfKXjXGEv5wJ0lgYAOB2PBqbApeTpI5usf2QC3UX3kzNGJum7j0hohKVB%25t%25vqA8TyLR5iHYaxC4qrH1qJin8wRO3oiZx6YM4FsIuTg9Ukm6tTnuNpbrhKVHtc%25YhD3Lyr%25UKXYax5aprH1ABbn8waAcoiZHkoM4FNRJTg9PQV6PDePDSeWsehtsdUvVcUfG8qXGHRvW6INpqJRB%25qzFYEyJlfDADSjSiNsG8u4NLwa2ITvU%25&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223976/806/iris.webp?q=COSY-EU-100-1713d0VXqbSFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2vtcUfp8cXGEuiBJ0l3IrOB2NS1bApjtCI5uVQJQC3qvQkzNRLdm7jZ6IhKVFSL%25vq9vjyLRDG6YaxW0hrH1dBln8wfQcoiZLbXM4FaIrTg9HQe6PD8P6SeWiaMtsd4H%25cUfgOcXGEPbRJ0leIZOB2sM%25bApUTXI5uG6IQC3aMrkzNHTkm7j8yZhKViYh%25vq4uTyLRg3mYaxPrhrH1enun8wsXyoiZridM4FnT2Tg95zV6PDC7uSeWzajtsd7oNcUfKXjXGEv5wJ0lgYAOB2PBqbApeTpI5usf2QC3UX3kzNGJum7j0hohKVB%25t%25vqA8TyLR5iHYaxC4qrH1qJin8wRO3oiZx6YM4FsIuTg9Ukm6tTnuNpbrhKVHtc%25YhD3Lyr%25UKXYax5aprH1ABbn8waAcoiZHkoM4FNRJTg9PQV6PDePDSeWsehtsdUvVcUfG8qXGHRvW6INpqJRB%25qzFYEyJlfDADSjSiNsG8u4NLwa2ITvU%25&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223976/806/iris.webp?q=COSY-EU-100-1713d0VXqbSFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2vtcUfp8cXGEuiBJ0l3IrOB2NS1bApjtCI5uVQJQC3qvQkzNRLdm7jZ6IhKVFSL%25vq9vjyLRDG6YaxW0hrH1dBln8wfQcoiZLbXM4FaIrTg9HQe6PD8P6SeWiaMtsd4H%25cUfgOcXGEPbRJ0leIZOB2sM%25bApUTXI5uG6IQC3aMrkzNHTkm7j8yZhKViYh%25vq4uTyLRg3mYaxPrhrH1enun8wsXyoiZridM4FnT2Tg95zV6PDC7uSeWzajtsd7oNcUfKXjXGEv5wJ0lgYAOB2PBqbApeTpI5usf2QC3UX3kzNGJum7j0hohKVB%25t%25vqA8TyLR5iHYaxC4qrH1qJin8wRO3oiZx6YM4FsIuTg9Ukm6tTnuNpbrhKVHtc%25YhD3Lyr%25UKXYax5aprH1ABbn8waAcoiZHkoM4FNRJTg9PQV6PDePDSeWsehtsdUvVcUfG8qXGHRvW6INpqJRB%25qzFYEyJlfDADSjSiNsG8u4NLwa2ITvU%25&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "EQA",
+      "classification": "준중형",
+      "segment": "C-Segment"
+    },
+    "trim": {
+      "name": "EQA 250 AMG Line",
+      "baumuster": "2437011",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "806",
+      "base_price": 75800000,
+      "fuel_type": "전기",
+      "seating_capacity": 5,
+      "max_output": 140,
+      "acceleration_0_100": 8.6,
+      "top_speed": 160,
+      "length": 4463,
+      "width": 1834,
+      "height": 1612,
+      "curb_weight": 2470,
+      "transmission": null,
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": null,
+      "ev_spec": {
+        "battery_capacity": null,
+        "max_range": null,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null
+      },
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/243701/806/iris.webp?q=COSY-EU-100-1713d0VXqNEFqtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtlaWtsd2HVcUfp8yXGEubSJ0l3IJOB2NMcbApjtwI5ux4YQC31SrkzNBzkm7jAymhKV5XN%25vqCu%25yLRgcDYaxPXSrH1eHrn8ws8WoiZUqxM4FGTJTg906e6PDMkFSeWzKjtsd7oTcUfKMjXGEvhEJ0lgYAOB2PBqbApePxI5uscIQC3UXWkzNGm6m7j0aZhKVBHE%25vqNrkyLRjODYax4aYrH1gObnMr%25E2fchI5uKMTQmIwlzkhQg5Km7jscWhKVzYt%25vqEwUyLRaLXYaxH0hrH18Bin8wiT2oiZ4kIM4FgRrTg735wrcldu63ejunul9Q6DF1s1n2nvligKfLlCVzWcY54I&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/243701/806/iris.webp?q=COSY-EU-100-1713d0VXqNEFqtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtlaWtsd2HVcUfp8yXGEubSJ0l3IJOB2NMcbApjtwI5ux4YQC31SrkzNBzkm7jAymhKV5XN%25vqCu%25yLRgcDYaxPXSrH1eHrn8ws8WoiZUqxM4FGTJTg906e6PDMkFSeWzKjtsd7oTcUfKMjXGEvhEJ0lgYAOB2PBqbApePxI5uscIQC3UXWkzNGm6m7j0aZhKVBHE%25vqNrkyLRjODYax4aYrH1gObnMr%25E2fchI5uKMTQmIwlzkhQg5Km7jscWhKVzYt%25vqEwUyLRaLXYaxH0hrH18Bin8wiT2oiZ4kIM4FgRrTg735wrcldu63ejunul9Q6DF1s1n2nvligKfLlCVzWcY54I&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/243701/806/iris.webp?q=COSY-EU-100-1713d0VXqNEFqtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtlaWtsd2HVcUfp8yXGEubSJ0l3IJOB2NMcbApjtwI5ux4YQC31SrkzNBzkm7jAymhKV5XN%25vqCu%25yLRgcDYaxPXSrH1eHrn8ws8WoiZUqxM4FGTJTg906e6PDMkFSeWzKjtsd7oTcUfKMjXGEvhEJ0lgYAOB2PBqbApePxI5uscIQC3UXWkzNGm6m7j0aZhKVBHE%25vqNrkyLRjODYax4aYrH1gObnMr%25E2fchI5uKMTQmIwlzkhQg5Km7jscWhKVzYt%25vqEwUyLRaLXYaxH0hrH18Bin8wiT2oiZ4kIM4FgRrTg735wrcldu63ejunul9Q6DF1s1n2nvligKfLlCVzWcY54I&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "E-Class",
+      "classification": "준대형",
+      "segment": "E-Segment"
+    },
+    "trim": {
+      "name": "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology",
+      "baumuster": "2140561",
+      "body_type": "Sedan",
+      "body_type_code": "LIMOUSINE",
+      "model_year": "806",
+      "base_price": 98700000,
+      "fuel_type": "하이브리드 (가솔린)",
+      "seating_capacity": 5,
+      "max_output": 230,
+      "acceleration_0_100": 6.5,
+      "top_speed": 234,
+      "length": 4949,
+      "width": 1880,
+      "height": 1480,
+      "curb_weight": 2830,
+      "transmission": "자동",
+      "doors": 4,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1999,
+        "fuel_tank_capacity": 50,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214056/806_056/iris.webp?q=COSY-EU-100-1713d0VXq0WFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd1J9cUfp8cXGEu9BJ0l36xOB2NzObApj7pI5ux52QC31grkzNwP9m7jA6ohKV5Kh%25vqCrqyLRz3RYaxPXSrH1eHDn8wszxoiZUIgM4FnRjTg95hp6PDaksSeWHeutsd8sNcUfiFWXGE4TSJ0lg6fOB2Pb%25bApeIoI5usKYQC3vT6khQOZ9wnJSeW0h%25tXSNFUcJtve6XGEHaVJ0lUHtOB2G8ObApFIXI5uC5JQC3zCTkzN7UNm7jKyDhKUWP3IrZxD%25WLkzcftVS%25qjuauQFQ0ZzKG1BZeEsRrbP76&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214056/806_056/iris.webp?q=COSY-EU-100-1713d0VXq0WFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd1J9cUfp8cXGEu9BJ0l36xOB2NzObApj7pI5ux52QC31grkzNwP9m7jA6ohKV5Kh%25vqCrqyLRz3RYaxPXSrH1eHDn8wszxoiZUIgM4FnRjTg95hp6PDaksSeWHeutsd8sNcUfiFWXGE4TSJ0lg6fOB2Pb%25bApeIoI5usKYQC3vT6khQOZ9wnJSeW0h%25tXSNFUcJtve6XGEHaVJ0lUHtOB2G8ObApFIXI5uC5JQC3zCTkzN7UNm7jKyDhKUWP3IrZxD%25WLkzcftVS%25qjuauQFQ0ZzKG1BZeEsRrbP76&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214056/806_056/iris.webp?q=COSY-EU-100-1713d0VXq0WFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd1J9cUfp8cXGEu9BJ0l36xOB2NzObApj7pI5ux52QC31grkzNwP9m7jA6ohKV5Kh%25vqCrqyLRz3RYaxPXSrH1eHDn8wszxoiZUIgM4FnRjTg95hp6PDaksSeWHeutsd8sNcUfiFWXGE4TSJ0lg6fOB2Pb%25bApeIoI5usKYQC3vT6khQOZ9wnJSeW0h%25tXSNFUcJtve6XGEHaVJ0lUHtOB2G8ObApFIXI5uC5JQC3zCTkzN7UNm7jKyDhKUWP3IrZxD%25WLkzcftVS%25qjuauQFQ0ZzKG1BZeEsRrbP76&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "EQE",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "EQE 350+ SUV",
+      "baumuster": "2946211",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "806",
+      "base_price": 106000000,
+      "fuel_type": "전기",
+      "seating_capacity": 5,
+      "max_output": 235,
+      "acceleration_0_100": 6.4,
+      "top_speed": 210,
+      "length": 4863,
+      "width": 1940,
+      "height": 1707,
+      "curb_weight": 3055,
+      "transmission": null,
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": null,
+      "ev_spec": {
+        "battery_capacity": null,
+        "max_range": null,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null
+      },
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/294621/806_056/iris.webp?q=COSY-EU-100-1713d0VXqahFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd2HtcUfpOkXGEubSJ0l3IJOB2NMcbApjtwI5uVKIQC31CpkzNwPnm7jZeDhKVF0M%25vq9JTyLRDYmYax7XSrH1KHrn8wvVwoiZLMIM4FGIlTg90QO6PDBP6SeWAeFtsd5spcUfC8WXGEzJmJ0l7OZOB2Kn%25bApvYpI5uO42QC3igQkzN4P9m7jgcfhKVBSL%25vqAJ%25yLR53VYaxCkSrH1zm%25n8w7hxoiZKMIM4FvslTg9LUO6PDaGsSeWH0RtsdBYQcUfAyYXOc6VRjmTrH1gObnMrEqioTnAHXM4FzKyTg9ig96PD4PNSeWgeRtsdPv3cUfe8qXGEsbYJ0lwDhOB2ABcbAp5iwI5uCmMQCPFi2J%25xVZkF7mA2Ix3MkNulKlO1OsxACeqUx4Wgj%25Xi5o&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/294621/806_056/iris.webp?q=COSY-EU-100-1713d0VXqahFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd2HtcUfpOkXGEubSJ0l3IJOB2NMcbApjtwI5uVKIQC31CpkzNwPnm7jZeDhKVF0M%25vq9JTyLRDYmYax7XSrH1KHrn8wvVwoiZLMIM4FGIlTg90QO6PDBP6SeWAeFtsd5spcUfC8WXGEzJmJ0l7OZOB2Kn%25bApvYpI5uO42QC3igQkzN4P9m7jgcfhKVBSL%25vqAJ%25yLR53VYaxCkSrH1zm%25n8w7hxoiZKMIM4FvslTg9LUO6PDaGsSeWH0RtsdBYQcUfAyYXOc6VRjmTrH1gObnMrEqioTnAHXM4FzKyTg9ig96PD4PNSeWgeRtsdPv3cUfe8qXGEsbYJ0lwDhOB2ABcbAp5iwI5uCmMQCPFi2J%25xVZkF7mA2Ix3MkNulKlO1OsxACeqUx4Wgj%25Xi5o&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/294621/806_056/iris.webp?q=COSY-EU-100-1713d0VXqahFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd2HtcUfpOkXGEubSJ0l3IJOB2NMcbApjtwI5uVKIQC31CpkzNwPnm7jZeDhKVF0M%25vq9JTyLRDYmYax7XSrH1KHrn8wvVwoiZLMIM4FGIlTg90QO6PDBP6SeWAeFtsd5spcUfC8WXGEzJmJ0l7OZOB2Kn%25bApvYpI5uO42QC3igQkzN4P9m7jgcfhKVBSL%25vqAJ%25yLR53VYaxCkSrH1zm%25n8w7hxoiZKMIM4FvslTg9LUO6PDaGsSeWH0RtsdBYQcUfAyYXOc6VRjmTrH1gObnMrEqioTnAHXM4FzKyTg9ig96PD4PNSeWgeRtsdPv3cUfe8qXGEsbYJ0lwDhOB2ABcbAp5iwI5uCmMQCPFi2J%25xVZkF7mA2Ix3MkNulKlO1OsxACeqUx4Wgj%25Xi5o&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "A-Class",
+      "classification": "준중형",
+      "segment": "C-Segment"
+    },
+    "trim": {
+      "name": "Mercedes-AMG A 45 S 4MATIC+",
+      "baumuster": "1770541",
+      "body_type": "Hatch",
+      "body_type_code": "KOMPAKT-LIMOUSINE",
+      "model_year": "806",
+      "base_price": 80400000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 310,
+      "acceleration_0_100": 3.9,
+      "top_speed": 270,
+      "length": 4453,
+      "width": 1850,
+      "height": 1414,
+      "curb_weight": 2130,
+      "transmission": "자동",
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1991,
+        "fuel_tank_capacity": 51,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/177054/806_056/iris.webp?q=COSY-EU-100-1713d0VXqNpFqtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtGyUtsd2sDcUfp8fXGEuiRJ0l3ItOB2NQObApjTXI5uV62QC3qXFkzNwU6m7jZcohKV5SF%25vqCv%25yLRznyYax7bqrH1KIOn8wsOfoiZUidM4FGTlTg90k26PDMkFSeWTaMtsd7oTcUfKM0XGEvhXJ0lgYAOB2PBqbApetbI5uscDQC3UkTkzNGLdm7jaevhKVHtc%25YhQDd9TIXGE5YrJbXqWBOIJHG2bAp4dLI5uBmMQC3AE1kzNW2Mm7jKeIhKVvsL%25vqLJcyLRa3mYaxHkWrH18nRn8520R%256d9lo25DAIu0wOoZ1qgqyfyzda8CD7dB3AF6h0HJ&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/177054/806_056/iris.webp?q=COSY-EU-100-1713d0VXqNpFqtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtGyUtsd2sDcUfp8fXGEuiRJ0l3ItOB2NQObApjTXI5uV62QC3qXFkzNwU6m7jZcohKV5SF%25vqCv%25yLRznyYax7bqrH1KIOn8wsOfoiZUidM4FGTlTg90k26PDMkFSeWTaMtsd7oTcUfKM0XGEvhXJ0lgYAOB2PBqbApetbI5uscDQC3UkTkzNGLdm7jaevhKVHtc%25YhQDd9TIXGE5YrJbXqWBOIJHG2bAp4dLI5uBmMQC3AE1kzNW2Mm7jKeIhKVvsL%25vqLJcyLRa3mYaxHkWrH18nRn8520R%256d9lo25DAIu0wOoZ1qgqyfyzda8CD7dB3AF6h0HJ&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/177054/806_056/iris.webp?q=COSY-EU-100-1713d0VXqNpFqtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtGyUtsd2sDcUfp8fXGEuiRJ0l3ItOB2NQObApjTXI5uV62QC3qXFkzNwU6m7jZcohKV5SF%25vqCv%25yLRznyYax7bqrH1KIOn8wsOfoiZUidM4FGTlTg90k26PDMkFSeWTaMtsd7oTcUfKM0XGEvhXJ0lgYAOB2PBqbApetbI5uscDQC3UkTkzNGLdm7jaevhKVHtc%25YhQDd9TIXGE5YrJbXqWBOIJHG2bAp4dLI5uBmMQC3AE1kzNW2Mm7jKeIhKVvsL%25vqLJcyLRa3mYaxHkWrH18nRn8520R%256d9lo25DAIu0wOoZ1qgqyfyzda8CD7dB3AF6h0HJ&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "CLE",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Coupe",
+      "baumuster": "2363621",
+      "body_type": "Coupé",
+      "body_type_code": "COUPE",
+      "model_year": "806",
+      "base_price": 107700000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 4,
+      "max_output": 330,
+      "acceleration_0_100": 4.2,
+      "top_speed": 250,
+      "length": 4853,
+      "width": 1935,
+      "height": 1434,
+      "curb_weight": 2420,
+      "transmission": "자동",
+      "doors": 2,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 2999,
+        "fuel_tank_capacity": 65,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "6"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/236362/806/iris.webp?q=COSY-EU-100-1713d0VXqrqLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7oI5ux5xQC31CpkzNwPnm7jZeDhKVFHt%25vqCtTyLRzLyYax7oYrH1KM1n8wvVwoiZUbXM4FG4fTg90626PDM1bSeWzy3tsd7oTcUfKM0XGEvTVJ0lgYAOB2PBqbApedlI5usQYQC3UkTkzNGLnm7j0ajhKVBHL%25vqA8lyLR5SVYax4X8rH1gIOn8wPbIoTnylpEX%25QC3vT6khQZ27m%25kPCohKV0pV%25vqGugyLRKG6Yaxv3XrH1LcJn8wuj8oiZ45gM4FgKFTg9Pt36PDeSFSeWs0jtsLV79MOuljcVGytiBFdhcfWF0FT3THuPsa28uKxvEOo7em&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/236362/806/iris.webp?q=COSY-EU-100-1713d0VXqrqLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7oI5ux5xQC31CpkzNwPnm7jZeDhKVFHt%25vqCtTyLRzLyYax7oYrH1KM1n8wvVwoiZUbXM4FG4fTg90626PDM1bSeWzy3tsd7oTcUfKM0XGEvTVJ0lgYAOB2PBqbApedlI5usQYQC3UkTkzNGLnm7j0ajhKVBHL%25vqA8lyLR5SVYax4X8rH1gIOn8wPbIoTnylpEX%25QC3vT6khQZ27m%25kPCohKV0pV%25vqGugyLRKG6Yaxv3XrH1LcJn8wuj8oiZ45gM4FgKFTg9Pt36PDeSFSeWs0jtsLV79MOuljcVGytiBFdhcfWF0FT3THuPsa28uKxvEOo7em&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/236362/806/iris.webp?q=COSY-EU-100-1713d0VXqrqLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7oI5ux5xQC31CpkzNwPnm7jZeDhKVFHt%25vqCtTyLRzLyYax7oYrH1KM1n8wvVwoiZUbXM4FG4fTg90626PDM1bSeWzy3tsd7oTcUfKM0XGEvTVJ0lgYAOB2PBqbApedlI5usQYQC3UkTkzNGLnm7j0ajhKVBHL%25vqA8lyLR5SVYax4X8rH1gIOn8wPbIoTnylpEX%25QC3vT6khQZ27m%25kPCohKV0pV%25vqGugyLRKG6Yaxv3XrH1LcJn8wuj8oiZ45gM4FgKFTg9Pt36PDeSFSeWs0jtsLV79MOuljcVGytiBFdhcfWF0FT3THuPsa28uKxvEOo7em&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "GLC",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "Mercedes-AMG GLC 43 4MATIC Coupé",
+      "baumuster": "2543871",
+      "body_type": "Coupé",
+      "body_type_code": "COUPE",
+      "model_year": "806",
+      "base_price": 106900000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 310,
+      "acceleration_0_100": 4.5,
+      "top_speed": 250,
+      "length": 4792,
+      "width": 1920,
+      "height": 1603,
+      "curb_weight": 2535,
+      "transmission": "자동",
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1991,
+        "fuel_tank_capacity": 62,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254387/806/iris.webp?q=COSY-EU-100-1713d0VXq0EFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtxX2tsd1ZpcUfwMuXGEuymJ0l34JOB2Ng1bApjkyI5uVmJQC3qhQkzNRtbm7jx2vhKV1bW%25vqwylyLRZimYaxF4YrH19gOn8wfOFoiZEiEM4Fl4wTg92gk6PDp7bSeWuKjtsd3vpcUfN8yXGEjbRJ0lVohOB2qM1bApRdwI5uxfDQC31kOkzNBTnm7jA7mhKV5sM%25vqCr%25yLRznRYax7bJrH1Kj1n8wvh2oiZUbEM4FGIJTg90gT6PDBPlSeWAK9tsd5cQcUfCX1XGEtadJ0lc6VOB2a8ObApHTxI5u8cJQC3iX7kzN4JZm7jgaDhKVPH9%25vqe6%25yLR5cHYaxCaWrH1zItn8w7VxoiZK%25YM4FvyuTg9LYe6PDaSmSeWH0utsd8BQcUfiAcXGE45EJ0lgCAOB2PzFbApEnRI5uloYQC32hOkzNLTnm7ja6vhKVHXM%25vq8JcyLRiXJYnymdEWSkOB2znobQOxf5IkbiBIQC3sE3kzNel8m7jC7fhKVzsF%25vq7BdyLRKn2YaxvoJrH1LIrn8waIToiZHIfM4F8UkTg9iRQ6PD4IkSeWqmItsdR4scUfG%25kXGE0GjJ0lB0rOB2A8cbAp5iCI5uCeuQC3zsFkzN7%259m7jKcZhKVv%25N%25vqL8dyLROcfYaBEUVmMDZfrE81vzxHxXr1RjijhWh5DvaAFCDGp0wMkULc&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254387/806/iris.webp?q=COSY-EU-100-1713d0VXq0EFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtxX2tsd1ZpcUfwMuXGEuymJ0l34JOB2Ng1bApjkyI5uVmJQC3qhQkzNRtbm7jx2vhKV1bW%25vqwylyLRZimYaxF4YrH19gOn8wfOFoiZEiEM4Fl4wTg92gk6PDp7bSeWuKjtsd3vpcUfN8yXGEjbRJ0lVohOB2qM1bApRdwI5uxfDQC31kOkzNBTnm7jA7mhKV5sM%25vqCr%25yLRznRYax7bJrH1Kj1n8wvh2oiZUbEM4FGIJTg90gT6PDBPlSeWAK9tsd5cQcUfCX1XGEtadJ0lc6VOB2a8ObApHTxI5u8cJQC3iX7kzN4JZm7jgaDhKVPH9%25vqe6%25yLR5cHYaxCaWrH1zItn8w7VxoiZK%25YM4FvyuTg9LYe6PDaSmSeWH0utsd8BQcUfiAcXGE45EJ0lgCAOB2PzFbApEnRI5uloYQC32hOkzNLTnm7ja6vhKVHXM%25vq8JcyLRiXJYnymdEWSkOB2znobQOxf5IkbiBIQC3sE3kzNel8m7jC7fhKVzsF%25vq7BdyLRKn2YaxvoJrH1LIrn8waIToiZHIfM4F8UkTg9iRQ6PD4IkSeWqmItsdR4scUfG%25kXGE0GjJ0lB0rOB2A8cbAp5iCI5uCeuQC3zsFkzN7%259m7jKcZhKVv%25N%25vqL8dyLROcfYaBEUVmMDZfrE81vzxHxXr1RjijhWh5DvaAFCDGp0wMkULc&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254387/806/iris.webp?q=COSY-EU-100-1713d0VXq0EFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtxX2tsd1ZpcUfwMuXGEuymJ0l34JOB2Ng1bApjkyI5uVmJQC3qhQkzNRtbm7jx2vhKV1bW%25vqwylyLRZimYaxF4YrH19gOn8wfOFoiZEiEM4Fl4wTg92gk6PDp7bSeWuKjtsd3vpcUfN8yXGEjbRJ0lVohOB2qM1bApRdwI5uxfDQC31kOkzNBTnm7jA7mhKV5sM%25vqCr%25yLRznRYax7bJrH1Kj1n8wvh2oiZUbEM4FGIJTg90gT6PDBPlSeWAK9tsd5cQcUfCX1XGEtadJ0lc6VOB2a8ObApHTxI5u8cJQC3iX7kzN4JZm7jgaDhKVPH9%25vqe6%25yLR5cHYaxCaWrH1zItn8w7VxoiZK%25YM4FvyuTg9LYe6PDaSmSeWH0utsd8BQcUfiAcXGE45EJ0lgCAOB2PzFbApEnRI5uloYQC32hOkzNLTnm7ja6vhKVHXM%25vq8JcyLRiXJYnymdEWSkOB2znobQOxf5IkbiBIQC3sE3kzNel8m7jC7fhKVzsF%25vq7BdyLRKn2YaxvoJrH1LIrn8waIToiZHIfM4F8UkTg9iRQ6PD4IkSeWqmItsdR4scUfG%25kXGE0GjJ0lB0rOB2A8cbAp5iCI5uCeuQC3zsFkzN7%259m7jKcZhKVv%25N%25vqL8dyLROcfYaBEUVmMDZfrE81vzxHxXr1RjijhWh5DvaAFCDGp0wMkULc&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "GLA",
+      "classification": "준중형",
+      "segment": "C-Segment"
+    },
+    "trim": {
+      "name": "GLA 250 4MATIC AMG Line",
+      "baumuster": "2477471",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "806",
+      "base_price": 69100000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 165,
+      "acceleration_0_100": 6.8,
+      "top_speed": 240,
+      "length": 4412,
+      "width": 1834,
+      "height": 1616,
+      "curb_weight": 2195,
+      "transmission": "자동",
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1991,
+        "fuel_tank_capacity": 51,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/247747/806/iris.webp?q=COSY-EU-100-1713d0VXqNEFqtyO67PobzIr3eWsrrCsdRRzwQZg9pZbMw3SGtle9tsd2HdcUfp8qXGEuiYJ0l3ItOB2NQObApjTXI5uVcZQC31C1kzNwPnm7jZcohKV5SF%25vqCv%25yLRznyYax7bqrH1eJdn8ws8noiZUidM4FGRjTg90xw6PDBSbSeWTm9tsd6HTcUfKLqXGEvTSJ0lL%25lOB2Pr5bApetbI5uscDQC3UkTkzNGLwm7j0afhKV3XF%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80XI5ug6FQC3DfMkzN7Pbm7jKevhKVvsN%25vqLJcyLRa3mYaBEUVmMDZfrE820hwHxXr1RjijhWh5DvaAFCDGp0wMkULc&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/247747/806/iris.webp?q=COSY-EU-100-1713d0VXqNEFqtyO67PobzIr3eWsrrCsdRRzwQZg9pZbMw3SGtle9tsd2HdcUfp8qXGEuiYJ0l3ItOB2NQObApjTXI5uVcZQC31C1kzNwPnm7jZcohKV5SF%25vqCv%25yLRznyYax7bqrH1eJdn8ws8noiZUidM4FGRjTg90xw6PDBSbSeWTm9tsd6HTcUfKLqXGEvTSJ0lL%25lOB2Pr5bApetbI5uscDQC3UkTkzNGLwm7j0afhKV3XF%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80XI5ug6FQC3DfMkzN7Pbm7jKevhKVvsN%25vqLJcyLRa3mYaBEUVmMDZfrE820hwHxXr1RjijhWh5DvaAFCDGp0wMkULc&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/247747/806/iris.webp?q=COSY-EU-100-1713d0VXqNEFqtyO67PobzIr3eWsrrCsdRRzwQZg9pZbMw3SGtle9tsd2HdcUfp8qXGEuiYJ0l3ItOB2NQObApjTXI5uVcZQC31C1kzNwPnm7jZcohKV5SF%25vqCv%25yLRznyYax7bqrH1eJdn8ws8noiZUidM4FGRjTg90xw6PDBSbSeWTm9tsd6HTcUfKLqXGEvTSJ0lL%25lOB2Pr5bApetbI5uscDQC3UkTkzNGLwm7j0afhKV3XF%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80XI5ug6FQC3DfMkzN7Pbm7jKevhKVvsN%25vqLJcyLRa3mYaBEUVmMDZfrE820hwHxXr1RjijhWh5DvaAFCDGp0wMkULc&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "EQS",
+      "classification": "대형",
+      "segment": "F-Segment"
+    },
+    "trim": {
+      "name": "EQS 580 4MATIC SUV",
+      "baumuster": "2966441",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "806",
+      "base_price": 191430000,
+      "fuel_type": "전기",
+      "seating_capacity": 5,
+      "max_output": 400,
+      "acceleration_0_100": 4.8,
+      "top_speed": 210,
+      "length": 5125,
+      "width": 1959,
+      "height": 1742,
+      "curb_weight": 3410,
+      "transmission": null,
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": null,
+      "ev_spec": {
+        "battery_capacity": null,
+        "max_range": null,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null
+      },
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/296644/806_056/iris.webp?q=COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd1HpcUfwOuXGEZ93J0lF6NOB2Nr%25bApjAwI5uVeIQC3qsFkzNR%25nm7jxyIhKV1Yh%25vqwJkyLRZ3mYaxFN8rH19m%25n8wDh2oiZWeEM4FdsrTg9fUT6PDEGDSeWl0htsd3h%25cUfNUWXGEjamJ0lVHlOB2q81bApRiCI5ux6YQC31SFkzNwl9m7jZaShKV5SM%25vqCv%25yLRzA6Yax758rH1KCun8wvTnoiZL6pM4FayuTg9H6k6PDBkpSeWAmItsd5htcUfC%251XGEzGXJ0l70NOB2Kg1bApvkbI5uLfDQC3akrkzNHmkm7j8hfhKVi%25t%25vq48ayLRgX6YaxPtxrH1yBRn8wYzwoiZreNM4FACMTg95z36PDC7uSeWznMtsd7oNcUfKAjXGEvhSJ0lgYAOB2PBqbApePxI5us6uQC3UE1kzNGJnm7j0OIhKVBbL%25vqAIjyLR5YyYaxCrJrH1zgdn8w7PcoiZKegM4FvsjTg9LUZ6PDZkoSeWFXStsdBYQcUfArcXGE5nYJ0lCrnOIJtR1q%25SoiZeIQM6o2xgTSMCi36PDLLmSeWvK3tsdPsdcUfeU1XGEsajJ0lUHhOB2Gg%25bAp0koI5uB6IQC3A6MkzN5S1m7jCt8hKVztZ%25vq7cNyLRKXMYaxvgOrH1pJtn8wuShoiZ4bXM4Fg4lTg9Pgn6PDePmSeWsKjtsdUJ%25cUfGrWXGHRvW6INpqJRBOXW2vEyJlfDADSjSiNsG8u4NLwa2ITvU%25&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/296644/806_056/iris.webp?q=COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd1HpcUfwOuXGEZ93J0lF6NOB2Nr%25bApjAwI5uVeIQC3qsFkzNR%25nm7jxyIhKV1Yh%25vqwJkyLRZ3mYaxFN8rH19m%25n8wDh2oiZWeEM4FdsrTg9fUT6PDEGDSeWl0htsd3h%25cUfNUWXGEjamJ0lVHlOB2q81bApRiCI5ux6YQC31SFkzNwl9m7jZaShKV5SM%25vqCv%25yLRzA6Yax758rH1KCun8wvTnoiZL6pM4FayuTg9H6k6PDBkpSeWAmItsd5htcUfC%251XGEzGXJ0l70NOB2Kg1bApvkbI5uLfDQC3akrkzNHmkm7j8hfhKVi%25t%25vq48ayLRgX6YaxPtxrH1yBRn8wYzwoiZreNM4FACMTg95z36PDC7uSeWznMtsd7oNcUfKAjXGEvhSJ0lgYAOB2PBqbApePxI5us6uQC3UE1kzNGJnm7j0OIhKVBbL%25vqAIjyLR5YyYaxCrJrH1zgdn8w7PcoiZKegM4FvsjTg9LUZ6PDZkoSeWFXStsdBYQcUfArcXGE5nYJ0lCrnOIJtR1q%25SoiZeIQM6o2xgTSMCi36PDLLmSeWvK3tsdPsdcUfeU1XGEsajJ0lUHhOB2Gg%25bAp0koI5uB6IQC3A6MkzN5S1m7jCt8hKVztZ%25vq7cNyLRKXMYaxvgOrH1pJtn8wuShoiZ4bXM4Fg4lTg9Pgn6PDePmSeWsKjtsdUJ%25cUfGrWXGHRvW6INpqJRBOXW2vEyJlfDADSjSiNsG8u4NLwa2ITvU%25&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/296644/806_056/iris.webp?q=COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd1HpcUfwOuXGEZ93J0lF6NOB2Nr%25bApjAwI5uVeIQC3qsFkzNR%25nm7jxyIhKV1Yh%25vqwJkyLRZ3mYaxFN8rH19m%25n8wDh2oiZWeEM4FdsrTg9fUT6PDEGDSeWl0htsd3h%25cUfNUWXGEjamJ0lVHlOB2q81bApRiCI5ux6YQC31SFkzNwl9m7jZaShKV5SM%25vqCv%25yLRzA6Yax758rH1KCun8wvTnoiZL6pM4FayuTg9H6k6PDBkpSeWAmItsd5htcUfC%251XGEzGXJ0l70NOB2Kg1bApvkbI5uLfDQC3akrkzNHmkm7j8hfhKVi%25t%25vq48ayLRgX6YaxPtxrH1yBRn8wYzwoiZreNM4FACMTg95z36PDC7uSeWznMtsd7oNcUfKAjXGEvhSJ0lgYAOB2PBqbApePxI5us6uQC3UE1kzNGJnm7j0OIhKVBbL%25vqAIjyLR5YyYaxCrJrH1zgdn8w7PcoiZKegM4FvsjTg9LUZ6PDZkoSeWFXStsdBYQcUfArcXGE5nYJ0lCrnOIJtR1q%25SoiZeIQM6o2xgTSMCi36PDLLmSeWvK3tsdPsdcUfeU1XGEsajJ0lUHhOB2Gg%25bAp0koI5uB6IQC3A6MkzN5S1m7jCt8hKVztZ%25vq7cNyLRKXMYaxvgOrH1pJtn8wuShoiZ4bXM4Fg4lTg9Pgn6PDePmSeWsKjtsdUJ%25cUfGrWXGHRvW6INpqJRBOXW2vEyJlfDADSjSiNsG8u4NLwa2ITvU%25&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "GLS",
+      "classification": "대형",
+      "segment": "F-Segment"
+    },
+    "trim": {
+      "name": "Mercedes-AMG GLS 63 4MATIC+",
+      "baumuster": "1679891",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "806",
+      "base_price": 208600000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 7,
+      "max_output": 450,
+      "acceleration_0_100": 4.2,
+      "top_speed": 280,
+      "length": 5233,
+      "width": 2030,
+      "height": 1836,
+      "curb_weight": 3395,
+      "transmission": "자동",
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 3982,
+        "fuel_tank_capacity": 90,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "V8"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/167989/806_056/iris.webp?q=COSY-EU-100-1713d0VXqbEFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd2vGcUfp8fXGEuiRJ0l34rOB2NQcbApjkbI5uV6JQC3qE7kzNRJ9m7jxafhKVFKM%25vq9UTyLRDiXYax7XSrH1KJ%25n8wv8noiZL7gM4FaKjTg9HtT6PD8cqSeWiwStsd4c%25cUfC%25NXGEzymJ0l70JOB2KBjbApvPlI5uLmIQC3akrkzNHmbm7j8hfhKVi%25t%25vqmUjyLRhnmYaxU0YrH1GBfn8w0hyoiZKbgM4Fv4lTg9Lt36PDacsSeWHyWtsd8odcUfiM0XGE4JBJ0lgOrOB2PzqbApe79I5usK2QC32MrkzNpTbm7juymhKVHKL%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80yI5ueQzQC3PEHkzN5Tum7jC7fhKVzsM%25vq7uqyLRKQXYax2TlrH18Jtn8wiA4oiZ471M4FgSuTg9PY26PDeSoSeWst9tsdYhVcUaqKDTb32VXqa8LCfqf%25XEd9B96N683eUHpi3v1LlbMKsh&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/167989/806_056/iris.webp?q=COSY-EU-100-1713d0VXqbEFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd2vGcUfp8fXGEuiRJ0l34rOB2NQcbApjkbI5uV6JQC3qE7kzNRJ9m7jxafhKVFKM%25vq9UTyLRDiXYax7XSrH1KJ%25n8wv8noiZL7gM4FaKjTg9HtT6PD8cqSeWiwStsd4c%25cUfC%25NXGEzymJ0l70JOB2KBjbApvPlI5uLmIQC3akrkzNHmbm7j8hfhKVi%25t%25vqmUjyLRhnmYaxU0YrH1GBfn8w0hyoiZKbgM4Fv4lTg9Lt36PDacsSeWHyWtsd8odcUfiM0XGE4JBJ0lgOrOB2PzqbApe79I5usK2QC32MrkzNpTbm7juymhKVHKL%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80yI5ueQzQC3PEHkzN5Tum7jC7fhKVzsM%25vq7uqyLRKQXYax2TlrH18Jtn8wiA4oiZ471M4FgSuTg9PY26PDeSoSeWst9tsdYhVcUaqKDTb32VXqa8LCfqf%25XEd9B96N683eUHpi3v1LlbMKsh&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/167989/806_056/iris.webp?q=COSY-EU-100-1713d0VXqbEFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd2vGcUfp8fXGEuiRJ0l34rOB2NQcbApjkbI5uV6JQC3qE7kzNRJ9m7jxafhKVFKM%25vq9UTyLRDiXYax7XSrH1KJ%25n8wv8noiZL7gM4FaKjTg9HtT6PD8cqSeWiwStsd4c%25cUfC%25NXGEzymJ0l70JOB2KBjbApvPlI5uLmIQC3akrkzNHmbm7j8hfhKVi%25t%25vqmUjyLRhnmYaxU0YrH1GBfn8w0hyoiZKbgM4Fv4lTg9Lt36PDacsSeWHyWtsd8odcUfiM0XGE4JBJ0lgOrOB2PzqbApe79I5usK2QC32MrkzNpTbm7juymhKVHKL%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80yI5ueQzQC3PEHkzN5Tum7jC7fhKVzsM%25vq7uqyLRKQXYax2TlrH18Jtn8wiA4oiZ471M4FgSuTg9PY26PDeSoSeWst9tsdYhVcUaqKDTb32VXqa8LCfqf%25XEd9B96N683eUHpi3v1LlbMKsh&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "Mercedes-AMG GT",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "Mercedes-AMG GT 55 4MATIC+ Coupe",
+      "baumuster": "1923801",
+      "body_type": "Coupé",
+      "body_type_code": "COUPE",
+      "model_year": "806",
+      "base_price": 208600000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 4,
+      "max_output": 350,
+      "acceleration_0_100": 3.9,
+      "top_speed": 295,
+      "length": 4728,
+      "width": 1984,
+      "height": 1354,
+      "curb_weight": 2160,
+      "transmission": "자동",
+      "doors": 3,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 3982,
+        "fuel_tank_capacity": 70,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "V8"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/192380/806/iris.webp?q=COSY-EU-100-1713d0VXqrWLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2oVcUfNrkXGEPymJ0le0AOB2sgEbApUkbI5uLoYQC3ahQkzNHl9m7j8h3hKVkKw%25vqeUDyLR5cHYaxCaWrH1zgtn8wRTyoiZeIQM6oY2ulJykzNL6Sm%25kFpKhymezQ%25vqBI9yLR03PYax2POrH18Mln8wiVboiCpBxySfD2MpCTfvZvZbMFwRPRYEY7fHizWKfAN59S%25B8O&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/192380/806/iris.webp?q=COSY-EU-100-1713d0VXqrWLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2oVcUfNrkXGEPymJ0le0AOB2sgEbApUkbI5uLoYQC3ahQkzNHl9m7j8h3hKVkKw%25vqeUDyLR5cHYaxCaWrH1zgtn8wRTyoiZeIQM6oY2ulJykzNL6Sm%25kFpKhymezQ%25vqBI9yLR03PYax2POrH18Mln8wiVboiCpBxySfD2MpCTfvZvZbMFwRPRYEY7fHizWKfAN59S%25B8O&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/192380/806/iris.webp?q=COSY-EU-100-1713d0VXqrWLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2oVcUfNrkXGEPymJ0le0AOB2sgEbApUkbI5uLoYQC3ahQkzNHl9m7j8h3hKVkKw%25vqeUDyLR5cHYaxCaWrH1zgtn8wRTyoiZeIQM6oY2ulJykzNL6Sm%25kFpKhymezQ%25vqBI9yLR03PYax2POrH18Mln8wiVboiCpBxySfD2MpCTfvZvZbMFwRPRYEY7fHizWKfAN59S%25B8O&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "GLS",
+      "classification": "대형",
+      "segment": "F-Segment"
+    },
+    "trim": {
+      "name": "Mercedes-Maybach GLS 600",
+      "baumuster": "1679871",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "805",
+      "base_price": 287600000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 410,
+      "acceleration_0_100": 4.9,
+      "top_speed": 250,
+      "length": 5208,
+      "width": 2030,
+      "height": 1838,
+      "curb_weight": 3270,
+      "transmission": "자동",
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 3982,
+        "fuel_tank_capacity": 90,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "V8"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/167987/805_055/iris.webp?q=COSY-EU-100-1713d0VXqbSFqtyO67PobzIr3eWsrrCsdRRzwQZ6ZHZbMw3SGtGyjtsd2HdcUfp8qXGEuiYJ0l3ItOB2NQObApjTXI5uVfzQC3qXFkzNRLdm7jZ6fhKVFKM%25vq9UTyLRDiXYax7XSrH1KJ%25n8wv8noiZL7gM4FaKjTg9HtT6PD8cqSeWiyMtsd4YtcUfgFcXGEPJYJ0leCVOB2KrqbApvnyI5uL5IQC3ahQkzNHmnm7j8hIhKVi%25E%25vq489yLRhGVYax%25ohrH1GHDn8w0AEoiZB7pM4FvIuTg9LgO6PDa%25DSeWHnWtsd8oGcUfiXyXGE45jJ0lgCZOB2PzEbApEnyI5uloJQC32MQkzNp%25km7ja7vhKVHtc%25YhQDd9TIXGE5YrJbXqWBOIJHGEbApPAyI5ug4TQC3ACWkzN5Pnm7jC2jhKVzbt%25vqEudyLRac6YaxHaxrH18CRn8wiVcoiZ4MYM4zuA1YtEWpTuzKCGFgFIT9ZxexrlrKE847dvE5jCDtyAib&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/167987/805_055/iris.webp?q=COSY-EU-100-1713d0VXqbSFqtyO67PobzIr3eWsrrCsdRRzwQZ6ZHZbMw3SGtGyjtsd2HdcUfp8qXGEuiYJ0l3ItOB2NQObApjTXI5uVfzQC3qXFkzNRLdm7jZ6fhKVFKM%25vq9UTyLRDiXYax7XSrH1KJ%25n8wv8noiZL7gM4FaKjTg9HtT6PD8cqSeWiyMtsd4YtcUfgFcXGEPJYJ0leCVOB2KrqbApvnyI5uL5IQC3ahQkzNHmnm7j8hIhKVi%25E%25vq489yLRhGVYax%25ohrH1GHDn8w0AEoiZB7pM4FvIuTg9LgO6PDa%25DSeWHnWtsd8oGcUfiXyXGE45jJ0lgCZOB2PzEbApEnyI5uloJQC32MQkzNp%25km7ja7vhKVHtc%25YhQDd9TIXGE5YrJbXqWBOIJHGEbApPAyI5ug4TQC3ACWkzN5Pnm7jC2jhKVzbt%25vqEudyLRac6YaxHaxrH18CRn8wiVcoiZ4MYM4zuA1YtEWpTuzKCGFgFIT9ZxexrlrKE847dvE5jCDtyAib&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/167987/805_055/iris.webp?q=COSY-EU-100-1713d0VXqbSFqtyO67PobzIr3eWsrrCsdRRzwQZ6ZHZbMw3SGtGyjtsd2HdcUfp8qXGEuiYJ0l3ItOB2NQObApjTXI5uVfzQC3qXFkzNRLdm7jZ6fhKVFKM%25vq9UTyLRDiXYax7XSrH1KJ%25n8wv8noiZL7gM4FaKjTg9HtT6PD8cqSeWiyMtsd4YtcUfgFcXGEPJYJ0leCVOB2KrqbApvnyI5uL5IQC3ahQkzNHmnm7j8hIhKVi%25E%25vq489yLRhGVYax%25ohrH1GHDn8w0AEoiZB7pM4FvIuTg9LgO6PDa%25DSeWHnWtsd8oGcUfiXyXGE45jJ0lgCZOB2PzEbApEnyI5uloJQC32MQkzNp%25km7ja7vhKVHtc%25YhQDd9TIXGE5YrJbXqWBOIJHGEbApPAyI5ug4TQC3ACWkzN5Pnm7jC2jhKVzbt%25vqEudyLRac6YaxHaxrH18CRn8wiVcoiZ4MYM4zuA1YtEWpTuzKCGFgFIT9ZxexrlrKE847dvE5jCDtyAib&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "SL",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "Mercedes-AMG SL 43",
+      "baumuster": "2324501",
+      "body_type": "Roadster",
+      "body_type_code": "ROADSTER",
+      "model_year": "806",
+      "base_price": 158600000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 4,
+      "max_output": 310,
+      "acceleration_0_100": 4.7,
+      "top_speed": 278,
+      "length": 4700,
+      "width": 1915,
+      "height": 1359,
+      "curb_weight": 2185,
+      "transmission": "자동",
+      "doors": 2,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1991,
+        "fuel_tank_capacity": 70,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/232450/806/iris.webp?q=COSY-EU-100-1713d0VXqrWLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2J%25cUfpF0XGEuTRJ0lVYrOB2qBEbApRTyI5uGoYQC30MQkzNBUum7jAymhKV5pV%25vq4tTyLRgLFYaxPrqrH1GMdn8w7O4oiZKiEM4FvRwTg9L6O6PDaSmSeWH0Itsd8BxcUfDO6XGE5yBJ0lCrnOIJtR1q%25SoiZeIQM6o2xgTSMCin6PDLrpSeWvw5tsdR4scUfGOqXGE0JdJ08xLdSQjuROxAnjkwPlYO2EW5WtVt4jU0i3gjaZHpQ6LGy&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/232450/806/iris.webp?q=COSY-EU-100-1713d0VXqrWLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2J%25cUfpF0XGEuTRJ0lVYrOB2qBEbApRTyI5uGoYQC30MQkzNBUum7jAymhKV5pV%25vq4tTyLRgLFYaxPrqrH1GMdn8w7O4oiZKiEM4FvRwTg9L6O6PDaSmSeWH0Itsd8BxcUfDO6XGE5yBJ0lCrnOIJtR1q%25SoiZeIQM6o2xgTSMCin6PDLrpSeWvw5tsdR4scUfGOqXGE0JdJ08xLdSQjuROxAnjkwPlYO2EW5WtVt4jU0i3gjaZHpQ6LGy&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/232450/806/iris.webp?q=COSY-EU-100-1713d0VXqrWLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2J%25cUfpF0XGEuTRJ0lVYrOB2qBEbApRTyI5uGoYQC30MQkzNBUum7jAymhKV5pV%25vq4tTyLRgLFYaxPrqrH1GMdn8w7O4oiZKiEM4FvRwTg9L6O6PDaSmSeWH0Itsd8BxcUfDO6XGE5yBJ0lCrnOIJtR1q%25SoiZeIQM6o2xgTSMCin6PDLrpSeWvw5tsdR4scUfGOqXGE0JdJ08xLdSQjuROxAnjkwPlYO2EW5WtVt4jU0i3gjaZHpQ6LGy&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "GLB",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "GLB 250 4MATIC AMG Line",
+      "baumuster": "2476471",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "806",
+      "base_price": 71100000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 165,
+      "acceleration_0_100": 7.0,
+      "top_speed": 236,
+      "length": 4634,
+      "width": 1834,
+      "height": 1692,
+      "curb_weight": 2265,
+      "transmission": "자동",
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1991,
+        "fuel_tank_capacity": 60,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/247647/806/iris.webp?q=COSY-EU-100-1713d0VXqNEFqtyO67PobzIr3eWsrrCsdRRzwQZg9pZbMw3SGtle9tsd2HdcUfp8qXGEuiYJ0l3ItOB2NQObApjTXI5uVcZQC31C1kzNwPnm7jZcohKV5SF%25vqCv%25yLRznyYax7bqrH1eJdn8ws8noiZUidM4FGRjTg90xw6PDBSbSeWTm9tsd6HTcUfKLqXGEvTSJ0lL%25lOB2Pr5bApetbI5uscDQC3UkTkzNGLwm7j0afhKV3XF%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80CI5ug6FQC3DfMkzN7Pbm7jKevhKVvsN%25vqLJcyLRa3mYaBEUVmMDZfrE820VwHxXr1RjijhWh5DvaAFCDGp0wMkULc&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/247647/806/iris.webp?q=COSY-EU-100-1713d0VXqNEFqtyO67PobzIr3eWsrrCsdRRzwQZg9pZbMw3SGtle9tsd2HdcUfp8qXGEuiYJ0l3ItOB2NQObApjTXI5uVcZQC31C1kzNwPnm7jZcohKV5SF%25vqCv%25yLRznyYax7bqrH1eJdn8ws8noiZUidM4FGRjTg90xw6PDBSbSeWTm9tsd6HTcUfKLqXGEvTSJ0lL%25lOB2Pr5bApetbI5uscDQC3UkTkzNGLwm7j0afhKV3XF%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80CI5ug6FQC3DfMkzN7Pbm7jKevhKVvsN%25vqLJcyLRa3mYaBEUVmMDZfrE820VwHxXr1RjijhWh5DvaAFCDGp0wMkULc&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/247647/806/iris.webp?q=COSY-EU-100-1713d0VXqNEFqtyO67PobzIr3eWsrrCsdRRzwQZg9pZbMw3SGtle9tsd2HdcUfp8qXGEuiYJ0l3ItOB2NQObApjTXI5uVcZQC31C1kzNwPnm7jZcohKV5SF%25vqCv%25yLRznyYax7bqrH1eJdn8ws8noiZUidM4FGRjTg90xw6PDBSbSeWTm9tsd6HTcUfKLqXGEvTSJ0lL%25lOB2Pr5bApetbI5uscDQC3UkTkzNGLwm7j0afhKV3XF%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80CI5ug6FQC3DfMkzN7Pbm7jKevhKVvsN%25vqLJcyLRa3mYaBEUVmMDZfrE820VwHxXr1RjijhWh5DvaAFCDGp0wMkULc&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "CLA",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "Mercedes-AMG CLA 45 S 4MATIC+ Coupé",
+      "baumuster": "1183541",
+      "body_type": "Coupé",
+      "body_type_code": "COUPE",
+      "model_year": "806",
+      "base_price": 90600000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 310,
+      "acceleration_0_100": 4.1,
+      "top_speed": 270,
+      "length": 4701,
+      "width": 1857,
+      "height": 1413,
+      "curb_weight": 2175,
+      "transmission": "자동",
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1991,
+        "fuel_tank_capacity": 51,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/118354/806_056/iris.webp?q=COSY-EU-100-1713d0VXqNpFqtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtGyUtsd2sDcUfp8fXGEuiRJ0l34rOB2NQcbApjkbI5uV6JQC3qE7kzNRJ9m7jxhfhKVFKF%25vq9BcyLRDO6Yax7XWrH1KHrn8wvTnoiZLk1M4FamQTg90Q26PDBP6SeWAe2tsd5cQcUfSLWXGEtbSJ0lL6tOB2aS5bApHYbI5usozQC3UC1kzNGJkm7j0OfhKVB%25t%25vqA8lyLRiXJYnymdEWSkOB2znobQOxf5IkbiB2QC3svFkzNel8m7jdpThKVvKt%25vqLUkyLRaGHYaxHoErH18IOn8wiVyoiZ4%25EM4FgTwTg735wrcldu637oHaj59Q6DF1s1n2nvligKfLlCVzWcY54I&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/118354/806_056/iris.webp?q=COSY-EU-100-1713d0VXqNpFqtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtGyUtsd2sDcUfp8fXGEuiRJ0l34rOB2NQcbApjkbI5uV6JQC3qE7kzNRJ9m7jxhfhKVFKF%25vq9BcyLRDO6Yax7XWrH1KHrn8wvTnoiZLk1M4FamQTg90Q26PDBP6SeWAe2tsd5cQcUfSLWXGEtbSJ0lL6tOB2aS5bApHYbI5usozQC3UC1kzNGJkm7j0OfhKVB%25t%25vqA8lyLRiXJYnymdEWSkOB2znobQOxf5IkbiB2QC3svFkzNel8m7jdpThKVvKt%25vqLUkyLRaGHYaxHoErH18IOn8wiVyoiZ4%25EM4FgTwTg735wrcldu637oHaj59Q6DF1s1n2nvligKfLlCVzWcY54I&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/118354/806_056/iris.webp?q=COSY-EU-100-1713d0VXqNpFqtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtGyUtsd2sDcUfp8fXGEuiRJ0l34rOB2NQcbApjkbI5uV6JQC3qE7kzNRJ9m7jxhfhKVFKF%25vq9BcyLRDO6Yax7XWrH1KHrn8wvTnoiZLk1M4FamQTg90Q26PDBP6SeWAe2tsd5cQcUfSLWXGEtbSJ0lL6tOB2aS5bApHYbI5usozQC3UC1kzNGJkm7j0OfhKVB%25t%25vqA8lyLRiXJYnymdEWSkOB2znobQOxf5IkbiB2QC3svFkzNel8m7jdpThKVvKt%25vqLUkyLRaGHYaxHoErH18IOn8wiVyoiZ4%25EM4FgTwTg735wrcldu637oHaj59Q6DF1s1n2nvligKfLlCVzWcY54I&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "E-Class",
+      "classification": "준대형",
+      "segment": "E-Segment"
+    },
+    "trim": {
+      "name": "E 300 4MATIC EXCLUSIVE",
+      "baumuster": "2140471",
+      "body_type": "Sedan",
+      "body_type_code": "LIMOUSINE",
+      "model_year": "806",
+      "base_price": 93600000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 190,
+      "acceleration_0_100": null,
+      "top_speed": null,
+      "length": 4951,
+      "width": 1880,
+      "height": 1470,
+      "curb_weight": 2515,
+      "transmission": "자동",
+      "doors": 4,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1999,
+        "fuel_tank_capacity": 66,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214047/806/iris.webp?q=COSY-EU-100-1713d0VXq0WFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtxXFtsd2HtcUfpF0XGEuTRJ0l3CJOB2Nz2bApRAlI5ux4YQC31gFkzNBTnm7jA7mhKV5YV%25vqCuqyLRgc6YaxPa9rH1eCRn8wsb4oiZrqNM4FAm2Tg9LQe6PDaPpSeWHw9tsd8oTcUfiMWXGE4JmJ0lgOrOB2Pz%25bAp7oMIkbX1ZxYcTg9Ukm6tTuweSc67gjtsdLvNcUfeL6XGEsaXJ0lwCZOB2ABcbAp5AoI5uCeuQC3zhFkze94pOy1qFm9KI5SV7NTmj32v2bwbU15zsRG1gdPVyJ4CM&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214047/806/iris.webp?q=COSY-EU-100-1713d0VXq0WFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtxXFtsd2HtcUfpF0XGEuTRJ0l3CJOB2Nz2bApRAlI5ux4YQC31gFkzNBTnm7jA7mhKV5YV%25vqCuqyLRgc6YaxPa9rH1eCRn8wsb4oiZrqNM4FAm2Tg9LQe6PDaPpSeWHw9tsd8oTcUfiMWXGE4JmJ0lgOrOB2Pz%25bAp7oMIkbX1ZxYcTg9Ukm6tTuweSc67gjtsdLvNcUfeL6XGEsaXJ0lwCZOB2ABcbAp5AoI5uCeuQC3zhFkze94pOy1qFm9KI5SV7NTmj32v2bwbU15zsRG1gdPVyJ4CM&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214047/806/iris.webp?q=COSY-EU-100-1713d0VXq0WFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtxXFtsd2HtcUfpF0XGEuTRJ0l3CJOB2Nz2bApRAlI5ux4YQC31gFkzNBTnm7jA7mhKV5YV%25vqCuqyLRgc6YaxPa9rH1eCRn8wsb4oiZrqNM4FAm2Tg9LQe6PDaPpSeWHw9tsd8oTcUfiMWXGE4JmJ0lgOrOB2Pz%25bAp7oMIkbX1ZxYcTg9Ukm6tTuweSc67gjtsdLvNcUfeL6XGEsaXJ0lwCZOB2ABcbAp5AoI5uCeuQC3zhFkze94pOy1qFm9KI5SV7NTmj32v2bwbU15zsRG1gdPVyJ4CM&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "CLE",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Cabriolet",
+      "baumuster": "2364621",
+      "body_type": "Cabriolet",
+      "body_type_code": "CABRIOLET",
+      "model_year": "806",
+      "base_price": 113600000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 4,
+      "max_output": 330,
+      "acceleration_0_100": 4.4,
+      "top_speed": 250,
+      "length": 4853,
+      "width": 1935,
+      "height": 1435,
+      "curb_weight": 2490,
+      "transmission": "자동",
+      "doors": 2,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 2999,
+        "fuel_tank_capacity": 65,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "6"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/236462/806/iris.webp?q=COSY-EU-100-1713d0VXqrqLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7oI5ux5xQC31CpkzNwPnm7jZeDhKVFHt%25vqCtTyLRzcyYax7oYrH1KM1n8wvVwoiZUbXM4FG4fTg90626PDM1bSeWTQStsd7JxcUfKrjXGEvTSJ0lL6AOB2Pr5bApeARI5usf2QC3UkTkzNGLnm7j0ajhKVBHL%25vqA8lyLR5SVYax4X8rH1gIOn8wPbIoTnylpEX%25QC3vT6khQZ27m%25kPCmhKV0pV%25vqGugyLRKG6Yaxv3XrH1LcJn8wuj8oiZ45gM4FgKFTg9Pt36PDecqSeWst9tsLV79MOuljcVGytbBFdhcfWF0FT3THuPsa28uKxvEOo7em&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/236462/806/iris.webp?q=COSY-EU-100-1713d0VXqrqLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7oI5ux5xQC31CpkzNwPnm7jZeDhKVFHt%25vqCtTyLRzcyYax7oYrH1KM1n8wvVwoiZUbXM4FG4fTg90626PDM1bSeWTQStsd7JxcUfKrjXGEvTSJ0lL6AOB2Pr5bApeARI5usf2QC3UkTkzNGLnm7j0ajhKVBHL%25vqA8lyLR5SVYax4X8rH1gIOn8wPbIoTnylpEX%25QC3vT6khQZ27m%25kPCmhKV0pV%25vqGugyLRKG6Yaxv3XrH1LcJn8wuj8oiZ45gM4FgKFTg9Pt36PDecqSeWst9tsLV79MOuljcVGytbBFdhcfWF0FT3THuPsa28uKxvEOo7em&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/236462/806/iris.webp?q=COSY-EU-100-1713d0VXqrqLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7oI5ux5xQC31CpkzNwPnm7jZeDhKVFHt%25vqCtTyLRzcyYax7oYrH1KM1n8wvVwoiZUbXM4FG4fTg90626PDM1bSeWTQStsd7JxcUfKrjXGEvTSJ0lL6AOB2Pr5bApeARI5usf2QC3UkTkzNGLnm7j0ajhKVBHL%25vqA8lyLR5SVYax4X8rH1gIOn8wPbIoTnylpEX%25QC3vT6khQZ27m%25kPCmhKV0pV%25vqGugyLRKG6Yaxv3XrH1LcJn8wuj8oiZ45gM4FgKFTg9Pt36PDecqSeWst9tsLV79MOuljcVGytbBFdhcfWF0FT3THuPsa28uKxvEOo7em&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "EQE",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "EQE 500 4MATIC SUV",
+      "baumuster": "2946221",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "806",
+      "base_price": 140800000,
+      "fuel_type": "전기",
+      "seating_capacity": 5,
+      "max_output": 330,
+      "acceleration_0_100": 4.7,
+      "top_speed": 210,
+      "length": 4863,
+      "width": 1940,
+      "height": 1685,
+      "curb_weight": 3175,
+      "transmission": null,
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": null,
+      "ev_spec": {
+        "battery_capacity": null,
+        "max_range": null,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null
+      },
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/294622/806/iris.webp?q=COSY-EU-100-1713d0VXq0SFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2JQcUfpO6XGEubXJ0l3otOB2NS1bApj7bI5ux52QC31grkzNwP9m7jZcohKVF%25Q%25vq98cyLRzc6Yax7aYrH1KCin8wvTwoiZLMIM4FGIlTg90QO6PDBP6SeWAe2tsd5cQcUfCX1XGEzYmJ0l7%25lOB2X8EbApHibI5u8cJQC3iXFkzNGTKm7j07ZhKVBbM%25vqAIkyLR5QVYaxCrJrH1zgdn8w7PcoiZKegM4FvsjTg9UhO6PDGmhSc6o3juIn%25vq8cXyr%25WNaYnyGv8rH1CJRn8w5zhoiZHiZM4F84jTg9iz26PD4LbSeWgajtsdPJ%25cUfeY%25XGEsrNJ0lw77OB2ABcbAp5iwI5uCmMQCPFi2J%25xVZkF7mA2Il3MkNulKlO1OsxACeqUx4Wgj%25Xi5o&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/294622/806/iris.webp?q=COSY-EU-100-1713d0VXq0SFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2JQcUfpO6XGEubXJ0l3otOB2NS1bApj7bI5ux52QC31grkzNwP9m7jZcohKVF%25Q%25vq98cyLRzc6Yax7aYrH1KCin8wvTwoiZLMIM4FGIlTg90QO6PDBP6SeWAe2tsd5cQcUfCX1XGEzYmJ0l7%25lOB2X8EbApHibI5u8cJQC3iXFkzNGTKm7j07ZhKVBbM%25vqAIkyLR5QVYaxCrJrH1zgdn8w7PcoiZKegM4FvsjTg9UhO6PDGmhSc6o3juIn%25vq8cXyr%25WNaYnyGv8rH1CJRn8w5zhoiZHiZM4F84jTg9iz26PD4LbSeWgajtsdPJ%25cUfeY%25XGEsrNJ0lw77OB2ABcbAp5iwI5uCmMQCPFi2J%25xVZkF7mA2Il3MkNulKlO1OsxACeqUx4Wgj%25Xi5o&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/294622/806/iris.webp?q=COSY-EU-100-1713d0VXq0SFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2JQcUfpO6XGEubXJ0l3otOB2NS1bApj7bI5ux52QC31grkzNwP9m7jZcohKVF%25Q%25vq98cyLRzc6Yax7aYrH1KCin8wvTwoiZLMIM4FGIlTg90QO6PDBP6SeWAe2tsd5cQcUfCX1XGEzYmJ0l7%25lOB2X8EbApHibI5u8cJQC3iXFkzNGTKm7j07ZhKVBbM%25vqAIkyLR5QVYaxCrJrH1zgdn8w7PcoiZKegM4FvsjTg9UhO6PDGmhSc6o3juIn%25vq8cXyr%25WNaYnyGv8rH1CJRn8w5zhoiZHiZM4F84jTg9iz26PD4LbSeWgajtsdPJ%25cUfeY%25XGEsrNJ0lw77OB2ABcbAp5iwI5uCmMQCPFi2J%25xVZkF7mA2Il3MkNulKlO1OsxACeqUx4Wgj%25Xi5o&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "Mercedes-AMG GT",
+      "classification": "준대형",
+      "segment": "E-Segment"
+    },
+    "trim": {
+      "name": "Mercedes-AMG GT 43 4MATIC+",
+      "baumuster": "2906591",
+      "body_type": "4-Door Coupé",
+      "body_type_code": "4-TUERER COUPE",
+      "model_year": "806",
+      "base_price": 162600000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 270,
+      "acceleration_0_100": 4.9,
+      "top_speed": 270,
+      "length": 5054,
+      "width": 1953,
+      "height": 1455,
+      "curb_weight": 2580,
+      "transmission": "자동",
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 2999,
+        "fuel_tank_capacity": 80,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "6"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/290659/806/iris.webp?q=COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaWtsd2H%25cUfpOyXGEuTRJ0l3CJOB2qrubApRARI5uxfJQC30MrkzNBzNm7jAymhKV5YL%25vqCu%25yLRgcDYaxPXSrH1eHDn8wsVxoiZBkEM4FvIPTg9Lg26PDa1FSeWHnMtsd8c%25cUfiANXGE45mJ0lgCZOB2znobQOcxwRytM4FsQkTSMp1P6tTz4oSeWaaMtsdLZCcUfeOyXGE1PKJ0lBHAOB2AQ1bAp5tRI5uCc2QC3zkpkze94pOy1qFm9KhapW9NTmj32v2bwbU15zsRG1gdPVyJ4CM&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/290659/806/iris.webp?q=COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaWtsd2H%25cUfpOyXGEuTRJ0l3CJOB2qrubApRARI5uxfJQC30MrkzNBzNm7jAymhKV5YL%25vqCu%25yLRgcDYaxPXSrH1eHDn8wsVxoiZBkEM4FvIPTg9Lg26PDa1FSeWHnMtsd8c%25cUfiANXGE45mJ0lgCZOB2znobQOcxwRytM4FsQkTSMp1P6tTz4oSeWaaMtsdLZCcUfeOyXGE1PKJ0lBHAOB2AQ1bAp5tRI5uCc2QC3zkpkze94pOy1qFm9KhapW9NTmj32v2bwbU15zsRG1gdPVyJ4CM&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/290659/806/iris.webp?q=COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaWtsd2H%25cUfpOyXGEuTRJ0l3CJOB2qrubApRARI5uxfJQC30MrkzNBzNm7jAymhKV5YL%25vqCu%25yLRgcDYaxPXSrH1eHDn8wsVxoiZBkEM4FvIPTg9Lg26PDa1FSeWHnMtsd8c%25cUfiANXGE45mJ0lgCZOB2znobQOcxwRytM4FsQkTSMp1P6tTz4oSeWaaMtsdLZCcUfeOyXGE1PKJ0lBHAOB2AQ1bAp5tRI5uCc2QC3zkpkze94pOy1qFm9KhapW9NTmj32v2bwbU15zsRG1gdPVyJ4CM&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "EQA",
+      "classification": "준중형",
+      "segment": "C-Segment"
+    },
+    "trim": {
+      "name": "EQA 250 Progressive",
+      "baumuster": "2437011",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "806",
+      "base_price": 70000000,
+      "fuel_type": "전기",
+      "seating_capacity": 5,
+      "max_output": 140,
+      "acceleration_0_100": 8.6,
+      "top_speed": 160,
+      "length": 4463,
+      "width": 1834,
+      "height": 1612,
+      "curb_weight": 2470,
+      "transmission": null,
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": null,
+      "ev_spec": {
+        "battery_capacity": null,
+        "max_range": null,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null
+      },
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/243701/806/iris.webp?q=COSY-EU-100-1713d0VXqaW7qtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtlaWtsd2HVcUfp8yXGEubSJ0l3IJOB2NMcbApjtwI5ux4YQC31SrkzNBzkm7jAymhKV5XN%25vq4t9yLRgc6YaxPaYrH1eHDn8wsQRoiZUMXM4FnIwTg95z36PDCIoSeWHmUtsd8HNcUfircXGE4TXJ0lg6ZOB2PbnbApe7RI5usKDQC32hOkzNLzkm7jaSthymI9WFMbcUfAyYXOcVD0JbXaUxOB2igSbAp0koI5uB6MQC3DsTkzN7zbm7jK7ShKVvsQ%25vqLrdyLRaOXYaxHNhrHAlGqhTWFEnlipE%25EW1JnwxV4V%25d%25CWLH59zW0uBZTmGaX&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/243701/806/iris.webp?q=COSY-EU-100-1713d0VXqaW7qtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtlaWtsd2HVcUfp8yXGEubSJ0l3IJOB2NMcbApjtwI5ux4YQC31SrkzNBzkm7jAymhKV5XN%25vq4t9yLRgc6YaxPaYrH1eHDn8wsQRoiZUMXM4FnIwTg95z36PDCIoSeWHmUtsd8HNcUfircXGE4TXJ0lg6ZOB2PbnbApe7RI5usKDQC32hOkzNLzkm7jaSthymI9WFMbcUfAyYXOcVD0JbXaUxOB2igSbAp0koI5uB6MQC3DsTkzN7zbm7jK7ShKVvsQ%25vqLrdyLRaOXYaxHNhrHAlGqhTWFEnlipE%25EW1JnwxV4V%25d%25CWLH59zW0uBZTmGaX&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/243701/806/iris.webp?q=COSY-EU-100-1713d0VXqaW7qtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtlaWtsd2HVcUfp8yXGEubSJ0l3IJOB2NMcbApjtwI5ux4YQC31SrkzNBzkm7jAymhKV5XN%25vq4t9yLRgc6YaxPaYrH1eHDn8wsQRoiZUMXM4FnIwTg95z36PDCIoSeWHmUtsd8HNcUfircXGE4TXJ0lg6ZOB2PbnbApe7RI5usKDQC32hOkzNLzkm7jaSthymI9WFMbcUfAyYXOcVD0JbXaUxOB2igSbAp0koI5uB6MQC3DsTkzN7zbm7jK7ShKVvsQ%25vqLrdyLRaOXYaxHNhrHAlGqhTWFEnlipE%25EW1JnwxV4V%25d%25CWLH59zW0uBZTmGaX&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "GLC",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "GLC 300 4MATIC Coupé AVANTGARDE",
+      "baumuster": "2543471",
+      "body_type": "Coupé",
+      "body_type_code": "COUPE",
+      "model_year": "806",
+      "base_price": 85500000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 190,
+      "acceleration_0_100": 6.3,
+      "top_speed": 246,
+      "length": 4764,
+      "width": 1890,
+      "height": 1605,
+      "curb_weight": 2510,
+      "transmission": "자동",
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1999,
+        "fuel_tank_capacity": 62,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254347/806_056/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZg9pZbMw3SGtGyUtsd1JpcUfwFuXGEZT3J0l34JOB2Ng1bApjkyI5uVmJQC3qhQkzNRtbm7jx2vhKV1bW%25vqwylyLRZimYaxF4YrH19gOn8wfOFoiZEiEM4Fl4wTg92zO6PDp7NSeWuK2tsd3JVcUfNrkXGEjnRJ0lVDxOB2qWFbApRIXI5uGoYQC30CQkzNBPnm7jAymhKV5YV%25vqCuqyLRzQfYax7r8rH1eJdn8wsOcoiZUioM4FG4fTg90zZ6PDBLFSeWAtutsd5cxcUfCyyXGEtadJ0lLHJOB2aMFbApHTxI5u8Q%25QC3ivwkzN4obm7j06vhKVBKF%25vqAJTyLR53VYaxCkhrH1zmln8w7h4oiZKM1M4FvTQTg9LU26PDaGbSeWH0Stsd8BdcUfiA0XGE45wJ0ldYVOB2fr%25bApEkXI5uKoYQC3vSrkzNLt6m7jaSthymI9WFMbcUfAyYXOcVD0JbXaUxOB2gMqbAp4PtI5uB5uQC3ACFkzN5zdm7jCeZhKVz0W%25vq7rlyLRKnXYaxvbYrH1LbMn8wabdoiZHsuM4FNIJTg9PQO6PDePpSeWseMtsdUs%25cUfGL6XGE0iEJ0lB4xOB2AQ1bAp5TRI5gZ8lXhRjwQZz3BUNCuoQ3pE7EJxJeRB5PVsRiD4Nhc8An&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254347/806_056/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZg9pZbMw3SGtGyUtsd1JpcUfwFuXGEZT3J0l34JOB2Ng1bApjkyI5uVmJQC3qhQkzNRtbm7jx2vhKV1bW%25vqwylyLRZimYaxF4YrH19gOn8wfOFoiZEiEM4Fl4wTg92zO6PDp7NSeWuK2tsd3JVcUfNrkXGEjnRJ0lVDxOB2qWFbApRIXI5uGoYQC30CQkzNBPnm7jAymhKV5YV%25vqCuqyLRzQfYax7r8rH1eJdn8wsOcoiZUioM4FG4fTg90zZ6PDBLFSeWAtutsd5cxcUfCyyXGEtadJ0lLHJOB2aMFbApHTxI5u8Q%25QC3ivwkzN4obm7j06vhKVBKF%25vqAJTyLR53VYaxCkhrH1zmln8w7h4oiZKM1M4FvTQTg9LU26PDaGbSeWH0Stsd8BdcUfiA0XGE45wJ0ldYVOB2fr%25bApEkXI5uKoYQC3vSrkzNLt6m7jaSthymI9WFMbcUfAyYXOcVD0JbXaUxOB2gMqbAp4PtI5uB5uQC3ACFkzN5zdm7jCeZhKVz0W%25vq7rlyLRKnXYaxvbYrH1LbMn8wabdoiZHsuM4FNIJTg9PQO6PDePpSeWseMtsdUs%25cUfGL6XGE0iEJ0lB4xOB2AQ1bAp5TRI5gZ8lXhRjwQZz3BUNCuoQ3pE7EJxJeRB5PVsRiD4Nhc8An&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254347/806_056/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZg9pZbMw3SGtGyUtsd1JpcUfwFuXGEZT3J0l34JOB2Ng1bApjkyI5uVmJQC3qhQkzNRtbm7jx2vhKV1bW%25vqwylyLRZimYaxF4YrH19gOn8wfOFoiZEiEM4Fl4wTg92zO6PDp7NSeWuK2tsd3JVcUfNrkXGEjnRJ0lVDxOB2qWFbApRIXI5uGoYQC30CQkzNBPnm7jAymhKV5YV%25vqCuqyLRzQfYax7r8rH1eJdn8wsOcoiZUioM4FG4fTg90zZ6PDBLFSeWAtutsd5cxcUfCyyXGEtadJ0lLHJOB2aMFbApHTxI5u8Q%25QC3ivwkzN4obm7j06vhKVBKF%25vqAJTyLR53VYaxCkhrH1zmln8w7h4oiZKM1M4FvTQTg9LU26PDaGbSeWH0Stsd8BdcUfiA0XGE45wJ0ldYVOB2fr%25bApEkXI5uKoYQC3vSrkzNLt6m7jaSthymI9WFMbcUfAyYXOcVD0JbXaUxOB2gMqbAp4PtI5uB5uQC3ACFkzN5zdm7jCeZhKVz0W%25vq7rlyLRKnXYaxvbYrH1LbMn8wabdoiZHsuM4FNIJTg9PQO6PDePpSeWseMtsdUs%25cUfGL6XGE0iEJ0lB4xOB2AQ1bAp5TRI5gZ8lXhRjwQZz3BUNCuoQ3pE7EJxJeRB5PVsRiD4Nhc8An&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "EQS",
+      "classification": "대형",
+      "segment": "F-Segment"
+    },
+    "trim": {
+      "name": "Mercedes-Maybach EQS 680 SUV",
+      "baumuster": "2969551",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "806",
+      "base_price": 233600000,
+      "fuel_type": "전기",
+      "seating_capacity": 5,
+      "max_output": 484,
+      "acceleration_0_100": 4.4,
+      "top_speed": 210,
+      "length": 5125,
+      "width": 2034,
+      "height": 1721,
+      "curb_weight": 3500,
+      "transmission": null,
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": null,
+      "ev_spec": {
+        "battery_capacity": null,
+        "max_range": null,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null
+      },
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/296955/806/iris.webp?q=COSY-EU-100-1713d0VXqbS7qtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGwFtsd0ZbcUfw8uXGEZb3J0lFDNOB29SjbApjAwI5uV5zQC3qsQkzNRU9m7jxGvhKV1YM%25vqwrkyLRZnyYaxFbhrH19j%25n8wDV4oiZW%25YM4FdyuTg9f6n6PDEGpSeWl0Mtsd2BtcUfpAfXGEu5YJ0lVYtOB2qrnbApRAlI5ux4YQC31g3kzNwP9m7jZcohKVFXW%25vq9udyLRzc6Yax7XhrH1KJin8wv8noiZL7XM4FaSMTg9Ht36PD8cqSeWiyMtsd4oVcUfgXyXGEzyjJ0l7YhOB2KrObApvn9I5uL5IQC3asFkzNHUdm7j8ymhKViXM%25vq4uTyLRgY6YaxPrYrH1enun8wsPfoiZUegM4FGQJTg9ozZ6PDMLDSeWTy2tsd6oNcUfSXjXGEvawJ0lLHqOB2aSRbApHIoI5u8Q1QC3ivwkzN4obm7j06vhKVBKF%25vqABDyLR5nHYaxCbxrH1zjdn8w7hcoiZK%25gM4FvywTg9L6n6PDaS6SeWHthtsd8B3cUfiAkXGE45BJ0lgCZOB2PzEbApEnXI5ulmIQC3vSrkzNLtkm7jacShKVHtc%25YhQDd9TIXGE5YrJbXqWBOIJHGObAp4iMI5uB5DQC3Ag1kzN5Pnm7jCejhKVzYt%25vq7J%25yLRKQHYaxvrhrH1LbJn8waIdoiZHQUM4F8QETg9ikw6PD4mJSeWqmItsdUhQcUfGUNXGE0GEJ0lB0rOB2A81bAp5koI5uC62QCPFi2J%25xVZkF7mQaDA3MkNulKlO1OsxACeqUx4Wgj%25Xi5o&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/296955/806/iris.webp?q=COSY-EU-100-1713d0VXqbS7qtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGwFtsd0ZbcUfw8uXGEZb3J0lFDNOB29SjbApjAwI5uV5zQC3qsQkzNRU9m7jxGvhKV1YM%25vqwrkyLRZnyYaxFbhrH19j%25n8wDV4oiZW%25YM4FdyuTg9f6n6PDEGpSeWl0Mtsd2BtcUfpAfXGEu5YJ0lVYtOB2qrnbApRAlI5ux4YQC31g3kzNwP9m7jZcohKVFXW%25vq9udyLRzc6Yax7XhrH1KJin8wv8noiZL7XM4FaSMTg9Ht36PD8cqSeWiyMtsd4oVcUfgXyXGEzyjJ0l7YhOB2KrObApvn9I5uL5IQC3asFkzNHUdm7j8ymhKViXM%25vq4uTyLRgY6YaxPrYrH1enun8wsPfoiZUegM4FGQJTg9ozZ6PDMLDSeWTy2tsd6oNcUfSXjXGEvawJ0lLHqOB2aSRbApHIoI5u8Q1QC3ivwkzN4obm7j06vhKVBKF%25vqABDyLR5nHYaxCbxrH1zjdn8w7hcoiZK%25gM4FvywTg9L6n6PDaS6SeWHthtsd8B3cUfiAkXGE45BJ0lgCZOB2PzEbApEnXI5ulmIQC3vSrkzNLtkm7jacShKVHtc%25YhQDd9TIXGE5YrJbXqWBOIJHGObAp4iMI5uB5DQC3Ag1kzN5Pnm7jCejhKVzYt%25vq7J%25yLRKQHYaxvrhrH1LbJn8waIdoiZHQUM4F8QETg9ikw6PD4mJSeWqmItsdUhQcUfGUNXGE0GEJ0lB0rOB2A81bAp5koI5uC62QCPFi2J%25xVZkF7mQaDA3MkNulKlO1OsxACeqUx4Wgj%25Xi5o&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/296955/806/iris.webp?q=COSY-EU-100-1713d0VXqbS7qtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGwFtsd0ZbcUfw8uXGEZb3J0lFDNOB29SjbApjAwI5uV5zQC3qsQkzNRU9m7jxGvhKV1YM%25vqwrkyLRZnyYaxFbhrH19j%25n8wDV4oiZW%25YM4FdyuTg9f6n6PDEGpSeWl0Mtsd2BtcUfpAfXGEu5YJ0lVYtOB2qrnbApRAlI5ux4YQC31g3kzNwP9m7jZcohKVFXW%25vq9udyLRzc6Yax7XhrH1KJin8wv8noiZL7XM4FaSMTg9Ht36PD8cqSeWiyMtsd4oVcUfgXyXGEzyjJ0l7YhOB2KrObApvn9I5uL5IQC3asFkzNHUdm7j8ymhKViXM%25vq4uTyLRgY6YaxPrYrH1enun8wsPfoiZUegM4FGQJTg9ozZ6PDMLDSeWTy2tsd6oNcUfSXjXGEvawJ0lLHqOB2aSRbApHIoI5u8Q1QC3ivwkzN4obm7j06vhKVBKF%25vqABDyLR5nHYaxCbxrH1zjdn8w7hcoiZK%25gM4FvywTg9L6n6PDaS6SeWHthtsd8B3cUfiAkXGE45BJ0lgCZOB2PzEbApEnXI5ulmIQC3vSrkzNLtkm7jacShKVHtc%25YhQDd9TIXGE5YrJbXqWBOIJHGObAp4iMI5uB5DQC3Ag1kzN5Pnm7jCejhKVzYt%25vq7J%25yLRKQHYaxvrhrH1LbJn8waIdoiZHQUM4F8QETg9ikw6PD4mJSeWqmItsdUhQcUfGUNXGE0GEJ0lB0rOB2A81bAp5koI5uC62QCPFi2J%25xVZkF7mQaDA3MkNulKlO1OsxACeqUx4Wgj%25Xi5o&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "CLE",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "CLE 200 Cabriolet AMG Line",
+      "baumuster": "2364501",
+      "body_type": "Cabriolet",
+      "body_type_code": "CABRIOLET",
+      "model_year": "806",
+      "base_price": 82100000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 4,
+      "max_output": 150,
+      "acceleration_0_100": 7.9,
+      "top_speed": 236,
+      "length": 4850,
+      "width": 1861,
+      "height": 1424,
+      "curb_weight": 2360,
+      "transmission": "자동",
+      "doors": 2,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1999,
+        "fuel_tank_capacity": 66,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/236450/806/iris.webp?q=COSY-EU-100-1713d0VXqaWeqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7oI5ux5xQC31CpkzNwPnm7jZeDhKV5SM%25vqCt%25yLRznyYax7NxrH1eJtn8ws8WoiZUMEM4FnOMTg95t26PDC%25uSeWznMtsd7BVcUfi%250XGE49dJ0lgOrOB2Pz%25bApe7pI5usKzQC3UvWkzNGoum7jacShKVHtc%25YhQDd9TIXGE5YrJbXqWBOIJHGObApPdpI5ug6FQC3AgTkzNWBFm7jKeDhKVvsL%25vqLBqyL0fsjko9wdYfHJyMlCRcYxqN8NmDmA9KLBZ59U2G1oQsvt&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/236450/806/iris.webp?q=COSY-EU-100-1713d0VXqaWeqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7oI5ux5xQC31CpkzNwPnm7jZeDhKV5SM%25vqCt%25yLRznyYax7NxrH1eJtn8ws8WoiZUMEM4FnOMTg95t26PDC%25uSeWznMtsd7BVcUfi%250XGE49dJ0lgOrOB2Pz%25bApe7pI5usKzQC3UvWkzNGoum7jacShKVHtc%25YhQDd9TIXGE5YrJbXqWBOIJHGObApPdpI5ug6FQC3AgTkzNWBFm7jKeDhKVvsL%25vqLBqyL0fsjko9wdYfHJyMlCRcYxqN8NmDmA9KLBZ59U2G1oQsvt&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/236450/806/iris.webp?q=COSY-EU-100-1713d0VXqaWeqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7oI5ux5xQC31CpkzNwPnm7jZeDhKV5SM%25vqCt%25yLRznyYax7NxrH1eJtn8ws8WoiZUMEM4FnOMTg95t26PDC%25uSeWznMtsd7BVcUfi%250XGE49dJ0lgOrOB2Pz%25bApe7pI5usKzQC3UvWkzNGoum7jacShKVHtc%25YhQDd9TIXGE5YrJbXqWBOIJHGObApPdpI5ug6FQC3AgTkzNWBFm7jKeDhKVvsL%25vqLBqyL0fsjko9wdYfHJyMlCRcYxqN8NmDmA9KLBZ59U2G1oQsvt&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "GLB",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "Mercedes-AMG GLB 35 4MATIC",
+      "baumuster": "2476511",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "806",
+      "base_price": 78500000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 225,
+      "acceleration_0_100": 5.5,
+      "top_speed": 250,
+      "length": 4650,
+      "width": 1850,
+      "height": 1665,
+      "curb_weight": 2320,
+      "transmission": "자동",
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1991,
+        "fuel_tank_capacity": 60,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/247651/806/iris.webp?q=COSY-EU-100-1713d0VXqNEFqtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtle9tsd2HdcUfp8qXGEuiYJ0l3ItOB2NQObApjTXI5uVcZQC31C1kzNwPnm7jZcohKV5SF%25vqCv%25yLRznyYax7bqrH1KIOn8wsOfoiZUioM4FG4fTg90xV6PDBSbSeWTm9tsd6HTcUfKLqXGEvTSJ0lL%25lOB2Pr5bApetbI5uscDQC3UkTkzNGLwm7j0afhKV3XF%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80lI5uefJQC3PEHkzNWEpm7jKeIhKVvsL%25vqLJcyLRa3mYaxHrqrH1IJln8520R%256d9lo24uARudwOoZ1qgqyfyzda8CD7dB3AF6h0HJ&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/247651/806/iris.webp?q=COSY-EU-100-1713d0VXqNEFqtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtle9tsd2HdcUfp8qXGEuiYJ0l3ItOB2NQObApjTXI5uVcZQC31C1kzNwPnm7jZcohKV5SF%25vqCv%25yLRznyYax7bqrH1KIOn8wsOfoiZUioM4FG4fTg90xV6PDBSbSeWTm9tsd6HTcUfKLqXGEvTSJ0lL%25lOB2Pr5bApetbI5uscDQC3UkTkzNGLwm7j0afhKV3XF%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80lI5uefJQC3PEHkzNWEpm7jKeIhKVvsL%25vqLJcyLRa3mYaxHrqrH1IJln8520R%256d9lo24uARudwOoZ1qgqyfyzda8CD7dB3AF6h0HJ&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/247651/806/iris.webp?q=COSY-EU-100-1713d0VXqNEFqtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtle9tsd2HdcUfp8qXGEuiYJ0l3ItOB2NQObApjTXI5uVcZQC31C1kzNwPnm7jZcohKV5SF%25vqCv%25yLRznyYax7bqrH1KIOn8wsOfoiZUioM4FG4fTg90xV6PDBSbSeWTm9tsd6HTcUfKLqXGEvTSJ0lL%25lOB2Pr5bApetbI5uscDQC3UkTkzNGLwm7j0afhKV3XF%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80lI5uefJQC3PEHkzNWEpm7jKeIhKVvsL%25vqLJcyLRa3mYaxHrqrH1IJln8520R%256d9lo24uARudwOoZ1qgqyfyzda8CD7dB3AF6h0HJ&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "E-Class",
+      "classification": "준대형",
+      "segment": "E-Segment"
+    },
+    "trim": {
+      "name": "E 300 4MATIC AMG Line",
+      "baumuster": "2140471",
+      "body_type": "Sedan",
+      "body_type_code": "LIMOUSINE",
+      "model_year": "806",
+      "base_price": 97700000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 190,
+      "acceleration_0_100": null,
+      "top_speed": null,
+      "length": 4951,
+      "width": 1880,
+      "height": 1470,
+      "curb_weight": 2515,
+      "transmission": "자동",
+      "doors": 4,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1999,
+        "fuel_tank_capacity": 66,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214047/806/iris.webp?q=COSY-EU-100-1713d0VXq0hFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtxKFtsd2s%25cUfp8cXGEu9BJ0l36xOB2NzObApj7pI5ux52QC31grkzNwP9m7jA6ohKV5Kh%25vqCrqyLRz3RYaxPXSrH1eHDn8wszxoiZUIgM4FAmMTg95hp6PDCroSeWHmUtsd8s3cUfiFNXGE49dJ0lg6tOB2PSEbApeIyI5usQMQC3UvrkzNL6Sm%25kbFDZoOtsdB%25ycJtj9GXOcLsBJ0l8o1OB2G8nbApFWtI5uC5MQC3zg7kzN7P6m7jKGjhKVvYW%25vGdeNQnF1Wydam7XxLqtyRV3H3k9kBF7v0wAFslUxnIeKS&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214047/806/iris.webp?q=COSY-EU-100-1713d0VXq0hFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtxKFtsd2s%25cUfp8cXGEu9BJ0l36xOB2NzObApj7pI5ux52QC31grkzNwP9m7jA6ohKV5Kh%25vqCrqyLRz3RYaxPXSrH1eHDn8wszxoiZUIgM4FAmMTg95hp6PDCroSeWHmUtsd8s3cUfiFNXGE49dJ0lg6tOB2PSEbApeIyI5usQMQC3UvrkzNL6Sm%25kbFDZoOtsdB%25ycJtj9GXOcLsBJ0l8o1OB2G8nbApFWtI5uC5MQC3zg7kzN7P6m7jKGjhKVvYW%25vGdeNQnF1Wydam7XxLqtyRV3H3k9kBF7v0wAFslUxnIeKS&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214047/806/iris.webp?q=COSY-EU-100-1713d0VXq0hFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtxKFtsd2s%25cUfp8cXGEu9BJ0l36xOB2NzObApj7pI5ux52QC31grkzNwP9m7jA6ohKV5Kh%25vqCrqyLRz3RYaxPXSrH1eHDn8wszxoiZUIgM4FAmMTg95hp6PDCroSeWHmUtsd8s3cUfiFNXGE49dJ0lg6tOB2PSEbApeIyI5usQMQC3UvrkzNL6Sm%25kbFDZoOtsdB%25ycJtj9GXOcLsBJ0l8o1OB2G8nbApFWtI5uC5MQC3zg7kzN7P6m7jKGjhKVvYW%25vGdeNQnF1Wydam7XxLqtyRV3H3k9kBF7v0wAFslUxnIeKS&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "EQB",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "EQB 300 4MATIC Progressive",
+      "baumuster": "2436081",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "806",
+      "base_price": 78800000,
+      "fuel_type": "전기",
+      "seating_capacity": 5,
+      "max_output": 168,
+      "acceleration_0_100": 8.0,
+      "top_speed": 160,
+      "length": 4684,
+      "width": 1834,
+      "height": 1694,
+      "curb_weight": 2580,
+      "transmission": null,
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": null,
+      "ev_spec": {
+        "battery_capacity": null,
+        "max_range": null,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null
+      },
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/243608/806/iris.webp?q=COSY-EU-100-1713d0VXqaW7qtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtlaWtsd2HVcUfp8yXGEubSJ0l3IJOB2NMcbApjtwI5ux4YQC31SrkzNBzkm7jAymhKV5XN%25vq4t9yLRgc6YaxPaYrH1eHDn8wsQRoiZUqNM4FGTJTg9oQZ6PDC7NSeWzQMtsd8hGcUfi8jXGE4nXJ0lg6JOB2PSFbApeIoI5usKxQC3UvWkzNp%25bm7jaSthymI9WFMbcUfAyYXOcVD0JbXaUxOB2igSbAp0koI5uB6MQC3DsTkzN7zbm7jK7ShKVvsQ%25vqLrdyLRaOXYaxHNhrHAlGqhTWFEnlipEqEs1JnwxV4V%25d%25CWLH59zW0uBZTmGaX&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/243608/806/iris.webp?q=COSY-EU-100-1713d0VXqaW7qtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtlaWtsd2HVcUfp8yXGEubSJ0l3IJOB2NMcbApjtwI5ux4YQC31SrkzNBzkm7jAymhKV5XN%25vq4t9yLRgc6YaxPaYrH1eHDn8wsQRoiZUqNM4FGTJTg9oQZ6PDC7NSeWzQMtsd8hGcUfi8jXGE4nXJ0lg6JOB2PSFbApeIoI5usKxQC3UvWkzNp%25bm7jaSthymI9WFMbcUfAyYXOcVD0JbXaUxOB2igSbAp0koI5uB6MQC3DsTkzN7zbm7jK7ShKVvsQ%25vqLrdyLRaOXYaxHNhrHAlGqhTWFEnlipEqEs1JnwxV4V%25d%25CWLH59zW0uBZTmGaX&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/243608/806/iris.webp?q=COSY-EU-100-1713d0VXqaW7qtyO67PobzIr3eWsrrCsdRRzwQZgkfZbMw3SGtlaWtsd2HVcUfp8yXGEubSJ0l3IJOB2NMcbApjtwI5ux4YQC31SrkzNBzkm7jAymhKV5XN%25vq4t9yLRgc6YaxPaYrH1eHDn8wsQRoiZUqNM4FGTJTg9oQZ6PDC7NSeWzQMtsd8hGcUfi8jXGE4nXJ0lg6JOB2PSFbApeIoI5usKxQC3UvWkzNp%25bm7jaSthymI9WFMbcUfAyYXOcVD0JbXaUxOB2igSbAp0koI5uB6MQC3DsTkzN7zbm7jK7ShKVvsQ%25vqLrdyLRaOXYaxHNhrHAlGqhTWFEnlipEqEs1JnwxV4V%25d%25CWLH59zW0uBZTmGaX&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "GLC",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "GLC 300 4MATIC AMG Line",
+      "baumuster": "2546471",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "806",
+      "base_price": 91400000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 190,
+      "acceleration_0_100": 6.2,
+      "top_speed": 240,
+      "length": 4716,
+      "width": 1890,
+      "height": 1640,
+      "curb_weight": 2510,
+      "transmission": "자동",
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1999,
+        "fuel_tank_capacity": 62,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254647/806_056/iris.webp?q=COSY-EU-100-1713d0VXqaSFqtyO67PobzIr3eWsrrCsdRRzwQZUnRZbMw3SGtGyUtsd1JpcUfwFuXGEZT3J0l34JOB2Ng1bApjkyI5uVmJQC3qhQkzNRtbm7jx2vhKV1bW%25vqwylyLRZimYaxF4YrH19gOn8wfOFoiZEiEM4Fl4wTg92zO6PDp7NSeWuK2tsd3JVcUfNrkXGEjnRJ0lVDxOB2qWFbApRIXI5uGoYQC30CQkzNBPnm7jAymhKV5YV%25vqCuqyLRzQfYaxPXWrH1eJtn8ws8noiZUidM4FGCwTg90vZ6PDBSpSeWAtRtsd5%25%25cUfSLWXGEtTwJ0lLHJOB2a81bApHT9I5u861QC3iXOkzN4LZm7jgMmhKVBSL%25vqAv9yLR5O6YaxCNqrH1zm%25n8w7h2oiZK%25gM4FvTwTg9L6k6PDaGpSeWH0Itsd8BtcUfiAfXGE45BJ0lgCZOB2frqbApEnyI5ulmJQC3vMrkzNLtnm7jacShKVHph%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80wI5ueouQC3PS9kzN5zdm7jCeZhKVzst%25vq7BTyLRKAfYaxvoprH1LMOn8waQnoiZHQ6M4F8QETg9iGN6PDVkbSeWqi2tsdUhQcUfGUNXGE0GYJ0lBHtOB2A85bAp5ioI5uCeuQC3zsFkzN7%259m7jKcZhKUWP3IrZxD%25WLqz3RvVS%25qjuauQFQ0ZzKG1BZeEsRrbP76&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254647/806_056/iris.webp?q=COSY-EU-100-1713d0VXqaSFqtyO67PobzIr3eWsrrCsdRRzwQZUnRZbMw3SGtGyUtsd1JpcUfwFuXGEZT3J0l34JOB2Ng1bApjkyI5uVmJQC3qhQkzNRtbm7jx2vhKV1bW%25vqwylyLRZimYaxF4YrH19gOn8wfOFoiZEiEM4Fl4wTg92zO6PDp7NSeWuK2tsd3JVcUfNrkXGEjnRJ0lVDxOB2qWFbApRIXI5uGoYQC30CQkzNBPnm7jAymhKV5YV%25vqCuqyLRzQfYaxPXWrH1eJtn8ws8noiZUidM4FGCwTg90vZ6PDBSpSeWAtRtsd5%25%25cUfSLWXGEtTwJ0lLHJOB2a81bApHT9I5u861QC3iXOkzN4LZm7jgMmhKVBSL%25vqAv9yLR5O6YaxCNqrH1zm%25n8w7h2oiZK%25gM4FvTwTg9L6k6PDaGpSeWH0Itsd8BtcUfiAfXGE45BJ0lgCZOB2frqbApEnyI5ulmJQC3vMrkzNLtnm7jacShKVHph%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80wI5ueouQC3PS9kzN5zdm7jCeZhKVzst%25vq7BTyLRKAfYaxvoprH1LMOn8waQnoiZHQ6M4F8QETg9iGN6PDVkbSeWqi2tsdUhQcUfGUNXGE0GYJ0lBHtOB2A85bAp5ioI5uCeuQC3zsFkzN7%259m7jKcZhKUWP3IrZxD%25WLqz3RvVS%25qjuauQFQ0ZzKG1BZeEsRrbP76&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/254647/806_056/iris.webp?q=COSY-EU-100-1713d0VXqaSFqtyO67PobzIr3eWsrrCsdRRzwQZUnRZbMw3SGtGyUtsd1JpcUfwFuXGEZT3J0l34JOB2Ng1bApjkyI5uVmJQC3qhQkzNRtbm7jx2vhKV1bW%25vqwylyLRZimYaxF4YrH19gOn8wfOFoiZEiEM4Fl4wTg92zO6PDp7NSeWuK2tsd3JVcUfNrkXGEjnRJ0lVDxOB2qWFbApRIXI5uGoYQC30CQkzNBPnm7jAymhKV5YV%25vqCuqyLRzQfYaxPXWrH1eJtn8ws8noiZUidM4FGCwTg90vZ6PDBSpSeWAtRtsd5%25%25cUfSLWXGEtTwJ0lLHJOB2a81bApHT9I5u861QC3iXOkzN4LZm7jgMmhKVBSL%25vqAv9yLR5O6YaxCNqrH1zm%25n8w7h2oiZK%25gM4FvTwTg9L6k6PDaGpSeWH0Itsd8BtcUfiAfXGE45BJ0lgCZOB2frqbApEnyI5ulmJQC3vMrkzNLtnm7jacShKVHph%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80wI5ueouQC3PS9kzN5zdm7jCeZhKVzst%25vq7BTyLRKAfYaxvoprH1LMOn8waQnoiZHQ6M4F8QETg9iGN6PDVkbSeWqi2tsdUhQcUfGUNXGE0GYJ0lBHtOB2A85bAp5ioI5uCeuQC3zsFkzN7%259m7jKcZhKUWP3IrZxD%25WLqz3RvVS%25qjuauQFQ0ZzKG1BZeEsRrbP76&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "Mercedes-AMG GT",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "Mercedes-AMG GT 63 S E PERFORMANCE",
+      "baumuster": "1923821",
+      "body_type": "Coupé",
+      "body_type_code": "COUPE",
+      "model_year": "806",
+      "base_price": 278600000,
+      "fuel_type": "하이브리드 (가솔린)",
+      "seating_capacity": 4,
+      "max_output": 600,
+      "acceleration_0_100": 2.8,
+      "top_speed": 320,
+      "length": 4728,
+      "width": 1984,
+      "height": 1354,
+      "curb_weight": 2365,
+      "transmission": "자동",
+      "doors": 3,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 3982,
+        "fuel_tank_capacity": 70,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "V8"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/192382/806/iris.webp?q=COSY-EU-100-1713d0VXqrWLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2oVcUfNrkXGEPymJ0le0AOB2sgEbApUkbI5uLoYQC3ahQkzNHt9m7j82DhKVi%25N%25vq46ayLRhLFYax%25t8rH1GBfn8w0XxoiZKbgM4Fv4lTg9LY96PDaGbSeWFXMtsdBhxcUfAL0XGE5YrJbXSqxVh6n8wPbIoTnlR4M6o58rTg9vY26PDK1ASeWgwutsdPymcUfxCUXGE0bRJ0lBoVOB2Az2bA4wHEcmqN1Iw4QqspfpnIu2fzfXRXPq0Agjeq89i3mtHBr&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/192382/806/iris.webp?q=COSY-EU-100-1713d0VXqrWLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2oVcUfNrkXGEPymJ0le0AOB2sgEbApUkbI5uLoYQC3ahQkzNHt9m7j82DhKVi%25N%25vq46ayLRhLFYax%25t8rH1GBfn8w0XxoiZKbgM4Fv4lTg9LY96PDaGbSeWFXMtsdBhxcUfAL0XGE5YrJbXSqxVh6n8wPbIoTnlR4M6o58rTg9vY26PDK1ASeWgwutsdPymcUfxCUXGE0bRJ0lBoVOB2Az2bA4wHEcmqN1Iw4QqspfpnIu2fzfXRXPq0Agjeq89i3mtHBr&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/192382/806/iris.webp?q=COSY-EU-100-1713d0VXqrWLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2oVcUfNrkXGEPymJ0le0AOB2sgEbApUkbI5uLoYQC3ahQkzNHt9m7j82DhKVi%25N%25vq46ayLRhLFYax%25t8rH1GBfn8w0XxoiZKbgM4Fv4lTg9LY96PDaGbSeWFXMtsdBhxcUfAL0XGE5YrJbXSqxVh6n8wPbIoTnlR4M6o58rTg9vY26PDK1ASeWgwutsdPymcUfxCUXGE0bRJ0lBoVOB2Az2bA4wHEcmqN1Iw4QqspfpnIu2fzfXRXPq0Agjeq89i3mtHBr&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "C-Class",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "C 200 AMG Line",
+      "baumuster": "2060501",
+      "body_type": "Sedan",
+      "body_type_code": "LIMOUSINE",
+      "model_year": "806",
+      "base_price": 67500000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 150,
+      "acceleration_0_100": 7.3,
+      "top_speed": 246,
+      "length": 4751,
+      "width": 1820,
+      "height": 1438,
+      "curb_weight": null,
+      "transmission": "자동",
+      "doors": 4,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1999,
+        "fuel_tank_capacity": 66,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/206050/806/iris.webp?q=COSY-EU-100-1713d0VXqaSFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle9tsd2HtcUfp8qXGEubmJ0l3ItOB2NMcbApjdCI5uVcZQC3qkWkzNRL6m7jZ6qhKVFKF%25vq9UTyLRDGfYaxWbSrH1KJtn8wv8noiZL6oM4FaRFTg90Q26PDBPlSeWAK9tsd5c3cUfCX1XGEtiSJ0lLHqOB2aMFbApHtXI5usozQC3UEpkzNGmnm7j0hShKVBHM%25vqA8qyLR5iHYaxC4prH1gObnMr%25E2fchI5uKMTQmIwlzkhQg5dm7jG2jhKVUXd%25vq7UcyLRKA6Yax2jerH18B%25n8wiA4oiZ45IM4FgKFTg9Pt36PKNCZnX2f3SNsF6hVHDkSW9wUwopoL24PvEa2zq7dXrCgQ&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/206050/806/iris.webp?q=COSY-EU-100-1713d0VXqaSFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle9tsd2HtcUfp8qXGEubmJ0l3ItOB2NMcbApjdCI5uVcZQC3qkWkzNRL6m7jZ6qhKVFKF%25vq9UTyLRDGfYaxWbSrH1KJtn8wv8noiZL6oM4FaRFTg90Q26PDBPlSeWAK9tsd5c3cUfCX1XGEtiSJ0lLHqOB2aMFbApHtXI5usozQC3UEpkzNGmnm7j0hShKVBHM%25vqA8qyLR5iHYaxC4prH1gObnMr%25E2fchI5uKMTQmIwlzkhQg5dm7jG2jhKVUXd%25vq7UcyLRKA6Yax2jerH18B%25n8wiA4oiZ45IM4FgKFTg9Pt36PKNCZnX2f3SNsF6hVHDkSW9wUwopoL24PvEa2zq7dXrCgQ&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/206050/806/iris.webp?q=COSY-EU-100-1713d0VXqaSFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle9tsd2HtcUfp8qXGEubmJ0l3ItOB2NMcbApjdCI5uVcZQC3qkWkzNRL6m7jZ6qhKVFKF%25vq9UTyLRDGfYaxWbSrH1KJtn8wv8noiZL6oM4FaRFTg90Q26PDBPlSeWAK9tsd5c3cUfCX1XGEtiSJ0lLHqOB2aMFbApHtXI5usozQC3UEpkzNGmnm7j0hShKVBHM%25vqA8qyLR5iHYaxC4prH1gObnMr%25E2fchI5uKMTQmIwlzkhQg5dm7jG2jhKVUXd%25vq7UcyLRKA6Yax2jerH18B%25n8wiA4oiZ45IM4FgKFTg9Pt36PKNCZnX2f3SNsF6hVHDkSW9wUwopoL24PvEa2zq7dXrCgQ&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "E-Class",
+      "classification": "준대형",
+      "segment": "E-Segment"
+    },
+    "trim": {
+      "name": "E 220 d 4MATIC EXCLUSIVE",
+      "baumuster": "2140051",
+      "body_type": "Sedan",
+      "body_type_code": "LIMOUSINE",
+      "model_year": "806",
+      "base_price": 86100000,
+      "fuel_type": "디젤",
+      "seating_capacity": 5,
+      "max_output": 145,
+      "acceleration_0_100": 7.8,
+      "top_speed": 234,
+      "length": 4949,
+      "width": 1880,
+      "height": 1469,
+      "curb_weight": 2580,
+      "transmission": "자동",
+      "doors": 4,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1993,
+        "fuel_tank_capacity": 66,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214005/806/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtxeFtsd2HtcUfpF0XGEuTRJ0l3CJOB2Nz2bApRiyI5ux4ZQC31srkzNBTnm7jA7mhKV5pV%25vq4tTyLRgAVYaxPr9rH1eOin8wYzyoiZB5lM4FAmMTg9LQe6PDa1FSeWHnMtsd8cQcUfiXyXGE45mJ0lCrnOIJtR1q%25SoiZeIQM6o2xgTSMCiT6PDK7uSeWgKMtsdPvtcUfxX6XGE0GSJ0lB0rOB2Ag2bAp5kwI5gZ8lXhRjwQZzOBTwBuoQ3pE7EJxJeRB5PVsRiD4Nhc8An&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214005/806/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtxeFtsd2HtcUfpF0XGEuTRJ0l3CJOB2Nz2bApRiyI5ux4ZQC31srkzNBTnm7jA7mhKV5pV%25vq4tTyLRgAVYaxPr9rH1eOin8wYzyoiZB5lM4FAmMTg9LQe6PDa1FSeWHnMtsd8cQcUfiXyXGE45mJ0lCrnOIJtR1q%25SoiZeIQM6o2xgTSMCiT6PDK7uSeWgKMtsdPvtcUfxX6XGE0GSJ0lB0rOB2Ag2bAp5kwI5gZ8lXhRjwQZzOBTwBuoQ3pE7EJxJeRB5PVsRiD4Nhc8An&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214005/806/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtxeFtsd2HtcUfpF0XGEuTRJ0l3CJOB2Nz2bApRiyI5ux4ZQC31srkzNBTnm7jA7mhKV5pV%25vq4tTyLRgAVYaxPr9rH1eOin8wYzyoiZB5lM4FAmMTg9LQe6PDa1FSeWHnMtsd8cQcUfiXyXGE45mJ0lCrnOIJtR1q%25SoiZeIQM6o2xgTSMCiT6PDK7uSeWgKMtsdPvtcUfxX6XGE0GSJ0lB0rOB2Ag2bAp5kwI5gZ8lXhRjwQZzOBTwBuoQ3pE7EJxJeRB5PVsRiD4Nhc8An&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "CLE",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "CLE 450 4MATIC Coupé AMG Line",
+      "baumuster": "2363611",
+      "body_type": "Coupé",
+      "body_type_code": "COUPE",
+      "model_year": "806",
+      "base_price": 98400000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 4,
+      "max_output": 280,
+      "acceleration_0_100": 4.4,
+      "top_speed": 250,
+      "length": 4850,
+      "width": 1861,
+      "height": 1422,
+      "curb_weight": 2400,
+      "transmission": "자동",
+      "doors": 2,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 2999,
+        "fuel_tank_capacity": 66,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "6"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/236361/806/iris.webp?q=COSY-EU-100-1713d0VXq0WLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7oI5ux5xQC31CpkzNwPnm7jZeDhKVFHt%25vqCtTyLRzLyYax7oYrH1KM1n8wvVwoiZUbXM4FG4fTg90626PDC%25uSeWznMtsd7oNcUfKAqXGE4yBJ0lg0VOB2PWEbApeIyI5usQMQC3UvrkzNGLNm7j0avhKVBHE%25vqA6jyLRiOXYax4JOroYhfldtmbAp7oMIkb1ECQmI4AQkzNUTNm7jscWhKVzsM%25vq7UcyLRlzLYaxH0ErH18Bin8wizwoiZ4epM4zuA1YtEWpTuPkMLsEFIT9ZxexrlrKE847dvE5jCDtyAib&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/236361/806/iris.webp?q=COSY-EU-100-1713d0VXq0WLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7oI5ux5xQC31CpkzNwPnm7jZeDhKVFHt%25vqCtTyLRzLyYax7oYrH1KM1n8wvVwoiZUbXM4FG4fTg90626PDC%25uSeWznMtsd7oNcUfKAqXGE4yBJ0lg0VOB2PWEbApeIyI5usQMQC3UvrkzNGLNm7j0avhKVBHE%25vqA6jyLRiOXYax4JOroYhfldtmbAp7oMIkb1ECQmI4AQkzNUTNm7jscWhKVzsM%25vq7UcyLRlzLYaxH0ErH18Bin8wizwoiZ4epM4zuA1YtEWpTuPkMLsEFIT9ZxexrlrKE847dvE5jCDtyAib&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/236361/806/iris.webp?q=COSY-EU-100-1713d0VXq0WLqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7oI5ux5xQC31CpkzNwPnm7jZeDhKVFHt%25vqCtTyLRzLyYax7oYrH1KM1n8wvVwoiZUbXM4FG4fTg90626PDC%25uSeWznMtsd7oNcUfKAqXGE4yBJ0lg0VOB2PWEbApeIyI5usQMQC3UvrkzNGLNm7j0avhKVBHE%25vqA6jyLRiOXYax4JOroYhfldtmbAp7oMIkb1ECQmI4AQkzNUTNm7jscWhKVzsM%25vq7UcyLRlzLYaxH0ErH18Bin8wizwoiZ4epM4zuA1YtEWpTuPkMLsEFIT9ZxexrlrKE847dvE5jCDtyAib&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "G-Class",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "G 580 with EQ-Technology",
+      "baumuster": "4656001",
+      "body_type": "Cross-country vehicle",
+      "body_type_code": "GELAENDEWAGEN",
+      "model_year": "X24",
+      "base_price": 207600000,
+      "fuel_type": "전기",
+      "seating_capacity": 5,
+      "max_output": 432,
+      "acceleration_0_100": 4.7,
+      "top_speed": 180,
+      "length": 4624,
+      "width": 1913,
+      "height": 1986,
+      "curb_weight": 3500,
+      "transmission": null,
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": null,
+      "ev_spec": {
+        "battery_capacity": null,
+        "max_range": null,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null
+      },
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/465600/X24_055/iris.webp?q=COSY-EU-100-1713d0VXqbWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyjtsd2HdcUfp8yXGEPGEJ0l7YhOB2XQcbApeARI5usQMQC3UvWkzNGoum7juymhKVHtc%25YhQDd9TIXGE5YrJbXqWBOIJHG%25bAp7fRI5ua6YQC3H6OkzN84km7jivZhKVuhW%25vq3m9yLRnbDYaxBblrH1LCtn8waTfoiZH%25gM4F8YrTg9jLV6PDVwoSeW6GItsdTc3cUfqO6XGERrRJ0lbHlOB2MM%25bA4wHEcmqN1IwSPaE1spnIu2fzfXRXPq0Agjeq89i3mtHBr&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/465600/X24_055/iris.webp?q=COSY-EU-100-1713d0VXqbWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyjtsd2HdcUfp8yXGEPGEJ0l7YhOB2XQcbApeARI5usQMQC3UvWkzNGoum7juymhKVHtc%25YhQDd9TIXGE5YrJbXqWBOIJHG%25bAp7fRI5ua6YQC3H6OkzN84km7jivZhKVuhW%25vq3m9yLRnbDYaxBblrH1LCtn8waTfoiZH%25gM4F8YrTg9jLV6PDVwoSeW6GItsdTc3cUfqO6XGERrRJ0lbHlOB2MM%25bA4wHEcmqN1IwSPaE1spnIu2fzfXRXPq0Agjeq89i3mtHBr&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/465600/X24_055/iris.webp?q=COSY-EU-100-1713d0VXqbWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyjtsd2HdcUfp8yXGEPGEJ0l7YhOB2XQcbApeARI5usQMQC3UvWkzNGoum7juymhKVHtc%25YhQDd9TIXGE5YrJbXqWBOIJHG%25bAp7fRI5ua6YQC3H6OkzN84km7jivZhKVuhW%25vq3m9yLRnbDYaxBblrH1LCtn8waTfoiZH%25gM4F8YrTg9jLV6PDVwoSeW6GItsdTc3cUfqO6XGERrRJ0lbHlOB2MM%25bA4wHEcmqN1IwSPaE1spnIu2fzfXRXPq0Agjeq89i3mtHBr&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "S-Class",
+      "classification": "대형",
+      "segment": "F-Segment"
+    },
+    "trim": {
+      "name": "Mercedes-Maybach S 680 4MATIC",
+      "baumuster": "2239791",
+      "body_type": "MAYBACH",
+      "body_type_code": "MAYBACH",
+      "model_year": "806",
+      "base_price": 401600000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 450,
+      "acceleration_0_100": 4.5,
+      "top_speed": 250,
+      "length": 5469,
+      "width": 1921,
+      "height": 1510,
+      "curb_weight": 2890,
+      "transmission": "자동",
+      "doors": 4,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 5980,
+        "fuel_tank_capacity": 76,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "V12"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223979/806/iris.webp?q=COSY-EU-100-1713d0VXqbSFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2vtcUfp8cXGEuiBJ0l3IrOB2NS1bApjtCI5uVQJQC3qvQkzNRLdm7jZ6IhKVFSL%25vq9vjyLRDG6YaxW0hrH1dBln8wfQcoiZLbXM4FaIrTg9HQe6PD8P6SeWiaMtsd4H%25cUfgOcXGEPbRJ0leIZOB2sM%25bApUTXI5uG6IQC3aMrkzNHTkm7j8yZhKViYh%25vq4uTyLRg3mYaxPrhrH1enun8wYoEoiZBbtM4FA4fTg95ze6PDC7qSeWzK3tsd7HVcUfKMjXGEvJVJ0lgYAOB2PBqbApeTpI5usf2QC3UX3kzNGJum7j0hohKVB%25t%25vqA8TyLR5iHYaxC4qrH1qJin8wRO3oiZx6YM4FsIuTg9Ukm6tTnuNpbrhKVHtc%25YhD3Lyr%25UK2YaxebWrH1sItn8wzzxoiZC5lM4F8CJTg9ihT6PDekqSeWseWtsdUs%25cUfGLqXGE0iRJ0lBDhOBi1aftkV3xb15YxKD12rbpldCdcqcgVGB4NPVHF8ukSa0Y&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223979/806/iris.webp?q=COSY-EU-100-1713d0VXqbSFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2vtcUfp8cXGEuiBJ0l3IrOB2NS1bApjtCI5uVQJQC3qvQkzNRLdm7jZ6IhKVFSL%25vq9vjyLRDG6YaxW0hrH1dBln8wfQcoiZLbXM4FaIrTg9HQe6PD8P6SeWiaMtsd4H%25cUfgOcXGEPbRJ0leIZOB2sM%25bApUTXI5uG6IQC3aMrkzNHTkm7j8yZhKViYh%25vq4uTyLRg3mYaxPrhrH1enun8wYoEoiZBbtM4FA4fTg95ze6PDC7qSeWzK3tsd7HVcUfKMjXGEvJVJ0lgYAOB2PBqbApeTpI5usf2QC3UX3kzNGJum7j0hohKVB%25t%25vqA8TyLR5iHYaxC4qrH1qJin8wRO3oiZx6YM4FsIuTg9Ukm6tTnuNpbrhKVHtc%25YhD3Lyr%25UK2YaxebWrH1sItn8wzzxoiZC5lM4F8CJTg9ihT6PDekqSeWseWtsdUs%25cUfGLqXGE0iRJ0lBDhOBi1aftkV3xb15YxKD12rbpldCdcqcgVGB4NPVHF8ukSa0Y&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/223979/806/iris.webp?q=COSY-EU-100-1713d0VXqbSFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtle2tsd2vtcUfp8cXGEuiBJ0l3IrOB2NS1bApjtCI5uVQJQC3qvQkzNRLdm7jZ6IhKVFSL%25vq9vjyLRDG6YaxW0hrH1dBln8wfQcoiZLbXM4FaIrTg9HQe6PD8P6SeWiaMtsd4H%25cUfgOcXGEPbRJ0leIZOB2sM%25bApUTXI5uG6IQC3aMrkzNHTkm7j8yZhKViYh%25vq4uTyLRg3mYaxPrhrH1enun8wYoEoiZBbtM4FA4fTg95ze6PDC7qSeWzK3tsd7HVcUfKMjXGEvJVJ0lgYAOB2PBqbApeTpI5usf2QC3UX3kzNGJum7j0hohKVB%25t%25vqA8TyLR5iHYaxC4qrH1qJin8wRO3oiZx6YM4FsIuTg9Ukm6tTnuNpbrhKVHtc%25YhD3Lyr%25UK2YaxebWrH1sItn8wzzxoiZC5lM4F8CJTg9ihT6PDekqSeWseWtsdUs%25cUfGLqXGE0iRJ0lBDhOBi1aftkV3xb15YxKD12rbpldCdcqcgVGB4NPVHF8ukSa0Y&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "SL",
+      "classification": "중형",
+      "segment": "D-Segment"
+    },
+    "trim": {
+      "name": "Mercedes-Maybach SL 680 Monogram Series",
+      "baumuster": "2329811",
+      "body_type": "MAYBACH",
+      "body_type_code": "MAYBACH",
+      "model_year": "806",
+      "base_price": 342600000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 2,
+      "max_output": 430,
+      "acceleration_0_100": 4.1,
+      "top_speed": 260,
+      "length": 4697,
+      "width": 1915,
+      "height": 1358,
+      "curb_weight": 2195,
+      "transmission": "자동",
+      "doors": 2,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 3982,
+        "fuel_tank_capacity": 70,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "V8"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/232981/806/iris.webp?q=COSY-EU-100-1713d0VXqbWdqtyO67PobzIr3eWsrrCsdRRzwQZvkwZbMw3SGtxX2tsd1ZpcUfwMuXGEuymJ0l34JOB2Ng1bApjkbI5uVmMQC3qE7kzNRJ9m7jxaShKVFSt%25vq9vjyLRDG6YaxW09rH1dItn8wfQ2oiZEqpM4FlRjTg92YE6PDpSoSeWu0htsd4hQcUfg%25cXGEPamJ0le4fOB2sQObApUdpI5uGfDQC30X1kzNBJ9m7jAOShKV5Hw%25vq4t9yLRgc6YaxPXprH1eHrn8wsAxoiZU7NM4FGSMTg90hO6PDBroSeWAtItsd5%25GcUfS%25uXGEtadJ0lc4lOB2XSqbApJYbI5u841QC3ig2kzN4tKm7jgaFhKVBSL%25vqAvTyLR5OmYaxCNqrH1zmtn8w7hwoiZKMXM4FvTjTg9L6k6PDaGbSeWH0Stsd8BGcUfiA1XGEWbSJ0lCYAOB2zM%25bAp7oMIkbX1ZxYcTg9Ukm6tTuweSc67gItsdKHTcUfv8fXGEHarJ0lUHVOB2GQnbAp0TbI5uBfuQC3AkOkzN561m7jCSuhKVztn%25vq72DyLRlGXYaxHaWrH18H1n8wi8boiZ45pM4FgKuTg9Px26PKNCZnX2f3SNsh2BD2DkSW9wUwopoL24PvEa2zq7dXrCgQ&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/232981/806/iris.webp?q=COSY-EU-100-1713d0VXqbWdqtyO67PobzIr3eWsrrCsdRRzwQZvkwZbMw3SGtxX2tsd1ZpcUfwMuXGEuymJ0l34JOB2Ng1bApjkbI5uVmMQC3qE7kzNRJ9m7jxaShKVFSt%25vq9vjyLRDG6YaxW09rH1dItn8wfQ2oiZEqpM4FlRjTg92YE6PDpSoSeWu0htsd4hQcUfg%25cXGEPamJ0le4fOB2sQObApUdpI5uGfDQC30X1kzNBJ9m7jAOShKV5Hw%25vq4t9yLRgc6YaxPXprH1eHrn8wsAxoiZU7NM4FGSMTg90hO6PDBroSeWAtItsd5%25GcUfS%25uXGEtadJ0lc4lOB2XSqbApJYbI5u841QC3ig2kzN4tKm7jgaFhKVBSL%25vqAvTyLR5OmYaxCNqrH1zmtn8w7hwoiZKMXM4FvTjTg9L6k6PDaGbSeWH0Stsd8BGcUfiA1XGEWbSJ0lCYAOB2zM%25bAp7oMIkbX1ZxYcTg9Ukm6tTuweSc67gItsdKHTcUfv8fXGEHarJ0lUHVOB2GQnbAp0TbI5uBfuQC3AkOkzN561m7jCSuhKVztn%25vq72DyLRlGXYaxHaWrH18H1n8wi8boiZ45pM4FgKuTg9Px26PKNCZnX2f3SNsh2BD2DkSW9wUwopoL24PvEa2zq7dXrCgQ&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/232981/806/iris.webp?q=COSY-EU-100-1713d0VXqbWdqtyO67PobzIr3eWsrrCsdRRzwQZvkwZbMw3SGtxX2tsd1ZpcUfwMuXGEuymJ0l34JOB2Ng1bApjkbI5uVmMQC3qE7kzNRJ9m7jxaShKVFSt%25vq9vjyLRDG6YaxW09rH1dItn8wfQ2oiZEqpM4FlRjTg92YE6PDpSoSeWu0htsd4hQcUfg%25cXGEPamJ0le4fOB2sQObApUdpI5uGfDQC30X1kzNBJ9m7jAOShKV5Hw%25vq4t9yLRgc6YaxPXprH1eHrn8wsAxoiZU7NM4FGSMTg90hO6PDBroSeWAtItsd5%25GcUfS%25uXGEtadJ0lc4lOB2XSqbApJYbI5u841QC3ig2kzN4tKm7jgaFhKVBSL%25vqAvTyLR5OmYaxCNqrH1zmtn8w7hwoiZKMXM4FvTjTg9L6k6PDaGbSeWH0Stsd8BGcUfiA1XGEWbSJ0lCYAOB2zM%25bAp7oMIkbX1ZxYcTg9Ukm6tTuweSc67gItsdKHTcUfv8fXGEHarJ0lUHVOB2GQnbAp0TbI5uBfuQC3AkOkzN561m7jCSuhKVztn%25vq72DyLRlGXYaxHaWrH18H1n8wi8boiZ45pM4FgKuTg9Px26PKNCZnX2f3SNsh2BD2DkSW9wUwopoL24PvEa2zq7dXrCgQ&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "A-Class",
+      "classification": "준중형",
+      "segment": "C-Segment"
+    },
+    "trim": {
+      "name": "A 220",
+      "baumuster": "1770441",
+      "body_type": "Hatch",
+      "body_type_code": "KOMPAKT-LIMOUSINE",
+      "model_year": "806",
+      "base_price": 48100000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 140,
+      "acceleration_0_100": 7.1,
+      "top_speed": 235,
+      "length": 4428,
+      "width": 1796,
+      "height": 1445,
+      "curb_weight": 1960,
+      "transmission": "자동",
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1991,
+        "fuel_tank_capacity": 51,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/177044/806/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZg9pZbMw3SGtle9tsd2HdcUfp8qXGEubSJ0l3IJOB2NMcbApjTlI5uVcZQC31grkzNwtnm7jA6ZhKV5Yh%25vqCJjyLRgcDYaxPa9rH1eBqn8wsofoiZUIEM4FnIwTg9ovn6PDCIoSeWHmUtsd8otcUfiM1XGE4JYJ0lgCZOB2znobQOcxwRytM4FsQkTSMp1P6tTz4qSeWvantsdPJ%25cUferyXGE19SJ0lB0tOB2A8cbAp5ToI5uCfJQCPFi2J%25xVZkFPqg6ji3MkNulKlO1OsxACeqUx4Wgj%25Xi5o&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/177044/806/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZg9pZbMw3SGtle9tsd2HdcUfp8qXGEubSJ0l3IJOB2NMcbApjTlI5uVcZQC31grkzNwtnm7jA6ZhKV5Yh%25vqCJjyLRgcDYaxPa9rH1eBqn8wsofoiZUIEM4FnIwTg9ovn6PDCIoSeWHmUtsd8otcUfiM1XGE4JYJ0lgCZOB2znobQOcxwRytM4FsQkTSMp1P6tTz4qSeWvantsdPJ%25cUferyXGE19SJ0lB0tOB2A8cbAp5ToI5uCfJQCPFi2J%25xVZkFPqg6ji3MkNulKlO1OsxACeqUx4Wgj%25Xi5o&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/177044/806/iris.webp?q=COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZg9pZbMw3SGtle9tsd2HdcUfp8qXGEubSJ0l3IJOB2NMcbApjTlI5uVcZQC31grkzNwtnm7jA6ZhKV5Yh%25vqCJjyLRgcDYaxPa9rH1eBqn8wsofoiZUIEM4FnIwTg9ovn6PDCIoSeWHmUtsd8otcUfiM1XGE4JYJ0lgCZOB2znobQOcxwRytM4FsQkTSMp1P6tTz4qSeWvantsdPJ%25cUferyXGE19SJ0lB0tOB2A8cbAp5ToI5uCfJQCPFi2J%25xVZkFPqg6ji3MkNulKlO1OsxACeqUx4Wgj%25Xi5o&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "E-Class",
+      "classification": "준대형",
+      "segment": "E-Segment"
+    },
+    "trim": {
+      "name": "E 200 AMG Line",
+      "baumuster": "2140501",
+      "body_type": "Sedan",
+      "body_type_code": "LIMOUSINE",
+      "model_year": "806",
+      "base_price": 80000000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 150,
+      "acceleration_0_100": 7.5,
+      "top_speed": 240,
+      "length": 4949,
+      "width": 1880,
+      "height": 1468,
+      "curb_weight": 2450,
+      "transmission": "자동",
+      "doors": 4,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 1999,
+        "fuel_tank_capacity": 66,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "4"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214050/806/iris.webp?q=COSY-EU-100-1713d0VXqaWeqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtxmFtsd2HtcUfpF0XGEuTRJ0l3CJOB2Nz2bApRiyI5ux4ZQC30MrkzNBzkm7jAyjhKV5pV%25vq4tTyLRgLFYaxP5qrH1eOin8wYzyoiZB5lM4FAmMTg95Yn6PDaksSeWHw9tsd8oTcUfiXkXGE4JYJ0lgChOB2znobQOcxwRytM4FsQkTSMp1P6tTz4NSeWvyVtsdPv%25cUfxZMXGE0GYJ0lBHAOB2A8nbAp5PpI5uCmZQCPFi2J%25xVZkF7bA6DG3MkNulKlO1OsxACeqUx4Wgj%25Xi5o&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214050/806/iris.webp?q=COSY-EU-100-1713d0VXqaWeqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtxmFtsd2HtcUfpF0XGEuTRJ0l3CJOB2Nz2bApRiyI5ux4ZQC30MrkzNBzkm7jAyjhKV5pV%25vq4tTyLRgLFYaxP5qrH1eOin8wYzyoiZB5lM4FAmMTg95Yn6PDaksSeWHw9tsd8oTcUfiXkXGE4JYJ0lgChOB2znobQOcxwRytM4FsQkTSMp1P6tTz4NSeWvyVtsdPv%25cUfxZMXGE0GYJ0lBHAOB2A8nbAp5PpI5uCmZQCPFi2J%25xVZkF7bA6DG3MkNulKlO1OsxACeqUx4Wgj%25Xi5o&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214050/806/iris.webp?q=COSY-EU-100-1713d0VXqaWeqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtxmFtsd2HtcUfpF0XGEuTRJ0l3CJOB2Nz2bApRiyI5ux4ZQC30MrkzNBzkm7jAyjhKV5pV%25vq4tTyLRgLFYaxP5qrH1eOin8wYzyoiZB5lM4FAmMTg95Yn6PDaksSeWHw9tsd8oTcUfiXkXGE4JYJ0lgChOB2znobQOcxwRytM4FsQkTSMp1P6tTz4NSeWvyVtsdPv%25cUfxZMXGE0GYJ0lBHAOB2A8nbAp5PpI5uCmZQCPFi2J%25xVZkF7bA6DG3MkNulKlO1OsxACeqUx4Wgj%25Xi5o&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "E-Class",
+      "classification": "준대형",
+      "segment": "E-Segment"
+    },
+    "trim": {
+      "name": "E 450 4MATIC AMG Line",
+      "baumuster": "2140611",
+      "body_type": "Sedan",
+      "body_type_code": "LIMOUSINE",
+      "model_year": "806",
+      "base_price": 114600000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 5,
+      "max_output": 280,
+      "acceleration_0_100": 4.5,
+      "top_speed": 250,
+      "length": 4949,
+      "width": 1880,
+      "height": 1469,
+      "curb_weight": 2585,
+      "transmission": "자동",
+      "doors": 4,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 2999,
+        "fuel_tank_capacity": 66,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "6"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214061/806_056/iris.webp?q=COSY-EU-100-1713d0VXq0hFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd1v9cUfpUyXGEuiXJ0l3DAOB2NS1bApj7bI5uVKuQC31CpkzNwPnm7jZeDhKV5SM%25vqCv%25yLRznRYax7NxrH1eJtn8ws8WoiZU71M4FGQPTg95hT6PDC%25uSeWznMtsd8hGcUfiUNXGE49jJ0lgDfOB2PScbApetlI5usQYQC3UkTkzNGLnm7jaSthymI9WFMbcUfAyYXOcVD0JbXaUAOB2iMwbAp0ioI5uB6ZQC3D0ykzN7z6m7jKevhKVvst%25vqLBqyLRanfYaxHbWrHAlGqhTWFEnliyLbgW1JnwxV4V%25d%25CWLH59zW0uBZTmGaX&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214061/806_056/iris.webp?q=COSY-EU-100-1713d0VXq0hFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd1v9cUfpUyXGEuiXJ0l3DAOB2NS1bApj7bI5uVKuQC31CpkzNwPnm7jZeDhKV5SM%25vqCv%25yLRznRYax7NxrH1eJtn8ws8WoiZU71M4FGQPTg95hT6PDC%25uSeWznMtsd8hGcUfiUNXGE49jJ0lgDfOB2PScbApetlI5usQYQC3UkTkzNGLnm7jaSthymI9WFMbcUfAyYXOcVD0JbXaUAOB2iMwbAp0ioI5uB6ZQC3D0ykzN7z6m7jKevhKVvst%25vqLBqyLRanfYaxHbWrHAlGqhTWFEnliyLbgW1JnwxV4V%25d%25CWLH59zW0uBZTmGaX&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/214061/806_056/iris.webp?q=COSY-EU-100-1713d0VXq0hFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyUtsd1v9cUfpUyXGEuiXJ0l3DAOB2NS1bApj7bI5uVKuQC31CpkzNwPnm7jZeDhKV5SM%25vqCv%25yLRznRYax7NxrH1eJtn8ws8WoiZU71M4FGQPTg95hT6PDC%25uSeWznMtsd8hGcUfiUNXGE49jJ0lgDfOB2PScbApetlI5usQYQC3UkTkzNGLnm7jaSthymI9WFMbcUfAyYXOcVD0JbXaUAOB2iMwbAp0ioI5uB6ZQC3D0ykzN7z6m7jKevhKVvst%25vqLBqyLRanfYaxHbWrHAlGqhTWFEnliyLbgW1JnwxV4V%25d%25CWLH59zW0uBZTmGaX&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "EQE",
+      "classification": "준대형",
+      "segment": "E-Segment"
+    },
+    "trim": {
+      "name": "EQE 350+",
+      "baumuster": "2951211",
+      "body_type": "Long",
+      "body_type_code": "LIMOUSINE_LANG",
+      "model_year": "806",
+      "base_price": 110000000,
+      "fuel_type": "전기",
+      "seating_capacity": 5,
+      "max_output": 235,
+      "acceleration_0_100": 6.1,
+      "top_speed": 210,
+      "length": 4946,
+      "width": 1961,
+      "height": 1510,
+      "curb_weight": 2975,
+      "transmission": null,
+      "doors": 4,
+      "image_url": null,
+      "ice_spec": null,
+      "ev_spec": {
+        "battery_capacity": null,
+        "max_range": null,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null
+      },
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/295121/806/iris.webp?q=COSY-EU-100-1713d0VXq0WFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7pI5uVKMQC31MTkzNwPnm7jZGohKVFXM%25vqCtTyLRzLyYax758rH1KMrn8wvVwoiZUbEM4FGIJTg90gw6PDBPlSeWAtRtsd5%25QcUfCmfXGEvTSJ0lL%25tOB2Pr5bApeTbI5usf2QC3UXOkzNGJum7j0hohKVB%25t%25vqA8TyLR5i2Yax4bSrH1gObnMr%25E2fchI5uKMTQmIwlzkhQg5Km7jsGOhKVzXh%25vqE7NyLRaLmYaxH0hrH18Bln8wiTboiCpBxySfD2MpgT0gnfZbMFwRPRYEY7fHizWKfAN59S%25B8O&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/295121/806/iris.webp?q=COSY-EU-100-1713d0VXq0WFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7pI5uVKMQC31MTkzNwPnm7jZGohKVFXM%25vqCtTyLRzLyYax758rH1KMrn8wvVwoiZUbEM4FGIJTg90gw6PDBPlSeWAtRtsd5%25QcUfCmfXGEvTSJ0lL%25tOB2Pr5bApeTbI5usf2QC3UXOkzNGJum7j0hohKVB%25t%25vqA8TyLR5i2Yax4bSrH1gObnMr%25E2fchI5uKMTQmIwlzkhQg5Km7jsGOhKVzXh%25vqE7NyLRaLmYaxH0hrH18Bln8wiTboiCpBxySfD2MpgT0gnfZbMFwRPRYEY7fHizWKfAN59S%25B8O&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/295121/806/iris.webp?q=COSY-EU-100-1713d0VXq0WFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtlaStsd2HVcUfpOkXGEubSJ0l3IrOB2NS1bApj7pI5uVKMQC31MTkzNwPnm7jZGohKVFXM%25vqCtTyLRzLyYax758rH1KMrn8wvVwoiZUbEM4FGIJTg90gw6PDBPlSeWAtRtsd5%25QcUfCmfXGEvTSJ0lL%25tOB2Pr5bApeTbI5usf2QC3UXOkzNGJum7j0hohKVB%25t%25vqA8TyLR5i2Yax4bSrH1gObnMr%25E2fchI5uKMTQmIwlzkhQg5Km7jsGOhKVzXh%25vqE7NyLRaLmYaxH0hrH18Bln8wiTboiCpBxySfD2MpgT0gnfZbMFwRPRYEY7fHizWKfAN59S%25B8O&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  },
+  {
+    "brand": {
+      "name": "Mercedes-Benz",
+      "country": "독일",
+      "logo_url": null
+    },
+    "model": {
+      "name": "GLS",
+      "classification": "대형",
+      "segment": "F-Segment"
+    },
+    "trim": {
+      "name": "GLS 580 4MATIC",
+      "baumuster": "1679851",
+      "body_type": "SUV",
+      "body_type_code": "OFFROADER",
+      "model_year": "805",
+      "base_price": 186600000,
+      "fuel_type": "가솔린",
+      "seating_capacity": 7,
+      "max_output": 380,
+      "acceleration_0_100": 4.9,
+      "top_speed": 250,
+      "length": 5215,
+      "width": 2030,
+      "height": 1838,
+      "curb_weight": 3300,
+      "transmission": "자동",
+      "doors": 5,
+      "image_url": null,
+      "ice_spec": {
+        "displacement": 3982,
+        "fuel_tank_capacity": 90,
+        "efficiency_combined": null,
+        "efficiency_city": null,
+        "efficiency_highway": null,
+        "energy_grade": null,
+        "cylinders": "V8"
+      },
+      "ev_spec": null,
+      "options": []
+    },
+    "images": [
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/167985/805_055/iris.webp?q=COSY-EU-100-1713d0VXq4EFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyjtsd2vGcUfp8fXGEuiRJ0l34rOB2NQcbApjkbI5uV6JQC3qE7kzNRJ9m7jxafhKVFKM%25vq9UTyLRDiXYax7XSrH1KJ%25n8wv8noiZL7gM4FaKjTg9HtT6PD8cqSeWiwStsd4c%25cUfC%25NXGEzymJ0l70JOB2KBjbApvkbI5uLQYQC3akOkzNHmdm7j8hShKVksN%25vqmrkyLRsGyYaxU0drH1Gm%25n8w0hEoiZKbpM4Fv4lTg9Lt36PDacsSeWHyWtsd8odcUfiM0XGE4JBJ0lgOrOB2PzqbApe79I5usK2QC32MrkzNpTbm7juymhKVHKL%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80XI5ueeYQC3PS9kzN5Tum7jC7fhKVzsM%25vq7BTyLRK3RYaxvkJrH1p6Bn8wiOcoiZ4bIM4FgCPTg9PzZ6PDeSoSevjzFoJpENtjvaKAWgWmtdDZGZMuMapgeLlHp7RKfJnzPk&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE000&imwidth=1280",
+        "image_type": "exterior_front"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/167985/805_055/iris.webp?q=COSY-EU-100-1713d0VXq4EFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyjtsd2vGcUfp8fXGEuiRJ0l34rOB2NQcbApjkbI5uV6JQC3qE7kzNRJ9m7jxafhKVFKM%25vq9UTyLRDiXYax7XSrH1KJ%25n8wv8noiZL7gM4FaKjTg9HtT6PD8cqSeWiwStsd4c%25cUfC%25NXGEzymJ0l70JOB2KBjbApvkbI5uLQYQC3akOkzNHmdm7j8hShKVksN%25vqmrkyLRsGyYaxU0drH1Gm%25n8w0hEoiZKbpM4Fv4lTg9Lt36PDacsSeWHyWtsd8odcUfiM0XGE4JBJ0lgOrOB2PzqbApe79I5usK2QC32MrkzNpTbm7juymhKVHKL%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80XI5ueeYQC3PS9kzN5Tum7jC7fhKVzsM%25vq7BTyLRK3RYaxvkJrH1p6Bn8wiOcoiZ4bIM4FgCPTg9PzZ6PDeSoSevjzFoJpENtjvaKAWgWmtdDZGZMuMapgeLlHp7RKfJnzPk&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=1280",
+        "image_type": "exterior_side"
+      },
+      {
+        "image_url": "https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/167985/805_055/iris.webp?q=COSY-EU-100-1713d0VXq4EFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtGyjtsd2vGcUfp8fXGEuiRJ0l34rOB2NQcbApjkbI5uV6JQC3qE7kzNRJ9m7jxafhKVFKM%25vq9UTyLRDiXYax7XSrH1KJ%25n8wv8noiZL7gM4FaKjTg9HtT6PD8cqSeWiwStsd4c%25cUfC%25NXGEzymJ0l70JOB2KBjbApvkbI5uLQYQC3akOkzNHmdm7j8hShKVksN%25vqmrkyLRsGyYaxU0drH1Gm%25n8w0hEoiZKbpM4Fv4lTg9Lt36PDacsSeWHyWtsd8odcUfiM0XGE4JBJ0lgOrOB2PzqbApe79I5usK2QC32MrkzNpTbm7juymhKVHKL%25vq8cXyr%25kWfD6QJ0lCrnOIJRdAbQO80XI5ueeYQC3PS9kzN5Tum7jC7fhKVzsM%25vq7BTyLRK3RYaxvkJrH1p6Bn8wiOcoiZ4bIM4FgCPTg9PzZ6PDeSoSevjzFoJpENtjvaKAWgWmtdDZGZMuMapgeLlHp7RKfJnzPk&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BIS1&imwidth=1280",
+        "image_type": "interior"
+      }
+    ]
+  }
+]

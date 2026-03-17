@@ -19,7 +19,6 @@ import (
 func SetupRouter(c *container.Container) *gin.Engine {
 	r := gin.Default()
 
-
 	authHandler := auth.NewAuthHandler(c.AuthUsecase, c.UserUsecase, c.KakaoUsecase, c.GoogleUsecase, c.AppleUsecase)
   marketingConsentHandler := app.NewMarketingConsentHandler(c.MarketingConsentUsecase)
 	carHandler := carhandler.NewHandler(c.CarUsecase)
@@ -28,7 +27,6 @@ func SetupRouter(c *container.Container) *gin.Engine {
 
 
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-
 
 	//애플 테스트 html
 	r.StaticFile("/apple-test", "./apple-test.html")
@@ -81,7 +79,8 @@ func SetupRouter(c *container.Container) *gin.Engine {
 
 		{
 			privateUser.POST("/logout", authHandler.Logout)
-			privateUser.GET("/profile", authHandler.GetProfile)
+			privateUser.GET("/me", authHandler.GetProfile)
+			privateUser.DELETE("/me", authHandler.DeleteAccount)
 		}
 
 		// Private Cars (나중에)
