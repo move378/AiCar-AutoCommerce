@@ -1,5 +1,21 @@
 basePath: /api/v1
 definitions:
+  dto.MarketingConsentRequest:
+    properties:
+      device_id:
+        type: string
+      marketing_agreed:
+        type: boolean
+    required:
+    - device_id
+    type: object
+  dto.MarketingConsentResponse:
+    properties:
+      message:
+        type: string
+      status:
+        type: integer
+    type: object
   dto.OnboardingRequest:
     properties:
       device_id:
@@ -95,6 +111,13 @@ info:
   title: AICar API
   version: "1.0"
 paths:
+  /api/v1/auth/agreed:
+    post:
+      consumes:
+      - application/json
+      description: 사용자의 마케팅 활용 동의 여부를 저장하거나 수정한다.
+      parameters:
+      - description: 마케팅 활용 동의 요청
   /auth/google-login:
     post:
       consumes:
@@ -106,11 +129,24 @@ paths:
         name: request
         required: true
         schema:
+          $ref: '#/definitions/dto.MarketingConsentRequest'
           $ref: '#/definitions/dto.SocialLoginRequest'
       produces:
       - application/json
       responses:
         "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.MarketingConsentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.MarketingConsentResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.MarketingConsentResponse'
+      summary: 마케팅 활용 동의 저장
           description: 구글 로그인 성공
           schema:
             allOf:
@@ -222,6 +258,34 @@ paths:
       summary: 온보딩
       tags:
       - auth
+  /brands:
+    get:
+      description: 브랜드 목록을 조회합니다.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: 브랜드 목록 조회
+      tags:
+      - brands
+  /cars/{id}/images:
+    get:
+      description: 차량 이미지를 조회합니다.
+      parameters:
+      - description: 차량 ID
+        in: path
+        name: id
+        required: true
+        type: string
   /auth/refresh:
     post:
       consumes:
@@ -238,6 +302,18 @@ paths:
       - application/json
       responses:
         "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: 차량 이미지 조회
+      tags:
+      - cars
           description: 토큰 갱신 성공
           schema:
             allOf:
