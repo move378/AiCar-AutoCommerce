@@ -54,20 +54,19 @@ class Option:
 @dataclass
 class Trim:
     name: str                   # 트림명 (예: EQA 250 AMG Line)
+    baumuster: str
     
     # Model에서 Trim으로 이동된 바디 타입 정보!
     body_type: Optional[str] = None      # 차량 형태 (예: SUV) -> JSON의 vehicleBody
     body_type_code: Optional[str] = None # 차량 형태 시스템 코드 (예: OFFROADER) -> JSON의 vehicleBodyId
     
     model_year: Optional[str] = None # 연식 (예: 806 -> 추후 2024 등으로 변환 필요할 수 있음)
-    price: Optional[int] = None      # 트림 기본 가격 (원)
+    base_price: Optional[int] = None      # 트림 기본 가격 (원)
     fuel_type: Optional[str] = None  # 연료 타입 (예: EV, Gasoline, Diesel)
     
     # 공간 & 성능 제원
     seating_capacity: Optional[int] = None # 승차 정원 (인)
-    trunk_capacity: Optional[int] = None   # 트렁크 용량 (L)
     max_output: Optional[int] = None       # 최고 출력 (마력/kW)
-    drive_type: Optional[float] = None     # 구동 방식 (예: 2.0, 4.0)
     acceleration_0_100: Optional[float] = None # 제로백 (초)
     top_speed: Optional[int] = None        # 최고 속도 (km/h)
     
@@ -75,7 +74,6 @@ class Trim:
     length: Optional[int] = None    # 전장 (mm)
     width: Optional[int] = None     # 전폭 (mm)
     height: Optional[int] = None    # 전고 (mm)
-    wheelbase: Optional[int] = None # 축거 (mm)
     curb_weight: Optional[int] = None # 공차 중량 (kg)
     
     # 기타 차량 정보
@@ -87,6 +85,11 @@ class Trim:
     ice_spec: Optional[IceSpec] = None 
     ev_spec: Optional[EvSpec] = None   
     options: List[Option] = field(default_factory=list) 
+
+@dataclass
+class TrimImage:
+    image_url: str
+    image_type: Optional[str] = None  # 'exterior_front', 'exterior_side', 'interior'
 
 # ==========================================
 # 파싱용 최상위 Aggregate Root
@@ -100,3 +103,4 @@ class VehicleData:
     brand: Brand # 소속 브랜드
     model: Model # 소속 모델
     trim: Trim   # 상세 트림 및 제원/옵션 정보
+    images: List[TrimImage] = field(default_factory=list)

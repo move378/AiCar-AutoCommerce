@@ -81,8 +81,8 @@ def _upsert_trim(cur, v: VehicleData, model_id: int) -> int:
     cur.execute("""
         INSERT INTO vehicles_trims (
             model_id, trim_name, year, base_price, fuel_type,
-            seating_capacity, trunk_capacity, max_output, drive_type,
-            acceleration, length, width, height, wheelbase,
+            seating_capacity, max_output, drive_type,
+            acceleration, length, width, height,
             curb_weight, transmission, image_url, top_speed, doors
         )
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
@@ -91,14 +91,12 @@ def _upsert_trim(cur, v: VehicleData, model_id: int) -> int:
                 base_price       = EXCLUDED.base_price,
                 fuel_type        = EXCLUDED.fuel_type,
                 seating_capacity = EXCLUDED.seating_capacity,
-                trunk_capacity   = EXCLUDED.trunk_capacity,
                 max_output       = EXCLUDED.max_output,
                 drive_type       = EXCLUDED.drive_type,
                 acceleration     = EXCLUDED.acceleration,
                 length           = EXCLUDED.length,
                 width            = EXCLUDED.width,
                 height           = EXCLUDED.height,
-                wheelbase        = EXCLUDED.wheelbase,
                 curb_weight      = EXCLUDED.curb_weight,
                 transmission     = EXCLUDED.transmission,
                 image_url        = EXCLUDED.image_url,

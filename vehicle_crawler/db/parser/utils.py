@@ -1,5 +1,28 @@
 from typing import List, Optional
 
+BODY_TYPE_MAP = {
+    "SUV": "SUV",
+    "Sedan": "세단",
+    "Coupé": "쿠페",
+    "4-Door Coupé": "쿠페",
+    "Cabriolet": "카브리올레",
+    "Roadster": "로드스터",
+    "Hatch": "해치백",
+    "Cross-country vehicle": "SUV",
+    "Long": "세단",
+    "MAYBACH": "세단",
+}
+
+def normalize_body_type(body_type: str | None) -> str | None:
+    if not body_type:
+        return None
+    return BODY_TYPE_MAP.get(body_type, body_type)
+
+def get_sub_brand(body_type: str | None) -> str | None:
+    if not body_type:
+        return None
+    return SUB_BRAND_MAP.get(body_type, None)
+
 def determine_segment_by_length(length_mm: int) -> str:
     """
     차량의 전장(length)을 기준으로 유럽식 세그먼트를 자동 분류합니다.
@@ -41,7 +64,7 @@ def determine_classification_by_length(length_mm: int) -> str:
     else:
         return "대형"
     
-def find_dict_in_list(list: List[dict],target_key: str , target_str: str) -> Optional[str]:
+def find_dict_in_list(list: List[dict], target_key: str, target_str: str) -> Optional[dict]:
     if not list:
         return None
         
