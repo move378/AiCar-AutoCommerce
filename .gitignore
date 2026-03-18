@@ -118,3 +118,5 @@ __pycache__/
 # 유저 섹션 제외
 vehicle_crawler/sessions/
 vehicle_crawler/benz/sessions/
+vehicle_crawler/benz/data/
+vehicle_crawler/vehicles_debug.json
