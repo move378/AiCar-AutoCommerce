@@ -1483,6 +1483,27 @@
                                 ],
                                 "includedComponents": [
                                     {
+                                        "id": "SA-590",
+                                        "path": [
+                                            "EXTERIOR",
+                                            "EXTERIOR_EXTRAS",
+                                            "EXTERIOR_EXTRAS_OTHERS"
+                                        ],
+                                        "standard": false,
+                                        "enabled": true,
+                                        "selected": false,
+                                        "price": {
+                                            "price": 0.0,
+                                            "formattedPrice": "0 KRW",
+                                            "netPrice": 0.0,
+                                            "formattedNetPrice": "0 KRW",
+                                            "currencyISO": "KRW"
+                                        },
+                                        "filteredByFixation": false,
+                                        "requiresMercedesMe": false,
+                                        "highlighted": false
+                                    },
+                                    {
                                         "id": "PC-PDD",
                                         "includedComponents": [
                                             {
@@ -1512,27 +1533,6 @@
                                             "VARIANTS",
                                             "PACKAGE_TYPES",
                                             "PACKAGE_TYPES_PACKAGE_TYPES"
-                                        ],
-                                        "standard": false,
-                                        "enabled": true,
-                                        "selected": false,
-                                        "price": {
-                                            "price": 0.0,
-                                            "formattedPrice": "0 KRW",
-                                            "netPrice": 0.0,
-                                            "formattedNetPrice": "0 KRW",
-                                            "currencyISO": "KRW"
-                                        },
-                                        "filteredByFixation": false,
-                                        "requiresMercedesMe": false,
-                                        "highlighted": false
-                                    },
-                                    {
-                                        "id": "SA-590",
-                                        "path": [
-                                            "EXTERIOR",
-                                            "EXTERIOR_EXTRAS",
-                                            "EXTERIOR_EXTRAS_OTHERS"
                                         ],
                                         "standard": false,
                                         "enabled": true,

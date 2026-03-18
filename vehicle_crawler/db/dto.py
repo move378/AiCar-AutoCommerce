@@ -78,8 +78,8 @@ class Trim:
     
     # 기타 차량 정보
     transmission: Optional[str] = None # 변속기 (예: 자동 8단)
+    transmission_type: Optional[str] = None  # 변속기 타입 (예: 자동, 수동)
     doors: Optional[int] = None        # 도어 수 (문 개수)
-    image_url: Optional[str] = None    # 대표 이미지 URL
     
     # 내연기관/전기차 스펙 & 옵션 목록
     ice_spec: Optional[IceSpec] = None 

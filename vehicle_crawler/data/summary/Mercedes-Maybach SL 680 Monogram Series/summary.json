@@ -263,6 +263,85 @@
                         "contains": "CABRIO_ROOF",
                         "incompatible": false,
                         "preSelect": false
+                    },
+                    {
+                        "id": "EXTERIOR_EXTRAS",
+                        "name": "추가 익스테리어",
+                        "cardinality": "ARBITRARY",
+                        "categoryViewType": "DEFAULT",
+                        "categoryViewConfiguration": {
+                            "categoryViewType": "DEFAULT",
+                            "stageV2": {
+                                "view": "EXTERIOR_360",
+                                "perspective": "BE020",
+                                "state": [
+                                    "SZT",
+                                    "DZO"
+                                ]
+                            }
+                        },
+                        "subcategories": [
+                            {
+                                "id": "GLASS_AND_ROOF",
+                                "name": "유리 및 루프",
+                                "cardinality": "ARBITRARY",
+                                "categoryViewType": "DEFAULT",
+                                "categoryViewConfiguration": {
+                                    "categoryViewType": "DEFAULT",
+                                    "stageV2": {
+                                        "view": "EXTERIOR_360",
+                                        "perspective": "BE020",
+                                        "state": [
+                                            "SZT",
+                                            "DZO"
+                                        ]
+                                    }
+                                },
+                                "subcategories": [
+                                    {
+                                        "id": "GLASS",
+                                        "name": "유리창",
+                                        "cardinality": "ARBITRARY",
+                                        "categoryViewType": "DEFAULT",
+                                        "categoryViewConfiguration": {
+                                            "categoryViewType": "DEFAULT",
+                                            "stageV2": {
+                                                "view": "INTERIOR_360",
+                                                "perspective": "BIS1",
+                                                "state": [
+                                                    "SZT"
+                                                ]
+                                            }
+                                        },
+                                        "componentIds": [
+                                            "SA-874"
+                                        ],
+                                        "contains": "INTERIOR",
+                                        "incompatible": false,
+                                        "preSelect": true
+                                    }
+                                ],
+                                "contains": "PACKAGES_EXTERIOR",
+                                "incompatible": false,
+                                "preSelect": true
+                            }
+                        ],
+                        "contains": "EXTERIOR",
+                        "incompatible": false,
+                        "preSelect": false,
+                        "standardComponentIds": [
+                            "SA-874",
+                            "PC-P49",
+                            "SA-249",
+                            "SA-500",
+                            "SA-666",
+                            "SA-524",
+                            "SA-588",
+                            "SA-5B6"
+                        ],
+                        "highlightComponentsIds": [
+                            "SA-874"
+                        ]
                     }
                 ],
                 "fixationInformation": {
@@ -3120,7 +3199,8 @@
                 ],
                 "highlights": [
                     "SA-479",
-                    "SA-871"
+                    "SA-871",
+                    "SA-874"
                 ]
             },
             "optional": {},

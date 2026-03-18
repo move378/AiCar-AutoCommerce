@@ -341,6 +341,7 @@
                                             }
                                         },
                                         "componentIds": [
+                                            "SA-874",
                                             "SA-U50"
                                         ],
                                         "contains": "INTERIOR",
@@ -413,6 +414,9 @@
                             "SA-7U8",
                             "SA-U94",
                             "SA-588"
+                        ],
+                        "highlightComponentsIds": [
+                            "SA-874"
                         ]
                     }
                 ],
@@ -3872,6 +3876,7 @@
                     }
                 ],
                 "highlights": [
+                    "SA-874",
                     "SA-L6J"
                 ]
             },

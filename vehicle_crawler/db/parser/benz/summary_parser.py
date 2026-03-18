@@ -1,4 +1,5 @@
 import os
+import re
 import json
 from config import BENZ_SUMMARY_DIR
 from db.dto import VehicleData, Brand, Model, Trim, IceSpec, EvSpec, Option,TrimImage
@@ -26,6 +27,8 @@ def _get_nested(data, *keys, cast=None, default=None):
         except (ValueError, TypeError):
             return default
     return data
+
+
 
 
 def summary_parser() -> list[VehicleData]:
@@ -68,7 +71,7 @@ def summary_parser() -> list[VehicleData]:
                 
                 ice_spec = IceSpec(
                     displacement=_get_nested(tech_groups, "출력", "technicalValues", "배기량", "rawValue", cast=int),
-                    cylinders=_get_nested(tech_groups, "출력", "technicalValues", "실린더 수", "rawValue"),
+                    cylinders=int(re.search(r'\d+', v.trim.ice_spec.cylinders).group()) if v.trim.ice_spec.cylinders and re.search(r'\d+', str(v.trim.ice_spec.cylinders)) else None,
                     fuel_tank_capacity=_get_nested(tech_groups, "세부 내용", "technicalValues", "탱크 용량(기본)", "rawValue", cast=int),
                 )
                 ev_spec = None
@@ -90,7 +93,8 @@ def summary_parser() -> list[VehicleData]:
                 acceleration_0_100=_get_nested(tech_groups, "출력", "technicalValues", "가속력 (0->100km/h：초)", "rawValue", cast=float),
                 top_speed=_get_nested(tech_groups, "출력", "technicalValues", "최고속도", "rawValue", cast=int),
                 max_output=max_output,
-                transmission = _get_nested(tags, "변속기", "rawValue"),
+                transmission=_get_nested(tech_groups, "세부 내용", "technicalValues", "변속기", "value"),
+                transmission_type=_get_nested(tags, "변속기", "value"),
                 curb_weight = _get_nested(vehicle_info, "ocapiInformation", "technicalValues", "공차 중량", "rawValue", cast=int),
                 ice_spec=ice_spec,
                 ev_spec=ev_spec,

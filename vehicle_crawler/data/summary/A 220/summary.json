@@ -1802,11 +1802,11 @@
                                 ],
                                 "includedComponents": [
                                     {
-                                        "id": "SA-R62",
+                                        "id": "SA-52H",
                                         "path": [
-                                            "EXTERIOR",
-                                            "WHEELS",
-                                            "17_INCH"
+                                            "INTERIOR",
+                                            "TRIMS",
+                                            "ZK049"
                                         ],
                                         "standard": false,
                                         "enabled": true,
@@ -1823,11 +1823,11 @@
                                         "highlighted": false
                                     },
                                     {
-                                        "id": "SA-52H",
+                                        "id": "SA-R62",
                                         "path": [
-                                            "INTERIOR",
-                                            "TRIMS",
-                                            "ZK049"
+                                            "EXTERIOR",
+                                            "WHEELS",
+                                            "17_INCH"
                                         ],
                                         "standard": false,
                                         "enabled": true,

@@ -1541,27 +1541,6 @@
                                 ],
                                 "includedComponents": [
                                     {
-                                        "id": "SA-311",
-                                        "path": [
-                                            "INTERIOR",
-                                            "INTERIOR_EXTRAS",
-                                            "STORAGE_AND_TRUNK"
-                                        ],
-                                        "standard": false,
-                                        "enabled": true,
-                                        "selected": false,
-                                        "price": {
-                                            "price": 0.0,
-                                            "formattedPrice": "0 KRW",
-                                            "netPrice": 0.0,
-                                            "formattedNetPrice": "0 KRW",
-                                            "currencyISO": "KRW"
-                                        },
-                                        "filteredByFixation": false,
-                                        "requiresMercedesMe": false,
-                                        "highlighted": false
-                                    },
-                                    {
                                         "id": "SA-889",
                                         "path": [
                                             "ASSISTANCESYSTEMS_SAFETY",
@@ -1602,6 +1581,27 @@
                                         "filteredByFixation": false,
                                         "requiresMercedesMe": false,
                                         "highlighted": false
+                                    },
+                                    {
+                                        "id": "SA-311",
+                                        "path": [
+                                            "INTERIOR",
+                                            "INTERIOR_EXTRAS",
+                                            "STORAGE_AND_TRUNK"
+                                        ],
+                                        "standard": false,
+                                        "enabled": true,
+                                        "selected": false,
+                                        "price": {
+                                            "price": 0.0,
+                                            "formattedPrice": "0 KRW",
+                                            "netPrice": 0.0,
+                                            "formattedNetPrice": "0 KRW",
+                                            "currencyISO": "KRW"
+                                        },
+                                        "filteredByFixation": false,
+                                        "requiresMercedesMe": false,
+                                        "highlighted": false
                                     }
                                 ],
                                 "editable": false,
@@ -1624,11 +1624,12 @@
                                 ],
                                 "includedComponents": [
                                     {
-                                        "id": "SA-Y51",
+                                        "id": "SA-CA2",
                                         "path": [
-                                            "INTERIOR",
-                                            "INTERIOR_EXTRAS",
-                                            "INTERIOR_EXTRAS_OTHERS"
+                                            "EXTERIOR",
+                                            "EXTERIOR_EXTRAS",
+                                            "ZKL01",
+                                            "ZK064"
                                         ],
                                         "standard": false,
                                         "enabled": true,
@@ -1645,12 +1646,11 @@
                                         "highlighted": false
                                     },
                                     {
-                                        "id": "SA-CA2",
+                                        "id": "SA-Y51",
                                         "path": [
-                                            "EXTERIOR",
-                                            "EXTERIOR_EXTRAS",
-                                            "ZKL01",
-                                            "ZK064"
+                                            "INTERIOR",
+                                            "INTERIOR_EXTRAS",
+                                            "INTERIOR_EXTRAS_OTHERS"
                                         ],
                                         "standard": false,
                                         "enabled": true,
@@ -3065,11 +3065,12 @@
                                         "id": "PC-P79",
                                         "includedComponents": [
                                             {
-                                                "id": "SA-273",
+                                                "id": "SA-546",
                                                 "path": [
                                                     "ASSISTANCESYSTEMS_SAFETY",
-                                                    "SAFETY",
-                                                    "PASSENGER_SAFETY"
+                                                    "ASSISTANCESYSTEMS",
+                                                    "DRIVING",
+                                                    "DRIVING_ASSISTANTS_OTHERS"
                                                 ],
                                                 "standard": false,
                                                 "enabled": true,
@@ -3086,7 +3087,7 @@
                                                 "highlighted": false
                                             },
                                             {
-                                                "id": "SA-546",
+                                                "id": "SA-266",
                                                 "path": [
                                                     "ASSISTANCESYSTEMS_SAFETY",
                                                     "ASSISTANCESYSTEMS",
@@ -3130,12 +3131,11 @@
                                                 "highlighted": false
                                             },
                                             {
-                                                "id": "SA-266",
+                                                "id": "SA-273",
                                                 "path": [
                                                     "ASSISTANCESYSTEMS_SAFETY",
-                                                    "ASSISTANCESYSTEMS",
-                                                    "DRIVING",
-                                                    "DRIVING_ASSISTANTS_OTHERS"
+                                                    "SAFETY",
+                                                    "PASSENGER_SAFETY"
                                                 ],
                                                 "standard": false,
                                                 "enabled": true,
