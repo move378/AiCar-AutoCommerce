@@ -13,19 +13,17 @@ import (
 )
 
 type Container struct {
-
-	AuthUsecase   usecase.AuthUsecase
-  AuthSocialUsecase       usecase.AuthSocialUsecase
-	UserUsecase   usecase.UserUsecase
-	KakaoUsecase  usecase.KakaoUsecase
-	GoogleUsecase usecase.GoogleUsecase
-	AppleUsecase  usecase.AppleUsecase
-	TokenCache    repository.TokenCacheRepository
-  CarUsecase              carusecase.CarUsecase
+	AuthUsecase             usecase.AuthUsecase
+	AuthSocialUsecase       usecase.AuthSocialUsecase
+	UserUsecase             usecase.UserUsecase
+	KakaoUsecase            usecase.KakaoUsecase
+	GoogleUsecase           usecase.GoogleUsecase
+	AppleUsecase            usecase.AppleUsecase
+	TokenCache              repository.TokenCacheRepository
+	CarUsecase              carusecase.CarUsecase
 	BrandUsecase            brandusecase.BrandUsecase
 	MarketingConsentUsecase usecase.MarketingConsentUsecase
 	MyCarUsecase            mycarusecase.Usecase
-
 }
 
 func NewContainer(db *postgres.DB, rdb *redis.Redis) *Container {
@@ -35,7 +33,7 @@ func NewContainer(db *postgres.DB, rdb *redis.Redis) *Container {
 	tokenCache := redis.NewTokenCache(rdb)
 	socialRepo := postgres.NewSocialRepo(db)
 
-  carRepo := postgres.NewCarRepo(db)
+	carRepo := postgres.NewCarRepo(db)
 	brandRepo := postgres.NewBrandRepo(db)
 	marketingConsentRepo := postgres.NewMarketingConsentRepo(db)
 	myCarRepo := postgres.NewMyCarRepo(db)
@@ -43,7 +41,7 @@ func NewContainer(db *postgres.DB, rdb *redis.Redis) *Container {
 
 	userUsecase := usecase.NewUserUsecase(deviceRepo, userRepo, socialRepo, tokenCache, txManager)
 	socialCache := redis.NewSocialCache(rdb)
-  carUC := carusecase.NewCarUsecase(carRepo)
+	carUC := carusecase.NewCarUsecase(carRepo)
 	brandUC := brandusecase.NewBrandUsecase(brandRepo)
 	marketingConsentUC := usecase.NewMarketingConsentUsecase(marketingConsentRepo)
 
@@ -53,23 +51,21 @@ func NewContainer(db *postgres.DB, rdb *redis.Redis) *Container {
 	// config 로드
 	cfg := config.LoadConfig()
 
-
 	// config 로드
 	cfg := config.LoadConfig()
 
 	// usecase 생성 후 container에 담아서 반환
 	return &Container{
 
-		AuthUsecase:   usecase.NewAuthUsecase(userRepo, deviceRepo, tokenCache, txManager),
-		UserUsecase:   userUsecase,
-		KakaoUsecase:  usecase.NewKakaoUsecase(userUsecase, socialCache),
-		GoogleUsecase: usecase.NewGoogleUsecase(userUsecase, socialCache),
-		AppleUsecase:  usecase.NewAppleUsecase(userUsecase, socialCache, cfg.Auth.AppleClientID),
-		TokenCache:    tokenCache,
-    MarketingConsentUsecase: marketingConsentUC,
+		AuthUsecase:             usecase.NewAuthUsecase(userRepo, deviceRepo, tokenCache, txManager),
+		UserUsecase:             userUsecase,
+		KakaoUsecase:            usecase.NewKakaoUsecase(userUsecase, socialCache),
+		GoogleUsecase:           usecase.NewGoogleUsecase(userUsecase, socialCache),
+		AppleUsecase:            usecase.NewAppleUsecase(userUsecase, socialCache, cfg.Auth.AppleClientID),
+		TokenCache:              tokenCache,
+		MarketingConsentUsecase: marketingConsentUC,
 		CarUsecase:              carUC,
 		BrandUsecase:            brandUC,
 		MyCarUsecase:            myCarUC,
-
 	}
 }

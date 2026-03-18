@@ -1,12 +1,12 @@
 package router
 
 import (
-
+	"backend/internal/adapter/handler/app"
 	"backend/internal/adapter/handler/app/auth"
-	"backend/internal/adapter/middleware"
-  brandhandler "backend/internal/adapter/handler/brand"
+	brandhandler "backend/internal/adapter/handler/brand"
 	carhandler "backend/internal/adapter/handler/car"
 	mycarhandler "backend/internal/adapter/handler/mycar"
+	"backend/internal/adapter/middleware"
 	"backend/internal/container"
 
 	_ "backend/docs"
@@ -20,11 +20,10 @@ func SetupRouter(c *container.Container) *gin.Engine {
 	r := gin.Default()
 
 	authHandler := auth.NewAuthHandler(c.AuthUsecase, c.UserUsecase, c.KakaoUsecase, c.GoogleUsecase, c.AppleUsecase)
-  marketingConsentHandler := app.NewMarketingConsentHandler(c.MarketingConsentUsecase)
+	marketingConsentHandler := app.NewMarketingConsentHandler(c.MarketingConsentUsecase)
 	carHandler := carhandler.NewHandler(c.CarUsecase)
 	brandHandler := brandhandler.NewHandler(c.BrandUsecase)
 	myCarHandler := mycarhandler.NewHandler(c.MyCarUsecase)
-
 
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
@@ -91,6 +90,6 @@ func SetupRouter(c *container.Container) *gin.Engine {
 		//     carGroup.GET("/recommend", api.GetRecommendCars)
 		// }
 	}
-	
+
 	return r
 }

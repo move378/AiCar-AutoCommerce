@@ -101,7 +101,6 @@ func (h *AuthHandler) GoogleLogin(c *gin.Context) {
 	})
 }
 
-
 // @Summary     애플 로그인
 // @Description 애플 ID 토큰으로 소셜 로그인
 // @Tags        auth
