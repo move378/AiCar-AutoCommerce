@@ -19,6 +19,7 @@ CREATE TABLE vehicles_trims (
     height INT,
     curb_weight INT,
     transmission VARCHAR(100),
+    transmission_type VARCHAR(20),
     image_url TEXT,
     top_speed INT,
     doors SMALLINT,
