@@ -16,14 +16,14 @@ def job():
     print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] 크롤링 작업을 시작합니다.")
 
     # ── 크롤링 ──
-    # with sync_playwright() as p:
-    #     try:
-    #         # run_summary_crawler(p)
-    #         crawl_fuel_efficiency(p, 'benz', '벤츠')
-    #         print("크롤링 완료!")
-    #     except Exception as e:
-    #         print(f"크롤링 오류: {e}")
-    #         return
+    with sync_playwright() as p:
+        try:
+            # run_summary_crawler(p)
+            crawl_fuel_efficiency(p, 'benz', '벤츠')
+            print("크롤링 완료!")
+        except Exception as e:
+            print(f"크롤링 오류: {e}")
+            return
 
     # ── 파싱 ──
     try:

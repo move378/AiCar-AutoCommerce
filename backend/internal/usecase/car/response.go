@@ -11,6 +11,8 @@ type CarImageResponse struct {
 type CarDetailResponse struct {
 	ID                 string             `json:"id"`
 	ModelID            string             `json:"model_id"`
+	BrandName          string             `json:"brand_name"`
+	ModelName          string             `json:"model_name"`
 	TrimName           *string            `json:"trim_name"`
 	Year               int                `json:"year"`
 	Price              int                `json:"price"`
@@ -37,4 +39,9 @@ type CarListItemResponse struct {
 	EngineDisplacement *int     `json:"engine_displacement"`
 	Status             string   `json:"status"`
 	ThumbnailURL       *string  `json:"thumbnail_url"`
+}
+
+type ListCarsResult struct {
+	Items []CarListItemResponse
+	Total int64
 }

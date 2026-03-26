@@ -20,6 +20,47 @@ func NewCarRepo(db *DB) repository.CarRepository {
 	return &carRepo{db: db}
 }
 
+func (r *carRepo) buildFilterQuery(ctx context.Context, cond repository.CarListCondition) *gorm.DB {
+	query := r.db.WithContext(ctx).
+		Joins("JOIN car_models ON car_models.id = cars.model_id").
+		Joins("JOIN brands ON brands.id = car_models.brand_id").
+		Where("cars.deleted_at IS NULL")
+
+	if cond.BrandID != nil && *cond.BrandID != "" {
+		query = query.Where("car_models.brand_id = ?", *cond.BrandID)
+	}
+
+	if cond.FuelType != nil && *cond.FuelType != "" {
+		query = query.Where("cars.fuel_type = ?", *cond.FuelType)
+	}
+
+	if cond.MinPrice != nil {
+		query = query.Where("cars.price >= ?", *cond.MinPrice)
+	}
+
+	if cond.MaxPrice != nil {
+		query = query.Where("cars.price <= ?", *cond.MaxPrice)
+	}
+
+	if cond.MinYear != nil {
+		query = query.Where("cars.year >= ?", *cond.MinYear)
+	}
+
+	if cond.MaxYear != nil {
+		query = query.Where("cars.year <= ?", *cond.MaxYear)
+	}
+
+	if cond.Keyword != nil && *cond.Keyword != "" {
+		kw := "%" + *cond.Keyword + "%"
+		query = query.Where(
+			"brands.name ILIKE ? OR car_models.name ILIKE ? OR cars.trim_name ILIKE ?",
+			kw, kw, kw,
+		)
+	}
+
+	return query
+}
+
 func (r *carRepo) List(ctx context.Context, cond repository.CarListCondition) ([]entity.Car, error) {
 	var cars []entity.Car
 
@@ -32,47 +73,25 @@ func (r *carRepo) List(ctx context.Context, cond repository.CarListCondition) ([
 
 	offset := (cond.Page - 1) * cond.Size
 
-	orderBy := "created_at DESC"
+	orderBy := "cars.created_at DESC"
 	switch cond.Sort {
 	case "price_asc":
-		orderBy = "price ASC"
+		orderBy = "cars.price ASC"
 	case "price_desc":
-		orderBy = "price DESC"
+		orderBy = "cars.price DESC"
 	case "year_asc":
-		orderBy = "year ASC"
+		orderBy = "cars.year ASC"
 	case "year_desc":
-		orderBy = "year DESC"
+		orderBy = "cars.year DESC"
 	case "created_at_asc":
-		orderBy = "created_at ASC"
-	case "created_at_desc", "":
-		orderBy = "created_at DESC"
+		orderBy = "cars.created_at ASC"
 	default:
-		orderBy = "created_at DESC"
+		orderBy = "cars.created_at DESC"
 	}
 
-	query := r.db.WithContext(ctx).
+	err := r.buildFilterQuery(ctx, cond).
 		Preload("Model").
 		Preload("Model.Brand").
-		Where("deleted_at IS NULL")
-
-	if cond.BrandID != nil && *cond.BrandID != "" {
-		query = query.Joins("JOIN car_models ON car_models.id = cars.model_id").
-			Where("car_models.brand_id = ?", *cond.BrandID)
-	}
-
-	if cond.FuelType != nil && *cond.FuelType != "" {
-		query = query.Where("fuel_type = ?", *cond.FuelType)
-	}
-
-	if cond.MinPrice != nil {
-		query = query.Where("price >= ?", *cond.MinPrice)
-	}
-
-	if cond.MaxPrice != nil {
-		query = query.Where("price <= ?", *cond.MaxPrice)
-	}
-
-	err := query.
 		Order(orderBy).
 		Limit(cond.Size).
 		Offset(offset).
@@ -82,6 +101,17 @@ func (r *carRepo) List(ctx context.Context, cond repository.CarListCondition) ([
 	}
 
 	return cars, nil
+}
+
+func (r *carRepo) Count(ctx context.Context, cond repository.CarListCondition) (int64, error) {
+	var total int64
+	err := r.buildFilterQuery(ctx, cond).
+		Model(&entity.Car{}).
+		Count(&total).Error
+	if err != nil {
+		return 0, fmt.Errorf("차량 개수 조회 실패: %w", err)
+	}
+	return total, nil
 }
 
 func (r *carRepo) GetByID(ctx context.Context, id string) (*entity.Car, error) {

@@ -85,7 +85,7 @@ def _upsert_trim(cur, v: VehicleData, model_id: str) -> str:
             top_speed, length, width, height,
             curb_weight, transmission, transmission_type, image_url, doors
         )
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         ON CONFLICT (model_id, trim_name) DO UPDATE
             SET body_type        = EXCLUDED.body_type,
                 body_type_code   = EXCLUDED.body_type_code,
@@ -101,7 +101,6 @@ def _upsert_trim(cur, v: VehicleData, model_id: str) -> str:
                 height           = EXCLUDED.height,
                 curb_weight      = EXCLUDED.curb_weight,
                 transmission     = EXCLUDED.transmission,
-                image_url        = EXCLUDED.image_url,
                 doors            = EXCLUDED.doors
         RETURNING id
     """, (
@@ -109,7 +108,7 @@ def _upsert_trim(cur, v: VehicleData, model_id: str) -> str:
         v.trim.model_year, v.trim.base_price, v.trim.fuel_type,
         v.trim.seating_capacity, v.trim.max_output, v.trim.acceleration_0_100,
         v.trim.top_speed, v.trim.length, v.trim.width, v.trim.height,
-        v.trim.curb_weight, v.trim.transmission, v.trim.image_url, v.trim.doors,
+        v.trim.curb_weight, v.trim.transmission, v.trim.transmission_type, None, v.trim.doors,
     ))
     return cur.fetchone()["id"]
 

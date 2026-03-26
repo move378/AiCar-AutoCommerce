@@ -9,12 +9,13 @@ import (
 	usecase "backend/internal/usecase/auth"
 	brandusecase "backend/internal/usecase/brand"
 	carusecase "backend/internal/usecase/car"
+	chatusecase "backend/internal/usecase/chat"
 	mycarusecase "backend/internal/usecase/mycar"
+	vehicleusecase "backend/internal/usecase/vehicle"
 )
 
 type Container struct {
 	AuthUsecase             usecase.AuthUsecase
-	AuthSocialUsecase       usecase.AuthSocialUsecase
 	UserUsecase             usecase.UserUsecase
 	KakaoUsecase            usecase.KakaoUsecase
 	GoogleUsecase           usecase.GoogleUsecase
@@ -24,6 +25,8 @@ type Container struct {
 	BrandUsecase            brandusecase.BrandUsecase
 	MarketingConsentUsecase usecase.MarketingConsentUsecase
 	MyCarUsecase            mycarusecase.Usecase
+	VehicleUsecase          vehicleusecase.Usecase
+	ChatUsecase             chatusecase.Usecase
 }
 
 func NewContainer(db *postgres.DB, rdb *redis.Redis) *Container {
@@ -35,6 +38,8 @@ func NewContainer(db *postgres.DB, rdb *redis.Redis) *Container {
 
 	carRepo := postgres.NewCarRepo(db)
 	brandRepo := postgres.NewBrandRepo(db)
+	vehicleRepo := postgres.NewVehicleRepo(db)
+	chatRepo := postgres.NewChatRepo(db)
 	marketingConsentRepo := postgres.NewMarketingConsentRepo(db)
 	myCarRepo := postgres.NewMyCarRepo(db)
 	txManager := db
@@ -47,9 +52,8 @@ func NewContainer(db *postgres.DB, rdb *redis.Redis) *Container {
 
 	mockCarProvider := mycarexternal.NewMockCarInfoProvider()
 	myCarUC := mycarusecase.NewUsecase(myCarRepo, mockCarProvider)
-
-	// config 로드
-	cfg := config.LoadConfig()
+	vehicleUC := vehicleusecase.NewUsecase(vehicleRepo)
+	chatUC := chatusecase.NewUsecase(chatRepo)
 
 	// config 로드
 	cfg := config.LoadConfig()
@@ -67,5 +71,7 @@ func NewContainer(db *postgres.DB, rdb *redis.Redis) *Container {
 		CarUsecase:              carUC,
 		BrandUsecase:            brandUC,
 		MyCarUsecase:            myCarUC,
+		VehicleUsecase:          vehicleUC,
+		ChatUsecase:             chatUC,
 	}
 }
