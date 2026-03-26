@@ -2,7 +2,12 @@
   "permissions": {
     "allow": [
       "Bash(go build:*)",
-      "Bash(ls *.py)"
+      "Bash(ls *.py)",
+      "Bash(ls /Users/voler/Documents/DEV/AiCar-AutoCommerce/backend/migrations/00013*)",
+      "Bash(go mod:*)",
+      "Bash(go vet:*)",
+      "Bash(grep -E \"\\\\.go$\")",
+      "Bash(wc -l internal/domain/entity/*.go)"
     ]
   }
 }

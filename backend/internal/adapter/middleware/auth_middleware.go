@@ -4,7 +4,6 @@ import (
 	"backend/internal/domain/repository"
 	"backend/internal/shared/response"
 	token "backend/internal/shared/token"
-	"fmt"
 	"net/http"
 
 	"strings"
@@ -37,7 +36,6 @@ func AuthMiddleware(tokenCache repository.TokenCacheRepository) gin.HandlerFunc 
 
 		// 블랙리스트 확인
 		isBlacklist, err := tokenCache.IsBlacklisted(c, accessToken)
-		fmt.Println("블랙임?", isBlacklist)
 		if err != nil {
 			response.SendError(c, http.StatusUnauthorized, response.CodeUnauthorized, "Error occurred while checking token status")
 			c.Abort()

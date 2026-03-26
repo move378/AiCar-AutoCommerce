@@ -6,7 +6,6 @@ import (
 	"backend/internal/shared/response"
 	usecase "backend/internal/usecase/auth"
 	"errors"
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -62,8 +61,6 @@ func (h *AuthHandler) Onboarding(c *gin.Context) {
 		Longitude:  req.Longitude,
 	})
 
-	fmt.Println("Onboarding result:", result)
-	fmt.Println("Onboarding err:", err)
 	if err != nil {
 		if errors.Is(err, errs.ErrConflict) {
 			response.SendError(c, http.StatusConflict, response.CodeConflict, "이미 등록된 디바이스입니다")

@@ -3,10 +3,11 @@ package chat
 import (
 	"net/http"
 
-	chatusecase "backend/internal/usecase/chat"
 	"backend/internal/shared/errs"
+	chatusecase "backend/internal/usecase/chat"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 type Handler struct {
@@ -28,7 +29,8 @@ func NewHandler(uc chatusecase.Usecase) *Handler {
 // @Failure 401 {object} map[string]interface{}
 // @Router /chat/sessions [post]
 func (h *Handler) CreateSession(c *gin.Context) {
-	userID := c.GetString("user_id")
+	userIDVal, _ := c.Get("user_id")
+	userID := userIDVal.(uuid.UUID).String()
 
 	var req createSessionRequest
 	_ = c.ShouldBindJSON(&req)
@@ -50,7 +52,8 @@ func (h *Handler) CreateSession(c *gin.Context) {
 // @Failure 401 {object} map[string]interface{}
 // @Router /chat/sessions [get]
 func (h *Handler) GetSessions(c *gin.Context) {
-	userID := c.GetString("user_id")
+	userIDVal, _ := c.Get("user_id")
+	userID := userIDVal.(uuid.UUID).String()
 
 	sessions, err := h.uc.GetSessions(c.Request.Context(), userID)
 	if err != nil {
@@ -70,7 +73,8 @@ func (h *Handler) GetSessions(c *gin.Context) {
 // @Failure 404 {object} map[string]interface{}
 // @Router /chat/sessions/{id} [delete]
 func (h *Handler) DeleteSession(c *gin.Context) {
-	userID := c.GetString("user_id")
+	userIDVal, _ := c.Get("user_id")
+	userID := userIDVal.(uuid.UUID).String()
 	sessionID := c.Param("id")
 
 	if err := h.uc.DeleteSession(c.Request.Context(), sessionID, userID); err != nil {
@@ -97,7 +101,8 @@ func (h *Handler) DeleteSession(c *gin.Context) {
 // @Failure 404 {object} map[string]interface{}
 // @Router /chat/sessions/{id}/messages [post]
 func (h *Handler) CreateMessage(c *gin.Context) {
-	userID := c.GetString("user_id")
+	userIDVal, _ := c.Get("user_id")
+	userID := userIDVal.(uuid.UUID).String()
 	sessionID := c.Param("id")
 
 	var req createMessageRequest
@@ -128,7 +133,8 @@ func (h *Handler) CreateMessage(c *gin.Context) {
 // @Failure 404 {object} map[string]interface{}
 // @Router /chat/sessions/{id}/messages [get]
 func (h *Handler) GetMessages(c *gin.Context) {
-	userID := c.GetString("user_id")
+	userIDVal, _ := c.Get("user_id")
+	userID := userIDVal.(uuid.UUID).String()
 	sessionID := c.Param("id")
 
 	messages, err := h.uc.GetMessages(c.Request.Context(), sessionID, userID)
@@ -156,7 +162,8 @@ func (h *Handler) GetMessages(c *gin.Context) {
 // @Failure 404 {object} map[string]interface{}
 // @Router /chat/messages/{id}/feedback [patch]
 func (h *Handler) UpdateFeedback(c *gin.Context) {
-	userID := c.GetString("user_id")
+	userIDVal, _ := c.Get("user_id")
+	userID := userIDVal.(uuid.UUID).String()
 	messageID := c.Param("id")
 
 	var req feedbackRequest
