@@ -20,9 +20,9 @@ func getJWTAccessSecret() ([]byte, error) {
 }
 
 func getJWTRefreshSecret() ([]byte, error) {
-	secret := os.Getenv("JWT_ACCESS_SECRET")
+	secret := os.Getenv("JWT_REFRESH_SECRET")
 	if secret == "" {
-		return nil, errors.New("JWT_ACCESS_SECRET is not set in .env file")
+		return nil, errors.New("JWT_REFRESH_SECRET is not set in .env file")
 	}
 	return []byte(secret), nil
 }
@@ -72,8 +72,6 @@ func parseToken(tokenStr string, secret []byte) (uuid.UUID, time.Duration, error
 		return secret, nil
 	})
 
-	fmt.Println("남은 토큰 시간 : ", 12341234)
-
 	if err != nil {
 		return uuid.Nil, 0, fmt.Errorf("토큰 파싱 실패: %w", err)
 	}
@@ -95,7 +93,6 @@ func parseToken(tokenStr string, secret []byte) (uuid.UUID, time.Duration, error
 	}
 
 	ttl := time.Until(time.Unix(int64(claims["exp"].(float64)), 0))
-	fmt.Println("토큰의 남은 시간", ttl)
 
 	return userID, ttl, nil
 }
