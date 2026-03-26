@@ -41,4 +41,4 @@ migrate-reset:
 	goose -dir migrations postgres "postgres://$(DB_USER):$(DB_PASSWORD)@$(DB_HOST):$(DB_PORT)/$(DB_NAME)?sslmode=disable" reset
 
 swagger:
-	swag init -g cmd/api/main.go
+	swag init -g cmd/api/main.go --parseDependency --parseInternal

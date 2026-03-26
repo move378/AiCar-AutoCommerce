@@ -1,6 +1,17 @@
 basePath: /api/v1
 definitions:
-  dto.MarketingConsentRequest:
+  backend_internal_adapter_handler_app_dto.AppleLoginRequest:
+    properties:
+      identity_token:
+        example: ya29.a0AfH6SMBx...
+        type: string
+      user_name:
+        example: 홍길동
+        type: string
+    required:
+    - identity_token
+    type: object
+  backend_internal_adapter_handler_app_dto.MarketingConsentRequest:
     properties:
       device_id:
         type: string
@@ -9,14 +20,14 @@ definitions:
     required:
     - device_id
     type: object
-  dto.MarketingConsentResponse:
+  backend_internal_adapter_handler_app_dto.MarketingConsentResponse:
     properties:
       message:
         type: string
       status:
         type: integer
     type: object
-  dto.OnboardingRequest:
+  backend_internal_adapter_handler_app_dto.OnboardingRequest:
     properties:
       device_id:
         example: ANDROID-DEVICE-789
@@ -43,7 +54,7 @@ definitions:
     - device_id
     - device_type
     type: object
-  dto.OnboardingResponse:
+  backend_internal_adapter_handler_app_dto.OnboardingResponse:
     properties:
       access_token:
         example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
@@ -52,7 +63,7 @@ definitions:
         example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
         type: string
     type: object
-  dto.RefreshRequest:
+  backend_internal_adapter_handler_app_dto.RefreshRequest:
     properties:
       refresh_token:
         example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
@@ -60,7 +71,7 @@ definitions:
     required:
     - refresh_token
     type: object
-  dto.SocialLoginRequest:
+  backend_internal_adapter_handler_app_dto.SocialLoginRequest:
     properties:
       provider_token:
         example: ya29.a0AfH6SMBx...
@@ -68,7 +79,7 @@ definitions:
     required:
     - provider_token
     type: object
-  dto.SocialTokenResponse:
+  backend_internal_adapter_handler_app_dto.SocialTokenResponse:
     properties:
       access_token:
         example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
@@ -80,7 +91,7 @@ definitions:
         example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
         type: string
     type: object
-  dto.TokenResponse:
+  backend_internal_adapter_handler_app_dto.TokenResponse:
     properties:
       access_token:
         example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
@@ -89,7 +100,7 @@ definitions:
         example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
         type: string
     type: object
-  response.APIResponse:
+  backend_internal_shared_response.APIResponse:
     properties:
       code:
         description: '애플리케이션 레벨의 상태 코드 (예: "SUCCESS", "ERROR", "VALIDATION_ERROR"
@@ -103,6 +114,30 @@ definitions:
       status:
         description: HTTP 상태 코드
         type: integer
+    type: object
+  internal_adapter_handler_chat.createMessageRequest:
+    properties:
+      content:
+        type: string
+      metadata:
+        type: string
+      role:
+        type: string
+    required:
+    - content
+    - role
+    type: object
+  internal_adapter_handler_chat.createSessionRequest:
+    properties:
+      title:
+        type: string
+    type: object
+  internal_adapter_handler_chat.feedbackRequest:
+    properties:
+      feedback:
+        type: string
+    required:
+    - feedback
     type: object
 host: localhost:8080
 info:
@@ -118,6 +153,70 @@ paths:
       description: 사용자의 마케팅 활용 동의 여부를 저장하거나 수정한다.
       parameters:
       - description: 마케팅 활용 동의 요청
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/backend_internal_adapter_handler_app_dto.MarketingConsentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend_internal_adapter_handler_app_dto.MarketingConsentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/backend_internal_adapter_handler_app_dto.MarketingConsentResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend_internal_adapter_handler_app_dto.MarketingConsentResponse'
+      summary: 마케팅 활용 동의 저장
+      tags:
+      - auth
+  /auth/apple-login:
+    post:
+      consumes:
+      - application/json
+      description: 애플 ID 토큰으로 소셜 로그인
+      parameters:
+      - description: 애플 로그인 요청
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/backend_internal_adapter_handler_app_dto.AppleLoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 애플 로그인 성공
+          schema:
+            allOf:
+            - $ref: '#/definitions/backend_internal_shared_response.APIResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/backend_internal_adapter_handler_app_dto.SocialTokenResponse'
+              type: object
+        "400":
+          description: 잘못된 요청
+          schema:
+            $ref: '#/definitions/backend_internal_shared_response.APIResponse'
+        "401":
+          description: 유효하지 않은 토큰
+          schema:
+            $ref: '#/definitions/backend_internal_shared_response.APIResponse'
+        "500":
+          description: 서버 오류
+          schema:
+            $ref: '#/definitions/backend_internal_shared_response.APIResponse'
+      security:
+      - BearerAuth: []
+      summary: 애플 로그인
+      tags:
+      - auth
   /auth/google-login:
     post:
       consumes:
@@ -129,44 +228,31 @@ paths:
         name: request
         required: true
         schema:
-          $ref: '#/definitions/dto.MarketingConsentRequest'
-          $ref: '#/definitions/dto.SocialLoginRequest'
+          $ref: '#/definitions/backend_internal_adapter_handler_app_dto.SocialLoginRequest'
       produces:
       - application/json
       responses:
         "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/dto.MarketingConsentResponse'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/dto.MarketingConsentResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/dto.MarketingConsentResponse'
-      summary: 마케팅 활용 동의 저장
           description: 구글 로그인 성공
           schema:
             allOf:
-            - $ref: '#/definitions/response.APIResponse'
+            - $ref: '#/definitions/backend_internal_shared_response.APIResponse'
             - properties:
                 data:
-                  $ref: '#/definitions/dto.SocialTokenResponse'
+                  $ref: '#/definitions/backend_internal_adapter_handler_app_dto.SocialTokenResponse'
               type: object
         "400":
           description: 잘못된 요청
           schema:
-            $ref: '#/definitions/response.APIResponse'
+            $ref: '#/definitions/backend_internal_shared_response.APIResponse'
         "401":
           description: 유효하지 않은 토큰
           schema:
-            $ref: '#/definitions/response.APIResponse'
+            $ref: '#/definitions/backend_internal_shared_response.APIResponse'
         "500":
           description: 서버 오류
           schema:
-            $ref: '#/definitions/response.APIResponse'
+            $ref: '#/definitions/backend_internal_shared_response.APIResponse'
       security:
       - BearerAuth: []
       summary: 구글 로그인
@@ -183,7 +269,7 @@ paths:
         name: request
         required: true
         schema:
-          $ref: '#/definitions/dto.SocialLoginRequest'
+          $ref: '#/definitions/backend_internal_adapter_handler_app_dto.SocialLoginRequest'
       produces:
       - application/json
       responses:
@@ -191,23 +277,23 @@ paths:
           description: 카카오 로그인 성공
           schema:
             allOf:
-            - $ref: '#/definitions/response.APIResponse'
+            - $ref: '#/definitions/backend_internal_shared_response.APIResponse'
             - properties:
                 data:
-                  $ref: '#/definitions/dto.SocialTokenResponse'
+                  $ref: '#/definitions/backend_internal_adapter_handler_app_dto.SocialTokenResponse'
               type: object
         "400":
           description: 잘못된 요청
           schema:
-            $ref: '#/definitions/response.APIResponse'
+            $ref: '#/definitions/backend_internal_shared_response.APIResponse'
         "401":
           description: 유효하지 않은 토큰
           schema:
-            $ref: '#/definitions/response.APIResponse'
+            $ref: '#/definitions/backend_internal_shared_response.APIResponse'
         "500":
           description: 서버 오류
           schema:
-            $ref: '#/definitions/response.APIResponse'
+            $ref: '#/definitions/backend_internal_shared_response.APIResponse'
       security:
       - BearerAuth: []
       summary: 카카오 로그인
@@ -224,7 +310,7 @@ paths:
         name: request
         required: true
         schema:
-          $ref: '#/definitions/dto.OnboardingRequest'
+          $ref: '#/definitions/backend_internal_adapter_handler_app_dto.OnboardingRequest'
       produces:
       - application/json
       responses:
@@ -232,30 +318,63 @@ paths:
           description: 온보딩 성공
           schema:
             allOf:
-            - $ref: '#/definitions/response.APIResponse'
+            - $ref: '#/definitions/backend_internal_shared_response.APIResponse'
             - properties:
                 data:
-                  $ref: '#/definitions/dto.OnboardingResponse'
+                  $ref: '#/definitions/backend_internal_adapter_handler_app_dto.OnboardingResponse'
               type: object
         "400":
           description: 잘못된 요청
           schema:
-            $ref: '#/definitions/response.APIResponse'
-        "401":
-          description: 유효하지 않은 토큰
-          schema:
-            $ref: '#/definitions/response.APIResponse'
+            $ref: '#/definitions/backend_internal_shared_response.APIResponse'
         "409":
           description: 이미 등록된 디바이스
           schema:
-            $ref: '#/definitions/response.APIResponse'
+            $ref: '#/definitions/backend_internal_shared_response.APIResponse'
         "500":
           description: 서버 오류
           schema:
-            $ref: '#/definitions/response.APIResponse'
-      security:
-      - ApiKeyAuth: []
+            $ref: '#/definitions/backend_internal_shared_response.APIResponse'
       summary: 온보딩
+      tags:
+      - auth
+  /auth/refresh:
+    post:
+      consumes:
+      - application/json
+      description: 리프레시 토큰으로 새 액세스/리프레시 토큰 발급
+      parameters:
+      - description: 토큰 갱신 요청
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/backend_internal_adapter_handler_app_dto.RefreshRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 토큰 갱신 성공
+          schema:
+            allOf:
+            - $ref: '#/definitions/backend_internal_shared_response.APIResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/backend_internal_adapter_handler_app_dto.TokenResponse'
+              type: object
+        "400":
+          description: 잘못된 요청
+          schema:
+            $ref: '#/definitions/backend_internal_shared_response.APIResponse'
+        "401":
+          description: 유효하지 않은 토큰
+          schema:
+            $ref: '#/definitions/backend_internal_shared_response.APIResponse'
+        "500":
+          description: 서버 오류
+          schema:
+            $ref: '#/definitions/backend_internal_shared_response.APIResponse'
+      summary: 토큰 갱신
       tags:
       - auth
   /brands:
@@ -277,27 +396,106 @@ paths:
       summary: 브랜드 목록 조회
       tags:
       - brands
-  /cars/{id}/images:
+  /cars:
     get:
-      description: 차량 이미지를 조회합니다.
+      description: 키워드, 브랜드, 연료 타입, 가격 범위, 연도 범위로 차량을 검색합니다.
+      parameters:
+      - description: 검색어 (브랜드명, 모델명, 트림명)
+        in: query
+        name: q
+        type: string
+      - description: '페이지 번호 (기본값: 1)'
+        in: query
+        name: page
+        type: integer
+      - description: '페이지 크기 (기본값: 10)'
+        in: query
+        name: size
+        type: integer
+      - description: 브랜드 ID
+        in: query
+        name: brand_id
+        type: string
+      - description: 연료 타입
+        in: query
+        name: fuel_type
+        type: string
+      - description: 최소 가격
+        in: query
+        name: min_price
+        type: integer
+      - description: 최대 가격
+        in: query
+        name: max_price
+        type: integer
+      - description: 최소 연도
+        in: query
+        name: min_year
+        type: integer
+      - description: 최대 연도
+        in: query
+        name: max_year
+        type: integer
+      - description: 정렬 (price_asc, price_desc, year_asc, year_desc, created_at_asc,
+          created_at_desc)
+        in: query
+        name: sort
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: 차량 검색/목록 조회
+      tags:
+      - cars
+  /cars/{id}:
+    get:
+      description: 차량 ID로 상세 정보를 조회합니다.
       parameters:
       - description: 차량 ID
         in: path
         name: id
         required: true
         type: string
-  /auth/refresh:
-    post:
-      consumes:
+      produces:
       - application/json
-      description: 리프레시 토큰으로 새 액세스/리프레시 토큰 발급
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: 차량 상세 조회
+      tags:
+      - cars
+  /cars/{id}/images:
+    get:
+      description: 차량 ID로 이미지 목록을 조회합니다.
       parameters:
-      - description: 토큰 갱신 요청
-        in: body
-        name: request
+      - description: 차량 ID
+        in: path
+        name: id
         required: true
-        schema:
-          $ref: '#/definitions/dto.RefreshRequest'
+        type: string
       produces:
       - application/json
       responses:
@@ -314,33 +512,260 @@ paths:
       summary: 차량 이미지 조회
       tags:
       - cars
-          description: 토큰 갱신 성공
+  /chat/messages/{id}/feedback:
+    patch:
+      consumes:
+      - application/json
+      parameters:
+      - description: 메시지 ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: 피드백
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_adapter_handler_chat.feedbackRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
           schema:
-            allOf:
-            - $ref: '#/definitions/response.APIResponse'
-            - properties:
-                data:
-                  $ref: '#/definitions/dto.TokenResponse'
-              type: object
+            additionalProperties: true
+            type: object
         "400":
-          description: 잘못된 요청
+          description: Bad Request
           schema:
-            $ref: '#/definitions/response.APIResponse'
-        "401":
-          description: 유효하지 않은 토큰
-          schema:
-            $ref: '#/definitions/response.APIResponse'
+            additionalProperties: true
+            type: object
         "404":
-          description: 토큰 없음
+          description: Not Found
           schema:
-            $ref: '#/definitions/response.APIResponse'
-        "500":
-          description: 서버 오류
-          schema:
-            $ref: '#/definitions/response.APIResponse'
-      summary: 토큰 갱신
+            additionalProperties: true
+            type: object
+      security:
+      - BearerAuth: []
+      summary: 메시지 피드백 등록
       tags:
-      - auth
+      - chat
+  /chat/sessions:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+      security:
+      - BearerAuth: []
+      summary: 내 채팅 세션 목록
+      tags:
+      - chat
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 세션 제목 (선택)
+        in: body
+        name: body
+        schema:
+          $ref: '#/definitions/internal_adapter_handler_chat.createSessionRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+      security:
+      - BearerAuth: []
+      summary: 채팅 세션 생성
+      tags:
+      - chat
+  /chat/sessions/{id}:
+    delete:
+      parameters:
+      - description: 세션 ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties: true
+            type: object
+      security:
+      - BearerAuth: []
+      summary: 채팅 세션 삭제
+      tags:
+      - chat
+  /chat/sessions/{id}/messages:
+    get:
+      parameters:
+      - description: 세션 ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties: true
+            type: object
+      security:
+      - BearerAuth: []
+      summary: 세션 메시지 목록
+      tags:
+      - chat
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 세션 ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: 메시지
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_adapter_handler_chat.createMessageRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties: true
+            type: object
+      security:
+      - BearerAuth: []
+      summary: 메시지 저장
+      tags:
+      - chat
+  /vehicles:
+    get:
+      description: '검색어(브랜드명·한국어 별칭·모델명·트림명)로 차량을 검색합니다. 예: "벤츠", "E 200"'
+      parameters:
+      - description: '검색어 (예: 벤츠, E 200, GLE 450)'
+        in: query
+        name: q
+        type: string
+      - description: 페이지 번호 (기본 1)
+        in: query
+        name: page
+        type: integer
+      - description: 페이지 크기 (기본 10)
+        in: query
+        name: size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: 차량 검색
+      tags:
+      - vehicles
+  /vehicles/{id}:
+    get:
+      description: 트림 ID로 상세 스펙을 조회합니다.
+      parameters:
+      - description: 트림 ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: 차량 트림 상세 조회
+      tags:
+      - vehicles
+  /vehicles/brands:
+    get:
+      description: vehicles_brands 기준 브랜드 목록을 반환합니다.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: 차량 브랜드 목록
+      tags:
+      - vehicles
 securityDefinitions:
   BearerAuth:
     in: header

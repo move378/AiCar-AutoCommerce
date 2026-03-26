@@ -5,7 +5,9 @@ import (
 	"backend/internal/adapter/handler/app/auth"
 	brandhandler "backend/internal/adapter/handler/brand"
 	carhandler "backend/internal/adapter/handler/car"
+	chathandler "backend/internal/adapter/handler/chat"
 	mycarhandler "backend/internal/adapter/handler/mycar"
+	vehiclehandler "backend/internal/adapter/handler/vehicle"
 	"backend/internal/adapter/middleware"
 	"backend/internal/container"
 
@@ -24,6 +26,8 @@ func SetupRouter(c *container.Container) *gin.Engine {
 	carHandler := carhandler.NewHandler(c.CarUsecase)
 	brandHandler := brandhandler.NewHandler(c.BrandUsecase)
 	myCarHandler := mycarhandler.NewHandler(c.MyCarUsecase)
+	vehicleHandler := vehiclehandler.NewHandler(c.VehicleUsecase)
+	chatHandler := chathandler.NewHandler(c.ChatUsecase)
 
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
@@ -36,13 +40,6 @@ func SetupRouter(c *container.Container) *gin.Engine {
 	private := v1.Group("/")
 	private.Use(middleware.AuthMiddleware(c.TokenCache))
 	{
-		userGroup := v1.Group("/auth")
-		{
-			userGroup.POST("/onboard", authHandler.Onboarding)
-			userGroup.POST("/kakao-login", authHandler.KakaoLogin)
-			userGroup.POST("/agreed", marketingConsentHandler.SaveMarketingConsent)
-		}
-
 		carGroup := v1.Group("/cars")
 		{
 			carGroup.GET("", carHandler.List)
@@ -58,12 +55,21 @@ func SetupRouter(c *container.Container) *gin.Engine {
 		{
 			brandGroup.GET("", brandHandler.List)
 		}
+
+		vehicleGroup := v1.Group("/vehicles")
+		{
+			vehicleGroup.GET("", vehicleHandler.Search)
+			vehicleGroup.GET("/brands", vehicleHandler.ListBrands)
+			vehicleGroup.GET("/:id", vehicleHandler.GetDetail)
+		}
+
 		// Public Routes
 		publicAuth := public.Group("/auth")
 		{
 			publicAuth.POST("/onboard", authHandler.Onboarding)
 			publicAuth.POST("/onboard/refresh", authHandler.OnboardingRefresh)
 			publicAuth.POST("/refresh", authHandler.Refresh)
+			publicAuth.POST("/agreed", marketingConsentHandler.SaveMarketingConsent)
 		}
 
 		// Private Routes
@@ -82,13 +88,16 @@ func SetupRouter(c *container.Container) *gin.Engine {
 			privateUser.DELETE("/me", authHandler.DeleteAccount)
 		}
 
-		// Private Cars (나중에)
-		// privateCars := private.Group("/cars")
-		// [차량 관련 경로 - 나중에 추가할 곳]
-		// carGroup := v1.Group("/cars")
-		// {
-		//     carGroup.GET("/recommend", api.GetRecommendCars)
-		// }
+		// Private Chat
+		privateChat := private.Group("/chat")
+		{
+			privateChat.POST("/sessions", chatHandler.CreateSession)
+			privateChat.GET("/sessions", chatHandler.GetSessions)
+			privateChat.DELETE("/sessions/:id", chatHandler.DeleteSession)
+			privateChat.POST("/sessions/:id/messages", chatHandler.CreateMessage)
+			privateChat.GET("/sessions/:id/messages", chatHandler.GetMessages)
+			privateChat.PATCH("/messages/:id/feedback", chatHandler.UpdateFeedback)
+		}
 	}
 
 	return r

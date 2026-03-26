@@ -1,5 +1,4 @@
 import os
-import re
 import json
 from config import BENZ_SUMMARY_DIR
 from db.dto import VehicleData, Brand, Model, Trim, IceSpec, EvSpec, Option,TrimImage
@@ -71,7 +70,7 @@ def summary_parser() -> list[VehicleData]:
                 
                 ice_spec = IceSpec(
                     displacement=_get_nested(tech_groups, "출력", "technicalValues", "배기량", "rawValue", cast=int),
-                    cylinders=int(re.search(r'\d+', v.trim.ice_spec.cylinders).group()) if v.trim.ice_spec.cylinders and re.search(r'\d+', str(v.trim.ice_spec.cylinders)) else None,
+                    cylinders=_get_nested(tech_groups, "출력", "technicalValues", "실린더 수", "rawValue", cast=int),
                     fuel_tank_capacity=_get_nested(tech_groups, "세부 내용", "technicalValues", "탱크 용량(기본)", "rawValue", cast=int),
                 )
                 ev_spec = None

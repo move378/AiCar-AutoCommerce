@@ -147,6 +147,15 @@ func (r *carRepository) GetByID(ctx context.Context, id string) (*entity.Car, er
 	return &car, nil
 }
 
+func (r *carRepository) Count(ctx context.Context, cond domainrepo.CarListCondition) (int64, error) {
+	query := `SELECT COUNT(*) FROM cars WHERE deleted_at IS NULL`
+	var total int64
+	if err := r.db.QueryRowContext(ctx, query).Scan(&total); err != nil {
+		return 0, fmt.Errorf("차량 개수 조회 실패: %w", err)
+	}
+	return total, nil
+}
+
 func (r *carRepository) GetImagesByCarID(ctx context.Context, carID string) ([]entity.CarImage, error) {
 	query := `
 		SELECT
