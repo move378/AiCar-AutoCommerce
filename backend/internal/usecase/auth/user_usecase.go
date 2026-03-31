@@ -58,11 +58,11 @@ type OnboardingInput struct {
 }
 
 type ProfileResult struct {
-	Name       *string
-	Gender     *string
-	Birth      *time.Time
-	Email      *string
-	ProfileURL *string
+	Name       *string    `json:"name"`
+	Gender     *string    `json:"gender"`
+	Birth      *time.Time `json:"birth"`
+	Email      *string    `json:"email"`
+	ProfileURL *string    `json:"profile_url"`
 }
 
 // Onboarding: 디바이스 등록 + 유저 생성 + 토큰 발급

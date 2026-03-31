@@ -10,6 +10,7 @@ import (
 	brandusecase "backend/internal/usecase/brand"
 	carusecase "backend/internal/usecase/car"
 	chatusecase "backend/internal/usecase/chat"
+	estimateusecase "backend/internal/usecase/estimate"
 	mycarusecase "backend/internal/usecase/mycar"
 	vehicleusecase "backend/internal/usecase/vehicle"
 )
@@ -27,6 +28,7 @@ type Container struct {
 	MyCarUsecase            mycarusecase.Usecase
 	VehicleUsecase          vehicleusecase.Usecase
 	ChatUsecase             chatusecase.Usecase
+	EstimateUsecase         estimateusecase.Usecase
 }
 
 func NewContainer(db *postgres.DB, rdb *redis.Redis) *Container {
@@ -40,6 +42,8 @@ func NewContainer(db *postgres.DB, rdb *redis.Redis) *Container {
 	brandRepo := postgres.NewBrandRepo(db)
 	vehicleRepo := postgres.NewVehicleRepo(db)
 	chatRepo := postgres.NewChatRepo(db)
+	estimateRepo := postgres.NewEstimateRepo(db)
+	promotionRepo := postgres.NewPromotionRepo(db)
 	marketingConsentRepo := postgres.NewMarketingConsentRepo(db)
 	myCarRepo := postgres.NewMyCarRepo(db)
 	txManager := db
@@ -73,5 +77,6 @@ func NewContainer(db *postgres.DB, rdb *redis.Redis) *Container {
 		MyCarUsecase:            myCarUC,
 		VehicleUsecase:          vehicleUC,
 		ChatUsecase:             chatUC,
+		EstimateUsecase:         estimateusecase.NewUsecase(estimateRepo, promotionRepo, vehicleRepo),
 	}
 }
