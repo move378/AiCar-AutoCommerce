@@ -1,21 +1,15 @@
-import 'package:aicar/app.dart';
+import 'package:aicar/core/theme/app_theme.dart';
+import 'package:aicar/presentation/pages/_dev/widget_catalog_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  await dotenv.load();
-
-  KakaoSdk.init(
-    nativeAppKey: dotenv.env['KAKAO_NATIVE_APP_KEY'] ?? '',
-  );
-
+// 임시 Widget Catalog 모드 — 개발 확인 후 원복
+void main() {
   runApp(
-    const ProviderScope(
-      child: AiCarApp(),
+    MaterialApp(
+      title: 'AiCar Widget Catalog',
+      theme: AppTheme.light,
+      home: const WidgetCatalogPage(),
+      debugShowCheckedModeBanner: false,
     ),
   );
 }
