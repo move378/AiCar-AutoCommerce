@@ -7,7 +7,8 @@
       "Bash(go mod:*)",
       "Bash(go vet:*)",
       "Bash(grep -E \"\\\\.go$\")",
-      "Bash(wc -l internal/domain/entity/*.go)"
+      "Bash(wc -l internal/domain/entity/*.go)",
+      "Bash(dart analyze:*)"
     ]
   }
 }

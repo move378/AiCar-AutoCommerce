@@ -1,123 +1,113 @@
-import 'package:aicar/core/theme/app_colors.dart';
-import 'package:aicar/presentation/pages/garage/widgets/empty_garage.dart';
-import 'package:aicar/presentation/pages/garage/widgets/garage_header.dart';
-import 'package:aicar/presentation/pages/garage/widgets/menu_section.dart';
-import 'package:aicar/presentation/pages/garage/widgets/saved_vehicle_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
-class GaragePage extends StatefulWidget {
+import 'package:aicar/core/providers/auth_provider.dart';
+import 'package:aicar/core/theme/app_colors.dart';
+import 'package:aicar/core/theme/app_spacing.dart';
+import 'package:aicar/core/theme/app_typography.dart';
+import 'package:aicar/presentation/widgets/buttons/aicar_button.dart';
+import 'package:aicar/presentation/widgets/headers/aicar_header.dart';
+
+/// 차고 탭 — 가상차고 (저장된 카드 목록 + 상담 기록)
+///
+/// 미로그인 시: 로그인 유도 화면
+/// 로그인 완료 시: 헤더(톱니바퀴→마이) + 저장된 차량 목록 (Phase 8에서 구현)
+class GaragePage extends ConsumerWidget {
   const GaragePage({super.key});
 
   @override
-  State<GaragePage> createState() => _GaragePageState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final auth = ref.watch(authProvider);
 
-class _GaragePageState extends State<GaragePage> {
-  final List<Map<String, String>> _savedVehicles = [
-    {
-      'name': 'BMW X3 xDrive30i',
-      'brand': 'BMW',
-      'price': '5,480만원',
-      'year': '2024',
-      'mileage': '1.2만km',
-      'fuel': '가솔린',
-    },
-    {
-      'name': 'Volvo XC60 T6',
-      'brand': '볼보',
-      'price': '5,190만원',
-      'year': '2023',
-      'mileage': '3.2만km',
-      'fuel': '하이브리드',
-    },
-    {
-      'name': 'Tesla Model Y Long Range',
-      'brand': '테슬라',
-      'price': '5,699만원',
-      'year': '2024',
-      'mileage': '1.0만km',
-      'fuel': '전기',
-    },
-  ];
+    if (!auth.isLoggedIn || !auth.hasConsented) {
+      return _buildLoginPrompt(context);
+    }
 
-  void _removeVehicle(int index) {
-    setState(() {
-      _savedVehicles.removeAt(index);
-    });
+    return _buildGarageContent(context);
   }
 
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildLoginPrompt(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      body: SafeArea(
-        child: SingleChildScrollView(
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.space6),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const GarageHeader(),
-              const SizedBox(height: 16),
-              // Section title
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Row(
-                  children: [
-                    const Text(
-                      '내 관심 차량',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.textPrimary,
-                      ),
-                    ),
-                    const Spacer(),
-                    TextButton(
-                      onPressed: () {},
-                      style: TextButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                        minimumSize: Size.zero,
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      ),
-                      child: const Text(
-                        '편집',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: AppColors.textTertiary,
-                        ),
-                      ),
-                    ),
-                  ],
+              Icon(
+                Icons.garage_outlined,
+                size: 64,
+                color: AppColors.textTertiary,
+              ),
+              const SizedBox(height: AppSpacing.space4),
+              Text(
+                '차고를 이용하려면\n로그인이 필요해요',
+                textAlign: TextAlign.center,
+                style: AppTypography.heading2xl.copyWith(
+                  color: AppColors.textPrimary,
                 ),
               ),
-              const SizedBox(height: 8),
-              // Vehicle list or empty state
-              if (_savedVehicles.isEmpty)
-                const EmptyGarage()
-              else
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: _savedVehicles.length,
-                  itemBuilder: (context, index) {
-                    final vehicle = _savedVehicles[index];
-                    return SavedVehicleCard(
-                      name: vehicle['name']!,
-                      brand: vehicle['brand']!,
-                      price: vehicle['price']!,
-                      year: vehicle['year']!,
-                      mileage: vehicle['mileage']!,
-                      fuel: vehicle['fuel']!,
-                      onDelete: () => _removeVehicle(index),
-                      onEstimate: () {},
-                    );
-                  },
+              const SizedBox(height: AppSpacing.space2),
+              Text(
+                '로그인하면 저장한 차량과\n상담 기록을 확인할 수 있어요',
+                textAlign: TextAlign.center,
+                style: AppTypography.bodySm.copyWith(
+                  color: AppColors.textSecondary,
                 ),
-              const SizedBox(height: 24),
-              const MenuSection(),
-              const SizedBox(height: 32),
+              ),
+              const SizedBox(height: AppSpacing.space8),
+              AiCarButton(
+                label: '로그인하기',
+                onPressed: () => context.push('/login'),
+                size: AiCarButtonSize.lg,
+                style: AiCarButtonStyle.solid,
+                isExpanded: true,
+              ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildGarageContent(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      body: Column(
+        children: [
+          AiCarHeader(
+            title: '차고',
+            actions: [
+              GestureDetector(
+                onTap: () => context.push('/my'),
+                child: const Icon(
+                  Icons.settings_outlined,
+                  size: 24,
+                  color: AppColors.textPrimary,
+                ),
+              ),
+            ],
+          ),
+          Expanded(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.garage_outlined,
+                      size: 48, color: AppColors.textTertiary),
+                  const SizedBox(height: 12),
+                  Text(
+                    '저장된 차량이 없습니다',
+                    style: AppTypography.bodySm
+                        .copyWith(color: AppColors.textTertiary),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

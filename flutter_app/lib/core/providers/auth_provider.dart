@@ -1,48 +1,65 @@
-import 'package:aicar/domain/entities/user.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-enum AuthStatus { initial, authenticated, unauthenticated }
-
+/// 인증 상태
+@immutable
 class AuthState {
   const AuthState({
-    this.status = AuthStatus.initial,
-    this.user,
+    this.isLoggedIn = false,
+    this.hasConsented = false,
+    this.userName,
+    this.provider,
   });
 
-  final AuthStatus status;
-  final User? user;
+  final bool isLoggedIn;
+  final bool hasConsented;
+  final String? userName;
+  final String? provider; // 'kakao', 'google', 'apple'
 
-  bool get isAuthenticated => status == AuthStatus.authenticated;
-
-  AuthState copyWith({AuthStatus? status, User? user}) {
+  AuthState copyWith({
+    bool? isLoggedIn,
+    bool? hasConsented,
+    String? userName,
+    String? provider,
+  }) {
     return AuthState(
-      status: status ?? this.status,
-      user: user ?? this.user,
+      isLoggedIn: isLoggedIn ?? this.isLoggedIn,
+      hasConsented: hasConsented ?? this.hasConsented,
+      userName: userName ?? this.userName,
+      provider: provider ?? this.provider,
     );
   }
 }
 
+/// 인증 상태 관리 — MVP mock (실제 API 연동은 추후)
+///
+/// 로그인/약관 동의는 차고 탭 진입 시 트리거.
+/// 온보딩(차량 조회)은 인증과 무관하게 splash 이후 진행.
 class AuthNotifier extends Notifier<AuthState> {
   @override
-  AuthState build() {
-    _checkAuthStatus();
-    return const AuthState();
+  AuthState build() => const AuthState();
+
+  /// Mock 로그인
+  void login(String provider) {
+    state = state.copyWith(
+      isLoggedIn: true,
+      userName: '테스트 사용자',
+      provider: provider,
+    );
   }
 
-  Future<void> _checkAuthStatus() async {
-    // TODO: ITokenStorage 주입 후 저장된 토큰 확인
-    state = state.copyWith(status: AuthStatus.unauthenticated);
+  /// 약관 동의 완료
+  void consent() {
+    state = state.copyWith(hasConsented: true);
   }
 
-  void setAuthenticated(User user) {
-    state = AuthState(status: AuthStatus.authenticated, user: user);
-  }
-
-  void setUnauthenticated() {
-    state = const AuthState(status: AuthStatus.unauthenticated);
+  /// 로그아웃
+  void logout() {
+    state = const AuthState();
   }
 }
 
+/// Auth Provider
 final authProvider = NotifierProvider<AuthNotifier, AuthState>(
   AuthNotifier.new,
 );

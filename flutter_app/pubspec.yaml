@@ -42,6 +42,7 @@ dependencies:
 
   # UI
   smooth_page_indicator: ^2.0.1
+  flutter_svg: ^2.0.10+1
 
   # 유틸
   intl: ^0.20.2
@@ -68,6 +69,8 @@ flutter:
   assets:
     - .env
     - assets/icons/
+    - assets/icons/gnb/
+    - assets/icons/brands/
     - assets/images/
     - assets/lottie/
 

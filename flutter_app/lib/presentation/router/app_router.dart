@@ -1,146 +1,123 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+
 import 'package:aicar/presentation/pages/ai_chat/ai_chat_page.dart';
 import 'package:aicar/presentation/pages/auth/consent_page.dart';
 import 'package:aicar/presentation/pages/auth/login_page.dart';
 import 'package:aicar/presentation/pages/auth/marketing_consent_page.dart';
 import 'package:aicar/presentation/pages/garage/garage_page.dart';
-import 'package:aicar/presentation/pages/onboarding/onboarding_page.dart';
-// import 'package:aicar/core/providers/auth_provider.dart';
+import 'package:aicar/presentation/pages/home/home_page.dart';
+import 'package:aicar/presentation/pages/my/my_page.dart';
+import 'package:aicar/presentation/pages/onboarding/vehicle_check_page.dart';
 import 'package:aicar/presentation/pages/splash/splash_page.dart';
-import 'package:aicar/presentation/pages/vehicle_explore/vehicle_explore_page.dart';
+import 'package:aicar/presentation/pages/test_drive/test_drive_page.dart';
 import 'package:aicar/presentation/router/route_names.dart';
 import 'package:aicar/presentation/shell/main_shell.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
+// 각 브랜치별 독립 네비게이터 키
+final _rootNavigatorKey = GlobalKey<NavigatorState>();
+final _homeNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'home');
+final _testDriveNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'testDrive');
+final _chatNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'chat');
+final _garageNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'garage');
+
+/// GoRouter Provider
+///
+/// 플로우:
+/// splash → onboarding(차량조회) → home (GNB 4탭)
+/// 차고/마이 진입 시: 미로그인 → login → consent → 복귀
+/// 마이: 차고 헤더 톱니바퀴 → /my (push, GNB 밖)
 final appRouterProvider = Provider<GoRouter>((ref) {
-  // final authNotifier = ref.watch(authProvider.notifier);
-
   return GoRouter(
-    initialLocation: RouteNames.splash,
-    redirect: (context, state) {
-      // /home → /home/chat (default tab)
-      if (state.matchedLocation == RouteNames.home) {
-        return RouteNames.chat;
-      }
-      return null;
-    },
-    // Auth redirect (disabled for now):
-    // redirect: (context, state) {
-    //   final authStatus = ref.read(authProvider).status;
-    //   final location = state.matchedLocation;
-    //
-    //   if (authStatus == AuthStatus.initial) return null;
-    //
-    //   final isOnAuth = location == RouteNames.login ||
-    //       location == RouteNames.consent ||
-    //       location == RouteNames.marketingConsent;
-    //
-    //   if (authStatus == AuthStatus.unauthenticated && !isOnAuth) {
-    //     return RouteNames.login;
-    //   }
-    //   if (authStatus == AuthStatus.authenticated && isOnAuth) {
-    //     return RouteNames.home;
-    //   }
-    //   return null;
-    // },
-    // refreshListenable: _AuthStatusListenable(ref, authNotifier),
+    navigatorKey: _rootNavigatorKey,
+    initialLocation: '/splash',
     routes: [
+      // ── 진입 플로우 (Shell 밖) ──────────────────
       GoRoute(
-        path: RouteNames.splash,
-        builder: (_, __) => const SplashPage(),
+        path: '/splash',
+        name: RouteNames.splash,
+        builder: (context, state) => const SplashPage(),
       ),
       GoRoute(
-        path: RouteNames.onboarding,
-        builder: (_, __) => const OnboardingPage(),
-      ),
-      GoRoute(
-        path: RouteNames.login,
-        builder: (_, __) => const LoginPage(),
-      ),
-      GoRoute(
-        path: RouteNames.consent,
-        builder: (_, __) => const ConsentPage(),
-      ),
-      GoRoute(
-        path: RouteNames.marketingConsent,
-        builder: (_, __) => const MarketingConsentPage(),
-      ),
-      GoRoute(
-        path: RouteNames.survey,
-        builder: (_, __) => const _PlaceholderPage(title: '설문조사'),
-      ),
-      GoRoute(
-        path: RouteNames.settings,
-        builder: (_, __) => const _PlaceholderPage(title: '설정'),
+        path: '/onboarding',
+        builder: (context, state) => const VehicleCheckPage(),
       ),
 
-      // ── Main shell with bottom navigation ──
+      // ── Auth 플로우 (차고/마이 진입 시 트리거, Shell 밖) ──
+      GoRoute(
+        path: '/login',
+        name: RouteNames.login,
+        builder: (context, state) => const LoginPage(),
+      ),
+      GoRoute(
+        path: '/consent',
+        name: RouteNames.consent,
+        builder: (context, state) => const ConsentPage(),
+        routes: [
+          GoRoute(
+            path: 'marketing',
+            builder: (context, state) => const MarketingConsentPage(),
+          ),
+        ],
+      ),
+
+      // ── 마이페이지 (Shell 밖, 차고 헤더에서 push) ──
+      GoRoute(
+        path: '/my',
+        name: RouteNames.my,
+        builder: (context, state) => const MyPage(),
+      ),
+
+      // ── GNB Shell (4탭: 홈/시승찾기/챗봇/차고) ──
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return MainShell(navigationShell: navigationShell);
         },
         branches: [
-          // Tab 0 – 홈 (AI Chat)
           StatefulShellBranch(
+            navigatorKey: _homeNavigatorKey,
             routes: [
               GoRoute(
-                path: RouteNames.chat,
-                builder: (_, __) => const AiChatPage(),
+                path: '/home',
+                name: RouteNames.home,
+                builder: (context, state) => const HomePage(),
               ),
             ],
           ),
-          // Tab 1 – 탐색 (Vehicle Explore)
           StatefulShellBranch(
+            navigatorKey: _testDriveNavigatorKey,
             routes: [
               GoRoute(
-                path: RouteNames.vehicleSearch,
-                builder: (_, __) => const VehicleExplorePage(),
+                path: '/test-drive',
+                name: RouteNames.testDrive,
+                builder: (context, state) => const TestDrivePage(),
               ),
             ],
           ),
-          // Tab 2 – 마이 (Garage)
           StatefulShellBranch(
+            navigatorKey: _chatNavigatorKey,
             routes: [
               GoRoute(
-                path: RouteNames.garage,
-                builder: (_, __) => const GaragePage(),
+                path: '/chat',
+                name: RouteNames.chat,
+                builder: (context, state) => const AiChatPage(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            navigatorKey: _garageNavigatorKey,
+            routes: [
+              GoRoute(
+                path: '/garage',
+                name: RouteNames.garage,
+                builder: (context, state) => const GaragePage(),
               ),
             ],
           ),
         ],
       ),
     ],
-    errorBuilder: (context, state) => Scaffold(
-      body: Center(child: Text('페이지를 찾을 수 없습니다: ${state.error}')),
-    ),
   );
 });
-
-/// GoRouter refreshListenable 어댑터
-// class _AuthStatusListenable extends ChangeNotifier {
-//   _AuthStatusListenable(Ref ref, AuthNotifier notifier) {
-//     ref.listen(authProvider, (_, __) => notifyListeners());
-//   }
-// }
-
-/// 아직 구현되지 않은 화면을 위한 플레이스홀더 페이지
-class _PlaceholderPage extends StatelessWidget {
-  const _PlaceholderPage({required this.title});
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: Center(
-        child: Text(
-          '$title\n(준비 중)',
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
-      ),
-    );
-  }
-}
