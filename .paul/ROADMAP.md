@@ -7,7 +7,7 @@
 ## Current Milestone
 **v0.1 MVP Release** (v0.1.0)
 Status: In progress
-Phases: 3 of 8 complete
+Phases: 4 of 8 complete
 
 ## Phases
 
@@ -16,7 +16,7 @@ Phases: 3 of 8 complete
 | 1 | Design Tokens | 1 | Complete | 2026-04-01 |
 | 2 | Common Widgets | 3 | Complete | 2026-04-01 |
 | 3 | App Shell & GNB | 1 | Complete | 2026-04-01 |
-| 4 | Onboarding | TBD | Not started | - |
+| 4 | Onboarding | 1 | Complete | 2026-04-01 |
 | 5 | AI Chat | TBD | Not started | - |
 | 6 | AI Card | TBD | Not started | - |
 | 7 | Home & Test Drive | TBD | Not started | - |
@@ -50,7 +50,7 @@ Phases: 3 of 8 complete
 - AiCarInputField
 - AiCarChip (selected/default)
 - AiCarTabs
-- AiCarTabBar (GNB 5탭)
+- AiCarTabBar (GNB 4탭: 홈/시승찾기/챗봇/차고)
 - AiCarHeader
 - VehicleCard (List/Card)
 - BookmarkButton, MapPin
@@ -74,17 +74,18 @@ Phases: 3 of 8 complete
 - [ ] 03-01: Router + MainShell + GNB integration
 
 ### Phase 4: Onboarding
-**Goal:** Splash → SNS 로그인 → 동의 화면 플로우
+**Goal:** Splash → 차량조회 온보딩(4단계) → Home + 차고/마이 auth guard
 **Depends on:** Phase 3 (라우트 구조)
-**Research:** Unlikely (카카오/구글 SDK 이미 설정)
+**Research:** Unlikely (공공API mock, 카카오 SDK 이미 설정)
 
 **Scope:**
-- Splash screen
-- Login page (카카오/구글)
-- Consent + Marketing consent pages
+- Splash screen (앱 권한 획득)
+- 차량조회 온보딩 (차량번호→소유자명→공공API 결과→등록완료, 스킵 가능)
+- 차고/마이 auth guard (로그인→약관동의→복귀)
+- 마이페이지 (차고 헤더 톱니바퀴에서 push)
 
 **Plans:**
-- [ ] 04-01: Splash + Login + Consent screens
+- [x] 04-01: Splash + VehicleCheck + Auth guard + My Page
 
 ### Phase 5: AI Chat
 **Goal:** 챗봇 탭 — AI 상담 UI + 키워드 매칭 MVP
@@ -127,9 +128,10 @@ Phases: 3 of 8 complete
 - [ ] 07-01: Home + TestDrive screens
 
 ### Phase 8: Garage & My Page
-**Goal:** 가상차고 + 마이페이지
+**Goal:** 가상차고 콘텐츠 + 마이페이지 콘텐츠
 **Depends on:** Phase 6 (저장된 카드 데이터)
 **Research:** Unlikely (CRUD 패턴)
+**Note:** GNB는 4탭(마이 제거). 마이는 차고 헤더 톱니바퀴에서 push 진입.
 
 **Scope:**
 - Garage page with saved cards list

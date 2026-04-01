@@ -54,11 +54,6 @@ class AiCarTabBar extends StatelessWidget {
       activeIconPath: 'assets/icons/gnb/garage_active.svg',
       label: '차고',
     ),
-    _TabItem(
-      iconPath: 'assets/icons/gnb/my.svg',
-      activeIconPath: 'assets/icons/gnb/my_active.svg',
-      label: '마이',
-    ),
   ];
 
   @override
