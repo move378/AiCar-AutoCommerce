@@ -15,7 +15,7 @@
 | Type | Application |
 | Version | 0.0.0 |
 | Status | In Development |
-| Last Updated | 2026-04-01 |
+| Last Updated | 2026-04-02 |
 
 ## Requirements
 
@@ -71,9 +71,12 @@
 | Repository 직접 통신 (방식 B) | datasource 레이어 제거로 복잡도 감소 | 2026-04-01 | Active |
 | JWT Stateless + Redis | 서버 세션 없이 성능 우선 | 2026-04-01 | Active |
 | AI Chat MVP 키워드 매칭 | 10 시나리오 목업, Python RAG 전환 대비 | 2026-04-01 | Active |
-| GNB 5탭 (홈/시승/챗봇/차고/마이) | Figma 확정 기준 | 2026-04-01 | Active |
+| GNB 4탭 (홈/시승찾기/챗봇/차고) | 마이 제거 → 차고 헤더 톱니바퀴에서 진입 | 2026-04-02 | Active |
 | Tailwind v4 Slate+Emerald 디자인 토큰 | Pretendard 폰트, 라이트 모드 전용 | 2026-04-01 | Active |
 | 차량 DB 정규화 7테이블 | 트림/제원 세분화 필요 | 2026-04-01 | Active |
+| StatefulShellRoute.indexedStack | 탭 간 상태 보존 (GoRouter) | 2026-04-02 | Active |
+| 온보딩: 차량조회 4단계 (SNS 로그인 없음) | Figma 기준, 로그인은 차고/마이 진입 시만 | 2026-04-02 | Active |
+| Riverpod Notifier (v3) | StateNotifier deprecated | 2026-04-02 | Active |
 
 ## Success Metrics
 

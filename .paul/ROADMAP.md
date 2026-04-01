@@ -38,7 +38,7 @@ Phases: 4 of 8 complete
 - AppTheme — ThemeData 통합
 
 **Plans:**
-- [ ] 01-01: Design token files + AppTheme integration
+- [x] 01-01: Design token files + AppTheme integration
 
 ### Phase 2: Common Widgets
 **Goal:** `presentation/widgets/` 에 Figma 컴포넌트 기반 공용 위젯 전부 작성
@@ -56,9 +56,9 @@ Phases: 4 of 8 complete
 - BookmarkButton, MapPin
 
 **Plans:**
-- [ ] 02-01: Core widgets (Button, InputField, Chip)
-- [ ] 02-02: Navigation widgets (TabBar, Tabs, Header)
-- [ ] 02-03: Content widgets (VehicleCard, BookmarkButton, MapPin)
+- [x] 02-01: Core widgets (Button, InputField, Chip)
+- [x] 02-02: Navigation widgets (TabBar, Tabs, Header)
+- [x] 02-03: Content widgets (VehicleCard, BookmarkButton, MapPin)
 
 ### Phase 3: App Shell & GNB
 **Goal:** GoRouter 설정 + GNB TabBar shell + 라우트 구조
@@ -71,7 +71,7 @@ Phases: 4 of 8 complete
 - Route definitions for all tabs
 
 **Plans:**
-- [ ] 03-01: Router + MainShell + GNB integration
+- [x] 03-01: Router + MainShell + GNB integration
 
 ### Phase 4: Onboarding
 **Goal:** Splash → 차량조회 온보딩(4단계) → Home + 차고/마이 auth guard
@@ -142,4 +142,4 @@ Phases: 4 of 8 complete
 
 ---
 *Roadmap created: 2026-04-01*
-*Last updated: 2026-04-01*
+*Last updated: 2026-04-02*
