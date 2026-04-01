@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:aicar/core/theme/app_colors.dart';
 import 'package:aicar/core/theme/app_typography.dart';
 
-/// 차고 탭 — 가상차고 (저장된 카드 목록 + 상담 기록)
-class GaragePage extends StatelessWidget {
-  const GaragePage({super.key});
+/// 시승찾기 탭 — 외부 브랜드 전시장 (WebView)
+class TestDrivePage extends StatelessWidget {
+  const TestDrivePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +15,11 @@ class GaragePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.garage_outlined,
+            Icon(Icons.directions_car_outlined,
                 size: 48, color: AppColors.textTertiary),
             const SizedBox(height: 12),
             Text(
-              '차고',
+              '시승찾기',
               style: AppTypography.heading2xl
                   .copyWith(color: AppColors.textSecondary),
             ),
