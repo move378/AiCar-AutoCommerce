@@ -7,14 +7,14 @@
 ## Current Milestone
 **v0.1 MVP Release** (v0.1.0)
 Status: In progress
-Phases: 1 of 8 complete
+Phases: 2 of 8 complete
 
 ## Phases
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 1 | Design Tokens | 1 | Complete | 2026-04-01 |
-| 2 | Common Widgets | TBD | Not started | - |
+| 2 | Common Widgets | 3 | Complete | 2026-04-01 |
 | 3 | App Shell & GNB | TBD | Not started | - |
 | 4 | Onboarding | TBD | Not started | - |
 | 5 | AI Chat | TBD | Not started | - |

@@ -29,10 +29,11 @@
 
 ### Validated (Shipped)
 - [x] 디자인 토큰 (컬러/타이포/스페이싱/Shape/Elevation) — Phase 1
+- [x] 공용 위젯 (Button, Input, Chip, TabBar, Tabs, Header, VehicleCard, Bookmark, MapPin) — Phase 2
 
 ### Active (In Progress)
 - [ ] Backend Auth (JWT Stateless, 카카오/구글 소셜 로그인) — `feat/backend/auth` 머지 완료
-- [ ] 디자인 시스템 (공용 위젯 작성 남음) — `feat/flutter/design-system` 진행 중
+- [x] 디자인 시스템 (토큰 + 공용 위젯 완료) — `feat/flutter/design-system`
 - [ ] 차량 데이터 파이프라인 (벤츠 크롤링 완료, 파싱 진행 중) — `feat/collector/vehicle`
 
 ### Planned (Next)
