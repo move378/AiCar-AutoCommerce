@@ -20,6 +20,12 @@ abstract final class RouteNames {
   static const String cardList = 'card-list';
   static const String cardCustomize = 'card-customize';
 
+  // ── My Page (Phase 9) ────────────────────────────
+  static const String profileEdit = 'profile-edit';
+  static const String terms = 'terms';
+  static const String privacyPolicy = 'privacy-policy';
+  static const String locationTerms = 'location-terms';
+
   // ── Auth (Phase 4) ────────────────────────────
   static const String splash = 'splash';
   static const String login = 'login';
