@@ -159,6 +159,13 @@ class ChatRepositoryImpl implements IChatRepository {
     return rows.map(ChatMessageMapper.fromDrift).toList();
   }
 
+  @override
+  Future<void> deleteSession(String sessionId) async {
+    await (_db.delete(_db.chatHistoryTable)
+          ..where((t) => t.sessionId.equals(sessionId)))
+        .go();
+  }
+
   bool _matchesAny(String text, List<String> keywords) {
     return keywords.any((k) => text.contains(k));
   }

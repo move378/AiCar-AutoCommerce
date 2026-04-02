@@ -74,10 +74,10 @@ class _AiChatPageState extends ConsumerState<AiChatPage> {
                   color: AppColors.textSecondary,
                 ),
               ),
-              // 대화 초기화
+              // 새 대화 시작 (기존 대화는 히스토리에 보존)
               IconButton(
                 onPressed: () {
-                  ref.read(chatProvider.notifier).clearHistory();
+                  ref.read(chatProvider.notifier).startNewSession();
                 },
                 icon: const Icon(
                   Icons.refresh_rounded,
