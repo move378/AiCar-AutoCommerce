@@ -122,6 +122,9 @@ func (u *userUsecase) Logout(ctx context.Context, accessToken string) error {
 	if err != nil {
 		return errs.ErrUnauthorized
 	}
+	if ttl <= 0 {
+		ttl = time.Second // 이미 만료된 토큰은 최소 TTL로 블랙리스트 등록
+	}
 	if err := u.tokenCache.AddToBlacklist(ctx, accessToken, ttl); err != nil {
 		return fmt.Errorf("블랙리스트 등록 실패: %w", err)
 	}
@@ -190,7 +193,7 @@ func (u *userUsecase) DeleteAccount(ctx context.Context, userID uuid.UUID) error
 
 		return nil
 	}); err != nil {
-		return fmt.Errorf("회원 탈퇴 실패: %w", userErr)
+		return fmt.Errorf("회원 탈퇴 실패: %w", err)
 	}
 
 	return nil

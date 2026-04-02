@@ -52,14 +52,21 @@ func GenerateAndStoreTokens(ctx context.Context, cfg *config.Config, tokenCache 
 	}, nil
 }
 
+// appleJWKSClient: 타임아웃이 설정된 전용 HTTP 클라이언트
+var appleJWKSClient = &http.Client{Timeout: 5 * time.Second}
+
 // VerifyAppleIdentityToken: 애플 공개키를 가져와 토큰의 유효성을 검증하고 데이터를 반환합니다.
 func VerifyAppleIdentityToken(tokenStr string, clientID string) (*AppleClaims, error) {
 	// 1. 애플 공개키 목록(JWKS) 가져오기
-	resp, err := http.Get("https://appleid.apple.com/auth/keys")
+	resp, err := appleJWKSClient.Get("https://appleid.apple.com/auth/keys")
 	if err != nil {
 		return nil, fmt.Errorf("apple keys fetch failed: %w", err)
 	}
 	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("apple keys fetch failed (status: %d)", resp.StatusCode)
+	}
 
 	var jwks struct {
 		Keys []struct {
