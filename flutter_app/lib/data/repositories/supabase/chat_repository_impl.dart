@@ -35,4 +35,9 @@ class ChatRepositoryImpl implements IChatRepository {
   Future<List<ChatMessage>> loadSession(String sessionId) {
     throw UnimplementedError('Supabase chat not implemented');
   }
+
+  @override
+  Future<void> deleteSession(String sessionId) {
+    throw UnimplementedError('Supabase chat not implemented');
+  }
 }

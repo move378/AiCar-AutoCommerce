@@ -22,4 +22,7 @@ abstract class IChatRepository {
 
   /// 특정 세션의 메시지 로드
   Future<List<ChatMessage>> loadSession(String sessionId);
+
+  /// 특정 세션 삭제
+  Future<void> deleteSession(String sessionId);
 }

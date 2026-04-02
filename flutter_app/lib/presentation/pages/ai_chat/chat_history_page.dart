@@ -56,6 +56,14 @@ class _ChatHistoryPageState extends ConsumerState<ChatHistoryPage> {
     }
   }
 
+  Future<void> _deleteSession(String sessionId) async {
+    final repo = ref.read(chatRepositoryProvider);
+    await repo.deleteSession(sessionId);
+    setState(() {
+      _sessions?.removeWhere((s) => s.sessionId == sessionId);
+    });
+  }
+
   void _showSessionDetail(String sessionId) async {
     final repo = ref.read(chatRepositoryProvider);
     final messages = await repo.loadSession(sessionId);
@@ -166,6 +174,7 @@ class _ChatHistoryPageState extends ConsumerState<ChatHistoryPage> {
         return _SessionCard(
           session: session,
           onTap: () => _showSessionDetail(session.sessionId),
+          onDelete: () => _deleteSession(session.sessionId),
         );
       },
     );
@@ -196,10 +205,12 @@ class _SessionCard extends StatelessWidget {
   const _SessionCard({
     required this.session,
     required this.onTap,
+    required this.onDelete,
   });
 
   final _SessionPreview session;
   final VoidCallback onTap;
+  final VoidCallback onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -223,11 +234,25 @@ class _SessionCard extends StatelessWidget {
                     color: AppColors.textTertiary,
                   ),
                 ),
-                Text(
-                  '${session.messageCount}개 메시지',
-                  style: AppTypography.captionXs.copyWith(
-                    color: AppColors.textTertiary,
-                  ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      '${session.messageCount}개 메시지',
+                      style: AppTypography.captionXs.copyWith(
+                        color: AppColors.textTertiary,
+                      ),
+                    ),
+                    const SizedBox(width: AppSpacing.space2),
+                    GestureDetector(
+                      onTap: onDelete,
+                      child: const Icon(
+                        Icons.close_rounded,
+                        size: 16,
+                        color: AppColors.textTertiary,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
