@@ -6,8 +6,9 @@
 
 ## Current Milestone
 **v0.1 MVP Release** (v0.1.0)
-Status: In progress
-Phases: 8 of 9 complete
+Status: Complete
+Phases: 9 of 9 complete
+Completed: 2026-04-02
 
 ## Phases
 
@@ -21,7 +22,7 @@ Phases: 8 of 9 complete
 | 6 | AI Card | 2 | Complete | 2026-04-02 |
 | 7 | Home & Test Drive | 1 | Complete | 2026-04-02 |
 | 8 | Domain Separation | 3 | Complete | 2026-04-02 |
-| 9 | Garage & My Page | TBD | Not started | - |
+| 9 | My Page | 1 | Complete | 2026-04-02 |
 
 ## Phase Details
 
@@ -158,7 +159,7 @@ Phases: 8 of 9 complete
 - My page with profile and settings (현재 placeholder → 콘텐츠 구현)
 
 **Plans:**
-- [ ] 09-01: MyPage 콘텐츠
+- [x] 09-01: MyPage 메인 + 회원정보 수정 + 약관 3종 + 라우팅
 
 ---
 *Roadmap created: 2026-04-01*

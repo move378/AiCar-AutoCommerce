@@ -13,8 +13,8 @@
 | Attribute | Value |
 |-----------|-------|
 | Type | Application |
-| Version | 0.0.0 |
-| Status | In Development |
+| Version | 0.1.0 |
+| Status | MVP Complete (Flutter UI) |
 | Last Updated | 2026-04-02 |
 
 ## Requirements
@@ -31,18 +31,21 @@
 ### Validated (Shipped)
 - [x] 디자인 토큰 (컬러/타이포/스페이싱/Shape/Elevation) — Phase 1
 - [x] 공용 위젯 (Button, Input, Chip, TabBar, Tabs, Header, VehicleCard, Bookmark, MapPin) — Phase 2
+- [x] App Shell & GNB (GoRouter + StatefulShellRoute 4탭) — Phase 3
+- [x] 온보딩 (Splash + 차량조회 + Auth Guard) — Phase 4
+- [x] AI Chat UI + 키워드 매칭 MVP + 상담 히스토리 — Phase 5
+- [x] AI Card 카드형 차량 추천 (인라인 캐러셀 + 뒷면 + Radar chart) — Phase 6
+- [x] 홈 차량 탐색 + 시승 WebView — Phase 7
+- [x] 도메인 분리 (Vehicle/ConsultationCard/Bookmark/Garage) — Phase 8
+- [x] 마이페이지 (프로필 수정 + 약관 + 로그아웃) — Phase 9
 
 ### Active (In Progress)
 - [ ] Backend Auth (JWT Stateless, 카카오/구글 소셜 로그인) — `feat/backend/auth` 머지 완료
-- [x] 디자인 시스템 (토큰 + 공용 위젯 완료) — `feat/flutter/design-system`
 - [ ] 차량 데이터 파이프라인 (벤츠 크롤링 완료, 파싱 진행 중) — `feat/collector/vehicle`
-- [x] AI Chat UI + 키워드 매칭 MVP + 상담 히스토리 — `feat/flutter/screen-chat` (Phase 5) 머지 완료
-- [ ] AI Card 카드형 차량 추천 (인라인 캐러셀) — `feat/flutter/screen-card` (Phase 6)
 
 ### Planned (Next)
-- [ ] 카드 뒷면 + Radar chart + Customize (Phase 6-02)
 - [ ] Go API 연동 (차량 목록, AI Chat, 견적)
-- [ ] 홈 탭 네이티브 목록 (MVP, Post-MVP에서 SvelteKit WebView 전환)
+- [ ] Flutter ↔ Backend 통합 테스트
 
 ### Out of Scope
 - Backoffice (Next.js) — 별도 담당
