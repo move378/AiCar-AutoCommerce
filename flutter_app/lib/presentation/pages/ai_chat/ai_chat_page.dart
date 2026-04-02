@@ -8,6 +8,7 @@ import 'package:aicar/core/theme/app_typography.dart';
 import 'package:aicar/domain/entities/chat_message.dart';
 import 'package:aicar/presentation/pages/ai_chat/providers/chat_provider.dart';
 import 'package:aicar/presentation/pages/ai_chat/widgets/chat_bubble.dart';
+import 'package:aicar/presentation/pages/ai_chat/widgets/inline_card_carousel.dart';
 import 'package:aicar/presentation/widgets/buttons/aicar_button.dart';
 import 'package:aicar/presentation/widgets/chips/aicar_chip.dart';
 import 'package:aicar/presentation/router/route_names.dart';
@@ -161,9 +162,35 @@ class _AiChatPageState extends ConsumerState<AiChatPage> {
           );
         }
 
-        return ChatBubble(message: messages[reversedIndex]);
+        final message = messages[reversedIndex];
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ChatBubble(message: message),
+            if (message.isAssistant && _isRecommendationResponse(message.content))
+              InlineCardCarousel(query: _extractQuery(message.content)),
+          ],
+        );
       },
     );
+  }
+
+  /// AI 응답이 차량 추천 내용인지 판별
+  bool _isRecommendationResponse(String content) {
+    return content.contains('추천해 드릴게요') ||
+        content.contains('추천해 드릴게요');
+  }
+
+  /// AI 응답에서 검색 쿼리 추출 (카드 필터링용)
+  String _extractQuery(String content) {
+    if (content.contains('SUV')) return 'SUV';
+    if (content.contains('세단')) return '세단';
+    if (content.contains('BMW')) return 'BMW';
+    if (content.contains('벤츠')) return '벤츠';
+    if (content.contains('아우디')) return '아우디';
+    if (content.contains('연비') || content.contains('하이브리드')) return '연비';
+    if (content.contains('가족')) return 'SUV';
+    return '';
   }
 
   Widget _buildQuickActions() {

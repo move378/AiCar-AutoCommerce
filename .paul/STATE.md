@@ -5,34 +5,34 @@
 See: .paul/PROJECT.md (updated 2026-04-02)
 
 **Core value:** 수입차 구매 과정의 정보 비대칭을 해소하는 AI 컨시어지 앱.
-**Current focus:** v0.1 MVP — Phase 5: AI Chat
+**Current focus:** v0.1 MVP — Phase 6: AI Card
 
 ## Current Position
 
 Milestone: v0.1 MVP Release
-Phase: 5 of 8 (AI Chat)
-Plan: 05-02 complete (loop closed)
-Status: Phase 5 complete — 05-01 + 05-02 모두 완료
-Last activity: 2026-04-02 — Phase 5 완료 (2/2 plans done)
+Phase: 6 of 8 (AI Card)
+Plan: 06-01 complete (loop closed)
+Status: 06-01 APPLY+UNIFY 완료, 06-02 대기
+Last activity: 2026-04-02 — 06-01 완료 (3/3 tasks PASS)
 
 Progress:
-- Milestone: [██████░░░░] 62%
-- Phase 5: [██████████] 100%
+- Milestone: [███████░░░] 68%
+- Phase 6: [█████░░░░░] 50% (06-01 done, 06-02 remaining)
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 5 complete — ready for Phase 6]
+  ✓        ✓        ✓     [Loop closed — ready for next PLAN]
 ```
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
+- Total plans completed: 9
 - Average duration: ~10min
-- Total execution time: ~81min
+- Total execution time: ~93min
 
 **By Phase:**
 
@@ -43,6 +43,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 03-app-shell | 1/1 | ~10min | ~10min |
 | 04-onboarding | 1/1 | ~12min | ~12min |
 | 05-ai-chat | 2/2 | ~25min | ~12min |
+| 06-ai-card | 1/2 | ~12min | ~12min |
 
 ## Accumulated Context
 
@@ -54,6 +55,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - 상담 히스토리 목록 → 05-02로 분리 (05-01은 Chat UI + MVP만) — Phase 5
 - ChatBubble만 신규 위젯, 나머지 기존 디자인 시스템 재사용 — Phase 5
 - ChatMessage freezed 엔티티 + 듀얼 Repository (go_api + supabase 스텁) — Phase 5
+- 카드 추천을 별도 페이지가 아닌 채팅 내 인라인 캐러셀로 표시 (UX 단계 축소) — Phase 6
+- 히스토리 상세에서도 인라인 카드 동일 패턴 적용 — Phase 6
 
 ### Deferred Issues
 None.
@@ -64,10 +67,10 @@ None.
 ## Session Continuity
 
 Last session: 2026-04-02
-Stopped at: Phase 5 완료 (05-01 + 05-02 loop closed)
-Next action: 커밋 + PR → Phase 6 (AI Card)
-Resume file: .paul/phases/05-ai-chat/05-02-SUMMARY.md
-Branch: feat/flutter/screen-chat
+Stopped at: 06-01 loop closed
+Next action: /paul:plan (06-02 카드 뒷면+Radar) 또는 커밋+PR
+Resume file: .paul/phases/06-ai-card/06-01-PLAN.md
+Branch: feat/flutter/screen-card
 
 ---
 *STATE.md — Updated after every significant action*

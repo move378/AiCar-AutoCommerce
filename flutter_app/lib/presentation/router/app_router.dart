@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:aicar/presentation/pages/ai_card/card_list_page.dart';
 import 'package:aicar/presentation/pages/ai_chat/ai_chat_page.dart';
 import 'package:aicar/presentation/pages/ai_chat/chat_history_page.dart';
 import 'package:aicar/presentation/pages/auth/consent_page.dart';
@@ -109,6 +110,14 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                     path: 'history',
                     name: RouteNames.chatHistory,
                     builder: (context, state) => const ChatHistoryPage(),
+                  ),
+                  GoRoute(
+                    path: 'cards',
+                    name: RouteNames.cardList,
+                    builder: (context, state) {
+                      final query = state.uri.queryParameters['q'] ?? '';
+                      return CardListPage(query: query);
+                    },
                   ),
                 ],
               ),
