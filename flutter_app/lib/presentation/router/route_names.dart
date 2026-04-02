@@ -10,6 +10,9 @@ abstract final class RouteNames {
   // ── Chat (Phase 5) ────────────────────────────
   static const String chatHistory = 'chat-history';
 
+  // ── Card (Phase 6) ────────────────────────────
+  static const String cardList = 'card-list';
+
   // ── Auth (Phase 4) ────────────────────────────
   static const String splash = 'splash';
   static const String login = 'login';

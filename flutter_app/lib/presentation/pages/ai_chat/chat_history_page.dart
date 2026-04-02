@@ -7,6 +7,7 @@ import 'package:aicar/core/theme/app_typography.dart';
 import 'package:aicar/domain/entities/chat_message.dart';
 import 'package:aicar/presentation/pages/ai_chat/providers/chat_provider.dart';
 import 'package:aicar/presentation/pages/ai_chat/widgets/chat_bubble.dart';
+import 'package:aicar/presentation/pages/ai_chat/widgets/inline_card_carousel.dart';
 import 'package:aicar/presentation/widgets/headers/aicar_header.dart';
 
 /// 상담 히스토리 목록 페이지
@@ -109,7 +110,17 @@ class _ChatHistoryPageState extends ConsumerState<ChatHistoryPage> {
                 padding: const EdgeInsets.only(bottom: AppSpacing.space4),
                 itemCount: messages.length,
                 itemBuilder: (context, index) {
-                  return ChatBubble(message: messages[index]);
+                  final message = messages[index];
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ChatBubble(message: message),
+                      if (message.isAssistant &&
+                          _isRecommendationResponse(message.content))
+                        InlineCardCarousel(
+                            query: _extractQuery(message.content)),
+                    ],
+                  );
                 },
               ),
             ),
@@ -178,6 +189,21 @@ class _ChatHistoryPageState extends ConsumerState<ChatHistoryPage> {
         );
       },
     );
+  }
+
+  bool _isRecommendationResponse(String content) {
+    return content.contains('추천해 드릴게요');
+  }
+
+  String _extractQuery(String content) {
+    if (content.contains('SUV')) return 'SUV';
+    if (content.contains('세단')) return '세단';
+    if (content.contains('BMW')) return 'BMW';
+    if (content.contains('벤츠')) return '벤츠';
+    if (content.contains('아우디')) return '아우디';
+    if (content.contains('연비') || content.contains('하이브리드')) return '연비';
+    if (content.contains('가족')) return 'SUV';
+    return '';
   }
 
   String _formatDate(DateTime dt) {

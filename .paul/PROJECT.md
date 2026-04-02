@@ -36,10 +36,11 @@
 - [ ] Backend Auth (JWT Stateless, 카카오/구글 소셜 로그인) — `feat/backend/auth` 머지 완료
 - [x] 디자인 시스템 (토큰 + 공용 위젯 완료) — `feat/flutter/design-system`
 - [ ] 차량 데이터 파이프라인 (벤츠 크롤링 완료, 파싱 진행 중) — `feat/collector/vehicle`
-- [ ] AI Chat UI + 키워드 매칭 MVP — `feat/flutter/screen-chat` (Phase 5)
+- [x] AI Chat UI + 키워드 매칭 MVP + 상담 히스토리 — `feat/flutter/screen-chat` (Phase 5) 머지 완료
+- [ ] AI Card 카드형 차량 추천 (인라인 캐러셀) — `feat/flutter/screen-card` (Phase 6)
 
 ### Planned (Next)
-- [ ] 상담 히스토리 목록 (Phase 5-02)
+- [ ] 카드 뒷면 + Radar chart + Customize (Phase 6-02)
 - [ ] Go API 연동 (차량 목록, AI Chat, 견적)
 - [ ] 홈 탭 네이티브 목록 (MVP, Post-MVP에서 SvelteKit WebView 전환)
 
