@@ -17,7 +17,7 @@ Phases: 4 of 8 complete
 | 2 | Common Widgets | 3 | Complete | 2026-04-01 |
 | 3 | App Shell & GNB | 1 | Complete | 2026-04-01 |
 | 4 | Onboarding | 1 | Complete | 2026-04-01 |
-| 5 | AI Chat | TBD | Not started | - |
+| 5 | AI Chat | 2 | Complete | 2026-04-02 |
 | 6 | AI Card | TBD | Not started | - |
 | 7 | Home & Test Drive | TBD | Not started | - |
 | 8 | Garage & My Page | TBD | Not started | - |
@@ -99,7 +99,8 @@ Phases: 4 of 8 complete
 - Chat provider (키워드 매칭 MVP)
 
 **Plans:**
-- [ ] 05-01: Chat UI + provider
+- [x] 05-01: Chat UI + 키워드 매칭 MVP (기존 위젯 재사용, ChatBubble 신규)
+- [x] 05-02: 상담 히스토리 목록 (헤더 버튼 → 과거 상담 리스트)
 
 ### Phase 6: AI Card
 **Goal:** 카드형 차량 추천 UI
