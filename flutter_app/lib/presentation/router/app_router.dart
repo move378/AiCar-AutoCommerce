@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:aicar/presentation/pages/ai_chat/ai_chat_page.dart';
+import 'package:aicar/presentation/pages/ai_chat/chat_history_page.dart';
 import 'package:aicar/presentation/pages/auth/consent_page.dart';
 import 'package:aicar/presentation/pages/auth/login_page.dart';
 import 'package:aicar/presentation/pages/auth/marketing_consent_page.dart';
@@ -103,6 +104,13 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                 path: '/chat',
                 name: RouteNames.chat,
                 builder: (context, state) => const AiChatPage(),
+                routes: [
+                  GoRoute(
+                    path: 'history',
+                    name: RouteNames.chatHistory,
+                    builder: (context, state) => const ChatHistoryPage(),
+                  ),
+                ],
               ),
             ],
           ),

@@ -36,9 +36,10 @@
 - [ ] Backend Auth (JWT Stateless, 카카오/구글 소셜 로그인) — `feat/backend/auth` 머지 완료
 - [x] 디자인 시스템 (토큰 + 공용 위젯 완료) — `feat/flutter/design-system`
 - [ ] 차량 데이터 파이프라인 (벤츠 크롤링 완료, 파싱 진행 중) — `feat/collector/vehicle`
+- [ ] AI Chat UI + 키워드 매칭 MVP — `feat/flutter/screen-chat` (Phase 5)
 
 ### Planned (Next)
-- [ ] Flutter 화면 구현 (Figma 기반, 공용 위젯 조립)
+- [ ] 상담 히스토리 목록 (Phase 5-02)
 - [ ] Go API 연동 (차량 목록, AI Chat, 견적)
 - [ ] 홈 탭 네이티브 목록 (MVP, Post-MVP에서 SvelteKit WebView 전환)
 
