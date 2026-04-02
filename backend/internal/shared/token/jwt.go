@@ -40,7 +40,7 @@ func GenerateTokens(cfg *config.Config, userID uuid.UUID) (string, string, error
 	}
 
 	atObj := jwt.NewWithClaims(jwt.SigningMethodHS256, accessTokenClaims)
-	acessToken, err := atObj.SignedString(jwtAccessSecret)
+	accessToken, err := atObj.SignedString(jwtAccessSecret)
 	if err != nil {
 		return "", "", err
 	}
@@ -60,7 +60,7 @@ func GenerateTokens(cfg *config.Config, userID uuid.UUID) (string, string, error
 		return "", "", err
 	}
 
-	return acessToken, refreshToken, nil
+	return accessToken, refreshToken, nil
 
 }
 

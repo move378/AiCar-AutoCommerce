@@ -51,7 +51,7 @@ func (u *googleUsecase) GoogleLogin(ctx context.Context, userID uuid.UUID, googl
 	if cachedErr == nil && cached != nil {
 		info := entity.SocialUserInfo{
 			UserID:     userID,
-			Provider:   "kakao",
+			Provider:   "google",
 			ProviderID: cached.ProviderID,
 			Email:      cached.Email,
 			Name:       cached.Name,
@@ -71,17 +71,30 @@ func (u *googleUsecase) GoogleLogin(ctx context.Context, userID uuid.UUID, googl
 	if err != nil {
 		return nil, fmt.Errorf("요청 실행 실패: %w", err)
 	}
-
 	defer resp.Body.Close()
 
-	body, _ := io.ReadAll(resp.Body)
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("구글 API 오류 (status: %d)", resp.StatusCode)
+	}
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("응답 읽기 실패: %w", err)
+	}
+
 	user := &GoogleUser{}
-	err = json.Unmarshal(body, user)
+	if err = json.Unmarshal(body, user); err != nil {
+		return nil, fmt.Errorf("응답 파싱 실패: %w", err)
+	}
+
+	if user.ID == "" {
+		return nil, fmt.Errorf("구글 유저 정보를 가져올 수 없습니다")
+	}
 
 	info := entity.SocialUserInfo{
 		UserID:     userID,
 		Provider:   "google",
-		ProviderID: fmt.Sprintf("%v", user.ID),
+		ProviderID: user.ID,
 		Email:      &user.Email,
 		Name:       &user.Name,
 		ProfileURL: &user.Picture,
@@ -89,7 +102,7 @@ func (u *googleUsecase) GoogleLogin(ctx context.Context, userID uuid.UUID, googl
 
 	// 캐시 저장
 	_ = u.socialCache.Create(ctx, googleAccessToken, &entity.SocialUserInfo{
-		Provider:   "kakao",
+		Provider:   "google",
 		ProviderID: info.ProviderID,
 		Email:      info.Email,
 		Name:       info.Name,

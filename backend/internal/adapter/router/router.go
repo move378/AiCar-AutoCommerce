@@ -1,6 +1,8 @@
 package router
 
 import (
+	"time"
+
 	"backend/internal/adapter/handler/app"
 	"backend/internal/adapter/handler/app/auth"
 	brandhandler "backend/internal/adapter/handler/brand"
@@ -20,6 +22,9 @@ import (
 
 func SetupRouter(c *container.Container) *gin.Engine {
 	r := gin.Default()
+
+	r.Use(middleware.CORSMiddleware())
+	r.Use(middleware.RateLimitMiddleware(100, time.Minute)) // 전역: 분당 100회
 
 	authHandler := auth.NewAuthHandler(c.AuthUsecase, c.UserUsecase, c.KakaoUsecase, c.GoogleUsecase, c.AppleUsecase)
 	marketingConsentHandler := app.NewMarketingConsentHandler(c.MarketingConsentUsecase)
@@ -64,23 +69,23 @@ func SetupRouter(c *container.Container) *gin.Engine {
 			vehicleGroup.GET("/:id", vehicleHandler.GetDetail)
 		}
 
-		// Public Routes
+		// Public Routes — 인증 관련은 분당 10회로 강화
+		strictLimit := middleware.RateLimitMiddleware(10, time.Minute)
 		publicAuth := public.Group("/auth")
 		{
-			publicAuth.POST("/onboard", authHandler.Onboarding)
-			publicAuth.POST("/onboard/refresh", authHandler.OnboardingRefresh)
-			publicAuth.POST("/refresh", authHandler.Refresh)
+			publicAuth.POST("/onboard", strictLimit, authHandler.Onboarding)
+			publicAuth.POST("/onboard/refresh", strictLimit, authHandler.OnboardingRefresh)
+			publicAuth.POST("/refresh", strictLimit, authHandler.Refresh)
 			publicAuth.POST("/agreed", marketingConsentHandler.SaveMarketingConsent)
 		}
 
-		// Private Routes
+		// Private Routes — 소셜 로그인도 분당 10회로 강화
 		privateAuth := private.Group("/auth")
 		privateUser := private.Group("/user")
 		{
-			privateAuth.POST("/kakao-login", authHandler.KakaoLogin)
-			privateAuth.POST("/google-login", authHandler.GoogleLogin)
-			privateAuth.POST("/apple-login", authHandler.AppleLogin)
-
+			privateAuth.POST("/kakao-login", strictLimit, authHandler.KakaoLogin)
+			privateAuth.POST("/google-login", strictLimit, authHandler.GoogleLogin)
+			privateAuth.POST("/apple-login", strictLimit, authHandler.AppleLogin)
 		}
 
 		{

@@ -76,19 +76,14 @@ func (u *authUsecase) Refresh(ctx context.Context, refreshToken string) (*token.
 	cfg := config.LoadConfig()
 	userID, _, err := token.ParseRefreshToken(refreshToken)
 	if err != nil {
-		fmt.Println("리프레시 토큰 검증 실패:", err)
 		return nil, errs.ErrUnauthorized
 	}
 	tokenData, err := u.tokenCache.FindByUserID(ctx, userID)
-
-	fmt.Println("토큰 조회 결과:", tokenData, "err:", err)
 	if err != nil {
-		fmt.Println("토큰 조회 실패:", err)
 		return nil, errs.ErrUnauthorized
 	}
 
 	if err := u.tokenCache.DeleteByUserID(ctx, userID); err != nil {
-		fmt.Println("토큰 삭제 실패:", err)
 		return nil, fmt.Errorf("토큰 삭제 실패: %w", err)
 	}
 

@@ -68,9 +68,23 @@ func (u *kakaoUsecase) KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAc
 	}
 	defer resp.Body.Close()
 
-	body, _ := io.ReadAll(resp.Body)
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("카카오 API 오류 (status: %d)", resp.StatusCode)
+	}
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("응답 읽기 실패: %w", err)
+	}
+
 	user := &KakaoUser{}
-	err = json.Unmarshal(body, user)
+	if err = json.Unmarshal(body, user); err != nil {
+		return nil, fmt.Errorf("응답 파싱 실패: %w", err)
+	}
+
+	if user.ID == 0 {
+		return nil, fmt.Errorf("카카오 유저 정보를 가져올 수 없습니다")
+	}
 
 	info := entity.SocialUserInfo{
 		UserID:     userID,
@@ -80,7 +94,6 @@ func (u *kakaoUsecase) KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAc
 		Name:       &user.KakaoAccount.Profile.Nickname,
 		ProfileURL: &user.KakaoAccount.Profile.ProfileImage,
 	}
-	fmt.Println("카카오 바디 ???????? :", string(body))
 
 	// 캐시 저장
 	_ = u.socialCache.Create(ctx, kakaoAccessToken, &entity.SocialUserInfo{
