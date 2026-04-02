@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:aicar/presentation/pages/ai_card/card_customize_page.dart';
 import 'package:aicar/presentation/pages/ai_card/card_list_page.dart';
 import 'package:aicar/presentation/pages/ai_chat/ai_chat_page.dart';
 import 'package:aicar/presentation/pages/ai_chat/chat_history_page.dart';
@@ -118,6 +119,14 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                       final query = state.uri.queryParameters['q'] ?? '';
                       return CardListPage(query: query);
                     },
+                    routes: [
+                      GoRoute(
+                        path: 'customize',
+                        name: RouteNames.cardCustomize,
+                        builder: (context, state) =>
+                            const CardCustomizePage(),
+                      ),
+                    ],
                   ),
                 ],
               ),

@@ -11,13 +11,13 @@ See: .paul/PROJECT.md (updated 2026-04-02)
 
 Milestone: v0.1 MVP Release
 Phase: 6 of 8 (AI Card)
-Plan: 06-01 complete (loop closed)
-Status: 06-01 APPLY+UNIFY 완료, 06-02 대기
-Last activity: 2026-04-02 — 06-01 완료 (3/3 tasks PASS)
+Plan: 06-02 complete (loop closed)
+Status: Phase 6 완료 — 06-01 + 06-02 모두 완료
+Last activity: 2026-04-02 — Phase 6 완료 (2/2 plans done)
 
 Progress:
-- Milestone: [███████░░░] 68%
-- Phase 6: [█████░░░░░] 50% (06-01 done, 06-02 remaining)
+- Milestone: [███████░░░] 75%
+- Phase 6: [██████████] 100%
 
 ## Loop Position
 
@@ -30,9 +30,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 9
+- Total plans completed: 10
 - Average duration: ~10min
-- Total execution time: ~93min
+- Total execution time: ~103min
 
 **By Phase:**
 
@@ -43,7 +43,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 03-app-shell | 1/1 | ~10min | ~10min |
 | 04-onboarding | 1/1 | ~12min | ~12min |
 | 05-ai-chat | 2/2 | ~25min | ~12min |
-| 06-ai-card | 1/2 | ~12min | ~12min |
+| 06-ai-card | 2/2 | ~22min | ~11min |
 
 ## Accumulated Context
 
@@ -67,9 +67,9 @@ None.
 ## Session Continuity
 
 Last session: 2026-04-02
-Stopped at: 06-01 loop closed
-Next action: /paul:plan (06-02 카드 뒷면+Radar) 또는 커밋+PR
-Resume file: .paul/phases/06-ai-card/06-01-PLAN.md
+Stopped at: Phase 6 완료 (06-01 + 06-02 loop closed)
+Next action: 커밋+PR → Phase 7 (Home & Test Drive)
+Resume file: .paul/phases/06-ai-card/06-02-SUMMARY.md
 Branch: feat/flutter/screen-card
 
 ---
