@@ -1,15 +1,15 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'vehicle_card.dart';
+part of 'vehicle.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_VehicleCard _$VehicleCardFromJson(Map<String, dynamic> json) => _VehicleCard(
+_Vehicle _$VehicleFromJson(Map<String, dynamic> json) => _Vehicle(
       id: json['id'] as String,
-      brandName: json['brand_name'] as String,
-      modelName: json['model_name'] as String,
+      brand: json['brand'] as String,
+      model: json['model'] as String,
       year: (json['year'] as num).toInt(),
       price: (json['price'] as num).toInt(),
       fuelType: json['fuel_type'] as String,
@@ -17,11 +17,10 @@ _VehicleCard _$VehicleCardFromJson(Map<String, dynamic> json) => _VehicleCard(
       specs: VehicleSpecs.fromJson(json['specs'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$VehicleCardToJson(_VehicleCard instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$VehicleToJson(_Vehicle instance) => <String, dynamic>{
       'id': instance.id,
-      'brand_name': instance.brandName,
-      'model_name': instance.modelName,
+      'brand': instance.brand,
+      'model': instance.model,
       'year': instance.year,
       'price': instance.price,
       'fuel_type': instance.fuelType,

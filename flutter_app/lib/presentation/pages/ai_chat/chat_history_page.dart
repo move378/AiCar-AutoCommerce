@@ -118,7 +118,7 @@ class _ChatHistoryPageState extends ConsumerState<ChatHistoryPage> {
                       if (message.isAssistant &&
                           _isRecommendationResponse(message.content))
                         InlineCardCarousel(
-                            query: _extractQuery(message.content)),
+                            query: _findUserQuery(messages, index)),
                     ],
                   );
                 },
@@ -192,17 +192,14 @@ class _ChatHistoryPageState extends ConsumerState<ChatHistoryPage> {
   }
 
   bool _isRecommendationResponse(String content) {
-    return content.contains('추천해 드릴게요');
+    return content.contains('추천해 드릴게요') ||
+        content.contains('안내해 드릴게요');
   }
 
-  String _extractQuery(String content) {
-    if (content.contains('SUV')) return 'SUV';
-    if (content.contains('세단')) return '세단';
-    if (content.contains('BMW')) return 'BMW';
-    if (content.contains('벤츠')) return '벤츠';
-    if (content.contains('아우디')) return '아우디';
-    if (content.contains('연비') || content.contains('하이브리드')) return '연비';
-    if (content.contains('가족')) return 'SUV';
+  String _findUserQuery(List<ChatMessage> messages, int assistantIndex) {
+    for (int i = assistantIndex - 1; i >= 0; i--) {
+      if (messages[i].isUser) return messages[i].content;
+    }
     return '';
   }
 

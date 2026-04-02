@@ -5,7 +5,7 @@ import 'package:aicar/core/theme/app_elevation.dart';
 import 'package:aicar/core/theme/app_shape.dart';
 import 'package:aicar/core/theme/app_spacing.dart';
 import 'package:aicar/core/theme/app_typography.dart';
-import 'package:aicar/domain/entities/vehicle_card.dart';
+import 'package:aicar/domain/entities/vehicle.dart';
 
 /// 차량 추천 카드 앞면 위젯
 ///
@@ -16,7 +16,7 @@ class CardFrontWidget extends StatelessWidget {
     required this.card,
   });
 
-  final VehicleCard card;
+  final Vehicle card;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class CardFrontWidget extends StatelessWidget {
               children: [
                 // 브랜드
                 Text(
-                  card.brandName,
+                  card.brand,
                   style: AppTypography.captionXs.copyWith(
                     color: AppColors.textDisabled,
                   ),
@@ -66,7 +66,7 @@ class CardFrontWidget extends StatelessWidget {
 
                 // 모델명
                 Text(
-                  card.modelName,
+                  card.model,
                   style: AppTypography.headingXl.copyWith(
                     color: AppColors.textOnDark,
                   ),

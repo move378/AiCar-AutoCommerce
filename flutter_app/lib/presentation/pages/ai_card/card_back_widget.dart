@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:aicar/core/theme/app_colors.dart';
 import 'package:aicar/core/theme/app_spacing.dart';
 import 'package:aicar/core/theme/app_typography.dart';
-import 'package:aicar/domain/entities/vehicle_card.dart';
+import 'package:aicar/domain/entities/vehicle.dart';
 import 'package:aicar/presentation/pages/ai_card/widgets/radar_chart.dart';
 
 /// 차량 추천 카드 뒷면 위젯 (상세 스펙 + Radar chart)
@@ -15,7 +15,7 @@ class CardBackWidget extends StatelessWidget {
     this.onCustomize,
   });
 
-  final VehicleCard card;
+  final Vehicle card;
   final bool isCompact;
   final VoidCallback? onCustomize;
 
@@ -39,7 +39,7 @@ class CardBackWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            card.modelName,
+            card.model,
             style: AppTypography.captionXs.copyWith(
               color: AppColors.textOnDark,
               fontWeight: FontWeight.w600,

@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:aicar/domain/entities/vehicle_card.dart';
-import 'package:aicar/presentation/pages/ai_card/providers/card_provider.dart';
+import 'package:aicar/core/providers/repository_providers.dart';
+import 'package:aicar/domain/entities/vehicle.dart';
 
 /// 홈 탭 상태
 @immutable
@@ -13,37 +13,37 @@ class HomeState {
     this.isLoading = false,
   });
 
-  final List<VehicleCard> vehicles;
+  final List<Vehicle> vehicles;
   final String selectedCategory;
   final bool isLoading;
 
-  List<VehicleCard> get filteredVehicles {
+  List<Vehicle> get filteredVehicles {
     if (selectedCategory == '전체') return vehicles;
     if (selectedCategory == 'SUV') {
       return vehicles
           .where((v) =>
-              v.modelName.contains('X') ||
-              v.modelName.contains('GL') ||
-              v.modelName.contains('Q') ||
-              v.modelName.contains('XC'))
+              v.model.contains('X') ||
+              v.model.contains('GL') ||
+              v.model.contains('Q') ||
+              v.model.contains('XC'))
           .toList();
     }
     // 세단: SUV가 아닌 나머지
     return vehicles
         .where((v) =>
-            !v.modelName.contains('X') &&
-            !v.modelName.contains('GL') &&
-            !v.modelName.contains('Q') &&
-            !v.modelName.contains('XC'))
+            !v.model.contains('X') &&
+            !v.model.contains('GL') &&
+            !v.model.contains('Q') &&
+            !v.model.contains('XC'))
         .toList();
   }
 
   /// 추천 차량 (처음 5대)
-  List<VehicleCard> get featuredVehicles =>
+  List<Vehicle> get featuredVehicles =>
       vehicles.length > 5 ? vehicles.sublist(0, 5) : vehicles;
 
   HomeState copyWith({
-    List<VehicleCard>? vehicles,
+    List<Vehicle>? vehicles,
     String? selectedCategory,
     bool? isLoading,
   }) {
@@ -64,8 +64,8 @@ class HomeNotifier extends Notifier<HomeState> {
   }
 
   Future<void> _loadVehicles() async {
-    final repository = ref.read(cardRepositoryProvider);
-    final vehicles = await repository.getRecommendations('');
+    final repository = ref.read(vehicleRepositoryProvider);
+    final vehicles = await repository.getAllVehicles();
     state = state.copyWith(vehicles: vehicles, isLoading: false);
   }
 

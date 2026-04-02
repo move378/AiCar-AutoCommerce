@@ -20,7 +20,7 @@ Phases: 7 of 9 complete
 | 5 | AI Chat | 2 | Complete | 2026-04-02 |
 | 6 | AI Card | 2 | Complete | 2026-04-02 |
 | 7 | Home & Test Drive | 1 | Complete | 2026-04-02 |
-| 8 | Domain Separation | TBD | Not started | - |
+| 8 | Domain Separation | 3 | In progress | - |
 | 9 | Garage & My Page | TBD | Not started | - |
 
 ## Phase Details
@@ -144,21 +144,21 @@ Phases: 7 of 9 complete
 - go_api + supabase 양쪽 구현체 업데이트
 
 **Plans:**
-- [ ] 08-01: Entity + Repository 분리 (Vehicle, Bookmark, Garage)
-- [ ] 08-02: Provider + UI 연결 (홈 라우팅, 북마크 토글, 차고 분리)
+- [x] 08-01: Entity + Repository 분리 (Vehicle, Bookmark, Garage)
+- [ ] 08-02: Provider 분리 + 홈 라우팅 + VehicleDetailPage + _extractQuery 수정
+- [ ] 08-03: 차고 3탭 UI (가상차고 ConsultationCard 캐러셀 + 전시장 + 북마크 + 최근본)
 
-### Phase 9: Garage & My Page
-**Goal:** 가상차고 콘텐츠 + 마이페이지 콘텐츠
-**Depends on:** Phase 8 (도메인 분리 완료)
-**Research:** Unlikely (CRUD 패턴)
-**Note:** GNB는 4탭(마이 제거). 마이는 차고 헤더 톱니바퀴에서 push 진입.
+### Phase 9: My Page
+**Goal:** 마이페이지 콘텐츠
+**Depends on:** Phase 8 (도메인 분리 + 차고 완료)
+**Research:** Unlikely (프로필/설정 CRUD)
+**Note:** 차고 헤더 톱니바퀴에서 push 진입. GNB에 마이 탭 없음.
 
 **Scope:**
-- Garage page with saved ConsultationCards (3탭: 가상차고/북마크/최근본)
-- My page with profile and settings
+- My page with profile and settings (현재 placeholder → 콘텐츠 구현)
 
 **Plans:**
-- [ ] 09-01: Garage 3탭 UI + MyPage
+- [ ] 09-01: MyPage 콘텐츠
 
 ---
 *Roadmap created: 2026-04-01*

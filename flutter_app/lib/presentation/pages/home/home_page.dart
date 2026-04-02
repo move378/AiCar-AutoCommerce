@@ -6,7 +6,7 @@ import 'package:aicar/core/theme/app_colors.dart';
 import 'package:aicar/core/theme/app_shape.dart';
 import 'package:aicar/core/theme/app_spacing.dart';
 import 'package:aicar/core/theme/app_typography.dart';
-import 'package:aicar/domain/entities/vehicle_card.dart';
+import 'package:aicar/domain/entities/vehicle.dart';
 import 'package:aicar/presentation/pages/home/providers/home_provider.dart';
 import 'package:aicar/presentation/widgets/cards/vehicle_card.dart'
     as card_widget;
@@ -159,10 +159,10 @@ class HomePage extends ConsumerWidget {
               final vehicle = featured[index];
               return card_widget.VehicleCard(
                 variant: card_widget.VehicleCardVariant.card,
-                name: '${vehicle.brandName} ${vehicle.modelName}',
+                name: '${vehicle.brand} ${vehicle.model}',
                 price: vehicle.formattedPrice,
                 subtitle: '${vehicle.year} · ${vehicle.fuelType}',
-                onTap: () => _navigateToCards(context, vehicle),
+                onTap: () => _navigateToVehicle(context, vehicle),
               );
             },
           ),
@@ -238,17 +238,17 @@ class HomePage extends ConsumerWidget {
           final vehicle = vehicles[index];
           return card_widget.VehicleCard(
             variant: card_widget.VehicleCardVariant.list,
-            name: '${vehicle.brandName} ${vehicle.modelName}',
+            name: '${vehicle.brand} ${vehicle.model}',
             price: vehicle.formattedPrice,
             subtitle: '${vehicle.year} · ${vehicle.fuelType}',
-            onTap: () => _navigateToCards(context, vehicle),
+            onTap: () => _navigateToVehicle(context, vehicle),
           );
         },
       ),
     );
   }
 
-  void _navigateToCards(BuildContext context, VehicleCard vehicle) {
-    context.go('/chat/cards?q=${vehicle.brandName}');
+  void _navigateToVehicle(BuildContext context, Vehicle vehicle) {
+    context.go('/home/vehicle/${vehicle.id}');
   }
 }

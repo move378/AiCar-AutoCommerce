@@ -1,18 +1,18 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'vehicle_card.freezed.dart';
-part 'vehicle_card.g.dart';
+part 'vehicle.freezed.dart';
+part 'vehicle.g.dart';
 
-/// 차량 추천 카드 엔티티
+/// 차량 정보 엔티티 — 홈 탐색, 차량 스펙 중심
 @freezed
-abstract class VehicleCard with _$VehicleCard {
-  const VehicleCard._();
+abstract class Vehicle with _$Vehicle {
+  const Vehicle._();
 
   @JsonSerializable(fieldRename: FieldRename.snake)
-  const factory VehicleCard({
+  const factory Vehicle({
     required String id,
-    required String brandName,
-    required String modelName,
+    required String brand,
+    required String model,
     required int year,
 
     /// 가격 (만원 단위)
@@ -20,10 +20,10 @@ abstract class VehicleCard with _$VehicleCard {
     required String fuelType,
     String? imageUrl,
     required VehicleSpecs specs,
-  }) = _VehicleCard;
+  }) = _Vehicle;
 
-  factory VehicleCard.fromJson(Map<String, dynamic> json) =>
-      _$VehicleCardFromJson(json);
+  factory Vehicle.fromJson(Map<String, dynamic> json) =>
+      _$VehicleFromJson(json);
 
   /// 가격 포맷 (예: "4,990만원")
   String get formattedPrice {

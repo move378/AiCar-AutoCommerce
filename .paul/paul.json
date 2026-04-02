@@ -7,9 +7,9 @@
     "status": "in_progress"
   },
   "phase": {
-    "number": 4,
-    "name": "Onboarding",
-    "status": "complete"
+    "number": 8,
+    "name": "Domain Separation",
+    "status": "in_progress"
   },
   "loop": {
     "plan": null,

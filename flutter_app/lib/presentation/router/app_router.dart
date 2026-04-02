@@ -11,6 +11,7 @@ import 'package:aicar/presentation/pages/auth/login_page.dart';
 import 'package:aicar/presentation/pages/auth/marketing_consent_page.dart';
 import 'package:aicar/presentation/pages/garage/garage_page.dart';
 import 'package:aicar/presentation/pages/home/home_page.dart';
+import 'package:aicar/presentation/pages/home/vehicle_detail_page.dart';
 import 'package:aicar/presentation/pages/my/my_page.dart';
 import 'package:aicar/presentation/pages/onboarding/vehicle_check_page.dart';
 import 'package:aicar/presentation/pages/splash/splash_page.dart';
@@ -87,6 +88,16 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                 path: '/home',
                 name: RouteNames.home,
                 builder: (context, state) => const HomePage(),
+                routes: [
+                  GoRoute(
+                    path: 'vehicle/:vehicleId',
+                    name: RouteNames.vehicleDetail,
+                    builder: (context, state) {
+                      final vehicleId = state.pathParameters['vehicleId']!;
+                      return VehicleDetailPage(vehicleId: vehicleId);
+                    },
+                  ),
+                ],
               ),
             ],
           ),
