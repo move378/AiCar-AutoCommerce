@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -6,6 +8,7 @@ import 'package:aicar/core/theme/app_elevation.dart';
 import 'package:aicar/core/theme/app_spacing.dart';
 import 'package:aicar/core/theme/app_typography.dart';
 import 'package:aicar/domain/entities/vehicle_card.dart';
+import 'package:aicar/presentation/pages/ai_card/card_back_widget.dart';
 import 'package:aicar/presentation/pages/ai_card/providers/card_provider.dart';
 
 /// 채팅 내 인라인 카드 캐러셀
@@ -94,8 +97,8 @@ class _InlineCardCarouselState extends ConsumerState<InlineCardCarousel> {
   }
 }
 
-/// 컴팩트 카드 (인라인용, ~200×170px)
-class _CompactCard extends StatelessWidget {
+/// 컴팩트 카드 (인라인용, ~200×180px) + flip 애니메이션
+class _CompactCard extends StatefulWidget {
   const _CompactCard({
     required this.card,
     required this.onSave,
@@ -105,7 +108,71 @@ class _CompactCard extends StatelessWidget {
   final VoidCallback onSave;
 
   @override
+  State<_CompactCard> createState() => _CompactCardState();
+}
+
+class _CompactCardState extends State<_CompactCard>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _flipController;
+  late final Animation<double> _flipAnimation;
+  bool _showBack = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _flipController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+    _flipAnimation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(parent: _flipController, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _flipController.dispose();
+    super.dispose();
+  }
+
+  void _toggleFlip() {
+    if (_showBack) {
+      _flipController.reverse();
+    } else {
+      _flipController.forward();
+    }
+    setState(() => _showBack = !_showBack);
+  }
+
+  @override
   Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: _toggleFlip,
+      child: AnimatedBuilder(
+        animation: _flipAnimation,
+        builder: (context, child) {
+          final angle = _flipAnimation.value * pi;
+          final isFront = angle < pi / 2;
+
+          return Transform(
+            alignment: Alignment.center,
+            transform: Matrix4.identity()
+              ..setEntry(3, 2, 0.001)
+              ..rotateY(angle),
+            child: isFront
+                ? _buildFront()
+                : Transform(
+                    alignment: Alignment.center,
+                    transform: Matrix4.identity()..rotateY(pi),
+                    child: _buildBack(),
+                  ),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildFront() {
     return Container(
       width: 200,
       decoration: BoxDecoration(
@@ -116,7 +183,6 @@ class _CompactCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // 이미지 placeholder
           Container(
             height: 70,
             width: double.infinity,
@@ -132,8 +198,6 @@ class _CompactCard extends StatelessWidget {
               ),
             ),
           ),
-
-          // 차량 정보
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(AppSpacing.space3),
@@ -141,13 +205,13 @@ class _CompactCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    card.brandName,
+                    widget.card.brandName,
                     style: AppTypography.captionXs.copyWith(
                       color: AppColors.textDisabled,
                     ),
                   ),
                   Text(
-                    card.modelName,
+                    widget.card.modelName,
                     style: AppTypography.bodySm.copyWith(
                       color: AppColors.textOnDark,
                       fontWeight: FontWeight.w600,
@@ -160,14 +224,14 @@ class _CompactCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        card.formattedPrice,
+                        widget.card.formattedPrice,
                         style: AppTypography.captionXs.copyWith(
                           color: AppColors.secondary,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
                       GestureDetector(
-                        onTap: onSave,
+                        onTap: widget.onSave,
                         child: Container(
                           padding: const EdgeInsets.symmetric(
                             horizontal: AppSpacing.space2,
@@ -194,6 +258,13 @@ class _CompactCard extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildBack() {
+    return CardBackWidget(
+      card: widget.card,
+      isCompact: true,
     );
   }
 }

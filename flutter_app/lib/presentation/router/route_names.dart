@@ -12,6 +12,7 @@ abstract final class RouteNames {
 
   // ── Card (Phase 6) ────────────────────────────
   static const String cardList = 'card-list';
+  static const String cardCustomize = 'card-customize';
 
   // ── Auth (Phase 4) ────────────────────────────
   static const String splash = 'splash';

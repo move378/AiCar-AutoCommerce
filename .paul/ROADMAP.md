@@ -18,7 +18,7 @@ Phases: 4 of 8 complete
 | 3 | App Shell & GNB | 1 | Complete | 2026-04-01 |
 | 4 | Onboarding | 1 | Complete | 2026-04-01 |
 | 5 | AI Chat | 2 | Complete | 2026-04-02 |
-| 6 | AI Card | 2 | Planning | - |
+| 6 | AI Card | 2 | Complete | 2026-04-02 |
 | 7 | Home & Test Drive | TBD | Not started | - |
 | 8 | Garage & My Page | TBD | Not started | - |
 
@@ -114,8 +114,8 @@ Phases: 4 of 8 complete
 - Radar chart widget
 
 **Plans:**
-- [ ] 06-01: Card 엔티티 + 앞면 위젯 + 카드 리스트 + 챗봇 연결
-- [ ] 06-02: Card 뒷면 + Radar chart + Customize page
+- [x] 06-01: Card 엔티티 + 앞면 위젯 + 인라인 캐러셀 + 챗봇 연결
+- [x] 06-02: Card 뒷면 + Radar chart + Customize page
 
 ### Phase 7: Home & Test Drive
 **Goal:** 홈 탭 (네이티브 목록 MVP) + 시승 탭 (WebView)
