@@ -1,15 +1,15 @@
 {
   "name": "AiCar",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "milestone": {
     "name": "v0.1 MVP Release",
     "version": "0.1.0",
-    "status": "in_progress"
+    "status": "complete"
   },
   "phase": {
-    "number": 8,
-    "name": "Domain Separation",
-    "status": "complete"
+    "number": null,
+    "name": null,
+    "status": "idle"
   },
   "loop": {
     "plan": null,

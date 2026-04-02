@@ -87,9 +87,9 @@
 
 | Metric | Target | Current | Status |
 |--------|--------|---------|--------|
-| MVP 기능 완성 | 3주 내 Flutter + Backend 완성 | - | Not started |
-| AI 상담 → 카드 추천 플로우 | 키워드 매칭 10 시나리오 동작 | - | Not started |
-| 듀얼 백엔드 스위칭 | dart-define으로 Go/Supabase 전환 가능 | - | Not started |
+| MVP Flutter UI 완성 | 9 Phase 전체 구현 | 15 plans / ~183min | ✅ Complete |
+| AI 상담 → 카드 추천 플로우 | 키워드 매칭 10 시나리오 동작 | UI 완성, mock 데이터 | ⏳ Backend 연동 대기 |
+| 듀얼 백엔드 스위칭 | dart-define으로 Go/Supabase 전환 가능 | 인터페이스 준비 완료 | ⏳ Backend 연동 대기 |
 
 ## Tech Stack / Tools
 
@@ -105,3 +105,4 @@
 
 ---
 *Created: 2026-04-01*
+*Last updated: 2026-04-02 after v0.1 MVP Release*
