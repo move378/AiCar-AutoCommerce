@@ -1,7 +1,7 @@
 # AiCar 개발 워크플로우 가이드
 
 > Seed → PAUL → CARL 통합 워크플로우 + Figma→Flutter 구현 방법론
-> 최종 업데이트: 2026-04-02 (Phase 8 Domain Separation 반영)
+> 최종 업데이트: 2026-04-02 (v0.1 MVP 완료 + 회고 반영)
 
 ---
 
@@ -90,8 +90,12 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 도메인 | 트리거 키워드 | 규칙 수 |
 |--------|-------------|---------|
 | GLOBAL | always_on | 3 |
-| FLUTTER | flutter, dart, widget, provider... | 10 |
+| FLUTTER | flutter, dart, widget, provider... | 12 (v0.1 회고 후 +2) |
 | FIGMA | figma, design, 디자인, token... | 3 |
+
+### v0.1 회고로 추가된 CARL Rules
+- **FLUTTER #10:** 새 엔티티 생성 시 SRP 검증 — 2+ 시나리오에 걸치면 분리 검토 + decision 기록
+- **FLUTTER #11:** PLAN task action에 데이터 흐름 방향 명시 ("사용자 입력 → X → API")
 
 ### 결정사항 추적
 ```
@@ -390,6 +394,30 @@ main (보호)
   - Phase 8에 차고 3탭 흡수 → Phase 9는 MyPage만 남김
 - **UAT → 즉시 수정**: verify에서 발견된 이슈는 같은 세션에서 수정 후 재테스트
 
+### Claude Code 혼동 방지 (v0.1 회고 교훈)
+
+**관찰된 혼동 3유형:**
+
+| 유형 | 증상 | 방지 패턴 |
+|------|------|-----------|
+| **A. 네이밍 추론** | `VehicleCard`를 UI로 해석, 비즈니스 의도(상담 결과) 무시 | 엔티티명에 비즈니스 의도 반영: `ConsultationCard` (O), `VehicleCard` (X) |
+| **B. 유사 기능 병합** | 북마크(찜)와 차고 저장을 동일 취급 | PLAN 단계에서 SRP 체크: "이 엔티티가 2+ 관심사를 가지는가?" |
+| **C. 데이터 흐름 방향** | AI 응답에서 키워드 추출 (사용자 입력이 정답) | task action에 방향 명시: "사용자 입력 → 키워드 추출 → API 쿼리" |
+
+**도메인 모델 drift 감지 (transition-phase에 자동 실행):**
+- Phase 전환 시 엔티티 네이밍 + Repository 책임 감사
+- 2+ Phase 혼동 누적 시 → 분리 Phase 삽입 제안
+- 조기 감지 비용 << 사후 리팩토링 비용 (Phase 8: 43파일, ~45min)
+
+### PAUL 워크플로우 회고 적용 포인트
+
+| 워크플로우 | 추가된 체크 | 적용 시점 |
+|-----------|-----------|-----------|
+| `plan-phase.md` | Entity SRP 체크 | analyze_scope 단계 |
+| `plan-phase.md` | 데이터 흐름 방향 검증 | coherence_check 단계 |
+| `transition-phase.md` | 도메인 모델 health check | Phase 전환 시 |
+| `quality-principles.md` | domain_model_integrity 원칙 | 상시 참조 |
+
 ---
 
 ## 9. 현재 프로젝트 상태 (2026-04-02)
@@ -397,25 +425,32 @@ main (보호)
 ### Milestone 진행률
 
 ```
-v0.1 MVP Release — 89% (8/9 phases)
+v0.1 MVP Release — 100% ✅ (9/9 phases)
 
-Phase 1-7: Complete (디자인 시스템 → 홈/시승찾기)
-Phase 8: Complete (도메인 분리 + 차고 3탭)
-Phase 9: Pending (MyPage)
+Phase 1: Design Tokens           ✅  2026-04-01
+Phase 2: Common Widgets           ✅  2026-04-01
+Phase 3: App Shell & GNB          ✅  2026-04-01
+Phase 4: Onboarding               ✅  2026-04-01
+Phase 5: AI Chat                   ✅  2026-04-02
+Phase 6: AI Card                   ✅  2026-04-02
+Phase 7: Home & Test Drive         ✅  2026-04-02
+Phase 8: Domain Separation         ✅  2026-04-02
+Phase 9: My Page                   ✅  2026-04-02
 ```
 
 ### CARL 결정사항
 
 | Domain | 결정 수 | 주요 내용 |
 |--------|---------|----------|
-| FLUTTER | 8 | 듀얼 백엔드, 폴더 구조, AI Chat MVP, Vehicle/ConsultationCard 분리 |
+| FLUTTER | 9 | 듀얼 백엔드, 폴더 구조, AI Chat MVP, Vehicle/ConsultationCard 분리, 도메인 혼동 시 분리 Phase 삽입 정책 |
 | FIGMA | 4 | 파일 매핑, 디자인 토큰, 확인 항목 |
 
 ### PAUL 메트릭
 
-- **14 plans** 완료 / ~163min 소요 / 평균 ~12min per plan
-- **0 blockers**, 1 deferred issue (수정 완료)
-- **UAT 전체 Pass** (Phase 8: T1-T6)
+- **15 plans** 완료 / ~183min 소요 / 평균 ~12min per plan
+- **0 blockers**, 0 deferred issues
+- **Checkpoint 전체 Pass**
+- **회고 문서**: `.paul/RETROSPECTIVE-v0.1.md`
 
 ---
 
