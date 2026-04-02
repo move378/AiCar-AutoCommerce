@@ -5,26 +5,26 @@
 See: .paul/PROJECT.md (updated 2026-04-02)
 
 **Core value:** 수입차 구매 과정의 정보 비대칭을 해소하는 AI 컨시어지 앱.
-**Current focus:** v0.1 MVP — Phase 7: Home & Test Drive
+**Current focus:** v0.1 MVP — Phase 8: Domain Separation
 
 ## Current Position
 
 Milestone: v0.1 MVP Release
-Phase: 7 of 8 (Home & Test Drive)
-Plan: 07-01 complete (loop closed)
-Status: Phase 7 완료 — 07-01 완료
-Last activity: 2026-04-02 — Phase 7 완료 (1/1 plans done)
+Phase: 8 of 9 (Domain Separation)
+Plan: 없음 — Phase 신규 삽입
+Status: Phase 추가됨 — 기존 Phase 8(Garage)은 Phase 9로 이동
+Last activity: 2026-04-02 — Phase 8 Domain Separation 삽입
 
 Progress:
-- Milestone: [████████░░] 87%
-- Phase 7: [██████████] 100%
+- Milestone: [███████░░░] 78%
+- Phase 8: [░░░░░░░░░░] 0%
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop closed — ready for next PLAN]
+  ○        ○        ○     [Ready for PLAN]
 ```
 
 ## Performance Metrics
@@ -70,10 +70,15 @@ None.
 ## Session Continuity
 
 Last session: 2026-04-02
-Stopped at: Phase 7 완료 (loop closed)
-Next action: 커밋 + PR → Phase 8 (Garage & My Page) 시작
-Resume file: .paul/phases/07-home-test-drive/07-01-SUMMARY.md
-Branch: feat/flutter/screen-home-testdrive
+Stopped at: Phase 8 Domain Separation 준비 완료
+Next action: /paul:plan (Phase 8: Domain Separation, plan 08-01)
+Resume file: .paul/HANDOFF-2026-04-02-phase8.md
+Branch: feat/flutter/domain-separation (main 기반 클린 상태)
+Resume context:
+- VehicleCard → Vehicle + ConsultationCard 분리 결정됨
+- ICardRepository → IVehicleRepo + IBookmarkRepo + IGarageRepo 분리
+- 브랜치 feat/flutter/screen-garage-mypage에 Phase 9 참고 코드 보존
+- CARL: 듀얼 구현체(go_api + supabase) 필수
 
 ---
 *STATE.md — Updated after every significant action*
