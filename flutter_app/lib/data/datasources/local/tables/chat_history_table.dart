@@ -8,4 +8,5 @@ class ChatHistoryTable extends Table {
   TextColumn get role => text()(); // 'user' | 'assistant'
   TextColumn get content => text()();
   DateTimeColumn get createdAt => dateTime()();
+  TextColumn get sessionId => text().nullable()();
 }

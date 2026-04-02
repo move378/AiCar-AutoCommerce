@@ -575,8 +575,15 @@ class $ChatHistoryTableTable extends ChatHistoryTable
   late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
       'created_at', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _sessionIdMeta =
+      const VerificationMeta('sessionId');
   @override
-  List<GeneratedColumn> get $columns => [id, role, content, createdAt];
+  late final GeneratedColumn<String> sessionId = GeneratedColumn<String>(
+      'session_id', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  @override
+  List<GeneratedColumn> get $columns =>
+      [id, role, content, createdAt, sessionId];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -609,6 +616,10 @@ class $ChatHistoryTableTable extends ChatHistoryTable
     } else if (isInserting) {
       context.missing(_createdAtMeta);
     }
+    if (data.containsKey('session_id')) {
+      context.handle(_sessionIdMeta,
+          sessionId.isAcceptableOrUnknown(data['session_id']!, _sessionIdMeta));
+    }
     return context;
   }
 
@@ -626,6 +637,8 @@ class $ChatHistoryTableTable extends ChatHistoryTable
           .read(DriftSqlType.string, data['${effectivePrefix}content'])!,
       createdAt: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}created_at'])!,
+      sessionId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}session_id']),
     );
   }
 
@@ -641,11 +654,13 @@ class ChatHistoryTableData extends DataClass
   final String role;
   final String content;
   final DateTime createdAt;
+  final String? sessionId;
   const ChatHistoryTableData(
       {required this.id,
       required this.role,
       required this.content,
-      required this.createdAt});
+      required this.createdAt,
+      this.sessionId});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -653,6 +668,9 @@ class ChatHistoryTableData extends DataClass
     map['role'] = Variable<String>(role);
     map['content'] = Variable<String>(content);
     map['created_at'] = Variable<DateTime>(createdAt);
+    if (!nullToAbsent || sessionId != null) {
+      map['session_id'] = Variable<String>(sessionId);
+    }
     return map;
   }
 
@@ -662,6 +680,9 @@ class ChatHistoryTableData extends DataClass
       role: Value(role),
       content: Value(content),
       createdAt: Value(createdAt),
+      sessionId: sessionId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(sessionId),
     );
   }
 
@@ -673,6 +694,7 @@ class ChatHistoryTableData extends DataClass
       role: serializer.fromJson<String>(json['role']),
       content: serializer.fromJson<String>(json['content']),
       createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      sessionId: serializer.fromJson<String?>(json['sessionId']),
     );
   }
   @override
@@ -683,16 +705,22 @@ class ChatHistoryTableData extends DataClass
       'role': serializer.toJson<String>(role),
       'content': serializer.toJson<String>(content),
       'createdAt': serializer.toJson<DateTime>(createdAt),
+      'sessionId': serializer.toJson<String?>(sessionId),
     };
   }
 
   ChatHistoryTableData copyWith(
-          {int? id, String? role, String? content, DateTime? createdAt}) =>
+          {int? id,
+          String? role,
+          String? content,
+          DateTime? createdAt,
+          Value<String?> sessionId = const Value.absent()}) =>
       ChatHistoryTableData(
         id: id ?? this.id,
         role: role ?? this.role,
         content: content ?? this.content,
         createdAt: createdAt ?? this.createdAt,
+        sessionId: sessionId.present ? sessionId.value : this.sessionId,
       );
   ChatHistoryTableData copyWithCompanion(ChatHistoryTableCompanion data) {
     return ChatHistoryTableData(
@@ -700,6 +728,7 @@ class ChatHistoryTableData extends DataClass
       role: data.role.present ? data.role.value : this.role,
       content: data.content.present ? data.content.value : this.content,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      sessionId: data.sessionId.present ? data.sessionId.value : this.sessionId,
     );
   }
 
@@ -709,13 +738,14 @@ class ChatHistoryTableData extends DataClass
           ..write('id: $id, ')
           ..write('role: $role, ')
           ..write('content: $content, ')
-          ..write('createdAt: $createdAt')
+          ..write('createdAt: $createdAt, ')
+          ..write('sessionId: $sessionId')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(id, role, content, createdAt);
+  int get hashCode => Object.hash(id, role, content, createdAt, sessionId);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -723,7 +753,8 @@ class ChatHistoryTableData extends DataClass
           other.id == this.id &&
           other.role == this.role &&
           other.content == this.content &&
-          other.createdAt == this.createdAt);
+          other.createdAt == this.createdAt &&
+          other.sessionId == this.sessionId);
 }
 
 class ChatHistoryTableCompanion extends UpdateCompanion<ChatHistoryTableData> {
@@ -731,17 +762,20 @@ class ChatHistoryTableCompanion extends UpdateCompanion<ChatHistoryTableData> {
   final Value<String> role;
   final Value<String> content;
   final Value<DateTime> createdAt;
+  final Value<String?> sessionId;
   const ChatHistoryTableCompanion({
     this.id = const Value.absent(),
     this.role = const Value.absent(),
     this.content = const Value.absent(),
     this.createdAt = const Value.absent(),
+    this.sessionId = const Value.absent(),
   });
   ChatHistoryTableCompanion.insert({
     this.id = const Value.absent(),
     required String role,
     required String content,
     required DateTime createdAt,
+    this.sessionId = const Value.absent(),
   })  : role = Value(role),
         content = Value(content),
         createdAt = Value(createdAt);
@@ -750,12 +784,14 @@ class ChatHistoryTableCompanion extends UpdateCompanion<ChatHistoryTableData> {
     Expression<String>? role,
     Expression<String>? content,
     Expression<DateTime>? createdAt,
+    Expression<String>? sessionId,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (role != null) 'role': role,
       if (content != null) 'content': content,
       if (createdAt != null) 'created_at': createdAt,
+      if (sessionId != null) 'session_id': sessionId,
     });
   }
 
@@ -763,12 +799,14 @@ class ChatHistoryTableCompanion extends UpdateCompanion<ChatHistoryTableData> {
       {Value<int>? id,
       Value<String>? role,
       Value<String>? content,
-      Value<DateTime>? createdAt}) {
+      Value<DateTime>? createdAt,
+      Value<String?>? sessionId}) {
     return ChatHistoryTableCompanion(
       id: id ?? this.id,
       role: role ?? this.role,
       content: content ?? this.content,
       createdAt: createdAt ?? this.createdAt,
+      sessionId: sessionId ?? this.sessionId,
     );
   }
 
@@ -787,6 +825,9 @@ class ChatHistoryTableCompanion extends UpdateCompanion<ChatHistoryTableData> {
     if (createdAt.present) {
       map['created_at'] = Variable<DateTime>(createdAt.value);
     }
+    if (sessionId.present) {
+      map['session_id'] = Variable<String>(sessionId.value);
+    }
     return map;
   }
 
@@ -796,7 +837,8 @@ class ChatHistoryTableCompanion extends UpdateCompanion<ChatHistoryTableData> {
           ..write('id: $id, ')
           ..write('role: $role, ')
           ..write('content: $content, ')
-          ..write('createdAt: $createdAt')
+          ..write('createdAt: $createdAt, ')
+          ..write('sessionId: $sessionId')
           ..write(')'))
         .toString();
   }
@@ -1139,6 +1181,7 @@ typedef $$ChatHistoryTableTableCreateCompanionBuilder
   required String role,
   required String content,
   required DateTime createdAt,
+  Value<String?> sessionId,
 });
 typedef $$ChatHistoryTableTableUpdateCompanionBuilder
     = ChatHistoryTableCompanion Function({
@@ -1146,6 +1189,7 @@ typedef $$ChatHistoryTableTableUpdateCompanionBuilder
   Value<String> role,
   Value<String> content,
   Value<DateTime> createdAt,
+  Value<String?> sessionId,
 });
 
 class $$ChatHistoryTableTableFilterComposer
@@ -1168,6 +1212,9 @@ class $$ChatHistoryTableTableFilterComposer
 
   ColumnFilters<DateTime> get createdAt => $composableBuilder(
       column: $table.createdAt, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get sessionId => $composableBuilder(
+      column: $table.sessionId, builder: (column) => ColumnFilters(column));
 }
 
 class $$ChatHistoryTableTableOrderingComposer
@@ -1190,6 +1237,9 @@ class $$ChatHistoryTableTableOrderingComposer
 
   ColumnOrderings<DateTime> get createdAt => $composableBuilder(
       column: $table.createdAt, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get sessionId => $composableBuilder(
+      column: $table.sessionId, builder: (column) => ColumnOrderings(column));
 }
 
 class $$ChatHistoryTableTableAnnotationComposer
@@ -1212,6 +1262,9 @@ class $$ChatHistoryTableTableAnnotationComposer
 
   GeneratedColumn<DateTime> get createdAt =>
       $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get sessionId =>
+      $composableBuilder(column: $table.sessionId, builder: (column) => column);
 }
 
 class $$ChatHistoryTableTableTableManager extends RootTableManager<
@@ -1246,24 +1299,28 @@ class $$ChatHistoryTableTableTableManager extends RootTableManager<
             Value<String> role = const Value.absent(),
             Value<String> content = const Value.absent(),
             Value<DateTime> createdAt = const Value.absent(),
+            Value<String?> sessionId = const Value.absent(),
           }) =>
               ChatHistoryTableCompanion(
             id: id,
             role: role,
             content: content,
             createdAt: createdAt,
+            sessionId: sessionId,
           ),
           createCompanionCallback: ({
             Value<int> id = const Value.absent(),
             required String role,
             required String content,
             required DateTime createdAt,
+            Value<String?> sessionId = const Value.absent(),
           }) =>
               ChatHistoryTableCompanion.insert(
             id: id,
             role: role,
             content: content,
             createdAt: createdAt,
+            sessionId: sessionId,
           ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
