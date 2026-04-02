@@ -7,19 +7,35 @@ import 'package:aicar/core/theme/app_shape.dart';
 import 'package:aicar/core/theme/app_spacing.dart';
 import 'package:aicar/core/theme/app_typography.dart';
 import 'package:aicar/domain/entities/vehicle.dart';
+import 'package:aicar/presentation/pages/garage/providers/recently_viewed_provider.dart';
 import 'package:aicar/presentation/pages/home/providers/bookmark_provider.dart';
 
 /// 차량 상세 페이지
 ///
 /// 홈 탭에서 차량 카드 탭 시 진입.
 /// 차량 스펙 + 가격 + 북마크 토글.
-class VehicleDetailPage extends ConsumerWidget {
+class VehicleDetailPage extends ConsumerStatefulWidget {
   const VehicleDetailPage({super.key, required this.vehicleId});
 
   final String vehicleId;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<VehicleDetailPage> createState() => _VehicleDetailPageState();
+}
+
+class _VehicleDetailPageState extends ConsumerState<VehicleDetailPage> {
+  @override
+  void initState() {
+    super.initState();
+    // build 완료 후 최근 본 차량 기록 (Riverpod build-time 변경 방지)
+    Future(() {
+      ref.read(recentlyViewedProvider.notifier).addViewed(widget.vehicleId);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final vehicleId = widget.vehicleId;
     final bookmarkState = ref.watch(bookmarkProvider);
     final isBookmarked = bookmarkState.bookmarkedIds.contains(vehicleId);
 
@@ -262,7 +278,7 @@ class VehicleDetailPage extends ConsumerWidget {
           // 북마크 버튼
           GestureDetector(
             onTap: () =>
-                ref.read(bookmarkProvider.notifier).toggleBookmark(vehicleId),
+                ref.read(bookmarkProvider.notifier).toggleBookmark(widget.vehicleId),
             child: Container(
               width: 48,
               height: 48,

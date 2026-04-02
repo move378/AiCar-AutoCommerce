@@ -7,7 +7,7 @@
 ## Current Milestone
 **v0.1 MVP Release** (v0.1.0)
 Status: In progress
-Phases: 7 of 9 complete
+Phases: 8 of 9 complete
 
 ## Phases
 
@@ -20,7 +20,7 @@ Phases: 7 of 9 complete
 | 5 | AI Chat | 2 | Complete | 2026-04-02 |
 | 6 | AI Card | 2 | Complete | 2026-04-02 |
 | 7 | Home & Test Drive | 1 | Complete | 2026-04-02 |
-| 8 | Domain Separation | 3 | In progress | - |
+| 8 | Domain Separation | 3 | Complete | 2026-04-02 |
 | 9 | Garage & My Page | TBD | Not started | - |
 
 ## Phase Details
@@ -145,8 +145,8 @@ Phases: 7 of 9 complete
 
 **Plans:**
 - [x] 08-01: Entity + Repository 분리 (Vehicle, Bookmark, Garage)
-- [ ] 08-02: Provider 분리 + 홈 라우팅 + VehicleDetailPage + _extractQuery 수정
-- [ ] 08-03: 차고 3탭 UI (가상차고 ConsultationCard 캐러셀 + 전시장 + 북마크 + 최근본)
+- [x] 08-02: Provider 분리 + 홈 라우팅 + VehicleDetailPage + _extractQuery 수정
+- [x] 08-03: 차고 3탭 UI (가상차고 ConsultationCard 캐러셀 + 전시장 + 북마크 + 최근본)
 
 ### Phase 9: My Page
 **Goal:** 마이페이지 콘텐츠

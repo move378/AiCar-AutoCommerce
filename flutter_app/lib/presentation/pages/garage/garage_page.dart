@@ -6,13 +6,16 @@ import 'package:aicar/core/providers/auth_provider.dart';
 import 'package:aicar/core/theme/app_colors.dart';
 import 'package:aicar/core/theme/app_spacing.dart';
 import 'package:aicar/core/theme/app_typography.dart';
+import 'package:aicar/presentation/pages/garage/widgets/bookmark_tab.dart';
+import 'package:aicar/presentation/pages/garage/widgets/recently_viewed_tab.dart';
+import 'package:aicar/presentation/pages/garage/widgets/virtual_garage_tab.dart';
 import 'package:aicar/presentation/widgets/buttons/aicar_button.dart';
 import 'package:aicar/presentation/widgets/headers/aicar_header.dart';
 
-/// 차고 탭 — 가상차고 (저장된 카드 목록 + 상담 기록)
+/// 차고 탭 — 3탭 UI (가상 차고 / 북마크 / 최근 본)
 ///
 /// 미로그인 시: 로그인 유도 화면
-/// 로그인 완료 시: 헤더(톱니바퀴→마이) + 저장된 차량 목록 (Phase 8에서 구현)
+/// 로그인 완료 시: 헤더(톱니바퀴→마이) + 3탭
 class GaragePage extends ConsumerWidget {
   const GaragePage({super.key});
 
@@ -73,41 +76,53 @@ class GaragePage extends ConsumerWidget {
   }
 
   Widget _buildGarageContent(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      body: Column(
-        children: [
-          AiCarHeader(
-            title: '차고',
-            actions: [
-              GestureDetector(
-                onTap: () => context.push('/my'),
-                child: const Icon(
-                  Icons.settings_outlined,
-                  size: 24,
-                  color: AppColors.textPrimary,
-                ),
-              ),
-            ],
-          ),
-          Expanded(
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.garage_outlined,
-                      size: 48, color: AppColors.textTertiary),
-                  const SizedBox(height: 12),
-                  Text(
-                    '저장된 차량이 없습니다',
-                    style: AppTypography.bodySm
-                        .copyWith(color: AppColors.textTertiary),
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        backgroundColor: AppColors.background,
+        body: Column(
+          children: [
+            AiCarHeader(
+              title: '차고',
+              actions: [
+                GestureDetector(
+                  onTap: () => context.push('/my'),
+                  child: const Icon(
+                    Icons.settings_outlined,
+                    size: 24,
+                    color: AppColors.textPrimary,
                   ),
+                ),
+              ],
+            ),
+            // ── 3탭 TabBar ──
+            TabBar(
+              labelColor: AppColors.textPrimary,
+              unselectedLabelColor: AppColors.textTertiary,
+              labelStyle: AppTypography.bodyMd.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
+              unselectedLabelStyle: AppTypography.bodyMd,
+              indicatorColor: AppColors.primary,
+              indicatorWeight: 2,
+              tabs: const [
+                Tab(text: '가상 차고'),
+                Tab(text: '북마크'),
+                Tab(text: '최근 본'),
+              ],
+            ),
+            // ── 탭 컨텐츠 ──
+            const Expanded(
+              child: TabBarView(
+                children: [
+                  VirtualGarageTab(),
+                  BookmarkTab(),
+                  RecentlyViewedTab(),
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
