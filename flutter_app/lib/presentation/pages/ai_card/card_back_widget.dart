@@ -33,26 +33,27 @@ class CardBackWidget extends StatelessWidget {
 
   Widget _buildCompact() {
     return Padding(
-      padding: const EdgeInsets.all(AppSpacing.space3),
+      padding: const EdgeInsets.all(AppSpacing.space2),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             card.modelName,
-            style: AppTypography.bodySm.copyWith(
+            style: AppTypography.captionXs.copyWith(
               color: AppColors.textOnDark,
               fontWeight: FontWeight.w600,
             ),
           ),
-          const SizedBox(height: AppSpacing.space2),
-          Center(
-            child: RadarChart(
-              specs: card.specs,
-              price: card.price,
-              size: 100,
+          Expanded(
+            child: Center(
+              child: RadarChart(
+                specs: card.specs,
+                price: card.price,
+                size: 80,
+              ),
             ),
           ),
-          const Spacer(),
           _SpecRow(
             label: '마력',
             value: '${card.specs.power}hp',

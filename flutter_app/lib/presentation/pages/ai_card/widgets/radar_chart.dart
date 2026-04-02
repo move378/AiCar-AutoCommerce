@@ -31,7 +31,7 @@ class RadarChart extends StatelessWidget {
 
     return SizedBox(
       width: size,
-      height: size + AppSpacing.space4,
+      height: size + AppSpacing.space2,
       child: CustomPaint(
         size: Size(size, size),
         painter: _RadarChartPainter(values: values, labels: labels),
