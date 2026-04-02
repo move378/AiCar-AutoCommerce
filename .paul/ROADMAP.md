@@ -7,7 +7,7 @@
 ## Current Milestone
 **v0.1 MVP Release** (v0.1.0)
 Status: In progress
-Phases: 4 of 8 complete
+Phases: 7 of 8 complete
 
 ## Phases
 
@@ -19,7 +19,7 @@ Phases: 4 of 8 complete
 | 4 | Onboarding | 1 | Complete | 2026-04-01 |
 | 5 | AI Chat | 2 | Complete | 2026-04-02 |
 | 6 | AI Card | 2 | Complete | 2026-04-02 |
-| 7 | Home & Test Drive | TBD | Not started | - |
+| 7 | Home & Test Drive | 1 | Complete | 2026-04-02 |
 | 8 | Garage & My Page | TBD | Not started | - |
 
 ## Phase Details
@@ -127,7 +127,7 @@ Phases: 4 of 8 complete
 - Test drive page (WebView to brand showroom)
 
 **Plans:**
-- [ ] 07-01: Home + TestDrive screens
+- [x] 07-01: Home 차량 탐색 UI + TestDrive 브랜드 전시장 WebView
 
 ### Phase 8: Garage & My Page
 **Goal:** 가상차고 콘텐츠 + 마이페이지 콘텐츠
