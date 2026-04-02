@@ -7,6 +7,7 @@ import 'package:aicar/core/theme/app_shape.dart';
 import 'package:aicar/core/theme/app_spacing.dart';
 import 'package:aicar/core/theme/app_typography.dart';
 import 'package:aicar/domain/entities/vehicle.dart';
+import 'package:aicar/presentation/pages/home/providers/bookmark_provider.dart';
 import 'package:aicar/presentation/pages/home/providers/home_provider.dart';
 import 'package:aicar/presentation/widgets/cards/vehicle_card.dart'
     as card_widget;
@@ -40,7 +41,7 @@ class HomePage extends ConsumerWidget {
                     SliverToBoxAdapter(child: _buildSearchBar(context)),
                     // ── 추천 차량 캐러셀 ──
                     SliverToBoxAdapter(
-                      child: _buildFeaturedSection(context, state),
+                      child: _buildFeaturedSection(context, ref, state),
                     ),
                     // ── 카테고리 칩 ──
                     SliverToBoxAdapter(
@@ -126,7 +127,8 @@ class HomePage extends ConsumerWidget {
     );
   }
 
-  Widget _buildFeaturedSection(BuildContext context, HomeState state) {
+  Widget _buildFeaturedSection(
+      BuildContext context, WidgetRef ref, HomeState state) {
     final featured = state.featuredVehicles;
     if (featured.isEmpty) return const SizedBox.shrink();
 
@@ -157,11 +159,19 @@ class HomePage extends ConsumerWidget {
                 const SizedBox(width: AppSpacing.space3),
             itemBuilder: (context, index) {
               final vehicle = featured[index];
+              final isBookmarked = ref
+                  .watch(bookmarkProvider)
+                  .bookmarkedIds
+                  .contains(vehicle.id);
               return card_widget.VehicleCard(
                 variant: card_widget.VehicleCardVariant.card,
                 name: '${vehicle.brand} ${vehicle.model}',
                 price: vehicle.formattedPrice,
                 subtitle: '${vehicle.year} · ${vehicle.fuelType}',
+                isBookmarked: isBookmarked,
+                onBookmarkTap: () => ref
+                    .read(bookmarkProvider.notifier)
+                    .toggleBookmark(vehicle.id),
                 onTap: () => _navigateToVehicle(context, vehicle),
               );
             },
@@ -236,11 +246,19 @@ class HomePage extends ConsumerWidget {
         separatorBuilder: (_, __) => const SizedBox(height: AppSpacing.space3),
         itemBuilder: (context, index) {
           final vehicle = vehicles[index];
+          final isBookmarked = ref
+              .watch(bookmarkProvider)
+              .bookmarkedIds
+              .contains(vehicle.id);
           return card_widget.VehicleCard(
             variant: card_widget.VehicleCardVariant.list,
             name: '${vehicle.brand} ${vehicle.model}',
             price: vehicle.formattedPrice,
             subtitle: '${vehicle.year} · ${vehicle.fuelType}',
+            isBookmarked: isBookmarked,
+            onBookmarkTap: () => ref
+                .read(bookmarkProvider.notifier)
+                .toggleBookmark(vehicle.id),
             onTap: () => _navigateToVehicle(context, vehicle),
           );
         },
