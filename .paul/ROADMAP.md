@@ -2,165 +2,37 @@
 
 ## Overview
 
-수입차 AI 상담 및 Autocommerce 앱을 디자인 시스템 구축부터 시작하여, 공용 위젯 조립, GNB Shell, 각 화면 구현까지 Flutter MVP를 단계적으로 완성하는 여정. Phases 1-2는 `feat/flutter/design-system` 브랜치, Phases 3+는 개별 `feat/flutter/*` 브랜치.
+수입차 AI 상담 및 Autocommerce 앱. Flutter MVP UI 완성 후 Backend 통합 및 배포를 향한 여정.
 
 ## Current Milestone
-**v0.1 MVP Release** (v0.1.0)
-Status: Complete
-Phases: 9 of 9 complete
-Completed: 2026-04-02
 
-## Phases
+None active — run `/paul:discuss-milestone` or `/paul:milestone` to define next.
 
-| Phase | Name | Plans | Status | Completed |
-|-------|------|-------|--------|-----------|
-| 1 | Design Tokens | 1 | Complete | 2026-04-01 |
-| 2 | Common Widgets | 3 | Complete | 2026-04-01 |
-| 3 | App Shell & GNB | 1 | Complete | 2026-04-01 |
-| 4 | Onboarding | 1 | Complete | 2026-04-01 |
-| 5 | AI Chat | 2 | Complete | 2026-04-02 |
-| 6 | AI Card | 2 | Complete | 2026-04-02 |
-| 7 | Home & Test Drive | 1 | Complete | 2026-04-02 |
-| 8 | Domain Separation | 3 | Complete | 2026-04-02 |
-| 9 | My Page | 1 | Complete | 2026-04-02 |
+## Next Milestone
 
-## Phase Details
+Run `/paul:discuss-milestone` or `/paul:milestone` to define.
 
-### Phase 1: Design Tokens
-**Goal:** `lib/core/theme/` 에 모든 디자인 토큰 코드화 — AppColors, AppTypography, AppSpacing, AppElevation, AppShape, AppTheme
-**Depends on:** Nothing (first phase)
-**Research:** Unlikely (Figma 토큰 확정, PLANNING.md에 전부 정의됨)
+## Completed Milestones
 
-**Scope:**
-- 컬러 토큰 (시맨틱, 배경, 텍스트, 상태, GNB, 컴포넌트별)
-- 타이포그래피 토큰 (Pretendard, 9단계 타입 스케일)
-- 스페이싱 토큰 (4px 배수 체계)
-- Shape 토큰 (border radius, padding)
-- Elevation 토큰 (라이트 모드 3단계)
-- AppTheme — ThemeData 통합
+<details>
+<summary>v0.1 MVP Release — 2026-04-02 (9 phases, 15 plans, ~183min)</summary>
 
-**Plans:**
-- [x] 01-01: Design token files + AppTheme integration
+| Phase | Name | Plans | Completed |
+|-------|------|-------|-----------|
+| 1 | Design Tokens | 1 | 2026-04-01 |
+| 2 | Common Widgets | 3 | 2026-04-01 |
+| 3 | App Shell & GNB | 1 | 2026-04-01 |
+| 4 | Onboarding | 1 | 2026-04-01 |
+| 5 | AI Chat | 2 | 2026-04-02 |
+| 6 | AI Card | 2 | 2026-04-02 |
+| 7 | Home & Test Drive | 1 | 2026-04-02 |
+| 8 | Domain Separation | 3 | 2026-04-02 |
+| 9 | My Page | 1 | 2026-04-02 |
 
-### Phase 2: Common Widgets
-**Goal:** `presentation/widgets/` 에 Figma 컴포넌트 기반 공용 위젯 전부 작성
-**Depends on:** Phase 1 (토큰 사용)
-**Research:** Unlikely (Figma 컴포넌트 확정)
+Full archive: `.paul/milestones/v0.1.0-ROADMAP.md`
 
-**Scope:**
-- AiCarButton (sm/lg, solid/outline, hover/disabled)
-- AiCarInputField
-- AiCarChip (selected/default)
-- AiCarTabs
-- AiCarTabBar (GNB 4탭: 홈/시승찾기/챗봇/차고)
-- AiCarHeader
-- VehicleCard (List/Card)
-- BookmarkButton, MapPin
-
-**Plans:**
-- [x] 02-01: Core widgets (Button, InputField, Chip)
-- [x] 02-02: Navigation widgets (TabBar, Tabs, Header)
-- [x] 02-03: Content widgets (VehicleCard, BookmarkButton, MapPin)
-
-### Phase 3: App Shell & GNB
-**Goal:** GoRouter 설정 + GNB TabBar shell + 라우트 구조
-**Depends on:** Phase 2 (AiCarTabBar 위젯)
-**Research:** Unlikely (GoRouter 패턴 확립)
-
-**Scope:**
-- GoRouter configuration with auth guard
-- MainShell with GNB
-- Route definitions for all tabs
-
-**Plans:**
-- [x] 03-01: Router + MainShell + GNB integration
-
-### Phase 4: Onboarding
-**Goal:** Splash → 차량조회 온보딩(4단계) → Home + 차고/마이 auth guard
-**Depends on:** Phase 3 (라우트 구조)
-**Research:** Unlikely (공공API mock, 카카오 SDK 이미 설정)
-
-**Scope:**
-- Splash screen (앱 권한 획득)
-- 차량조회 온보딩 (차량번호→소유자명→공공API 결과→등록완료, 스킵 가능)
-- 차고/마이 auth guard (로그인→약관동의→복귀)
-- 마이페이지 (차고 헤더 톱니바퀴에서 push)
-
-**Plans:**
-- [x] 04-01: Splash + VehicleCheck + Auth guard + My Page
-
-### Phase 5: AI Chat
-**Goal:** 챗봇 탭 — AI 상담 UI + 키워드 매칭 MVP
-**Depends on:** Phase 3 (GNB Shell)
-**Research:** Likely (키워드 매칭 로직 설계)
-
-**Scope:**
-- Chat page with message list
-- Chat bubble, message input, quick action bar
-- Streaming text display
-- Chat provider (키워드 매칭 MVP)
-
-**Plans:**
-- [x] 05-01: Chat UI + 키워드 매칭 MVP (기존 위젯 재사용, ChatBubble 신규)
-- [x] 05-02: 상담 히스토리 목록 (헤더 버튼 → 과거 상담 리스트)
-
-### Phase 6: AI Card
-**Goal:** 카드형 차량 추천 UI
-**Depends on:** Phase 5 (챗봇에서 카드 추천 트리거)
-**Research:** Unlikely (Figma 카드 디자인 확정)
-
-**Scope:**
-- Card list page
-- Card front/back widgets
-- Card customize page
-- Radar chart widget
-
-**Plans:**
-- [x] 06-01: Card 엔티티 + 앞면 위젯 + 인라인 캐러셀 + 챗봇 연결
-- [x] 06-02: Card 뒷면 + Radar chart + Customize page
-
-### Phase 7: Home & Test Drive
-**Goal:** 홈 탭 (네이티브 목록 MVP) + 시승 탭 (WebView)
-**Depends on:** Phase 3 (GNB Shell)
-**Research:** Unlikely (WebView wrapper)
-
-**Scope:**
-- Home page with vehicle list (Go API 연동 준비)
-- Test drive page (WebView to brand showroom)
-
-**Plans:**
-- [x] 07-01: Home 차량 탐색 UI + TestDrive 브랜드 전시장 WebView
-
-### Phase 8: Domain Separation
-**Goal:** Vehicle/ConsultationCard 도메인 분리 — 엔티티·리포지토리·프로바이더 리팩토링
-**Depends on:** Phase 7 (홈/카드/차고 전체 코드 존재)
-**Research:** Unlikely (구조 리팩토링)
-
-**Scope:**
-- VehicleCard 엔티티 → Vehicle(차량 정보) + ConsultationCard(상담 추천) 분리
-- ICardRepository → IVehicleRepository + IBookmarkRepository + IGarageRepository 분리
-- Provider 분리: vehicleProvider, bookmarkProvider, consultationCardProvider, garageProvider
-- 홈 라우팅 수정: 차량 탭 → VehicleDetailPage (AI카드가 아닌 차량 상세)
-- 북마크 로직: bookmarkProvider.toggleBookmark() (가상차고와 독립)
-- go_api + supabase 양쪽 구현체 업데이트
-
-**Plans:**
-- [x] 08-01: Entity + Repository 분리 (Vehicle, Bookmark, Garage)
-- [x] 08-02: Provider 분리 + 홈 라우팅 + VehicleDetailPage + _extractQuery 수정
-- [x] 08-03: 차고 3탭 UI (가상차고 ConsultationCard 캐러셀 + 전시장 + 북마크 + 최근본)
-
-### Phase 9: My Page
-**Goal:** 마이페이지 콘텐츠
-**Depends on:** Phase 8 (도메인 분리 + 차고 완료)
-**Research:** Unlikely (프로필/설정 CRUD)
-**Note:** 차고 헤더 톱니바퀴에서 push 진입. GNB에 마이 탭 없음.
-
-**Scope:**
-- My page with profile and settings (현재 placeholder → 콘텐츠 구현)
-
-**Plans:**
-- [x] 09-01: MyPage 메인 + 회원정보 수정 + 약관 3종 + 라우팅
+</details>
 
 ---
 *Roadmap created: 2026-04-01*
-*Last updated: 2026-04-02*
+*Last updated: 2026-04-02 after v0.1 MVP Release*
