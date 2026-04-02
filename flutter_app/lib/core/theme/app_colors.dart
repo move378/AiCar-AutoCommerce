@@ -1,56 +1,41 @@
 import 'package:flutter/material.dart';
 
+/// AiCar 디자인 시스템 컬러 토큰
+/// Tailwind CSS v4 기반 — Slate + Emerald 팔레트
 abstract final class AppColors {
-  // Primary
-  static const Color primary = Color(0xFF1B1E28);
-  static const Color primaryLight = Color(0xFF2A2D3A);
-  static const Color accent = Color(0xFF4A6CF7);
-  static const Color accentLight = Color(0xFFEEF2FF);
+  // ── Semantic ──────────────────────────────────────
+  static const Color primary = Color(0xFF1E293B); // slate-800
+  static const Color secondary = Color(0xFF10B981); // emerald-500
+  static const Color secondaryHover = Color(0xFF059669); // emerald-600
 
-  // Background
-  static const Color background = Color(0xFFF7F7F9);
-  static const Color surface = Color(0xFFFFFFFF);
-  static const Color surfaceVariant = Color(0xFFF2F3F5);
-  static const Color card = Color(0xFFFFFFFF);
+  // ── Background ────────────────────────────────────
+  static const Color background = Color(0xFFFFFFFF); // white
+  static const Color surface = Color(0xFFF8FAFC); // slate-50
+  static const Color cardBackground = Color(0xFF64748B); // slate-500
 
-  // Text
-  static const Color textPrimary = Color(0xFF1B1E28);
-  static const Color textSecondary = Color(0xFF6B7280);
-  static const Color textTertiary = Color(0xFF9CA3AF);
-  static const Color textInverse = Color(0xFFFFFFFF);
+  // ── Text ──────────────────────────────────────────
+  static const Color textPrimary = Color(0xFF0F172A); // slate-900
+  static const Color textSecondary = Color(0xFF64748B); // slate-500
+  static const Color textTertiary = Color(0xFF94A3B8); // slate-400
+  static const Color textDisabled = Color(0xFFCBD5E1); // slate-300
+  static const Color textOnDark = Color(0xFFFFFFFF); // white
+  static const Color textAccent = Color(0xFF059669); // emerald-600
 
-  // UI Elements
-  static const Color border = Color(0xFFE5E7EB);
-  static const Color divider = Color(0xFFF3F4F6);
-  static const Color disabled = Color(0xFFD1D5DB);
+  // ── State ─────────────────────────────────────────
+  static const Color success = Color(0xFF10B981); // emerald-500
+  static const Color error = Color(0xFFEF4444); // red-500
+  static const Color warning = Color(0xFFF59E0B); // amber-500
+  static const Color info = Color(0xFF3B82F6); // blue-500
 
-  // Chat
-  static const Color userBubble = Color(0xFF4A6CF7);
-  static const Color aiBubble = Color(0xFFF2F3F5);
-  static const Color quickAction = Color(0xFFF2F3F5);
-  static const Color quickActionBorder = Color(0xFFE5E7EB);
+  // ── GNB ───────────────────────────────────────────
+  static const Color gnbBackground = Color(0xFFFFFFFF); // white
+  static const Color gnbActive = Color(0xFF0F172A); // slate-900
+  static const Color gnbInactive = Color(0xFF94A3B8); // slate-400
 
-  // Semantic
-  static const Color error = Color(0xFFEF4444);
-  static const Color success = Color(0xFF22C55E);
-  static const Color warning = Color(0xFFF59E0B);
-  static const Color info = Color(0xFF3B82F6);
-
-  // Tab bar
-  static const Color tabActive = Color(0xFF1B1E28);
-  static const Color tabInactive = Color(0xFF9CA3AF);
-
-  // Neutral
-  static const Color white = Color(0xFFFFFFFF);
-  static const Color black = Color(0xFF000000);
-  static const Color grey50 = Color(0xFFF9FAFB);
-  static const Color grey100 = Color(0xFFF3F4F6);
-  static const Color grey200 = Color(0xFFE5E7EB);
-  static const Color grey300 = Color(0xFFD1D5DB);
-  static const Color grey400 = Color(0xFF9CA3AF);
-  static const Color grey500 = Color(0xFF6B7280);
-  static const Color grey600 = Color(0xFF4B5563);
-  static const Color grey700 = Color(0xFF374151);
-  static const Color grey800 = Color(0xFF1F2937);
-  static const Color grey900 = Color(0xFF111827);
+  // ── Component ─────────────────────────────────────
+  static const Color buttonSolidDefault = Color(0xFF1E293B); // slate-800
+  static const Color buttonSolidDisabled = Color(0xFFF1F5F9); // slate-100
+  static const Color buttonOutlineDefault = Color(0xFFFFFFFF); // white
+  static const Color chipSelected = Color(0xFF334155); // slate-700
+  static const Color chipUnselected = Color(0xFFFFFFFF); // white
 }

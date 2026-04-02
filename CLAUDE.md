@@ -123,11 +123,15 @@ MCP server `figma-flutter` is configured for extracting components from Figma.
 
 | Screen | node-id |
 |--------|---------|
-| Chat UI (main) | 2304-753 |
-| Chat UI (variant 1) | 2304-817 |
-| Chat UI (variant 2) | 2304-870 |
+| Chat UI (welcome) | 2304-753 |
+| Chat UI (short conversation) | 2304-817 |
+| Chat UI (full conversation) | 2304-870 |
+| Chat UI (section) | 2306-1090 |
 | Vehicle Search | 2304-527 |
 | Virtual Garage | 2304-451 |
+| Garage UI | 2534-1101 |
+| My Page UI | 2450-1735 |
+| UI Overview (all screens) | 2306-1089 |
 
 Figma file ID: `o7szshz4qyL7DUEulcPNFq`
 

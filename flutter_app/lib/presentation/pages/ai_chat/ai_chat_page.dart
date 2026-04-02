@@ -1,218 +1,279 @@
-import 'package:aicar/constants/assets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+
 import 'package:aicar/core/theme/app_colors.dart';
+import 'package:aicar/core/theme/app_spacing.dart';
 import 'package:aicar/core/theme/app_typography.dart';
+import 'package:aicar/domain/entities/chat_message.dart';
 import 'package:aicar/presentation/pages/ai_chat/providers/chat_provider.dart';
 import 'package:aicar/presentation/pages/ai_chat/widgets/chat_bubble.dart';
-import 'package:aicar/presentation/pages/ai_chat/widgets/message_input.dart';
-import 'package:aicar/presentation/pages/ai_chat/widgets/quick_action_bar.dart';
-import 'package:flutter/material.dart';
+import 'package:aicar/presentation/pages/ai_chat/widgets/inline_card_carousel.dart';
+import 'package:aicar/presentation/widgets/buttons/aicar_button.dart';
+import 'package:aicar/presentation/widgets/chips/aicar_chip.dart';
+import 'package:aicar/presentation/router/route_names.dart';
+import 'package:aicar/presentation/widgets/headers/aicar_header.dart';
 
-class AiChatPage extends StatefulWidget {
+/// 챗봇 탭 — AI 상담 (키워드 매칭 MVP)
+class AiChatPage extends ConsumerStatefulWidget {
   const AiChatPage({super.key});
 
   @override
-  State<AiChatPage> createState() => _AiChatPageState();
+  ConsumerState<AiChatPage> createState() => _AiChatPageState();
 }
 
-class _AiChatPageState extends State<AiChatPage> {
-  final List<ChatMessage> _messages = [];
-  final ScrollController _scrollController = ScrollController();
-  bool _showQuickActions = true;
-  int _messageIdCounter = 0;
+class _AiChatPageState extends ConsumerState<AiChatPage> {
+  final _messageController = TextEditingController();
+  final _focusNode = FocusNode();
+  bool _hasText = false;
 
   @override
   void initState() {
     super.initState();
-    // Add initial AI welcome message
-    _messages.add(ChatMessage(
-      id: _nextId(),
-      role: MessageRole.assistant,
-      content: '안녕하세요! 어떤 차량을 찾고 계신가요? 😊',
-      timestamp: DateTime.now(),
-    ));
-  }
-
-  String _nextId() => 'msg_${_messageIdCounter++}';
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
-  void _scrollToBottom() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (_scrollController.hasClients) {
-        _scrollController.animateTo(
-          0,
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeOut,
-        );
+    _messageController.addListener(() {
+      final hasText = _messageController.text.trim().isNotEmpty;
+      if (hasText != _hasText) {
+        setState(() => _hasText = hasText);
       }
     });
   }
 
-  void _handleSendMessage(String text) {
-    // Add user message
-    setState(() {
-      _messages.insert(
-        0,
-        ChatMessage(
-          id: _nextId(),
-          role: MessageRole.user,
-          content: text,
-          timestamp: DateTime.now(),
-        ),
-      );
-      _showQuickActions = false;
-    });
-    _scrollToBottom();
+  @override
+  void dispose() {
+    _messageController.dispose();
+    _focusNode.dispose();
+    super.dispose();
+  }
 
-    // Show typing indicator
-    final typingId = _nextId();
-    Future.delayed(const Duration(milliseconds: 500), () {
-      if (!mounted) return;
-      setState(() {
-        _messages.insert(
-          0,
-          ChatMessage(
-            id: typingId,
-            role: MessageRole.assistant,
-            content: '',
-            timestamp: DateTime.now(),
-            isTyping: true,
-          ),
-        );
-      });
-      _scrollToBottom();
-    });
+  void _sendMessage([String? overrideText]) {
+    final text = overrideText ?? _messageController.text.trim();
+    if (text.isEmpty) return;
 
-    // First AI response
-    Future.delayed(const Duration(milliseconds: 1500), () {
-      if (!mounted) return;
-      setState(() {
-        final typingIndex =
-            _messages.indexWhere((m) => m.id == typingId);
-        if (typingIndex != -1) {
-          _messages[typingIndex] = ChatMessage(
-            id: typingId,
-            role: MessageRole.assistant,
-            content: '좋은 선택이에요! 조건에 맞는 차량을 찾아볼게요.',
-            timestamp: DateTime.now(),
-          );
-        }
-      });
-      _scrollToBottom();
-
-      // Show typing for recommendation
-      final recTypingId = _nextId();
-      Future.delayed(const Duration(milliseconds: 800), () {
-        if (!mounted) return;
-        setState(() {
-          _messages.insert(
-            0,
-            ChatMessage(
-              id: recTypingId,
-              role: MessageRole.assistant,
-              content: '',
-              timestamp: DateTime.now(),
-              isTyping: true,
-            ),
-          );
-        });
-        _scrollToBottom();
-      });
-
-      // Vehicle recommendation response
-      Future.delayed(const Duration(milliseconds: 2500), () {
-        if (!mounted) return;
-        setState(() {
-          final recTypingIndex =
-              _messages.indexWhere((m) => m.id == recTypingId);
-          if (recTypingIndex != -1) {
-            _messages[recTypingIndex] = ChatMessage(
-              id: recTypingId,
-              role: MessageRole.assistant,
-              content: '조건에 맞는 차량을 찾았어요! 아래 추천 차량을 확인해보세요.',
-              timestamp: DateTime.now(),
-              recommendations: const [
-                VehicleRecommendation(
-                  name: 'BMW X3',
-                  price: '4,850만원~',
-                  year: '2024년형',
-                  imageAsset: Assets.rectangle43568,
-                  specs: 'xDrive 20i',
-                ),
-                VehicleRecommendation(
-                  name: 'Mercedes-Benz GLC',
-                  price: '4,950만원~',
-                  year: '2024년형',
-                  imageAsset: Assets.rectangle43569,
-                  specs: 'GLC 200',
-                ),
-                VehicleRecommendation(
-                  name: 'Volvo XC60',
-                  price: '4,490만원~',
-                  year: '2024년형',
-                  imageAsset: Assets.rectangle43570,
-                  specs: 'B5 AWD',
-                ),
-              ],
-            );
-          }
-        });
-        _scrollToBottom();
-      });
-    });
+    ref.read(chatProvider.notifier).sendMessage(text);
+    _messageController.clear();
+    _focusNode.requestFocus();
   }
 
   @override
   Widget build(BuildContext context) {
+    final chatState = ref.watch(chatProvider);
+    final isEmpty = chatState.messages.isEmpty && !chatState.isStreaming;
+
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(
-        title: Text(
-          'AiCar',
-          style: AppTypography.h4.copyWith(color: AppColors.textPrimary),
-        ),
-        centerTitle: true,
-        elevation: 0,
-        scrolledUnderElevation: 0,
-        backgroundColor: AppColors.surface,
-      ),
       body: Column(
         children: [
-          // Messages list
-          Expanded(
-            child: ListView.builder(
-              controller: _scrollController,
-              reverse: true,
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              itemCount: _messages.length,
-              itemBuilder: (context, index) {
-                final message = _messages[index];
-                return ChatBubble(
-                  message: message,
-                  showStreaming: index == 0 &&
-                      message.role == MessageRole.assistant &&
-                      !message.isTyping,
-                );
-              },
-            ),
+          // 헤더
+          AiCarHeader(
+            title: 'AI 상담',
+            actions: [
+              // 히스토리 버튼
+              IconButton(
+                onPressed: () => context.pushNamed(RouteNames.chatHistory),
+                icon: const Icon(
+                  Icons.history_rounded,
+                  color: AppColors.textSecondary,
+                ),
+              ),
+              // 새 대화 시작 (기존 대화는 히스토리에 보존)
+              IconButton(
+                onPressed: () {
+                  ref.read(chatProvider.notifier).startNewSession();
+                },
+                icon: const Icon(
+                  Icons.refresh_rounded,
+                  color: AppColors.textSecondary,
+                ),
+              ),
+            ],
           ),
 
-          // Quick action bar (visible only at start)
-          if (_showQuickActions)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: QuickActionBar(
-                onTap: _handleSendMessage,
-              ),
-            ),
+          // 메시지 리스트 또는 빈 상태
+          Expanded(
+            child: isEmpty
+                ? _buildEmptyState()
+                : _buildMessageList(chatState),
+          ),
 
-          // Message input
-          MessageInput(onSubmitted: _handleSendMessage),
+          // 퀵 액션 (대화 시작 전에만)
+          if (isEmpty) _buildQuickActions(),
+
+          // 하단 입력바
+          _buildInputBar(chatState.isStreaming),
         ],
+      ),
+    );
+  }
+
+  Widget _buildEmptyState() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(
+            Icons.chat_bubble_outline_rounded,
+            size: 48,
+            color: AppColors.textTertiary,
+          ),
+          const SizedBox(height: AppSpacing.space3),
+          Text(
+            '무엇이든 물어보세요',
+            style: AppTypography.headingXl.copyWith(
+              color: AppColors.textSecondary,
+            ),
+          ),
+          const SizedBox(height: AppSpacing.space2),
+          Text(
+            '수입차 구매에 관한 모든 것을 도와드릴게요',
+            style: AppTypography.bodySm.copyWith(
+              color: AppColors.textTertiary,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMessageList(ChatState chatState) {
+    final messages = chatState.messages;
+    // 스트리밍 중이면 임시 메시지 추가
+    final hasStreamingMessage = chatState.isStreaming;
+    final totalCount = messages.length + (hasStreamingMessage ? 1 : 0);
+
+    return ListView.builder(
+      reverse: true,
+      padding: const EdgeInsets.symmetric(vertical: AppSpacing.space2),
+      itemCount: totalCount,
+      itemBuilder: (context, index) {
+        // reverse: true이므로 index 0이 최하단(최신)
+        final reversedIndex = totalCount - 1 - index;
+
+        // 스트리밍 메시지 (마지막 항목)
+        if (hasStreamingMessage && reversedIndex == totalCount - 1) {
+          final streamingMessage = ChatMessage(
+            id: 'streaming',
+            role: ChatRole.assistant,
+            content: chatState.streamingText,
+            createdAt: DateTime.now(),
+          );
+          return ChatBubble(
+            message: streamingMessage,
+            isStreaming: true,
+          );
+        }
+
+        final message = messages[reversedIndex];
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ChatBubble(message: message),
+            if (message.isAssistant && _isRecommendationResponse(message.content))
+              InlineCardCarousel(query: _extractQuery(message.content)),
+          ],
+        );
+      },
+    );
+  }
+
+  /// AI 응답이 차량 추천 내용인지 판별
+  bool _isRecommendationResponse(String content) {
+    return content.contains('추천해 드릴게요') ||
+        content.contains('추천해 드릴게요');
+  }
+
+  /// AI 응답에서 검색 쿼리 추출 (카드 필터링용)
+  String _extractQuery(String content) {
+    if (content.contains('SUV')) return 'SUV';
+    if (content.contains('세단')) return '세단';
+    if (content.contains('BMW')) return 'BMW';
+    if (content.contains('벤츠')) return '벤츠';
+    if (content.contains('아우디')) return '아우디';
+    if (content.contains('연비') || content.contains('하이브리드')) return '연비';
+    if (content.contains('가족')) return 'SUV';
+    return '';
+  }
+
+  Widget _buildQuickActions() {
+    const quickActions = [
+      '5000만원 이하 SUV 추천해줘',
+      '유지비 적게 드는 차 뭐야?',
+      '가족들과 주말에 나들이 갈 때 쓸 SUV가 필요해요',
+    ];
+
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.space4,
+        vertical: AppSpacing.space2,
+      ),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: quickActions.map((text) {
+            return Padding(
+              padding: const EdgeInsets.only(right: AppSpacing.space2),
+              child: AiCarChip(
+                label: text,
+                isSelected: false,
+                onTap: () => _sendMessage(text),
+              ),
+            );
+          }).toList(),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInputBar(bool isStreaming) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: AppColors.surface,
+        border: Border(
+          top: BorderSide(color: AppColors.textDisabled, width: 0.5),
+        ),
+      ),
+      child: SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.space4,
+            vertical: AppSpacing.space2,
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: _messageController,
+                  focusNode: _focusNode,
+                  enabled: !isStreaming,
+                  textInputAction: TextInputAction.send,
+                  onSubmitted: (_) => _sendMessage(),
+                  style: AppTypography.bodyMd.copyWith(
+                    color: AppColors.textPrimary,
+                  ),
+                  decoration: InputDecoration(
+                    hintText: '메시지를 입력하세요',
+                    hintStyle: AppTypography.bodyMd.copyWith(
+                      color: AppColors.textTertiary,
+                    ),
+                    border: InputBorder.none,
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.space3,
+                      vertical: AppSpacing.space2,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: AppSpacing.space2),
+              AiCarButton(
+                label: '',
+                onPressed: _hasText && !isStreaming ? _sendMessage : null,
+                size: AiCarButtonSize.sm,
+                style: AiCarButtonStyle.solid,
+                trailingIcon: Icons.send_rounded,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
