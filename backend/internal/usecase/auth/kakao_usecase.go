@@ -1,6 +1,8 @@
 package auth
 
 import (
+	"backend/internal/domain/entity"
+	"backend/internal/domain/repository"
 	"context"
 	"fmt"
 	"io"
@@ -11,20 +13,21 @@ import (
 )
 
 type KakaoUsecase interface {
-	KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAccessToken string) (*TokenResult, error)
-	//GoogleLogin(ctx context.Context, googleAccessToken string) (*TokenResult, error)
-	//AppleLogin(ctx context.Context, identityToken string) (*TokenResult, error)
+	KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAccessToken string) (*SocialTokenResult, error)
 }
 
 type kakaoUsecase struct {
-	social AuthSocialUsecase
+	user        UserUsecase
+	socialCache repository.SocialCacheRepository
 }
 
 func NewKakaoUsecase(
-	social AuthSocialUsecase,
+	user UserUsecase,
+	socialCache repository.SocialCacheRepository,
 ) KakaoUsecase {
 	return &kakaoUsecase{
-		social: social,
+		user:        user,
+		socialCache: socialCache,
 	}
 }
 
@@ -39,14 +42,21 @@ type KakaoUser struct {
 	} `json:"kakao_account"`
 }
 
-func (u *kakaoUsecase) KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAccessToken string) (*TokenResult, error) {
-	// 1. 카카오 API를 통해 사용자 정보 조회
-	// 2. 사용자 정보로 유저 생성 또는 조회
-	// 3. 토큰 발급 및 저장
-	// 4. 결과 반환
+func (u *kakaoUsecase) KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAccessToken string) (*SocialTokenResult, error) {
+	// cached, cachedErr := u.socialCache.FindByProviderToken(ctx, kakaoAccessToken)
+	// if cachedErr == nil && cached != nil {
+	// 	info := entity.SocialUserInfo{
+	// 		UserID:     userID,
+	// 		Provider:   "kakao",
+	// 		ProviderID: cached.ProviderID,
+	// 		Email:      cached.Email,
+	// 		Name:       cached.Name,
+	// 		ProfileURL: cached.ProfileURL,
+	// 	}
+	// 	return u.user.SocialLoginOrRegister(ctx, info)
+	// }
 
 	req, err := http.NewRequest("GET", "https://kapi.kakao.com/v2/user/me", nil)
-
 	if err != nil {
 		return nil, fmt.Errorf("요청 생성 실패: %w", err)
 	}
@@ -56,17 +66,27 @@ func (u *kakaoUsecase) KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAc
 	if err != nil {
 		return nil, fmt.Errorf("요청 실행 실패: %w", err)
 	}
-
 	defer resp.Body.Close()
 
-	body, _ := io.ReadAll(resp.Body)
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("카카오 API 오류 (status: %d)", resp.StatusCode)
+	}
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("응답 읽기 실패: %w", err)
+	}
+
 	user := &KakaoUser{}
-	err = json.Unmarshal(body, user)
+	if err = json.Unmarshal(body, user); err != nil {
+		return nil, fmt.Errorf("응답 파싱 실패: %w", err)
+	}
 
-	fmt.Println("unmarshal err:", err)
-	fmt.Println("body:", string(body))
+	if user.ID == 0 {
+		return nil, fmt.Errorf("카카오 유저 정보를 가져올 수 없습니다")
+	}
 
-	info := SocialUserInfo{
+	info := entity.SocialUserInfo{
 		UserID:     userID,
 		Provider:   "kakao",
 		ProviderID: fmt.Sprintf("%d", user.ID),
@@ -75,16 +95,14 @@ func (u *kakaoUsecase) KakaoLogin(ctx context.Context, userID uuid.UUID, kakaoAc
 		ProfileURL: &user.KakaoAccount.Profile.ProfileImage,
 	}
 
-	return u.social.SocialLoginOrRegister(ctx, info)
-}
+	// 캐시 저장
+	_ = u.socialCache.Create(ctx, kakaoAccessToken, &entity.SocialUserInfo{
+		Provider:   "kakao",
+		ProviderID: info.ProviderID,
+		Email:      info.Email,
+		Name:       info.Name,
+		ProfileURL: info.ProfileURL,
+	})
 
-// {
-//   "id": 12345678,
-//   "kakao_account": {
-//     "email": "test@kakao.com",
-//     "profile": {
-//       "nickname": "홍길동",
-//       "profile_image_url": "https://..."
-//     }
-//   }
-// }
+	return u.user.SocialLoginOrRegister(ctx, info)
+}

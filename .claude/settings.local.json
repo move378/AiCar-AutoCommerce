@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(go build:*)",
+      "Bash(ls *.py)",
+      "Bash(ls /Users/voler/Documents/DEV/AiCar-AutoCommerce/backend/migrations/00013*)",
+      "Bash(go mod:*)",
+      "Bash(go vet:*)",
+      "Bash(grep -E \"\\\\.go$\")",
+      "Bash(wc -l internal/domain/entity/*.go)",
+      "Bash(make docker-up:*)",
+      "Bash(make migrate-up:*)",
+      "Bash(go test:*)",
+      "Bash(cat /Users/avoler/Desktop/Private/Jung/AiCar-AutoCommerce/backoffice/src/app/\\\\\\(main\\\\\\)/consultations/[id]/page.tsx)",
+      "Bash(cat /Users/avoler/Desktop/Private/Jung/AiCar-AutoCommerce/backoffice/src/app/\\\\\\(main\\\\\\)/dashboard/page.tsx)",
+      "Bash(find /Users/avoler/Desktop/Private/Jung/AiCar-AutoCommerce/backoffice -name *.css -o -name globals.css)",
+      "Bash(find /Users/avoler/Desktop/Private/Jung/AiCar-AutoCommerce/backoffice -name tailwind.config* -o -name package.json)",
+      "Bash(grep -r \"SELECT\\\\|INSERT\\\\|UPDATE\" /Users/avoler/Desktop/Private/Jung/AiCar-AutoCommerce/backend/internal/infra/persistence/postgres/*.go)",
+      "Bash(find /Users/avoler/Desktop/Private/Jung/AiCar-AutoCommerce/backend -name *.env* -o -name .env)",
+      "Bash(grep -r \"SSRF\\\\|http\\\\.\" /Users/avoler/Desktop/Private/Jung/AiCar-AutoCommerce/backend/internal/usecase/auth/*.go)"
+    ]
+  }
+}

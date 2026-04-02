@@ -17,17 +17,23 @@ type User struct {
 	Name       *string    `gorm:"type:varchar(100)"`
 	Gender     *string    `gorm:"type:varchar(10)"`
 	Birth      *time.Time `gorm:"type:date"`
-	Location   *string    `gorm:"type:text"`
 	Email      *string    `gorm:"type:varchar(255);uniqueIndex"`
 	ProfileURL *string    `gorm:"type:text"`
 	Status     string     `gorm:"type:varchar(20);not null;default:'guest';check:status IN ('guest','registered','deleted')"`
+	Latitude   *float64   `gorm:"column:latitude;type:decimal(10,8)" json:"latitude,omitempty"`
+	Longitude  *float64   `gorm:"column:longitude;type:decimal(11,8)" json:"longitude,omitempty"`
 	CreatedAt  time.Time  `gorm:"autoCreateTime"`
 	UpdatedAt  time.Time  `gorm:"autoUpdateTime"`
 	DeletedAt  *time.Time `gorm:"index"`
 
-	AuthProviders []UserAuthProvider `gorm:"foreignKey:UserID"`
+	AuthProviders []SocialProvider `gorm:"foreignKey:UserID"`
 }
-type UserAuthProvider struct {
+
+func (SocialProvider) TableName() string {
+	return "user_auth_providers"
+}
+
+type SocialProvider struct {
 	ID         uuid.UUID `gorm:"type:uuid;default:gen_random_uuid();primaryKey"`
 	UserID     uuid.UUID `gorm:"type:uuid;not null;index"`
 	Provider   string    `gorm:"type:varchar(20);not null"` // kakao, google, apple, phone
@@ -35,6 +41,22 @@ type UserAuthProvider struct {
 	CreatedAt  time.Time `gorm:"autoCreateTime"`
 
 	User User `gorm:"foreignKey:UserID"`
+}
+
+type SocialProviderCache struct {
+	ProviderID string
+	Email      *string
+	Name       *string
+	ProfileURL *string
+}
+
+type SocialUserInfo struct {
+	UserID     uuid.UUID
+	Provider   string
+	ProviderID string
+	Email      *string
+	Name       *string
+	ProfileURL *string
 }
 
 // Device: 'devices' 테이블 (00012_create_devices.sql 기준)

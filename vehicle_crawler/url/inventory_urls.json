@@ -1,0 +1,401 @@
+[
+    {
+        "name": "A 220",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "190 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/W177_0584717041_KR_2154786"
+    },
+    {
+        "name": "CLA 250 4MATIC AMG Line Coupé",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "224 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/C118_0584736906_KR_2240565"
+    },
+    {
+        "name": "C 200 AVANTGARDE",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "204 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/W206_0584755713_KR_2320512"
+    },
+    {
+        "name": "C 200 AMG Line",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "204 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/W206_0584755017_KR_2314356"
+    },
+    {
+        "name": "GLA 250 4MATIC AMG Line",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "224 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/H247_0584706524_KR_2150148"
+    },
+    {
+        "name": "EQA 250 Progressive",
+        "fuel_type": "전기",
+        "transmission": "",
+        "power": "190 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/H243_0584724394_KR_2189076"
+    },
+    {
+        "name": "GLB 250 4MATIC",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "224 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/X247_0584724865_KR_2202010"
+    },
+    {
+        "name": "CLE 200 Coupé",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "204 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/C236_0584751190_KR_2297779"
+    },
+    {
+        "name": "EQA 250 AMG Line",
+        "fuel_type": "전기",
+        "transmission": "",
+        "power": "190 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/H243_0584724320_KR_2189137"
+    },
+    {
+        "name": "E 200 AVANTGARDE",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "204 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/W214_0584760832_KR_2346059"
+    },
+    {
+        "name": "Mercedes-AMG GLB 35 4MATIC",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "306 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/X247_0584724833_KR_2201997"
+    },
+    {
+        "name": "EQB 300 4MATIC Progressive",
+        "fuel_type": "전기",
+        "transmission": "",
+        "power": "228 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/X243_0584749531_KR_2288037"
+    },
+    {
+        "name": "E 200 AMG Line",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "204 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/W214_0584758386_KR_2327585"
+    },
+    {
+        "name": "CLE 200 Cabriolet",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "204 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/A236_0484756163_KR_1957369"
+    },
+    {
+        "name": "GLC 220 d 4MATIC",
+        "fuel_type": "하이브리드(경유+전기)",
+        "transmission": "자동",
+        "power": "197 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/X254_0584751934_KR_2300372"
+    },
+    {
+        "name": "Mercedes-AMG A 45 S 4MATIC+",
+        "fuel_type": "휘발유",
+        "transmission": "자동",
+        "power": "421 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/W177_0584740167_KR_2247043"
+    },
+    {
+        "name": "GLC 300 4MATIC AVANTGARDE",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "258 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/X254_0584759543_KR_2341163"
+    },
+    {
+        "name": "EQB 300 4MATIC AMG Line",
+        "fuel_type": "전기",
+        "transmission": "",
+        "power": "228 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/X243_0584748953_KR_2286884"
+    },
+    {
+        "name": "GLC 300 4MATIC Coupé AVANTGARDE",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "258 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/C254_0584766288_KR_2357681"
+    },
+    {
+        "name": "E 220 d 4MATIC EXCLUSIVE",
+        "fuel_type": "하이브리드(경유+전기)",
+        "transmission": "자동",
+        "power": "197 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/W214_0584752951_KR_2301237"
+    },
+    {
+        "name": "Mercedes-AMG CLA 45 S 4MATIC+ Coupé",
+        "fuel_type": "휘발유",
+        "transmission": "자동",
+        "power": "421 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/C118_0584724418_KR_2189019"
+    },
+    {
+        "name": "GLC 300 4MATIC AMG Line",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "258 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/X254_0584754413_KR_2303402"
+    },
+    {
+        "name": "E 300 4MATIC EXCLUSIVE",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "258 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/W214_0584757726_KR_2326876"
+    },
+    {
+        "name": "E 300 4MATIC AMG Line",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "258 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/W214_0584736506_KR_2237683"
+    },
+    {
+        "name": "CLE 450 4MATIC Coupé",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "381 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/C236_0484778323_KR_2044963"
+    },
+    {
+        "name": "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "204 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/W214_0584757465_KR_2326835"
+    },
+    {
+        "name": "CLE 450 4MATIC Cabriolet",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "381 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/A236_0584705052_KR_2083007"
+    },
+    {
+        "name": "Mercedes-AMG GLC 43 4MATIC",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "421 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/X254_0584742067_KR_2254910"
+    },
+    {
+        "name": "EQE 350+ SUV",
+        "fuel_type": "전기",
+        "transmission": "",
+        "power": "320 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/X294_0584731012_KR_2222686"
+    },
+    {
+        "name": "EQE 350+",
+        "fuel_type": "전기",
+        "transmission": "",
+        "power": "320 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/V295_0584740066_KR_2246915"
+    },
+    {
+        "name": "Mercedes-AMG CLE 53 4MATIC+ Cabriolet",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "449 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/A236_0584760014_KR_2344134"
+    },
+    {
+        "name": "E 450 4MATIC AMG Line",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "381 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/W214_0584727903_KR_2211060"
+    },
+    {
+        "name": "GLE 350 4MATIC",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "258 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/V167_0584750795_KR_2290957"
+    },
+    {
+        "name": "GLE 300 d 4MATIC",
+        "fuel_type": "하이브리드(경유+전기)",
+        "transmission": "자동",
+        "power": "269 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/V167_0584749958_KR_2290009"
+    },
+    {
+        "name": "E 450 4MATIC EXCLUSIVE",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "381 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/W214_0584713667_KR_2111882"
+    },
+    {
+        "name": "GLE 450 4MATIC",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "381 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/V167_0584731734_KR_2227171"
+    },
+    {
+        "name": "GLE 450 d 4MATIC Coupé AMG Line",
+        "fuel_type": "하이브리드(경유+전기)",
+        "transmission": "자동",
+        "power": "367 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/C167_0584731839_KR_2227386"
+    },
+    {
+        "name": "Mercedes-AMG CLE 53 4MATIC+ Cabriolet Li",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "449 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/A236_0584728611_KR_2211890"
+    },
+    {
+        "name": "GLE 450 4MATIC AMG Line",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "381 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/V167_0584748299_KR_2283806"
+    },
+    {
+        "name": "EQE 500 4MATIC SUV",
+        "fuel_type": "전기",
+        "transmission": "",
+        "power": "449 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/X294_0584754237_KR_2302899"
+    },
+    {
+        "name": "GLE 450 4MATIC Coupé AMG Line",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "381 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/C167_0584732359_KR_2229008"
+    },
+    {
+        "name": "GLE 450 4MATIC Coupé",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "381 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/C167_0584710536_KR_2108278"
+    },
+    {
+        "name": "Mercedes-AMG E 53 Hybrid 4MATIC+",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "449 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/W214_0584738658_KR_2242831"
+    },
+    {
+        "name": "Mercedes-AMG SL 43",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "421 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/R232_0484751502_KR_1945588"
+    },
+    {
+        "name": "Mercedes-AMG GT 43 4MATIC+",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "367 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/X290_0484738688_KR_1912762"
+    },
+    {
+        "name": "Mercedes-AMG GLE 53 4MATIC+",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "435 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/V167_0584750234_KR_2290328"
+    },
+    {
+        "name": "Mercedes-AMG GLE 53 4MATIC+ Coupé",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "435 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/C167_0584741133_KR_2248724"
+    },
+    {
+        "name": "S 450 4MATIC Sedan long",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "381 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/W-V223_0584747459_KR_2282608"
+    },
+    {
+        "name": "S 500 4MATIC Sedan long",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "449 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/W-V223_0584725450_KR_2205089"
+    },
+    {
+        "name": "S 580 4MATIC Sedan long",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "503 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/W-V223_0584725493_KR_2205123"
+    },
+    {
+        "name": "Mercedes-AMG GT 63 S E PERFORMANCE",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "612 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/C192_0584705146_KR_2121761"
+    },
+    {
+        "name": "Mercedes-Maybach GLS 600",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "557 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/X167_0484777954_KR_1993422"
+    },
+    {
+        "name": "Mercedes-AMG S 63 E Performance",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "612 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/W-V223_0584725008_KR_2205115"
+    },
+    {
+        "name": "Mercedes-Maybach S 580 4MATIC",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "503 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/Z223_0584731638_KR_2227029"
+    },
+    {
+        "name": "Mercedes-Maybach GLS 600 MANUFAKTUR",
+        "fuel_type": "하이브리드(휘발유+전기)",
+        "transmission": "자동",
+        "power": "557 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/X167_0584733980_KR_2233789"
+    },
+    {
+        "name": "Mercedes-Maybach SL 680 Monogram Series",
+        "fuel_type": "휘발유",
+        "transmission": "자동",
+        "power": "585 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/Z232_0584736762_KR_2240378"
+    },
+    {
+        "name": "Mercedes-Maybach S 680 4MATIC",
+        "fuel_type": "휘발유",
+        "transmission": "자동",
+        "power": "630 ps",
+        "url": "https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/Z223_0584718408_KR_2173770"
+    }
+]

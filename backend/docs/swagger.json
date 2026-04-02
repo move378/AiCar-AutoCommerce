@@ -29,7 +29,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/dto.MarketingConsentRequest"
+                            "$ref": "#/definitions/backend_internal_adapter_handler_app_dto.MarketingConsentRequest"
                         }
                     }
                 ],
@@ -37,19 +37,226 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/dto.MarketingConsentResponse"
+                            "$ref": "#/definitions/backend_internal_adapter_handler_app_dto.MarketingConsentResponse"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/dto.MarketingConsentResponse"
+                            "$ref": "#/definitions/backend_internal_adapter_handler_app_dto.MarketingConsentResponse"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/dto.MarketingConsentResponse"
+                            "$ref": "#/definitions/backend_internal_adapter_handler_app_dto.MarketingConsentResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/apple-login": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "애플 ID 토큰으로 소셜 로그인",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "auth"
+                ],
+                "summary": "애플 로그인",
+                "parameters": [
+                    {
+                        "description": "애플 로그인 요청",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend_internal_adapter_handler_app_dto.AppleLoginRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "애플 로그인 성공",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/backend_internal_shared_response.APIResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/backend_internal_adapter_handler_app_dto.SocialTokenResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "잘못된 요청",
+                        "schema": {
+                            "$ref": "#/definitions/backend_internal_shared_response.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "유효하지 않은 토큰",
+                        "schema": {
+                            "$ref": "#/definitions/backend_internal_shared_response.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "서버 오류",
+                        "schema": {
+                            "$ref": "#/definitions/backend_internal_shared_response.APIResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/google-login": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "구글 ID 토큰으로 소셜 로그인",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "auth"
+                ],
+                "summary": "구글 로그인",
+                "parameters": [
+                    {
+                        "description": "구글 로그인 요청",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend_internal_adapter_handler_app_dto.SocialLoginRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "구글 로그인 성공",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/backend_internal_shared_response.APIResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/backend_internal_adapter_handler_app_dto.SocialTokenResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "잘못된 요청",
+                        "schema": {
+                            "$ref": "#/definitions/backend_internal_shared_response.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "유효하지 않은 토큰",
+                        "schema": {
+                            "$ref": "#/definitions/backend_internal_shared_response.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "서버 오류",
+                        "schema": {
+                            "$ref": "#/definitions/backend_internal_shared_response.APIResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/kakao-login": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "카카오 액세스 토큰으로 소셜 로그인",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "auth"
+                ],
+                "summary": "카카오 로그인",
+                "parameters": [
+                    {
+                        "description": "카카오 로그인 요청",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend_internal_adapter_handler_app_dto.SocialLoginRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "카카오 로그인 성공",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/backend_internal_shared_response.APIResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/backend_internal_adapter_handler_app_dto.SocialTokenResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "잘못된 요청",
+                        "schema": {
+                            "$ref": "#/definitions/backend_internal_shared_response.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "유효하지 않은 토큰",
+                        "schema": {
+                            "$ref": "#/definitions/backend_internal_shared_response.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "서버 오류",
+                        "schema": {
+                            "$ref": "#/definitions/backend_internal_shared_response.APIResponse"
                         }
                     }
                 }
@@ -57,11 +264,6 @@
         },
         "/auth/onboard": {
             "post": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
                 "description": "디바이스 등록 + 유저 생성 + 토큰 발급",
                 "consumes": [
                     "application/json"
@@ -80,7 +282,345 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/dto.OnboardingRequest"
+                            "$ref": "#/definitions/backend_internal_adapter_handler_app_dto.OnboardingRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "온보딩 성공",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/backend_internal_shared_response.APIResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/backend_internal_adapter_handler_app_dto.OnboardingResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "잘못된 요청",
+                        "schema": {
+                            "$ref": "#/definitions/backend_internal_shared_response.APIResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "이미 등록된 디바이스",
+                        "schema": {
+                            "$ref": "#/definitions/backend_internal_shared_response.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "서버 오류",
+                        "schema": {
+                            "$ref": "#/definitions/backend_internal_shared_response.APIResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/refresh": {
+            "post": {
+                "description": "리프레시 토큰으로 새 액세스/리프레시 토큰 발급",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "auth"
+                ],
+                "summary": "토큰 갱신",
+                "parameters": [
+                    {
+                        "description": "토큰 갱신 요청",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend_internal_adapter_handler_app_dto.RefreshRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "토큰 갱신 성공",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/backend_internal_shared_response.APIResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/backend_internal_adapter_handler_app_dto.TokenResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "잘못된 요청",
+                        "schema": {
+                            "$ref": "#/definitions/backend_internal_shared_response.APIResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "유효하지 않은 토큰",
+                        "schema": {
+                            "$ref": "#/definitions/backend_internal_shared_response.APIResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "서버 오류",
+                        "schema": {
+                            "$ref": "#/definitions/backend_internal_shared_response.APIResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/brands": {
+            "get": {
+                "description": "브랜드 목록을 조회합니다.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "brands"
+                ],
+                "summary": "브랜드 목록 조회",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
+        "/cars": {
+            "get": {
+                "description": "키워드, 브랜드, 연료 타입, 가격 범위, 연도 범위로 차량을 검색합니다.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "cars"
+                ],
+                "summary": "차량 검색/목록 조회",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "검색어 (브랜드명, 모델명, 트림명)",
+                        "name": "q",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "페이지 번호 (기본값: 1)",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "페이지 크기 (기본값: 10)",
+                        "name": "size",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "브랜드 ID",
+                        "name": "brand_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "연료 타입",
+                        "name": "fuel_type",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "최소 가격",
+                        "name": "min_price",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "최대 가격",
+                        "name": "max_price",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "최소 연도",
+                        "name": "min_year",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "최대 연도",
+                        "name": "max_year",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "정렬 (price_asc, price_desc, year_asc, year_desc, created_at_asc, created_at_desc)",
+                        "name": "sort",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
+        "/cars/{id}": {
+            "get": {
+                "description": "차량 ID로 상세 정보를 조회합니다.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "cars"
+                ],
+                "summary": "차량 상세 조회",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "차량 ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
+        "/cars/{id}/images": {
+            "get": {
+                "description": "차량 ID로 이미지 목록을 조회합니다.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "cars"
+                ],
+                "summary": "차량 이미지 조회",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "차량 ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
+        "/chat/messages/{id}/feedback": {
+            "patch": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "chat"
+                ],
+                "summary": "메시지 피드백 등록",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "메시지 ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "피드백",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/internal_adapter_handler_chat.feedbackRequest"
                         }
                     }
                 ],
@@ -88,19 +628,353 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/dto.OnboardingResponse"
+                            "type": "object",
+                            "additionalProperties": true
                         }
                     },
-                    "409": {
-                        "description": "이미 등록된 디바이스",
+                    "400": {
+                        "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/response.APIResponse"
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
+        "/chat/sessions": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "chat"
+                ],
+                "summary": "내 채팅 세션 목록",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "chat"
+                ],
+                "summary": "채팅 세션 생성",
+                "parameters": [
+                    {
+                        "description": "세션 제목 (선택)",
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/internal_adapter_handler_chat.createSessionRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
+        "/chat/sessions/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "chat"
+                ],
+                "summary": "채팅 세션 삭제",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "세션 ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
+        "/chat/sessions/{id}/messages": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "chat"
+                ],
+                "summary": "세션 메시지 목록",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "세션 ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "chat"
+                ],
+                "summary": "메시지 저장",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "세션 ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "메시지",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/internal_adapter_handler_chat.createMessageRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
+        "/vehicles": {
+            "get": {
+                "description": "검색어(브랜드명·한국어 별칭·모델명·트림명)로 차량을 검색합니다. 예: \"벤츠\", \"E 200\"",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "vehicles"
+                ],
+                "summary": "차량 검색",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "검색어 (예: 벤츠, E 200, GLE 450)",
+                        "name": "q",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "페이지 번호 (기본 1)",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "페이지 크기 (기본 10)",
+                        "name": "size",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
                         }
                     },
                     "500": {
-                        "description": "서버 오류",
+                        "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/response.APIResponse"
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
+        "/vehicles/brands": {
+            "get": {
+                "description": "vehicles_brands 기준 브랜드 목록을 반환합니다.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "vehicles"
+                ],
+                "summary": "차량 브랜드 목록",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
+        "/vehicles/{id}": {
+            "get": {
+                "description": "트림 ID로 상세 스펙을 조회합니다.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "vehicles"
+                ],
+                "summary": "차량 트림 상세 조회",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "트림 ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
                         }
                     }
                 }
@@ -173,7 +1047,23 @@
         }
     },
     "definitions": {
-        "dto.MarketingConsentRequest": {
+        "backend_internal_adapter_handler_app_dto.AppleLoginRequest": {
+            "type": "object",
+            "required": [
+                "identity_token"
+            ],
+            "properties": {
+                "identity_token": {
+                    "type": "string",
+                    "example": "ya29.a0AfH6SMBx..."
+                },
+                "user_name": {
+                    "type": "string",
+                    "example": "홍길동"
+                }
+            }
+        },
+        "backend_internal_adapter_handler_app_dto.MarketingConsentRequest": {
             "type": "object",
             "required": [
                 "device_id"
@@ -187,7 +1077,7 @@
                 }
             }
         },
-        "dto.MarketingConsentResponse": {
+        "backend_internal_adapter_handler_app_dto.MarketingConsentResponse": {
             "type": "object",
             "properties": {
                 "message": {
@@ -198,7 +1088,7 @@
                 }
             }
         },
-        "dto.OnboardingRequest": {
+        "backend_internal_adapter_handler_app_dto.OnboardingRequest": {
             "type": "object",
             "required": [
                 "device_id",
@@ -206,37 +1096,111 @@
             ],
             "properties": {
                 "device_id": {
-                    "description": "필수값",
-                    "type": "string"
+                    "type": "string",
+                    "example": "ANDROID-DEVICE-789"
                 },
                 "device_type": {
-                    "description": "필수값 (ios, android)",
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                        "ios",
+                        "android"
+                    ],
+                    "example": "android"
+                },
+                "latitude": {
+                    "type": "number",
+                    "example": 37.5665
+                },
+                "longitude": {
+                    "type": "number",
+                    "example": 126.978
                 },
                 "model_name": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Galaxy S24"
                 },
                 "os_version": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "14.0"
                 }
             }
         },
-        "dto.OnboardingResponse": {
+        "backend_internal_adapter_handler_app_dto.OnboardingResponse": {
             "type": "object",
             "properties": {
                 "access_token": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
                 },
                 "refresh_token": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
                 }
             }
         },
-        "response.APIResponse": {
+        "backend_internal_adapter_handler_app_dto.RefreshRequest": {
+            "type": "object",
+            "required": [
+                "refresh_token"
+            ],
+            "properties": {
+                "refresh_token": {
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                }
+            }
+        },
+        "backend_internal_adapter_handler_app_dto.SocialLoginRequest": {
+            "type": "object",
+            "required": [
+                "provider_token"
+            ],
+            "properties": {
+                "provider_token": {
+                    "type": "string",
+                    "example": "ya29.a0AfH6SMBx..."
+                }
+            }
+        },
+        "backend_internal_adapter_handler_app_dto.SocialTokenResponse": {
             "type": "object",
             "properties": {
+                "access_token": {
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                },
+                "is_new_user": {
+                    "type": "boolean",
+                    "example": true
+                },
+                "refresh_token": {
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                }
+            }
+        },
+        "backend_internal_adapter_handler_app_dto.TokenResponse": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                },
+                "refresh_token": {
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                }
+            }
+        },
+        "backend_internal_shared_response.APIResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "애플리케이션 레벨의 상태 코드 (예: \"SUCCESS\", \"ERROR\", \"VALIDATION_ERROR\" 등)",
+                    "type": "string"
+                },
                 "data": {
-                    "description": "없으면 null 출력"
+                    "description": "데이터 없으면 null 출력"
                 },
                 "message": {
                     "description": "에러일 때만 보이고, 성공 시(비어있을 때) 아예 숨김",
@@ -247,6 +1211,50 @@
                     "type": "integer"
                 }
             }
+        },
+        "internal_adapter_handler_chat.createMessageRequest": {
+            "type": "object",
+            "required": [
+                "content",
+                "role"
+            ],
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                }
+            }
+        },
+        "internal_adapter_handler_chat.createSessionRequest": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "internal_adapter_handler_chat.feedbackRequest": {
+            "type": "object",
+            "required": [
+                "feedback"
+            ],
+            "properties": {
+                "feedback": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
     }
 }

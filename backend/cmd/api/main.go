@@ -5,31 +5,34 @@ import (
 	"backend/internal/config"
 	"backend/internal/container"
 	"backend/internal/infra/persistence/postgres"
-	usecase "backend/internal/usecase/auth"
+	"backend/internal/infra/persistence/redis"
 	"fmt"
 	"log"
 	"os"
 )
-
-type CaseContainer struct {
-	AuthUsecase usecase.AuthUsecase
-}
 
 // @title           AICar API
 // @version         1.0
 // @description     AICar AutoCommerce API
 // @host            localhost:8080
 // @BasePath        /api/v1
+// @securityDefinitions.apikey BearerAuth
+// @in header
+// @name Authorization
 func main() {
 	cfg := config.LoadConfig()
 
 	db, dbErr := postgres.NewDB(cfg)
+	rdb, rdbErr := redis.NewRedis(cfg)
 
 	if dbErr != nil {
 		log.Fatalf("❌ DB 연결 실패: %v", dbErr)
 	}
+	if rdbErr != nil {
+		log.Fatalf("❌ Redis 연결 실패: %v", rdbErr)
+	}
 
-	container := container.NewContainer(db)
+	container := container.NewContainer(db, rdb)
 
 	port := os.Getenv("PORT")
 	if port == "" {
