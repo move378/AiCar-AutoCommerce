@@ -15,6 +15,7 @@ import 'package:aicar/presentation/pages/my/my_page.dart';
 import 'package:aicar/presentation/pages/onboarding/vehicle_check_page.dart';
 import 'package:aicar/presentation/pages/splash/splash_page.dart';
 import 'package:aicar/presentation/pages/test_drive/test_drive_page.dart';
+import 'package:aicar/presentation/pages/test_drive/test_drive_webview_page.dart';
 import 'package:aicar/presentation/router/route_names.dart';
 import 'package:aicar/presentation/shell/main_shell.dart';
 
@@ -96,6 +97,19 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                 path: '/test-drive',
                 name: RouteNames.testDrive,
                 builder: (context, state) => const TestDrivePage(),
+                routes: [
+                  GoRoute(
+                    path: 'webview',
+                    name: RouteNames.testDriveWebview,
+                    builder: (context, state) {
+                      final extra = state.extra! as Map<String, String>;
+                      return TestDriveWebViewPage(
+                        brandName: extra['name']!,
+                        url: extra['url']!,
+                      );
+                    },
+                  ),
+                ],
               ),
             ],
           ),

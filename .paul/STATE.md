@@ -5,19 +5,19 @@
 See: .paul/PROJECT.md (updated 2026-04-02)
 
 **Core value:** 수입차 구매 과정의 정보 비대칭을 해소하는 AI 컨시어지 앱.
-**Current focus:** v0.1 MVP — Phase 6: AI Card
+**Current focus:** v0.1 MVP — Phase 7: Home & Test Drive
 
 ## Current Position
 
 Milestone: v0.1 MVP Release
-Phase: 6 of 8 (AI Card)
-Plan: 06-02 complete (loop closed)
-Status: Phase 6 완료 — 06-01 + 06-02 모두 완료
-Last activity: 2026-04-02 — Phase 6 완료 (2/2 plans done)
+Phase: 7 of 8 (Home & Test Drive)
+Plan: 07-01 complete (loop closed)
+Status: Phase 7 완료 — 07-01 완료
+Last activity: 2026-04-02 — Phase 7 완료 (1/1 plans done)
 
 Progress:
-- Milestone: [███████░░░] 75%
-- Phase 6: [██████████] 100%
+- Milestone: [████████░░] 87%
+- Phase 7: [██████████] 100%
 
 ## Loop Position
 
@@ -30,9 +30,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 10
-- Average duration: ~10min
-- Total execution time: ~103min
+- Total plans completed: 11
+- Average duration: ~11min
+- Total execution time: ~118min
 
 **By Phase:**
 
@@ -44,6 +44,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 04-onboarding | 1/1 | ~12min | ~12min |
 | 05-ai-chat | 2/2 | ~25min | ~12min |
 | 06-ai-card | 2/2 | ~22min | ~11min |
+| 07-home-test-drive | 1/1 | ~15min | ~15min |
 
 ## Accumulated Context
 
@@ -57,6 +58,8 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - ChatMessage freezed 엔티티 + 듀얼 Repository (go_api + supabase 스텁) — Phase 5
 - 카드 추천을 별도 페이지가 아닌 채팅 내 인라인 캐러셀로 표시 (UX 단계 축소) — Phase 6
 - 히스토리 상세에서도 인라인 카드 동일 패턴 적용 — Phase 6
+- 시승찾기 WebView 임베드 (url_launcher 대신) — Phase 7
+- 시승찾기 브랜드 7개 (BMW, Benz, Genesis, Tesla, Audi, Lexus, Volvo) — Phase 7
 
 ### Deferred Issues
 None.
@@ -67,10 +70,10 @@ None.
 ## Session Continuity
 
 Last session: 2026-04-02
-Stopped at: Phase 6 완료 (06-01 + 06-02 loop closed)
-Next action: 커밋+PR → Phase 7 (Home & Test Drive)
-Resume file: .paul/phases/06-ai-card/06-02-SUMMARY.md
-Branch: feat/flutter/screen-card
+Stopped at: Phase 7 완료 (loop closed)
+Next action: 커밋 + PR → Phase 8 (Garage & My Page) 시작
+Resume file: .paul/phases/07-home-test-drive/07-01-SUMMARY.md
+Branch: feat/flutter/screen-home-testdrive
 
 ---
 *STATE.md — Updated after every significant action*

@@ -7,6 +7,9 @@ abstract final class RouteNames {
   static const String garage = 'garage';
   static const String my = 'my';
 
+  // ── Test Drive (Phase 7) ───────��──────────────
+  static const String testDriveWebview = 'test-drive-webview';
+
   // ── Chat (Phase 5) ────────────────────────────
   static const String chatHistory = 'chat-history';
 
