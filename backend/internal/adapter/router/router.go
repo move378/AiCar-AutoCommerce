@@ -28,6 +28,7 @@ func SetupRouter(c *container.Container) *gin.Engine {
 	myCarHandler := mycarhandler.NewHandler(c.MyCarUsecase)
 	vehicleHandler := vehiclehandler.NewHandler(c.VehicleUsecase)
 	chatHandler := chathandler.NewHandler(c.ChatUsecase)
+	estimateHandler := app.NewEstimateHandler(c.EstimateUsecase)
 
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
@@ -86,6 +87,14 @@ func SetupRouter(c *container.Container) *gin.Engine {
 			privateUser.POST("/logout", authHandler.Logout)
 			privateUser.GET("/me", authHandler.GetProfile)
 			privateUser.DELETE("/me", authHandler.DeleteAccount)
+		}
+
+		// Private Estimates
+		privateEstimate := private.Group("/estimates")
+		{
+			privateEstimate.POST("", estimateHandler.Create)
+			privateEstimate.GET("", estimateHandler.List)
+			privateEstimate.GET("/:id", estimateHandler.GetByID)
 		}
 
 		// Private Chat

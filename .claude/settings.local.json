@@ -8,7 +8,9 @@
       "Bash(go vet:*)",
       "Bash(grep -E \"\\\\.go$\")",
       "Bash(wc -l internal/domain/entity/*.go)",
-      "Bash(dart analyze:*)"
+      "Bash(make docker-up:*)",
+      "Bash(make migrate-up:*)",
+      "Bash(go test:*)"
     ]
   }
 }
