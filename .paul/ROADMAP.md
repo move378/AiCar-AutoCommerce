@@ -2,12 +2,12 @@
 
 ## Overview
 
-수입차 AI 상담 및 Autocommerce 앱을 디자인 시스템 구축부터 시작하여, 공용 위젯 조립, GNB Shell, 각 화면 구현까지 Flutter MVP를 단계적으로 완성하는 여정. Phases 1-2는 `feat/flutter/design-system` 브랜치, Phases 3-8은 개별 `feat/flutter/screen-*` 브랜치.
+수입차 AI 상담 및 Autocommerce 앱을 디자인 시스템 구축부터 시작하여, 공용 위젯 조립, GNB Shell, 각 화면 구현까지 Flutter MVP를 단계적으로 완성하는 여정. Phases 1-2는 `feat/flutter/design-system` 브랜치, Phases 3+는 개별 `feat/flutter/*` 브랜치.
 
 ## Current Milestone
 **v0.1 MVP Release** (v0.1.0)
 Status: In progress
-Phases: 7 of 8 complete
+Phases: 7 of 9 complete
 
 ## Phases
 
@@ -20,7 +20,8 @@ Phases: 7 of 8 complete
 | 5 | AI Chat | 2 | Complete | 2026-04-02 |
 | 6 | AI Card | 2 | Complete | 2026-04-02 |
 | 7 | Home & Test Drive | 1 | Complete | 2026-04-02 |
-| 8 | Garage & My Page | TBD | Not started | - |
+| 8 | Domain Separation | 3 | In progress | - |
+| 9 | Garage & My Page | TBD | Not started | - |
 
 ## Phase Details
 
@@ -129,18 +130,35 @@ Phases: 7 of 8 complete
 **Plans:**
 - [x] 07-01: Home 차량 탐색 UI + TestDrive 브랜드 전시장 WebView
 
-### Phase 8: Garage & My Page
-**Goal:** 가상차고 콘텐츠 + 마이페이지 콘텐츠
-**Depends on:** Phase 6 (저장된 카드 데이터)
-**Research:** Unlikely (CRUD 패턴)
-**Note:** GNB는 4탭(마이 제거). 마이는 차고 헤더 톱니바퀴에서 push 진입.
+### Phase 8: Domain Separation
+**Goal:** Vehicle/ConsultationCard 도메인 분리 — 엔티티·리포지토리·프로바이더 리팩토링
+**Depends on:** Phase 7 (홈/카드/차고 전체 코드 존재)
+**Research:** Unlikely (구조 리팩토링)
 
 **Scope:**
-- Garage page with saved cards list
-- My page with profile and settings
+- VehicleCard 엔티티 → Vehicle(차량 정보) + ConsultationCard(상담 추천) 분리
+- ICardRepository → IVehicleRepository + IBookmarkRepository + IGarageRepository 분리
+- Provider 분리: vehicleProvider, bookmarkProvider, consultationCardProvider, garageProvider
+- 홈 라우팅 수정: 차량 탭 → VehicleDetailPage (AI카드가 아닌 차량 상세)
+- 북마크 로직: bookmarkProvider.toggleBookmark() (가상차고와 독립)
+- go_api + supabase 양쪽 구현체 업데이트
 
 **Plans:**
-- [ ] 08-01: Garage + MyPage screens
+- [x] 08-01: Entity + Repository 분리 (Vehicle, Bookmark, Garage)
+- [ ] 08-02: Provider 분리 + 홈 라우팅 + VehicleDetailPage + _extractQuery 수정
+- [ ] 08-03: 차고 3탭 UI (가상차고 ConsultationCard 캐러셀 + 전시장 + 북마크 + 최근본)
+
+### Phase 9: My Page
+**Goal:** 마이페이지 콘텐츠
+**Depends on:** Phase 8 (도메인 분리 + 차고 완료)
+**Research:** Unlikely (프로필/설정 CRUD)
+**Note:** 차고 헤더 톱니바퀴에서 push 진입. GNB에 마이 탭 없음.
+
+**Scope:**
+- My page with profile and settings (현재 placeholder → 콘텐츠 구현)
+
+**Plans:**
+- [ ] 09-01: MyPage 콘텐츠
 
 ---
 *Roadmap created: 2026-04-01*

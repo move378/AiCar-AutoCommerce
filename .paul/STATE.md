@@ -5,34 +5,34 @@
 See: .paul/PROJECT.md (updated 2026-04-02)
 
 **Core value:** 수입차 구매 과정의 정보 비대칭을 해소하는 AI 컨시어지 앱.
-**Current focus:** v0.1 MVP — Phase 7: Home & Test Drive
+**Current focus:** v0.1 MVP — Phase 8: Domain Separation
 
 ## Current Position
 
 Milestone: v0.1 MVP Release
-Phase: 7 of 8 (Home & Test Drive)
-Plan: 07-01 complete (loop closed)
-Status: Phase 7 완료 — 07-01 완료
-Last activity: 2026-04-02 — Phase 7 완료 (1/1 plans done)
+Phase: 8 of 9 (Domain Separation) — In Progress
+Plan: 08-02 complete, 08-03 next
+Status: 08-02 Loop closed — Provider 분리 + VehicleDetailPage 완료
+Last activity: 2026-04-02 — UNIFY 08-02 complete
 
 Progress:
-- Milestone: [████████░░] 87%
-- Phase 7: [██████████] 100%
+- Milestone: [████████░░] 85%
+- Phase 8: [██████░░░░] 66% (2/3 plans)
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Loop closed — ready for next PLAN]
+  ✓        ✓        ✓     [Loop complete — ready for next PLAN]
 ```
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 11
+- Total plans completed: 13
 - Average duration: ~11min
-- Total execution time: ~118min
+- Total execution time: ~145min
 
 **By Phase:**
 
@@ -45,10 +45,13 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | 05-ai-chat | 2/2 | ~25min | ~12min |
 | 06-ai-card | 2/2 | ~22min | ~11min |
 | 07-home-test-drive | 1/1 | ~15min | ~15min |
+| 08-domain-separation | 2/3 | ~27min | ~13min |
 
 ## Accumulated Context
 
 ### Decisions
+- Vehicle/ConsultationCard 도메인 분리: Vehicle=스펙 중심, ConsultationCard=상담 결과(vehicleId 참조, nested 아님) — Phase 8
+- ICardRepository → IVehicleRepo + IBookmarkRepo + IGarageRepo 3분할, Bookmark Drift 영속 저장 — Phase 8
 - GNB 4탭 (마이 제거) — 마이는 차고 헤더 톱니바퀴에서 push 진입 — Phase 4
 - 온보딩: SNS 로그인 없이 차량조회(공공API) 4단계 → 스킵 가능 — Phase 4
 - 로그인/약관동의는 차고·마이 탭 진입 시만 트리거 — Phase 4
@@ -62,7 +65,7 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - 시승찾기 브랜드 7개 (BMW, Benz, Genesis, Tesla, Audi, Lexus, Volvo) — Phase 7
 
 ### Deferred Issues
-None.
+None. (_extractQuery 버그는 08-02에서 수정 완료)
 
 ### Blockers/Concerns
 None.
@@ -70,10 +73,15 @@ None.
 ## Session Continuity
 
 Last session: 2026-04-02
-Stopped at: Phase 7 완료 (loop closed)
-Next action: 커밋 + PR → Phase 8 (Garage & My Page) 시작
-Resume file: .paul/phases/07-home-test-drive/07-01-SUMMARY.md
-Branch: feat/flutter/screen-home-testdrive
+Stopped at: 08-02 Loop closed, 08-03 plan 시작 직전
+Next action: /paul:plan (Phase 8: Domain Separation, plan 08-03 차고 3탭 UI)
+Resume file: .paul/HANDOFF-2026-04-02-phase8-03.md
+Branch: feat/flutter/domain-separation
+Resume context:
+- 차고 3탭: 가상차고(ConsultationCard 캐러셀+전시장) / 북마크(그리드) / 최근본(리스트)
+- Figma 스크린샷: docs/screenshots/차고UI.png
+- 사용 가능: garageRepositoryProvider, bookmarkProvider, vehicleRepositoryProvider
+- 최근 본 차량 히스토리 저장 방식 결정 필요 (MVP)
 
 ---
 *STATE.md — Updated after every significant action*

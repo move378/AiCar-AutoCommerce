@@ -168,7 +168,9 @@ class _AiChatPageState extends ConsumerState<AiChatPage> {
           children: [
             ChatBubble(message: message),
             if (message.isAssistant && _isRecommendationResponse(message.content))
-              InlineCardCarousel(query: _extractQuery(message.content)),
+              InlineCardCarousel(
+                query: _findUserQuery(messages, reversedIndex),
+              ),
           ],
         );
       },
@@ -178,18 +180,17 @@ class _AiChatPageState extends ConsumerState<AiChatPage> {
   /// AI 응답이 차량 추천 내용인지 판별
   bool _isRecommendationResponse(String content) {
     return content.contains('추천해 드릴게요') ||
-        content.contains('추천해 드릴게요');
+        content.contains('안내해 드릴게요');
   }
 
-  /// AI 응답에서 검색 쿼리 추출 (카드 필터링용)
-  String _extractQuery(String content) {
-    if (content.contains('SUV')) return 'SUV';
-    if (content.contains('세단')) return '세단';
-    if (content.contains('BMW')) return 'BMW';
-    if (content.contains('벤츠')) return '벤츠';
-    if (content.contains('아우디')) return '아우디';
-    if (content.contains('연비') || content.contains('하이브리드')) return '연비';
-    if (content.contains('가족')) return 'SUV';
+  /// AI 응답을 트리거한 사용자 메시지에서 쿼리 추출
+  ///
+  /// AI 응답 텍스트가 아닌 사용자 입력을 그대로 전달하여
+  /// VehicleRepositoryImpl.searchVehicles()의 키워드 필터와 정확히 매칭.
+  String _findUserQuery(List<ChatMessage> messages, int assistantIndex) {
+    for (int i = assistantIndex - 1; i >= 0; i--) {
+      if (messages[i].isUser) return messages[i].content;
+    }
     return '';
   }
 

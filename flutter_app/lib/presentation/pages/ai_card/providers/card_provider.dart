@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:aicar/core/providers/database_provider.dart';
-import 'package:aicar/data/repositories/go_api/card_repository_impl.dart'
-    as go_api;
-import 'package:aicar/domain/entities/vehicle_card.dart';
-import 'package:aicar/domain/repositories/i_card_repository.dart';
+import 'package:aicar/core/providers/repository_providers.dart';
+import 'package:aicar/domain/entities/consultation_card.dart';
+import 'package:aicar/domain/entities/vehicle.dart';
+import 'package:aicar/domain/repositories/i_garage_repository.dart';
+import 'package:aicar/domain/repositories/i_vehicle_repository.dart';
 
 /// 카드 리스트 상태
 @immutable
@@ -16,12 +16,12 @@ class CardListState {
     this.isLoading = false,
   });
 
-  final List<VehicleCard> cards;
+  final List<Vehicle> cards;
   final int currentIndex;
   final bool isLoading;
 
   CardListState copyWith({
-    List<VehicleCard>? cards,
+    List<Vehicle>? cards,
     int? currentIndex,
     bool? isLoading,
   }) {
@@ -35,18 +35,20 @@ class CardListState {
 
 /// 카드 리스트 Notifier
 class CardNotifier extends Notifier<CardListState> {
-  late final ICardRepository _repository;
+  late final IVehicleRepository _vehicleRepo;
+  late final IGarageRepository _garageRepo;
 
   @override
   CardListState build() {
-    _repository = ref.read(cardRepositoryProvider);
+    _vehicleRepo = ref.read(vehicleRepositoryProvider);
+    _garageRepo = ref.read(garageRepositoryProvider);
     return const CardListState();
   }
 
   /// 추천 카드 로드
   Future<void> loadRecommendations(String query) async {
     state = state.copyWith(isLoading: true);
-    final cards = await _repository.getRecommendations(query);
+    final cards = await _vehicleRepo.searchVehicles(query);
     state = state.copyWith(cards: cards, isLoading: false, currentIndex: 0);
   }
 
@@ -58,16 +60,17 @@ class CardNotifier extends Notifier<CardListState> {
   /// 가상차고에 저장
   Future<void> saveToGarage() async {
     if (state.cards.isEmpty) return;
-    final card = state.cards[state.currentIndex];
-    await _repository.saveToGarage(card);
+    final vehicle = state.cards[state.currentIndex];
+    final card = ConsultationCard(
+      id: 'card-${vehicle.id}-${DateTime.now().millisecondsSinceEpoch}',
+      vehicleId: vehicle.id,
+      recommendReason: '키워드 매칭 추천',
+      matchScore: 0.8,
+      createdAt: DateTime.now(),
+    );
+    await _garageRepo.saveToGarage(card);
   }
 }
-
-/// Card Repository Provider — go_api 구현체 (MVP)
-final cardRepositoryProvider = Provider<ICardRepository>((ref) {
-  final db = ref.read(appDatabaseProvider);
-  return go_api.CardRepositoryImpl(db);
-});
 
 /// Card Provider
 final cardProvider = NotifierProvider<CardNotifier, CardListState>(

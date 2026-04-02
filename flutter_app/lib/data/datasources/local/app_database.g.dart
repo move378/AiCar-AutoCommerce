@@ -844,6 +844,207 @@ class ChatHistoryTableCompanion extends UpdateCompanion<ChatHistoryTableData> {
   }
 }
 
+class $BookmarkTableTable extends BookmarkTable
+    with TableInfo<$BookmarkTableTable, BookmarkTableData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $BookmarkTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _vehicleIdMeta =
+      const VerificationMeta('vehicleId');
+  @override
+  late final GeneratedColumn<String> vehicleId = GeneratedColumn<String>(
+      'vehicle_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _bookmarkedAtMeta =
+      const VerificationMeta('bookmarkedAt');
+  @override
+  late final GeneratedColumn<DateTime> bookmarkedAt = GeneratedColumn<DateTime>(
+      'bookmarked_at', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [vehicleId, bookmarkedAt];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'bookmarks';
+  @override
+  VerificationContext validateIntegrity(Insertable<BookmarkTableData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('vehicle_id')) {
+      context.handle(_vehicleIdMeta,
+          vehicleId.isAcceptableOrUnknown(data['vehicle_id']!, _vehicleIdMeta));
+    } else if (isInserting) {
+      context.missing(_vehicleIdMeta);
+    }
+    if (data.containsKey('bookmarked_at')) {
+      context.handle(
+          _bookmarkedAtMeta,
+          bookmarkedAt.isAcceptableOrUnknown(
+              data['bookmarked_at']!, _bookmarkedAtMeta));
+    } else if (isInserting) {
+      context.missing(_bookmarkedAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {vehicleId};
+  @override
+  BookmarkTableData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return BookmarkTableData(
+      vehicleId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}vehicle_id'])!,
+      bookmarkedAt: attachedDatabase.typeMapping.read(
+          DriftSqlType.dateTime, data['${effectivePrefix}bookmarked_at'])!,
+    );
+  }
+
+  @override
+  $BookmarkTableTable createAlias(String alias) {
+    return $BookmarkTableTable(attachedDatabase, alias);
+  }
+}
+
+class BookmarkTableData extends DataClass
+    implements Insertable<BookmarkTableData> {
+  final String vehicleId;
+  final DateTime bookmarkedAt;
+  const BookmarkTableData(
+      {required this.vehicleId, required this.bookmarkedAt});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['vehicle_id'] = Variable<String>(vehicleId);
+    map['bookmarked_at'] = Variable<DateTime>(bookmarkedAt);
+    return map;
+  }
+
+  BookmarkTableCompanion toCompanion(bool nullToAbsent) {
+    return BookmarkTableCompanion(
+      vehicleId: Value(vehicleId),
+      bookmarkedAt: Value(bookmarkedAt),
+    );
+  }
+
+  factory BookmarkTableData.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return BookmarkTableData(
+      vehicleId: serializer.fromJson<String>(json['vehicleId']),
+      bookmarkedAt: serializer.fromJson<DateTime>(json['bookmarkedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'vehicleId': serializer.toJson<String>(vehicleId),
+      'bookmarkedAt': serializer.toJson<DateTime>(bookmarkedAt),
+    };
+  }
+
+  BookmarkTableData copyWith({String? vehicleId, DateTime? bookmarkedAt}) =>
+      BookmarkTableData(
+        vehicleId: vehicleId ?? this.vehicleId,
+        bookmarkedAt: bookmarkedAt ?? this.bookmarkedAt,
+      );
+  BookmarkTableData copyWithCompanion(BookmarkTableCompanion data) {
+    return BookmarkTableData(
+      vehicleId: data.vehicleId.present ? data.vehicleId.value : this.vehicleId,
+      bookmarkedAt: data.bookmarkedAt.present
+          ? data.bookmarkedAt.value
+          : this.bookmarkedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('BookmarkTableData(')
+          ..write('vehicleId: $vehicleId, ')
+          ..write('bookmarkedAt: $bookmarkedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(vehicleId, bookmarkedAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is BookmarkTableData &&
+          other.vehicleId == this.vehicleId &&
+          other.bookmarkedAt == this.bookmarkedAt);
+}
+
+class BookmarkTableCompanion extends UpdateCompanion<BookmarkTableData> {
+  final Value<String> vehicleId;
+  final Value<DateTime> bookmarkedAt;
+  final Value<int> rowid;
+  const BookmarkTableCompanion({
+    this.vehicleId = const Value.absent(),
+    this.bookmarkedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  BookmarkTableCompanion.insert({
+    required String vehicleId,
+    required DateTime bookmarkedAt,
+    this.rowid = const Value.absent(),
+  })  : vehicleId = Value(vehicleId),
+        bookmarkedAt = Value(bookmarkedAt);
+  static Insertable<BookmarkTableData> custom({
+    Expression<String>? vehicleId,
+    Expression<DateTime>? bookmarkedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (vehicleId != null) 'vehicle_id': vehicleId,
+      if (bookmarkedAt != null) 'bookmarked_at': bookmarkedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  BookmarkTableCompanion copyWith(
+      {Value<String>? vehicleId,
+      Value<DateTime>? bookmarkedAt,
+      Value<int>? rowid}) {
+    return BookmarkTableCompanion(
+      vehicleId: vehicleId ?? this.vehicleId,
+      bookmarkedAt: bookmarkedAt ?? this.bookmarkedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (vehicleId.present) {
+      map['vehicle_id'] = Variable<String>(vehicleId.value);
+    }
+    if (bookmarkedAt.present) {
+      map['bookmarked_at'] = Variable<DateTime>(bookmarkedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('BookmarkTableCompanion(')
+          ..write('vehicleId: $vehicleId, ')
+          ..write('bookmarkedAt: $bookmarkedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -852,12 +1053,13 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $CardCacheTableTable cardCacheTable = $CardCacheTableTable(this);
   late final $ChatHistoryTableTable chatHistoryTable =
       $ChatHistoryTableTable(this);
+  late final $BookmarkTableTable bookmarkTable = $BookmarkTableTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities =>
-      [surveySessionTable, cardCacheTable, chatHistoryTable];
+      [surveySessionTable, cardCacheTable, chatHistoryTable, bookmarkTable];
 }
 
 typedef $$SurveySessionTableTableCreateCompanionBuilder
@@ -1345,6 +1547,135 @@ typedef $$ChatHistoryTableTableProcessedTableManager = ProcessedTableManager<
     ),
     ChatHistoryTableData,
     PrefetchHooks Function()>;
+typedef $$BookmarkTableTableCreateCompanionBuilder = BookmarkTableCompanion
+    Function({
+  required String vehicleId,
+  required DateTime bookmarkedAt,
+  Value<int> rowid,
+});
+typedef $$BookmarkTableTableUpdateCompanionBuilder = BookmarkTableCompanion
+    Function({
+  Value<String> vehicleId,
+  Value<DateTime> bookmarkedAt,
+  Value<int> rowid,
+});
+
+class $$BookmarkTableTableFilterComposer
+    extends Composer<_$AppDatabase, $BookmarkTableTable> {
+  $$BookmarkTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get vehicleId => $composableBuilder(
+      column: $table.vehicleId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get bookmarkedAt => $composableBuilder(
+      column: $table.bookmarkedAt, builder: (column) => ColumnFilters(column));
+}
+
+class $$BookmarkTableTableOrderingComposer
+    extends Composer<_$AppDatabase, $BookmarkTableTable> {
+  $$BookmarkTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get vehicleId => $composableBuilder(
+      column: $table.vehicleId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get bookmarkedAt => $composableBuilder(
+      column: $table.bookmarkedAt,
+      builder: (column) => ColumnOrderings(column));
+}
+
+class $$BookmarkTableTableAnnotationComposer
+    extends Composer<_$AppDatabase, $BookmarkTableTable> {
+  $$BookmarkTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get vehicleId =>
+      $composableBuilder(column: $table.vehicleId, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get bookmarkedAt => $composableBuilder(
+      column: $table.bookmarkedAt, builder: (column) => column);
+}
+
+class $$BookmarkTableTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $BookmarkTableTable,
+    BookmarkTableData,
+    $$BookmarkTableTableFilterComposer,
+    $$BookmarkTableTableOrderingComposer,
+    $$BookmarkTableTableAnnotationComposer,
+    $$BookmarkTableTableCreateCompanionBuilder,
+    $$BookmarkTableTableUpdateCompanionBuilder,
+    (
+      BookmarkTableData,
+      BaseReferences<_$AppDatabase, $BookmarkTableTable, BookmarkTableData>
+    ),
+    BookmarkTableData,
+    PrefetchHooks Function()> {
+  $$BookmarkTableTableTableManager(_$AppDatabase db, $BookmarkTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$BookmarkTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$BookmarkTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$BookmarkTableTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<String> vehicleId = const Value.absent(),
+            Value<DateTime> bookmarkedAt = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              BookmarkTableCompanion(
+            vehicleId: vehicleId,
+            bookmarkedAt: bookmarkedAt,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String vehicleId,
+            required DateTime bookmarkedAt,
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              BookmarkTableCompanion.insert(
+            vehicleId: vehicleId,
+            bookmarkedAt: bookmarkedAt,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$BookmarkTableTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $BookmarkTableTable,
+    BookmarkTableData,
+    $$BookmarkTableTableFilterComposer,
+    $$BookmarkTableTableOrderingComposer,
+    $$BookmarkTableTableAnnotationComposer,
+    $$BookmarkTableTableCreateCompanionBuilder,
+    $$BookmarkTableTableUpdateCompanionBuilder,
+    (
+      BookmarkTableData,
+      BaseReferences<_$AppDatabase, $BookmarkTableTable, BookmarkTableData>
+    ),
+    BookmarkTableData,
+    PrefetchHooks Function()>;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -1355,4 +1686,6 @@ class $AppDatabaseManager {
       $$CardCacheTableTableTableManager(_db, _db.cardCacheTable);
   $$ChatHistoryTableTableTableManager get chatHistoryTable =>
       $$ChatHistoryTableTableTableManager(_db, _db.chatHistoryTable);
+  $$BookmarkTableTableTableManager get bookmarkTable =>
+      $$BookmarkTableTableTableManager(_db, _db.bookmarkTable);
 }

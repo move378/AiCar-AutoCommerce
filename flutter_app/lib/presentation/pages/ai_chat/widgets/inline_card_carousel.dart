@@ -7,9 +7,10 @@ import 'package:aicar/core/theme/app_colors.dart';
 import 'package:aicar/core/theme/app_elevation.dart';
 import 'package:aicar/core/theme/app_spacing.dart';
 import 'package:aicar/core/theme/app_typography.dart';
-import 'package:aicar/domain/entities/vehicle_card.dart';
+import 'package:aicar/domain/entities/consultation_card.dart';
+import 'package:aicar/domain/entities/vehicle.dart';
 import 'package:aicar/presentation/pages/ai_card/card_back_widget.dart';
-import 'package:aicar/presentation/pages/ai_card/providers/card_provider.dart';
+import 'package:aicar/core/providers/repository_providers.dart';
 
 /// 채팅 내 인라인 카드 캐러셀
 ///
@@ -25,7 +26,7 @@ class InlineCardCarousel extends ConsumerStatefulWidget {
 }
 
 class _InlineCardCarouselState extends ConsumerState<InlineCardCarousel> {
-  List<VehicleCard>? _cards;
+  List<Vehicle>? _cards;
   bool _isLoading = true;
 
   @override
@@ -35,8 +36,8 @@ class _InlineCardCarouselState extends ConsumerState<InlineCardCarousel> {
   }
 
   Future<void> _loadCards() async {
-    final repo = ref.read(cardRepositoryProvider);
-    final cards = await repo.getRecommendations(widget.query);
+    final repo = ref.read(vehicleRepositoryProvider);
+    final cards = await repo.searchVehicles(widget.query);
     if (mounted) {
       setState(() {
         _cards = cards;
@@ -86,12 +87,19 @@ class _InlineCardCarouselState extends ConsumerState<InlineCardCarousel> {
     );
   }
 
-  Future<void> _saveToGarage(VehicleCard card) async {
-    final repo = ref.read(cardRepositoryProvider);
-    await repo.saveToGarage(card);
+  Future<void> _saveToGarage(Vehicle card) async {
+    final garageRepo = ref.read(garageRepositoryProvider);
+    final consultationCard = ConsultationCard(
+      id: 'card-${card.id}-${DateTime.now().millisecondsSinceEpoch}',
+      vehicleId: card.id,
+      recommendReason: '키워드 매칭 추천',
+      matchScore: 0.8,
+      createdAt: DateTime.now(),
+    );
+    await garageRepo.saveToGarage(consultationCard);
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('${card.modelName} 가상차고에 저장')),
+        SnackBar(content: Text('${card.model} 가상차고에 저장')),
       );
     }
   }
@@ -104,7 +112,7 @@ class _CompactCard extends StatefulWidget {
     required this.onSave,
   });
 
-  final VehicleCard card;
+  final Vehicle card;
   final VoidCallback onSave;
 
   @override
@@ -205,13 +213,13 @@ class _CompactCardState extends State<_CompactCard>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    widget.card.brandName,
+                    widget.card.brand,
                     style: AppTypography.captionXs.copyWith(
                       color: AppColors.textDisabled,
                     ),
                   ),
                   Text(
-                    widget.card.modelName,
+                    widget.card.model,
                     style: AppTypography.bodySm.copyWith(
                       color: AppColors.textOnDark,
                       fontWeight: FontWeight.w600,

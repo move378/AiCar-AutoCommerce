@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:aicar/core/theme/app_colors.dart';
 import 'package:aicar/core/theme/app_spacing.dart';
 import 'package:aicar/core/theme/app_typography.dart';
-import 'package:aicar/domain/entities/vehicle_card.dart';
+import 'package:aicar/domain/entities/vehicle.dart';
 
 /// 차량 성능 레이더 차트 (5축: 마력, 토크, 연비, 제로백, 가격)
 class RadarChart extends StatelessWidget {

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'vehicle_card.dart';
+part of 'vehicle.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,10 +13,10 @@ part of 'vehicle_card.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$VehicleCard {
+mixin _$Vehicle {
   String get id;
-  String get brandName;
-  String get modelName;
+  String get brand;
+  String get model;
   int get year;
 
   /// 가격 (만원 단위)
@@ -25,26 +25,24 @@ mixin _$VehicleCard {
   String? get imageUrl;
   VehicleSpecs get specs;
 
-  /// Create a copy of VehicleCard
+  /// Create a copy of Vehicle
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $VehicleCardCopyWith<VehicleCard> get copyWith =>
-      _$VehicleCardCopyWithImpl<VehicleCard>(this as VehicleCard, _$identity);
+  $VehicleCopyWith<Vehicle> get copyWith =>
+      _$VehicleCopyWithImpl<Vehicle>(this as Vehicle, _$identity);
 
-  /// Serializes this VehicleCard to a JSON map.
+  /// Serializes this Vehicle to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is VehicleCard &&
+            other is Vehicle &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.brandName, brandName) ||
-                other.brandName == brandName) &&
-            (identical(other.modelName, modelName) ||
-                other.modelName == modelName) &&
+            (identical(other.brand, brand) || other.brand == brand) &&
+            (identical(other.model, model) || other.model == model) &&
             (identical(other.year, year) || other.year == year) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.fuelType, fuelType) ||
@@ -56,25 +54,24 @@ mixin _$VehicleCard {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, brandName, modelName, year,
-      price, fuelType, imageUrl, specs);
+  int get hashCode => Object.hash(
+      runtimeType, id, brand, model, year, price, fuelType, imageUrl, specs);
 
   @override
   String toString() {
-    return 'VehicleCard(id: $id, brandName: $brandName, modelName: $modelName, year: $year, price: $price, fuelType: $fuelType, imageUrl: $imageUrl, specs: $specs)';
+    return 'Vehicle(id: $id, brand: $brand, model: $model, year: $year, price: $price, fuelType: $fuelType, imageUrl: $imageUrl, specs: $specs)';
   }
 }
 
 /// @nodoc
-abstract mixin class $VehicleCardCopyWith<$Res> {
-  factory $VehicleCardCopyWith(
-          VehicleCard value, $Res Function(VehicleCard) _then) =
-      _$VehicleCardCopyWithImpl;
+abstract mixin class $VehicleCopyWith<$Res> {
+  factory $VehicleCopyWith(Vehicle value, $Res Function(Vehicle) _then) =
+      _$VehicleCopyWithImpl;
   @useResult
   $Res call(
       {String id,
-      String brandName,
-      String modelName,
+      String brand,
+      String model,
       int year,
       int price,
       String fuelType,
@@ -85,20 +82,20 @@ abstract mixin class $VehicleCardCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$VehicleCardCopyWithImpl<$Res> implements $VehicleCardCopyWith<$Res> {
-  _$VehicleCardCopyWithImpl(this._self, this._then);
+class _$VehicleCopyWithImpl<$Res> implements $VehicleCopyWith<$Res> {
+  _$VehicleCopyWithImpl(this._self, this._then);
 
-  final VehicleCard _self;
-  final $Res Function(VehicleCard) _then;
+  final Vehicle _self;
+  final $Res Function(Vehicle) _then;
 
-  /// Create a copy of VehicleCard
+  /// Create a copy of Vehicle
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
-    Object? brandName = null,
-    Object? modelName = null,
+    Object? brand = null,
+    Object? model = null,
     Object? year = null,
     Object? price = null,
     Object? fuelType = null,
@@ -110,13 +107,13 @@ class _$VehicleCardCopyWithImpl<$Res> implements $VehicleCardCopyWith<$Res> {
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      brandName: null == brandName
-          ? _self.brandName
-          : brandName // ignore: cast_nullable_to_non_nullable
+      brand: null == brand
+          ? _self.brand
+          : brand // ignore: cast_nullable_to_non_nullable
               as String,
-      modelName: null == modelName
-          ? _self.modelName
-          : modelName // ignore: cast_nullable_to_non_nullable
+      model: null == model
+          ? _self.model
+          : model // ignore: cast_nullable_to_non_nullable
               as String,
       year: null == year
           ? _self.year
@@ -141,7 +138,7 @@ class _$VehicleCardCopyWithImpl<$Res> implements $VehicleCardCopyWith<$Res> {
     ));
   }
 
-  /// Create a copy of VehicleCard
+  /// Create a copy of Vehicle
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -152,8 +149,8 @@ class _$VehicleCardCopyWithImpl<$Res> implements $VehicleCardCopyWith<$Res> {
   }
 }
 
-/// Adds pattern-matching-related methods to [VehicleCard].
-extension VehicleCardPatterns on VehicleCard {
+/// Adds pattern-matching-related methods to [Vehicle].
+extension VehiclePatterns on Vehicle {
   /// A variant of `map` that fallback to returning `orElse`.
   ///
   /// It is equivalent to doing:
@@ -168,12 +165,12 @@ extension VehicleCardPatterns on VehicleCard {
 
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
-    TResult Function(_VehicleCard value)? $default, {
+    TResult Function(_Vehicle value)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _VehicleCard() when $default != null:
+      case _Vehicle() when $default != null:
         return $default(_that);
       case _:
         return orElse();
@@ -195,11 +192,11 @@ extension VehicleCardPatterns on VehicleCard {
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_VehicleCard value) $default,
+    TResult Function(_Vehicle value) $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _VehicleCard():
+      case _Vehicle():
         return $default(_that);
       case _:
         throw StateError('Unexpected subclass');
@@ -220,11 +217,11 @@ extension VehicleCardPatterns on VehicleCard {
 
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_VehicleCard value)? $default,
+    TResult? Function(_Vehicle value)? $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _VehicleCard() when $default != null:
+      case _Vehicle() when $default != null:
         return $default(_that);
       case _:
         return null;
@@ -245,15 +242,15 @@ extension VehicleCardPatterns on VehicleCard {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String id, String brandName, String modelName, int year,
-            int price, String fuelType, String? imageUrl, VehicleSpecs specs)?
+    TResult Function(String id, String brand, String model, int year, int price,
+            String fuelType, String? imageUrl, VehicleSpecs specs)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _VehicleCard() when $default != null:
-        return $default(_that.id, _that.brandName, _that.modelName, _that.year,
+      case _Vehicle() when $default != null:
+        return $default(_that.id, _that.brand, _that.model, _that.year,
             _that.price, _that.fuelType, _that.imageUrl, _that.specs);
       case _:
         return orElse();
@@ -275,14 +272,14 @@ extension VehicleCardPatterns on VehicleCard {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String id, String brandName, String modelName, int year,
-            int price, String fuelType, String? imageUrl, VehicleSpecs specs)
+    TResult Function(String id, String brand, String model, int year, int price,
+            String fuelType, String? imageUrl, VehicleSpecs specs)
         $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _VehicleCard():
-        return $default(_that.id, _that.brandName, _that.modelName, _that.year,
+      case _Vehicle():
+        return $default(_that.id, _that.brand, _that.model, _that.year,
             _that.price, _that.fuelType, _that.imageUrl, _that.specs);
       case _:
         throw StateError('Unexpected subclass');
@@ -303,14 +300,14 @@ extension VehicleCardPatterns on VehicleCard {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String id, String brandName, String modelName, int year,
+    TResult? Function(String id, String brand, String model, int year,
             int price, String fuelType, String? imageUrl, VehicleSpecs specs)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _VehicleCard() when $default != null:
-        return $default(_that.id, _that.brandName, _that.modelName, _that.year,
+      case _Vehicle() when $default != null:
+        return $default(_that.id, _that.brand, _that.model, _that.year,
             _that.price, _that.fuelType, _that.imageUrl, _that.specs);
       case _:
         return null;
@@ -321,26 +318,26 @@ extension VehicleCardPatterns on VehicleCard {
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class _VehicleCard extends VehicleCard {
-  const _VehicleCard(
+class _Vehicle extends Vehicle {
+  const _Vehicle(
       {required this.id,
-      required this.brandName,
-      required this.modelName,
+      required this.brand,
+      required this.model,
       required this.year,
       required this.price,
       required this.fuelType,
       this.imageUrl,
       required this.specs})
       : super._();
-  factory _VehicleCard.fromJson(Map<String, dynamic> json) =>
-      _$VehicleCardFromJson(json);
+  factory _Vehicle.fromJson(Map<String, dynamic> json) =>
+      _$VehicleFromJson(json);
 
   @override
   final String id;
   @override
-  final String brandName;
+  final String brand;
   @override
-  final String modelName;
+  final String model;
   @override
   final int year;
 
@@ -354,17 +351,17 @@ class _VehicleCard extends VehicleCard {
   @override
   final VehicleSpecs specs;
 
-  /// Create a copy of VehicleCard
+  /// Create a copy of Vehicle
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$VehicleCardCopyWith<_VehicleCard> get copyWith =>
-      __$VehicleCardCopyWithImpl<_VehicleCard>(this, _$identity);
+  _$VehicleCopyWith<_Vehicle> get copyWith =>
+      __$VehicleCopyWithImpl<_Vehicle>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$VehicleCardToJson(
+    return _$VehicleToJson(
       this,
     );
   }
@@ -373,12 +370,10 @@ class _VehicleCard extends VehicleCard {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _VehicleCard &&
+            other is _Vehicle &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.brandName, brandName) ||
-                other.brandName == brandName) &&
-            (identical(other.modelName, modelName) ||
-                other.modelName == modelName) &&
+            (identical(other.brand, brand) || other.brand == brand) &&
+            (identical(other.model, model) || other.model == model) &&
             (identical(other.year, year) || other.year == year) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.fuelType, fuelType) ||
@@ -390,27 +385,25 @@ class _VehicleCard extends VehicleCard {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, brandName, modelName, year,
-      price, fuelType, imageUrl, specs);
+  int get hashCode => Object.hash(
+      runtimeType, id, brand, model, year, price, fuelType, imageUrl, specs);
 
   @override
   String toString() {
-    return 'VehicleCard(id: $id, brandName: $brandName, modelName: $modelName, year: $year, price: $price, fuelType: $fuelType, imageUrl: $imageUrl, specs: $specs)';
+    return 'Vehicle(id: $id, brand: $brand, model: $model, year: $year, price: $price, fuelType: $fuelType, imageUrl: $imageUrl, specs: $specs)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$VehicleCardCopyWith<$Res>
-    implements $VehicleCardCopyWith<$Res> {
-  factory _$VehicleCardCopyWith(
-          _VehicleCard value, $Res Function(_VehicleCard) _then) =
-      __$VehicleCardCopyWithImpl;
+abstract mixin class _$VehicleCopyWith<$Res> implements $VehicleCopyWith<$Res> {
+  factory _$VehicleCopyWith(_Vehicle value, $Res Function(_Vehicle) _then) =
+      __$VehicleCopyWithImpl;
   @override
   @useResult
   $Res call(
       {String id,
-      String brandName,
-      String modelName,
+      String brand,
+      String model,
       int year,
       int price,
       String fuelType,
@@ -422,38 +415,38 @@ abstract mixin class _$VehicleCardCopyWith<$Res>
 }
 
 /// @nodoc
-class __$VehicleCardCopyWithImpl<$Res> implements _$VehicleCardCopyWith<$Res> {
-  __$VehicleCardCopyWithImpl(this._self, this._then);
+class __$VehicleCopyWithImpl<$Res> implements _$VehicleCopyWith<$Res> {
+  __$VehicleCopyWithImpl(this._self, this._then);
 
-  final _VehicleCard _self;
-  final $Res Function(_VehicleCard) _then;
+  final _Vehicle _self;
+  final $Res Function(_Vehicle) _then;
 
-  /// Create a copy of VehicleCard
+  /// Create a copy of Vehicle
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $Res call({
     Object? id = null,
-    Object? brandName = null,
-    Object? modelName = null,
+    Object? brand = null,
+    Object? model = null,
     Object? year = null,
     Object? price = null,
     Object? fuelType = null,
     Object? imageUrl = freezed,
     Object? specs = null,
   }) {
-    return _then(_VehicleCard(
+    return _then(_Vehicle(
       id: null == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      brandName: null == brandName
-          ? _self.brandName
-          : brandName // ignore: cast_nullable_to_non_nullable
+      brand: null == brand
+          ? _self.brand
+          : brand // ignore: cast_nullable_to_non_nullable
               as String,
-      modelName: null == modelName
-          ? _self.modelName
-          : modelName // ignore: cast_nullable_to_non_nullable
+      model: null == model
+          ? _self.model
+          : model // ignore: cast_nullable_to_non_nullable
               as String,
       year: null == year
           ? _self.year
@@ -478,7 +471,7 @@ class __$VehicleCardCopyWithImpl<$Res> implements _$VehicleCardCopyWith<$Res> {
     ));
   }
 
-  /// Create a copy of VehicleCard
+  /// Create a copy of Vehicle
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
