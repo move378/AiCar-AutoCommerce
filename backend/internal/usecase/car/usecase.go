@@ -8,7 +8,7 @@ import (
 )
 
 type CarUsecase interface {
-	ListCars(ctx context.Context, req ListCarsCondition) ([]CarListItemResponse, error)
+	ListCars(ctx context.Context, req ListCarsCondition) (*ListCarsResult, error)
 	GetCarDetail(ctx context.Context, id string) (*CarDetailResponse, error)
 	GetCarImages(ctx context.Context, carID string) ([]entity.CarImage, error)
 }
@@ -24,6 +24,9 @@ type ListCarsCondition struct {
 	FuelType *string
 	MinPrice *int
 	MaxPrice *int
+	MinYear  *int
+	MaxYear  *int
+	Keyword  *string
 	Sort     string
 }
 
@@ -31,7 +34,7 @@ func NewCarUsecase(carRepo repository.CarRepository) CarUsecase {
 	return &carUsecase{carRepo: carRepo}
 }
 
-func (u *carUsecase) ListCars(ctx context.Context, req ListCarsCondition) ([]CarListItemResponse, error) {
+func (u *carUsecase) ListCars(ctx context.Context, req ListCarsCondition) (*ListCarsResult, error) {
 	if req.Page <= 0 {
 		req.Page = 1
 	}
@@ -42,22 +45,32 @@ func (u *carUsecase) ListCars(ctx context.Context, req ListCarsCondition) ([]Car
 		req.Sort = "created_at_desc"
 	}
 
-	cars, err := u.carRepo.List(ctx, repository.CarListCondition{
+	cond := repository.CarListCondition{
 		Page:     req.Page,
 		Size:     req.Size,
 		BrandID:  req.BrandID,
 		FuelType: req.FuelType,
 		MinPrice: req.MinPrice,
 		MaxPrice: req.MaxPrice,
+		MinYear:  req.MinYear,
+		MaxYear:  req.MaxYear,
+		Keyword:  req.Keyword,
 		Sort:     req.Sort,
-	})
+	}
+
+	cars, err := u.carRepo.List(ctx, cond)
 	if err != nil {
 		return nil, err
 	}
 
-	result := make([]CarListItemResponse, 0, len(cars))
+	total, err := u.carRepo.Count(ctx, cond)
+	if err != nil {
+		return nil, err
+	}
+
+	items := make([]CarListItemResponse, 0, len(cars))
 	for _, car := range cars {
-		result = append(result, CarListItemResponse{
+		items = append(items, CarListItemResponse{
 			ID:                 car.ID,
 			ModelID:            car.ModelID,
 			BrandName:          car.Model.Brand.Name,
@@ -74,7 +87,7 @@ func (u *carUsecase) ListCars(ctx context.Context, req ListCarsCondition) ([]Car
 		})
 	}
 
-	return result, nil
+	return &ListCarsResult{Items: items, Total: total}, nil
 }
 
 func (u *carUsecase) GetCarDetail(ctx context.Context, id string) (*CarDetailResponse, error) {
@@ -102,6 +115,8 @@ func (u *carUsecase) GetCarDetail(ctx context.Context, id string) (*CarDetailRes
 	return &CarDetailResponse{
 		ID:                 car.ID,
 		ModelID:            car.ModelID,
+		BrandName:          car.Model.Brand.Name,
+		ModelName:          car.Model.Name,
 		TrimName:           car.TrimName,
 		Year:               car.Year,
 		Price:              car.Price,
