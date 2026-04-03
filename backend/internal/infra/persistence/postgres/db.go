@@ -2,6 +2,7 @@
 package postgres
 
 import (
+	"context"
 	"fmt"
 
 	"gorm.io/driver/postgres"
@@ -33,4 +34,20 @@ func NewDB(cfg *config.Config) (*DB, error) {
 	}
 
 	return &DB{db}, nil
+}
+
+func (d *DB) Transaction(ctx context.Context, fn func(ctx context.Context) error) error {
+	return d.DB.WithContext(ctx).Transaction(func(tx *gorm.DB) error {
+		txCtx := context.WithValue(ctx, txKey{}, &DB{tx})
+		return fn(txCtx)
+	})
+}
+
+type txKey struct{}
+
+func GetTx(ctx context.Context, db *DB) *DB {
+	if tx, ok := ctx.Value(txKey{}).(*DB); ok {
+		return tx
+	}
+	return db
 }

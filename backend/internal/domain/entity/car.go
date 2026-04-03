@@ -3,10 +3,10 @@ package entity
 import "time"
 
 type Brand struct {
-	ID        string    `gorm:"column:id;type:uuid;primaryKey"`
-	Name      string    `gorm:"column:name"`
-	CreatedAt time.Time `gorm:"column:created_at"`
-	UpdatedAt time.Time `gorm:"column:updated_at"`
+	ID        string    `gorm:"column:id;type:uuid;primaryKey" json:"id"`
+	Name      string    `gorm:"column:name"                   json:"name"`
+	CreatedAt time.Time `gorm:"column:created_at"             json:"created_at"`
+	UpdatedAt time.Time `gorm:"column:updated_at"             json:"updated_at"`
 }
 
 func (Brand) TableName() string {

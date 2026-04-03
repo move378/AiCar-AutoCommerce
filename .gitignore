@@ -1,4 +1,11 @@
 # ============================================
+# Claude Code & MCP
+# ============================================
+.claude/
+.carl/
+.mcp.json
+
+# ============================================
 # OS & Editor
 # ============================================
 .DS_Store
@@ -6,6 +13,7 @@ Thumbs.db
 *.swp
 *.swo
 *~
+.vscode/
 .vscode/settings.json
 .vscode/launch.json
 .idea/
@@ -106,3 +114,17 @@ coverage/
 *.log
 *.tmp
 *.bak
+
+# 가상환경 폴더 제외
+venv/
+.venv/
+
+# Python 컴파일 파일 제외
+__pycache__/
+*.pyc
+
+# 유저 섹션 제외
+vehicle_crawler/sessions/
+vehicle_crawler/benz/sessions/
+vehicle_crawler/benz/data/
+vehicle_crawler/vehicles_debug.json

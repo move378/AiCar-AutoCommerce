@@ -35,8 +35,18 @@ func (r *devicesRepo) FindByDeviceUID(ctx context.Context, deviceUID string) (*e
 }
 
 func (r *devicesRepo) Create(ctx context.Context, device *entity.Device) error {
-	if err := r.db.WithContext(ctx).Create(device).Error; err != nil {
+	if err := GetTx(ctx, r.db).WithContext(ctx).Create(device).Error; err != nil {
 		return fmt.Errorf("디바이스 생성 실패: %w", err)
+	}
+	return nil
+}
+
+func (r *devicesRepo) UpdateUserID(ctx context.Context, userID uuid.UUID, newUserID uuid.UUID) error {
+	if err := GetTx(ctx, r.db).WithContext(ctx).
+		Model(&entity.Device{}).
+		Where("user_id = ?", userID).
+		Updates(map[string]interface{}{"user_id": newUserID}).Error; err != nil {
+		return fmt.Errorf("디바이스 유저ID 업데이트 실패: %w", err)
 	}
 	return nil
 }

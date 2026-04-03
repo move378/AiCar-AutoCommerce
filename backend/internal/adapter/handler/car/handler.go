@@ -20,7 +20,7 @@ func NewHandler(carUsecase carusecase.CarUsecase) *Handler {
 
 // List godoc
 // @Summary 차량 검색/목록 조회
-// @Description 키워드, 브랜드, 연료 타입, 가격 범위로 차량을 검색합니다.
+// @Description 키워드, 브랜드, 연료 타입, 가격 범위, 연도 범위로 차량을 검색합니다.
 // @Tags cars
 // @Produce json
 // @Param q query string false "검색어 (브랜드명, 모델명, 트림명)"
@@ -28,16 +28,18 @@ func NewHandler(carUsecase carusecase.CarUsecase) *Handler {
 // @Param size query int false "페이지 크기 (기본값: 10)"
 // @Param brand_id query string false "브랜드 ID"
 // @Param fuel_type query string false "연료 타입"
-// @Param min_price query integer false "최소 가격"
-// @Param max_price query integer false "최대 가격"
-// @Param sort query string false "정렬 (price_asc, price_desc, year_asc, year_desc, name_asc, name_desc)"
+// @Param min_price query int false "최소 가격"
+// @Param max_price query int false "최대 가격"
+// @Param min_year query int false "최소 연도"
+// @Param max_year query int false "최대 연도"
+// @Param sort query string false "정렬 (price_asc, price_desc, year_asc, year_desc, created_at_asc, created_at_desc)"
 // @Success 200 {object} map[string]interface{}
 // @Failure 500 {object} map[string]interface{}
 // @Router /cars [get]
 func (h *Handler) List(c *gin.Context) {
 	page, _ := strconv.Atoi(c.DefaultQuery("page", "1"))
 	size, _ := strconv.Atoi(c.DefaultQuery("size", "10"))
-	sort := c.DefaultQuery("sort", "price_desc")
+	sort := c.DefaultQuery("sort", "created_at_desc")
 
 	req := carusecase.ListCarsCondition{
 		Page: page,
@@ -59,10 +61,19 @@ func (h *Handler) List(c *gin.Context) {
 			req.MinPrice = &parsed
 		}
 	}
-
 	if v := c.Query("max_price"); v != "" {
 		if parsed, err := strconv.Atoi(v); err == nil {
 			req.MaxPrice = &parsed
+		}
+	}
+	if v := c.Query("min_year"); v != "" {
+		if parsed, err := strconv.Atoi(v); err == nil {
+			req.MinYear = &parsed
+		}
+	}
+	if v := c.Query("max_year"); v != "" {
+		if parsed, err := strconv.Atoi(v); err == nil {
+			req.MaxYear = &parsed
 		}
 	}
 
