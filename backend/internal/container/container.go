@@ -62,7 +62,6 @@ func NewContainer(db *postgres.DB, rdb *redis.Redis) *Container {
 	// config 로드
 	cfg := config.LoadConfig()
 
-	// usecase 생성 후 container에 담아서 반환
 	return &Container{
 
 		AuthUsecase:             usecase.NewAuthUsecase(userRepo, deviceRepo, tokenCache, txManager),
