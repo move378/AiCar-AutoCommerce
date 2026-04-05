@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:aicar/core/providers/database_provider.dart';
-import 'package:aicar/data/repositories/go_api/chat_repository_impl.dart';
+import 'package:aicar/core/providers/repository_providers.dart';
 import 'package:aicar/domain/entities/chat_message.dart';
 import 'package:aicar/domain/repositories/i_chat_repository.dart';
 
@@ -85,7 +84,7 @@ class ChatNotifier extends Notifier<ChatState> {
     state = state.copyWith(
       messages: [...state.messages, userMessage],
     );
-    await _repository.saveMessage(userMessage);
+    await _repository.saveMessage(_currentSessionId!, userMessage);
 
     // AI 응답 획득
     final responseText = await _repository.getResponse(text);
@@ -119,7 +118,7 @@ class ChatNotifier extends Notifier<ChatState> {
             streamingText: '',
           );
 
-          _repository.saveMessage(assistantMessage);
+          _repository.saveMessage(_currentSessionId!, assistantMessage);
           completer.complete();
           return;
         }
@@ -143,12 +142,6 @@ class ChatNotifier extends Notifier<ChatState> {
     state = const ChatState();
   }
 }
-
-/// Chat Repository Provider — go_api 구현체 (MVP)
-final chatRepositoryProvider = Provider<IChatRepository>((ref) {
-  final db = ref.read(appDatabaseProvider);
-  return ChatRepositoryImpl(db);
-});
 
 /// Chat Provider
 final chatProvider = NotifierProvider<ChatNotifier, ChatState>(

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:aicar/core/providers/repository_providers.dart';
 import 'package:aicar/core/theme/app_colors.dart';
 import 'package:aicar/core/theme/app_spacing.dart';
 import 'package:aicar/core/theme/app_typography.dart';
 import 'package:aicar/domain/entities/chat_message.dart';
-import 'package:aicar/presentation/pages/ai_chat/providers/chat_provider.dart';
 import 'package:aicar/presentation/pages/ai_chat/widgets/chat_bubble.dart';
 import 'package:aicar/presentation/pages/ai_chat/widgets/inline_card_carousel.dart';
 import 'package:aicar/presentation/widgets/headers/aicar_header.dart';
@@ -30,21 +30,28 @@ class _ChatHistoryPageState extends ConsumerState<ChatHistoryPage> {
 
   Future<void> _loadSessions() async {
     final repo = ref.read(chatRepositoryProvider);
-    final sessionIds = await repo.getSessionIds();
+    final chatSessions = await repo.getSessions();
 
     final sessions = <_SessionPreview>[];
-    for (final sid in sessionIds) {
-      final messages = await repo.loadSession(sid);
+    for (final session in chatSessions) {
+      final messages = await repo.loadMessages(session.id);
       if (messages.isNotEmpty) {
         final firstUserMessage = messages.firstWhere(
           (m) => m.isUser,
           orElse: () => messages.first,
         );
         sessions.add(_SessionPreview(
-          sessionId: sid,
-          preview: firstUserMessage.content,
-          date: messages.first.createdAt,
+          sessionId: session.id,
+          preview: session.title ?? firstUserMessage.content,
+          date: session.createdAt,
           messageCount: messages.length,
+        ));
+      } else {
+        sessions.add(_SessionPreview(
+          sessionId: session.id,
+          preview: session.title ?? '새 상담',
+          date: session.createdAt,
+          messageCount: 0,
         ));
       }
     }
@@ -67,7 +74,7 @@ class _ChatHistoryPageState extends ConsumerState<ChatHistoryPage> {
 
   void _showSessionDetail(String sessionId) async {
     final repo = ref.read(chatRepositoryProvider);
-    final messages = await repo.loadSession(sessionId);
+    final messages = await repo.loadMessages(sessionId);
 
     if (!mounted) return;
 
