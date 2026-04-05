@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'chat_message.dart';
+part of 'chat_session.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,112 +13,94 @@ part of 'chat_message.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$ChatMessage {
+mixin _$ChatSession {
   String get id;
-  ChatRole get role;
-  String get content;
+  String? get title;
   DateTime get createdAt;
-  String? get sessionId;
-  String? get feedback;
+  DateTime get updatedAt;
 
-  /// Create a copy of ChatMessage
+  /// Create a copy of ChatSession
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $ChatMessageCopyWith<ChatMessage> get copyWith =>
-      _$ChatMessageCopyWithImpl<ChatMessage>(this as ChatMessage, _$identity);
+  $ChatSessionCopyWith<ChatSession> get copyWith =>
+      _$ChatSessionCopyWithImpl<ChatSession>(this as ChatSession, _$identity);
+
+  /// Serializes this ChatSession to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ChatMessage &&
+            other is ChatSession &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.role, role) || other.role == role) &&
-            (identical(other.content, content) || other.content == content) &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            (identical(other.sessionId, sessionId) ||
-                other.sessionId == sessionId) &&
-            (identical(other.feedback, feedback) ||
-                other.feedback == feedback));
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, role, content, createdAt, sessionId, feedback);
+  int get hashCode => Object.hash(runtimeType, id, title, createdAt, updatedAt);
 
   @override
   String toString() {
-    return 'ChatMessage(id: $id, role: $role, content: $content, createdAt: $createdAt, sessionId: $sessionId, feedback: $feedback)';
+    return 'ChatSession(id: $id, title: $title, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 }
 
 /// @nodoc
-abstract mixin class $ChatMessageCopyWith<$Res> {
-  factory $ChatMessageCopyWith(
-          ChatMessage value, $Res Function(ChatMessage) _then) =
-      _$ChatMessageCopyWithImpl;
+abstract mixin class $ChatSessionCopyWith<$Res> {
+  factory $ChatSessionCopyWith(
+          ChatSession value, $Res Function(ChatSession) _then) =
+      _$ChatSessionCopyWithImpl;
   @useResult
-  $Res call(
-      {String id,
-      ChatRole role,
-      String content,
-      DateTime createdAt,
-      String? sessionId,
-      String? feedback});
+  $Res call({String id, String? title, DateTime createdAt, DateTime updatedAt});
 }
 
 /// @nodoc
-class _$ChatMessageCopyWithImpl<$Res> implements $ChatMessageCopyWith<$Res> {
-  _$ChatMessageCopyWithImpl(this._self, this._then);
+class _$ChatSessionCopyWithImpl<$Res> implements $ChatSessionCopyWith<$Res> {
+  _$ChatSessionCopyWithImpl(this._self, this._then);
 
-  final ChatMessage _self;
-  final $Res Function(ChatMessage) _then;
+  final ChatSession _self;
+  final $Res Function(ChatSession) _then;
 
-  /// Create a copy of ChatMessage
+  /// Create a copy of ChatSession
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
-    Object? role = null,
-    Object? content = null,
+    Object? title = freezed,
     Object? createdAt = null,
-    Object? sessionId = freezed,
-    Object? feedback = freezed,
+    Object? updatedAt = null,
   }) {
     return _then(_self.copyWith(
       id: null == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      role: null == role
-          ? _self.role
-          : role // ignore: cast_nullable_to_non_nullable
-              as ChatRole,
-      content: null == content
-          ? _self.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String,
+      title: freezed == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
       createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      sessionId: freezed == sessionId
-          ? _self.sessionId
-          : sessionId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      feedback: freezed == feedback
-          ? _self.feedback
-          : feedback // ignore: cast_nullable_to_non_nullable
-              as String?,
+      updatedAt: null == updatedAt
+          ? _self.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
 
-/// Adds pattern-matching-related methods to [ChatMessage].
-extension ChatMessagePatterns on ChatMessage {
+/// Adds pattern-matching-related methods to [ChatSession].
+extension ChatSessionPatterns on ChatSession {
   /// A variant of `map` that fallback to returning `orElse`.
   ///
   /// It is equivalent to doing:
@@ -133,12 +115,12 @@ extension ChatMessagePatterns on ChatMessage {
 
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
-    TResult Function(_ChatMessage value)? $default, {
+    TResult Function(_ChatSession value)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _ChatMessage() when $default != null:
+      case _ChatSession() when $default != null:
         return $default(_that);
       case _:
         return orElse();
@@ -160,11 +142,11 @@ extension ChatMessagePatterns on ChatMessage {
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ChatMessage value) $default,
+    TResult Function(_ChatSession value) $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _ChatMessage():
+      case _ChatSession():
         return $default(_that);
       case _:
         throw StateError('Unexpected subclass');
@@ -185,11 +167,11 @@ extension ChatMessagePatterns on ChatMessage {
 
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_ChatMessage value)? $default,
+    TResult? Function(_ChatSession value)? $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _ChatMessage() when $default != null:
+      case _ChatSession() when $default != null:
         return $default(_that);
       case _:
         return null;
@@ -210,16 +192,16 @@ extension ChatMessagePatterns on ChatMessage {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String id, ChatRole role, String content,
-            DateTime createdAt, String? sessionId, String? feedback)?
+    TResult Function(
+            String id, String? title, DateTime createdAt, DateTime updatedAt)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _ChatMessage() when $default != null:
-        return $default(_that.id, _that.role, _that.content, _that.createdAt,
-            _that.sessionId, _that.feedback);
+      case _ChatSession() when $default != null:
+        return $default(
+            _that.id, _that.title, _that.createdAt, _that.updatedAt);
       case _:
         return orElse();
     }
@@ -240,15 +222,15 @@ extension ChatMessagePatterns on ChatMessage {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String id, ChatRole role, String content,
-            DateTime createdAt, String? sessionId, String? feedback)
+    TResult Function(
+            String id, String? title, DateTime createdAt, DateTime updatedAt)
         $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _ChatMessage():
-        return $default(_that.id, _that.role, _that.content, _that.createdAt,
-            _that.sessionId, _that.feedback);
+      case _ChatSession():
+        return $default(
+            _that.id, _that.title, _that.createdAt, _that.updatedAt);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -268,15 +250,15 @@ extension ChatMessagePatterns on ChatMessage {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String id, ChatRole role, String content,
-            DateTime createdAt, String? sessionId, String? feedback)?
+    TResult? Function(
+            String id, String? title, DateTime createdAt, DateTime updatedAt)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _ChatMessage() when $default != null:
-        return $default(_that.id, _that.role, _that.content, _that.createdAt,
-            _that.sessionId, _that.feedback);
+      case _ChatSession() when $default != null:
+        return $default(
+            _that.id, _that.title, _that.createdAt, _that.updatedAt);
       case _:
         return null;
     }
@@ -285,124 +267,108 @@ extension ChatMessagePatterns on ChatMessage {
 
 /// @nodoc
 
-class _ChatMessage extends ChatMessage {
-  const _ChatMessage(
+@JsonSerializable(fieldRename: FieldRename.snake)
+class _ChatSession implements ChatSession {
+  const _ChatSession(
       {required this.id,
-      required this.role,
-      required this.content,
+      this.title,
       required this.createdAt,
-      this.sessionId,
-      this.feedback})
-      : super._();
+      required this.updatedAt});
+  factory _ChatSession.fromJson(Map<String, dynamic> json) =>
+      _$ChatSessionFromJson(json);
 
   @override
   final String id;
   @override
-  final ChatRole role;
-  @override
-  final String content;
+  final String? title;
   @override
   final DateTime createdAt;
   @override
-  final String? sessionId;
-  @override
-  final String? feedback;
+  final DateTime updatedAt;
 
-  /// Create a copy of ChatMessage
+  /// Create a copy of ChatSession
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$ChatMessageCopyWith<_ChatMessage> get copyWith =>
-      __$ChatMessageCopyWithImpl<_ChatMessage>(this, _$identity);
+  _$ChatSessionCopyWith<_ChatSession> get copyWith =>
+      __$ChatSessionCopyWithImpl<_ChatSession>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ChatSessionToJson(
+      this,
+    );
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ChatMessage &&
+            other is _ChatSession &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.role, role) || other.role == role) &&
-            (identical(other.content, content) || other.content == content) &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            (identical(other.sessionId, sessionId) ||
-                other.sessionId == sessionId) &&
-            (identical(other.feedback, feedback) ||
-                other.feedback == feedback));
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, role, content, createdAt, sessionId, feedback);
+  int get hashCode => Object.hash(runtimeType, id, title, createdAt, updatedAt);
 
   @override
   String toString() {
-    return 'ChatMessage(id: $id, role: $role, content: $content, createdAt: $createdAt, sessionId: $sessionId, feedback: $feedback)';
+    return 'ChatSession(id: $id, title: $title, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$ChatMessageCopyWith<$Res>
-    implements $ChatMessageCopyWith<$Res> {
-  factory _$ChatMessageCopyWith(
-          _ChatMessage value, $Res Function(_ChatMessage) _then) =
-      __$ChatMessageCopyWithImpl;
+abstract mixin class _$ChatSessionCopyWith<$Res>
+    implements $ChatSessionCopyWith<$Res> {
+  factory _$ChatSessionCopyWith(
+          _ChatSession value, $Res Function(_ChatSession) _then) =
+      __$ChatSessionCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {String id,
-      ChatRole role,
-      String content,
-      DateTime createdAt,
-      String? sessionId,
-      String? feedback});
+  $Res call({String id, String? title, DateTime createdAt, DateTime updatedAt});
 }
 
 /// @nodoc
-class __$ChatMessageCopyWithImpl<$Res> implements _$ChatMessageCopyWith<$Res> {
-  __$ChatMessageCopyWithImpl(this._self, this._then);
+class __$ChatSessionCopyWithImpl<$Res> implements _$ChatSessionCopyWith<$Res> {
+  __$ChatSessionCopyWithImpl(this._self, this._then);
 
-  final _ChatMessage _self;
-  final $Res Function(_ChatMessage) _then;
+  final _ChatSession _self;
+  final $Res Function(_ChatSession) _then;
 
-  /// Create a copy of ChatMessage
+  /// Create a copy of ChatSession
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $Res call({
     Object? id = null,
-    Object? role = null,
-    Object? content = null,
+    Object? title = freezed,
     Object? createdAt = null,
-    Object? sessionId = freezed,
-    Object? feedback = freezed,
+    Object? updatedAt = null,
   }) {
-    return _then(_ChatMessage(
+    return _then(_ChatSession(
       id: null == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      role: null == role
-          ? _self.role
-          : role // ignore: cast_nullable_to_non_nullable
-              as ChatRole,
-      content: null == content
-          ? _self.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String,
+      title: freezed == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
       createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      sessionId: freezed == sessionId
-          ? _self.sessionId
-          : sessionId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      feedback: freezed == feedback
-          ? _self.feedback
-          : feedback // ignore: cast_nullable_to_non_nullable
-              as String?,
+      updatedAt: null == updatedAt
+          ? _self.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }

@@ -19,11 +19,19 @@ mixin _$Vehicle {
   String get model;
   int get year;
 
-  /// 가격 (만원 단위)
+  /// 가격 (원 단위 — API 기준)
   int get price;
   String get fuelType;
-  String? get imageUrl;
-  VehicleSpecs get specs;
+  String? get imageUrl; // --- 추가 필드 (nullable, CardCacheTable JSON 호환) ---
+  String? get trimName;
+  String? get transmission;
+  int? get engineDisplacement;
+  double? get fuelEfficiency;
+  String? get status;
+  String? get modelId;
+  List<VehicleImage>?
+      get images; // specs → nullable (Car API에는 power/torque/zeroToHundred 없음)
+  VehicleSpecs? get specs;
 
   /// Create a copy of Vehicle
   /// with the given fields replaced by the non-null parameter values.
@@ -49,17 +57,43 @@ mixin _$Vehicle {
                 other.fuelType == fuelType) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
+            (identical(other.trimName, trimName) ||
+                other.trimName == trimName) &&
+            (identical(other.transmission, transmission) ||
+                other.transmission == transmission) &&
+            (identical(other.engineDisplacement, engineDisplacement) ||
+                other.engineDisplacement == engineDisplacement) &&
+            (identical(other.fuelEfficiency, fuelEfficiency) ||
+                other.fuelEfficiency == fuelEfficiency) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.modelId, modelId) || other.modelId == modelId) &&
+            const DeepCollectionEquality().equals(other.images, images) &&
             (identical(other.specs, specs) || other.specs == specs));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, brand, model, year, price, fuelType, imageUrl, specs);
+      runtimeType,
+      id,
+      brand,
+      model,
+      year,
+      price,
+      fuelType,
+      imageUrl,
+      trimName,
+      transmission,
+      engineDisplacement,
+      fuelEfficiency,
+      status,
+      modelId,
+      const DeepCollectionEquality().hash(images),
+      specs);
 
   @override
   String toString() {
-    return 'Vehicle(id: $id, brand: $brand, model: $model, year: $year, price: $price, fuelType: $fuelType, imageUrl: $imageUrl, specs: $specs)';
+    return 'Vehicle(id: $id, brand: $brand, model: $model, year: $year, price: $price, fuelType: $fuelType, imageUrl: $imageUrl, trimName: $trimName, transmission: $transmission, engineDisplacement: $engineDisplacement, fuelEfficiency: $fuelEfficiency, status: $status, modelId: $modelId, images: $images, specs: $specs)';
   }
 }
 
@@ -76,9 +110,16 @@ abstract mixin class $VehicleCopyWith<$Res> {
       int price,
       String fuelType,
       String? imageUrl,
-      VehicleSpecs specs});
+      String? trimName,
+      String? transmission,
+      int? engineDisplacement,
+      double? fuelEfficiency,
+      String? status,
+      String? modelId,
+      List<VehicleImage>? images,
+      VehicleSpecs? specs});
 
-  $VehicleSpecsCopyWith<$Res> get specs;
+  $VehicleSpecsCopyWith<$Res>? get specs;
 }
 
 /// @nodoc
@@ -100,7 +141,14 @@ class _$VehicleCopyWithImpl<$Res> implements $VehicleCopyWith<$Res> {
     Object? price = null,
     Object? fuelType = null,
     Object? imageUrl = freezed,
-    Object? specs = null,
+    Object? trimName = freezed,
+    Object? transmission = freezed,
+    Object? engineDisplacement = freezed,
+    Object? fuelEfficiency = freezed,
+    Object? status = freezed,
+    Object? modelId = freezed,
+    Object? images = freezed,
+    Object? specs = freezed,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -131,10 +179,38 @@ class _$VehicleCopyWithImpl<$Res> implements $VehicleCopyWith<$Res> {
           ? _self.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      specs: null == specs
+      trimName: freezed == trimName
+          ? _self.trimName
+          : trimName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      transmission: freezed == transmission
+          ? _self.transmission
+          : transmission // ignore: cast_nullable_to_non_nullable
+              as String?,
+      engineDisplacement: freezed == engineDisplacement
+          ? _self.engineDisplacement
+          : engineDisplacement // ignore: cast_nullable_to_non_nullable
+              as int?,
+      fuelEfficiency: freezed == fuelEfficiency
+          ? _self.fuelEfficiency
+          : fuelEfficiency // ignore: cast_nullable_to_non_nullable
+              as double?,
+      status: freezed == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modelId: freezed == modelId
+          ? _self.modelId
+          : modelId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      images: freezed == images
+          ? _self.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<VehicleImage>?,
+      specs: freezed == specs
           ? _self.specs
           : specs // ignore: cast_nullable_to_non_nullable
-              as VehicleSpecs,
+              as VehicleSpecs?,
     ));
   }
 
@@ -142,8 +218,12 @@ class _$VehicleCopyWithImpl<$Res> implements $VehicleCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $VehicleSpecsCopyWith<$Res> get specs {
-    return $VehicleSpecsCopyWith<$Res>(_self.specs, (value) {
+  $VehicleSpecsCopyWith<$Res>? get specs {
+    if (_self.specs == null) {
+      return null;
+    }
+
+    return $VehicleSpecsCopyWith<$Res>(_self.specs!, (value) {
       return _then(_self.copyWith(specs: value));
     });
   }
@@ -242,16 +322,44 @@ extension VehiclePatterns on Vehicle {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String id, String brand, String model, int year, int price,
-            String fuelType, String? imageUrl, VehicleSpecs specs)?
+    TResult Function(
+            String id,
+            String brand,
+            String model,
+            int year,
+            int price,
+            String fuelType,
+            String? imageUrl,
+            String? trimName,
+            String? transmission,
+            int? engineDisplacement,
+            double? fuelEfficiency,
+            String? status,
+            String? modelId,
+            List<VehicleImage>? images,
+            VehicleSpecs? specs)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _Vehicle() when $default != null:
-        return $default(_that.id, _that.brand, _that.model, _that.year,
-            _that.price, _that.fuelType, _that.imageUrl, _that.specs);
+        return $default(
+            _that.id,
+            _that.brand,
+            _that.model,
+            _that.year,
+            _that.price,
+            _that.fuelType,
+            _that.imageUrl,
+            _that.trimName,
+            _that.transmission,
+            _that.engineDisplacement,
+            _that.fuelEfficiency,
+            _that.status,
+            _that.modelId,
+            _that.images,
+            _that.specs);
       case _:
         return orElse();
     }
@@ -272,15 +380,43 @@ extension VehiclePatterns on Vehicle {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String id, String brand, String model, int year, int price,
-            String fuelType, String? imageUrl, VehicleSpecs specs)
+    TResult Function(
+            String id,
+            String brand,
+            String model,
+            int year,
+            int price,
+            String fuelType,
+            String? imageUrl,
+            String? trimName,
+            String? transmission,
+            int? engineDisplacement,
+            double? fuelEfficiency,
+            String? status,
+            String? modelId,
+            List<VehicleImage>? images,
+            VehicleSpecs? specs)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _Vehicle():
-        return $default(_that.id, _that.brand, _that.model, _that.year,
-            _that.price, _that.fuelType, _that.imageUrl, _that.specs);
+        return $default(
+            _that.id,
+            _that.brand,
+            _that.model,
+            _that.year,
+            _that.price,
+            _that.fuelType,
+            _that.imageUrl,
+            _that.trimName,
+            _that.transmission,
+            _that.engineDisplacement,
+            _that.fuelEfficiency,
+            _that.status,
+            _that.modelId,
+            _that.images,
+            _that.specs);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -300,15 +436,43 @@ extension VehiclePatterns on Vehicle {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String id, String brand, String model, int year,
-            int price, String fuelType, String? imageUrl, VehicleSpecs specs)?
+    TResult? Function(
+            String id,
+            String brand,
+            String model,
+            int year,
+            int price,
+            String fuelType,
+            String? imageUrl,
+            String? trimName,
+            String? transmission,
+            int? engineDisplacement,
+            double? fuelEfficiency,
+            String? status,
+            String? modelId,
+            List<VehicleImage>? images,
+            VehicleSpecs? specs)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _Vehicle() when $default != null:
-        return $default(_that.id, _that.brand, _that.model, _that.year,
-            _that.price, _that.fuelType, _that.imageUrl, _that.specs);
+        return $default(
+            _that.id,
+            _that.brand,
+            _that.model,
+            _that.year,
+            _that.price,
+            _that.fuelType,
+            _that.imageUrl,
+            _that.trimName,
+            _that.transmission,
+            _that.engineDisplacement,
+            _that.fuelEfficiency,
+            _that.status,
+            _that.modelId,
+            _that.images,
+            _that.specs);
       case _:
         return null;
     }
@@ -327,8 +491,16 @@ class _Vehicle extends Vehicle {
       required this.price,
       required this.fuelType,
       this.imageUrl,
-      required this.specs})
-      : super._();
+      this.trimName,
+      this.transmission,
+      this.engineDisplacement,
+      this.fuelEfficiency,
+      this.status,
+      this.modelId,
+      final List<VehicleImage>? images,
+      this.specs})
+      : _images = images,
+        super._();
   factory _Vehicle.fromJson(Map<String, dynamic> json) =>
       _$VehicleFromJson(json);
 
@@ -341,15 +513,39 @@ class _Vehicle extends Vehicle {
   @override
   final int year;
 
-  /// 가격 (만원 단위)
+  /// 가격 (원 단위 — API 기준)
   @override
   final int price;
   @override
   final String fuelType;
   @override
   final String? imageUrl;
+// --- 추가 필드 (nullable, CardCacheTable JSON 호환) ---
   @override
-  final VehicleSpecs specs;
+  final String? trimName;
+  @override
+  final String? transmission;
+  @override
+  final int? engineDisplacement;
+  @override
+  final double? fuelEfficiency;
+  @override
+  final String? status;
+  @override
+  final String? modelId;
+  final List<VehicleImage>? _images;
+  @override
+  List<VehicleImage>? get images {
+    final value = _images;
+    if (value == null) return null;
+    if (_images is EqualUnmodifiableListView) return _images;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+// specs → nullable (Car API에는 power/torque/zeroToHundred 없음)
+  @override
+  final VehicleSpecs? specs;
 
   /// Create a copy of Vehicle
   /// with the given fields replaced by the non-null parameter values.
@@ -380,17 +576,43 @@ class _Vehicle extends Vehicle {
                 other.fuelType == fuelType) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
+            (identical(other.trimName, trimName) ||
+                other.trimName == trimName) &&
+            (identical(other.transmission, transmission) ||
+                other.transmission == transmission) &&
+            (identical(other.engineDisplacement, engineDisplacement) ||
+                other.engineDisplacement == engineDisplacement) &&
+            (identical(other.fuelEfficiency, fuelEfficiency) ||
+                other.fuelEfficiency == fuelEfficiency) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.modelId, modelId) || other.modelId == modelId) &&
+            const DeepCollectionEquality().equals(other._images, _images) &&
             (identical(other.specs, specs) || other.specs == specs));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, brand, model, year, price, fuelType, imageUrl, specs);
+      runtimeType,
+      id,
+      brand,
+      model,
+      year,
+      price,
+      fuelType,
+      imageUrl,
+      trimName,
+      transmission,
+      engineDisplacement,
+      fuelEfficiency,
+      status,
+      modelId,
+      const DeepCollectionEquality().hash(_images),
+      specs);
 
   @override
   String toString() {
-    return 'Vehicle(id: $id, brand: $brand, model: $model, year: $year, price: $price, fuelType: $fuelType, imageUrl: $imageUrl, specs: $specs)';
+    return 'Vehicle(id: $id, brand: $brand, model: $model, year: $year, price: $price, fuelType: $fuelType, imageUrl: $imageUrl, trimName: $trimName, transmission: $transmission, engineDisplacement: $engineDisplacement, fuelEfficiency: $fuelEfficiency, status: $status, modelId: $modelId, images: $images, specs: $specs)';
   }
 }
 
@@ -408,10 +630,17 @@ abstract mixin class _$VehicleCopyWith<$Res> implements $VehicleCopyWith<$Res> {
       int price,
       String fuelType,
       String? imageUrl,
-      VehicleSpecs specs});
+      String? trimName,
+      String? transmission,
+      int? engineDisplacement,
+      double? fuelEfficiency,
+      String? status,
+      String? modelId,
+      List<VehicleImage>? images,
+      VehicleSpecs? specs});
 
   @override
-  $VehicleSpecsCopyWith<$Res> get specs;
+  $VehicleSpecsCopyWith<$Res>? get specs;
 }
 
 /// @nodoc
@@ -433,7 +662,14 @@ class __$VehicleCopyWithImpl<$Res> implements _$VehicleCopyWith<$Res> {
     Object? price = null,
     Object? fuelType = null,
     Object? imageUrl = freezed,
-    Object? specs = null,
+    Object? trimName = freezed,
+    Object? transmission = freezed,
+    Object? engineDisplacement = freezed,
+    Object? fuelEfficiency = freezed,
+    Object? status = freezed,
+    Object? modelId = freezed,
+    Object? images = freezed,
+    Object? specs = freezed,
   }) {
     return _then(_Vehicle(
       id: null == id
@@ -464,10 +700,38 @@ class __$VehicleCopyWithImpl<$Res> implements _$VehicleCopyWith<$Res> {
           ? _self.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      specs: null == specs
+      trimName: freezed == trimName
+          ? _self.trimName
+          : trimName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      transmission: freezed == transmission
+          ? _self.transmission
+          : transmission // ignore: cast_nullable_to_non_nullable
+              as String?,
+      engineDisplacement: freezed == engineDisplacement
+          ? _self.engineDisplacement
+          : engineDisplacement // ignore: cast_nullable_to_non_nullable
+              as int?,
+      fuelEfficiency: freezed == fuelEfficiency
+          ? _self.fuelEfficiency
+          : fuelEfficiency // ignore: cast_nullable_to_non_nullable
+              as double?,
+      status: freezed == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modelId: freezed == modelId
+          ? _self.modelId
+          : modelId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      images: freezed == images
+          ? _self._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<VehicleImage>?,
+      specs: freezed == specs
           ? _self.specs
           : specs // ignore: cast_nullable_to_non_nullable
-              as VehicleSpecs,
+              as VehicleSpecs?,
     ));
   }
 
@@ -475,8 +739,12 @@ class __$VehicleCopyWithImpl<$Res> implements _$VehicleCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $VehicleSpecsCopyWith<$Res> get specs {
-    return $VehicleSpecsCopyWith<$Res>(_self.specs, (value) {
+  $VehicleSpecsCopyWith<$Res>? get specs {
+    if (_self.specs == null) {
+      return null;
+    }
+
+    return $VehicleSpecsCopyWith<$Res>(_self.specs!, (value) {
       return _then(_self.copyWith(specs: value));
     });
   }

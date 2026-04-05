@@ -1,3 +1,4 @@
+import 'package:aicar/domain/entities/vehicle_image.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'vehicle.freezed.dart';
@@ -15,19 +16,31 @@ abstract class Vehicle with _$Vehicle {
     required String model,
     required int year,
 
-    /// 가격 (만원 단위)
+    /// 가격 (원 단위 — API 기준)
     required int price,
     required String fuelType,
     String? imageUrl,
-    required VehicleSpecs specs,
+
+    // --- 추가 필드 (nullable, CardCacheTable JSON 호환) ---
+    String? trimName,
+    String? transmission,
+    int? engineDisplacement,
+    double? fuelEfficiency,
+    String? status,
+    String? modelId,
+    List<VehicleImage>? images,
+
+    // specs → nullable (Car API에는 power/torque/zeroToHundred 없음)
+    VehicleSpecs? specs,
   }) = _Vehicle;
 
   factory Vehicle.fromJson(Map<String, dynamic> json) =>
       _$VehicleFromJson(json);
 
-  /// 가격 포맷 (예: "4,990만원")
+  /// 가격 포맷 (예: "2,300만원")
   String get formattedPrice {
-    final formatted = price.toString().replaceAllMapped(
+    final inManwon = price ~/ 10000;
+    final formatted = inManwon.toString().replaceAllMapped(
         RegExp(r'(\d)(?=(\d{3})+(?!\d))'), (m) => '${m[1]},');
     return '$formatted만원';
   }

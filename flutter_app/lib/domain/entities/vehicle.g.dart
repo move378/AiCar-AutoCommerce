@@ -14,7 +14,18 @@ _Vehicle _$VehicleFromJson(Map<String, dynamic> json) => _Vehicle(
       price: (json['price'] as num).toInt(),
       fuelType: json['fuel_type'] as String,
       imageUrl: json['image_url'] as String?,
-      specs: VehicleSpecs.fromJson(json['specs'] as Map<String, dynamic>),
+      trimName: json['trim_name'] as String?,
+      transmission: json['transmission'] as String?,
+      engineDisplacement: (json['engine_displacement'] as num?)?.toInt(),
+      fuelEfficiency: (json['fuel_efficiency'] as num?)?.toDouble(),
+      status: json['status'] as String?,
+      modelId: json['model_id'] as String?,
+      images: (json['images'] as List<dynamic>?)
+          ?.map((e) => VehicleImage.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      specs: json['specs'] == null
+          ? null
+          : VehicleSpecs.fromJson(json['specs'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$VehicleToJson(_Vehicle instance) => <String, dynamic>{
@@ -25,6 +36,13 @@ Map<String, dynamic> _$VehicleToJson(_Vehicle instance) => <String, dynamic>{
       'price': instance.price,
       'fuel_type': instance.fuelType,
       'image_url': instance.imageUrl,
+      'trim_name': instance.trimName,
+      'transmission': instance.transmission,
+      'engine_displacement': instance.engineDisplacement,
+      'fuel_efficiency': instance.fuelEfficiency,
+      'status': instance.status,
+      'model_id': instance.modelId,
+      'images': instance.images,
       'specs': instance.specs,
     };
 

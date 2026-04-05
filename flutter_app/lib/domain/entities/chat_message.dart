@@ -15,9 +15,8 @@ abstract class ChatMessage with _$ChatMessage {
     required ChatRole role,
     required String content,
     required DateTime createdAt,
-
-    /// 05-01에서는 null, 05-02 히스토리 그룹핑 키로 활용 예정
     String? sessionId,
+    String? feedback,
   }) = _ChatMessage;
 
   bool get isUser => role == ChatRole.user;
