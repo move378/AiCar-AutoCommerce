@@ -87,12 +87,12 @@ class CardFrontWidget extends StatelessWidget {
                 Row(
                   children: [
                     _SpecChip(
-                      label: '${card.specs.power}hp',
+                      label: '${card.specs?.power ?? card.engineDisplacement ?? '-'}hp',
                       icon: Icons.speed_rounded,
                     ),
                     const SizedBox(width: AppSpacing.space2),
                     _SpecChip(
-                      label: '${card.specs.fuelEfficiency}km/L',
+                      label: '${card.specs?.fuelEfficiency ?? card.fuelEfficiency ?? '-'}km/L',
                       icon: Icons.local_gas_station_rounded,
                     ),
                     const SizedBox(width: AppSpacing.space2),

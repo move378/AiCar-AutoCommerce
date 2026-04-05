@@ -32,6 +32,7 @@ class CardBackWidget extends StatelessWidget {
   }
 
   Widget _buildCompact() {
+    final specs = card.specs;
     return Padding(
       padding: const EdgeInsets.all(AppSpacing.space2),
       child: Column(
@@ -45,23 +46,26 @@ class CardBackWidget extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           ),
-          Expanded(
-            child: Center(
-              child: RadarChart(
-                specs: card.specs,
-                price: card.price,
-                size: 80,
+          if (specs != null)
+            Expanded(
+              child: Center(
+                child: RadarChart(
+                  specs: specs,
+                  price: card.price,
+                  size: 80,
+                ),
               ),
-            ),
-          ),
+            )
+          else
+            const Expanded(child: SizedBox.shrink()),
           _SpecRow(
             label: '마력',
-            value: '${card.specs.power}hp',
+            value: '${specs?.power ?? '-'}hp',
             isCompact: true,
           ),
           _SpecRow(
             label: '연비',
-            value: '${card.specs.fuelEfficiency}km/L',
+            value: '${specs?.fuelEfficiency ?? card.fuelEfficiency ?? '-'}km/L',
             isCompact: true,
           ),
         ],
@@ -70,19 +74,21 @@ class CardBackWidget extends StatelessWidget {
   }
 
   Widget _buildFull() {
+    final specs = card.specs;
     return Column(
       children: [
-        // Radar Chart
-        Padding(
-          padding: const EdgeInsets.only(top: AppSpacing.space4),
-          child: Center(
-            child: RadarChart(
-              specs: card.specs,
-              price: card.price,
-              size: 160,
+        // Radar Chart (specs가 있을 때만)
+        if (specs != null)
+          Padding(
+            padding: const EdgeInsets.only(top: AppSpacing.space4),
+            child: Center(
+              child: RadarChart(
+                specs: specs,
+                price: card.price,
+                size: 160,
+              ),
             ),
           ),
-        ),
 
         // 스펙 리스트
         Padding(
@@ -91,22 +97,22 @@ class CardBackWidget extends StatelessWidget {
             children: [
               _SpecRow(
                 label: '마력',
-                value: '${card.specs.power}hp',
+                value: '${specs?.power ?? '-'}hp',
                 icon: Icons.speed_rounded,
               ),
               _SpecRow(
                 label: '토크',
-                value: '${card.specs.torque}kgm',
+                value: '${specs?.torque ?? '-'}kgm',
                 icon: Icons.rotate_right_rounded,
               ),
               _SpecRow(
                 label: '연비',
-                value: '${card.specs.fuelEfficiency}km/L',
+                value: '${specs?.fuelEfficiency ?? card.fuelEfficiency ?? '-'}km/L',
                 icon: Icons.local_gas_station_rounded,
               ),
               _SpecRow(
                 label: '제로백',
-                value: '${card.specs.zeroToHundred}초',
+                value: '${specs?.zeroToHundred ?? '-'}초',
                 icon: Icons.timer_rounded,
               ),
             ],

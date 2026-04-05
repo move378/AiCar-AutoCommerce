@@ -19,7 +19,8 @@ import 'package:aicar/domain/repositories/i_vehicle_repository.dart';
 ///
 /// 사용처: home, ai_card, ai_chat (3+ features)
 final vehicleRepositoryProvider = Provider<IVehicleRepository>((ref) {
-  return go_api_vehicle.VehicleRepositoryImpl();
+  final dio = ref.read(dioProvider);
+  return go_api_vehicle.VehicleRepositoryImpl(dio);
 });
 
 /// Bookmark Repository Provider — go_api 구현체 (MVP)

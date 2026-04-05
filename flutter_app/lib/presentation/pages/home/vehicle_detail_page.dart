@@ -191,6 +191,42 @@ class _VehicleDetailPageState extends ConsumerState<VehicleDetailPage> {
 
   Widget _buildSpecsGrid(Vehicle vehicle) {
     final specs = vehicle.specs;
+    if (specs == null) {
+      // API 차량은 specs가 없음 — 연비만 표시 (flat field)
+      final items = [
+        if (vehicle.fuelEfficiency != null)
+          _SpecItem(
+              icon: Icons.local_gas_station,
+              label: '연비',
+              value: '${vehicle.fuelEfficiency}km/L'),
+        if (vehicle.transmission != null)
+          _SpecItem(
+              icon: Icons.settings,
+              label: '변속기',
+              value: vehicle.transmission!),
+        if (vehicle.engineDisplacement != null)
+          _SpecItem(
+              icon: Icons.engineering,
+              label: '배기량',
+              value: '${vehicle.engineDisplacement}cc'),
+      ];
+
+      if (items.isEmpty) return const SizedBox.shrink();
+
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.space4),
+        child: GridView.count(
+          crossAxisCount: 2,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          mainAxisSpacing: AppSpacing.space3,
+          crossAxisSpacing: AppSpacing.space3,
+          childAspectRatio: 2.2,
+          children: items.map((item) => _buildSpecCard(item)).toList(),
+        ),
+      );
+    }
+
     final items = [
       _SpecItem(icon: Icons.speed, label: '마력', value: '${specs.power}hp'),
       _SpecItem(
