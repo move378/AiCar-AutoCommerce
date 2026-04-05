@@ -107,6 +107,9 @@ func (u *userUsecase) Onboarding(ctx context.Context, device *OnboardingInput) (
 	}
 
 	accessToken, refreshToken, err := token.GenerateTokens(cfg, user.ID)
+	if err != nil {
+		return nil, fmt.Errorf("토큰 생성 실패: %w", err)
+	}
 
 	// 4. 토큰 발급
 	return &token.TokenResult{
