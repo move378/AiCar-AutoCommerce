@@ -1,12 +1,16 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:aicar/core/providers/database_provider.dart';
+import 'package:aicar/core/providers/dio_provider.dart';
+import 'package:aicar/data/repositories/go_api/auth_repository_impl.dart'
+    as go_api_auth;
 import 'package:aicar/data/repositories/go_api/bookmark_repository_impl.dart'
     as go_api_bookmark;
 import 'package:aicar/data/repositories/go_api/garage_repository_impl.dart'
     as go_api_garage;
 import 'package:aicar/data/repositories/go_api/vehicle_repository_impl.dart'
     as go_api_vehicle;
+import 'package:aicar/domain/repositories/i_auth_repository.dart';
 import 'package:aicar/domain/repositories/i_bookmark_repository.dart';
 import 'package:aicar/domain/repositories/i_garage_repository.dart';
 import 'package:aicar/domain/repositories/i_vehicle_repository.dart';
@@ -32,4 +36,11 @@ final bookmarkRepositoryProvider = Provider<IBookmarkRepository>((ref) {
 final garageRepositoryProvider = Provider<IGarageRepository>((ref) {
   final db = ref.read(appDatabaseProvider);
   return go_api_garage.GarageRepositoryImpl(db);
+});
+
+/// Auth Repository Provider — go_api 구현체 (MVP)
+final authRepositoryProvider = Provider<IAuthRepository>((ref) {
+  final dio = ref.read(dioProvider);
+  final tokenStorage = ref.read(tokenStorageProvider);
+  return go_api_auth.AuthRepositoryImpl(dio, tokenStorage);
 });

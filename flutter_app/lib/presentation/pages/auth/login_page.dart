@@ -63,9 +63,13 @@ class LoginPage extends ConsumerWidget {
                 backgroundColor: const Color(0xFFFEE500),
                 foregroundColor: const Color(0xFF191919),
                 icon: Icons.chat_bubble,
-                onTap: () {
-                  ref.read(authProvider.notifier).login('kakao');
-                  context.push('/consent');
+                onTap: () async {
+                  try {
+                    await ref.read(authProvider.notifier).loginWithKakao();
+                  } catch (_) {
+                    // 카카오 로그인 실패 시 무시 (SDK 미설정 등)
+                  }
+                  if (context.mounted) context.push('/consent');
                 },
               ),
               const SizedBox(height: AppSpacing.space3),
@@ -76,7 +80,7 @@ class LoginPage extends ConsumerWidget {
                 icon: Icons.apple,
                 borderColor: AppColors.textDisabled,
                 onTap: () {
-                  ref.read(authProvider.notifier).login('apple');
+                  // TODO: Apple 로그인 구현 예정
                   context.push('/consent');
                 },
               ),
