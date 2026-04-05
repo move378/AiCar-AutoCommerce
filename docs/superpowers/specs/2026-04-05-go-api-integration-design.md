@@ -28,8 +28,17 @@ Go 백엔드(http://18.191.163.53:8080)에 실제 API 연동하여 v0.2 완성.
 | `DELETE /api/v1/chat/sessions/{id}` | O | 세션 삭제 |
 | `POST /api/v1/chat/sessions/{id}/messages` | O | 메시지 저장 |
 | `GET /api/v1/chat/sessions/{id}/messages` | O | 메시지 조회 |
-| `POST /api/v1/cars/register` | X* | 내 차량 등록 |
-| `GET /api/v1/cars/register/{user_id}` | X* | 내 차량 조회 |
+| `POST /api/v1/cars/register` | X (public) | 내 차량 등록 |
+| `GET /api/v1/cars/register/{user_id}` | X (public) | 내 차량 조회 |
+
+> **`/cars/register` 인증 상태 명확화:**
+> 백엔드 라우터에서 auth middleware 밖에 등록됨 — **JWT 불필요**.
+> 단, request body에 `user_id`를 직접 전달해야 함 (JWT에서 추출하지 않음).
+> Flutter에서는 로컬에 저장된 user_id(온보딩 시 발급)를 request body에 포함.
+>
+> **Dio interceptor 관점:** `/api/v1/cars` 하위 경로가 모두 public이므로
+> `/cars`, `/cars/{id}`, `/cars/register` 전부 인증 헤더 없이 호출 가능.
+> 단, 인터셉터가 토큰이 있으면 항상 주입하는 방식이라면 문제없음 (서버가 무시).
 
 ### 미동작 API (이번 범위 제외)
 
@@ -44,6 +53,7 @@ Go 백엔드(http://18.191.163.53:8080)에 실제 API 연동하여 v0.2 완성.
 
 - **리네이밍 없음** — 기존 Vehicle 엔티티 유지, DTO/Mapper로 백엔드 매핑 흡수
 - **카탈로그 vs 사용자 분리** — Car API는 카탈로그(public), MyCar/Bookmark/ConsultationCard는 사용자 연관
+- **새 필드 전부 nullable** — CardCacheTable에 Vehicle이 JSON 직렬화되어 있으므로, 기존 캐시 역직렬화 호환성을 위해 추가 필드는 반드시 nullable. (v0.1 JSON 호환성 이슈 재발 방지)
 
 ### 엔티티 맵
 
@@ -73,17 +83,17 @@ Go 백엔드(http://18.191.163.53:8080)에 실제 API 연동하여 v0.2 완성.
 // 현재
 Vehicle(id, brand, model, year, price, fuelType, imageUrl, specs)
 
-// 변경 후
+// 변경 후 — 추가 필드는 전부 nullable (기존 CardCacheTable JSON 호환)
 Vehicle(
-  id, brand, model, year, price, fuelType, imageUrl,
-  trimName,           // 추가: API trim_name
-  transmission,       // 추가: API transmission
-  engineDisplacement, // 추가: API engine_displacement
-  fuelEfficiency,     // specs에서 Vehicle 레벨로 이동 (API flat 구조)
-  status,             // 추가: API status
-  modelId,            // 추가: API model_id
-  images,             // 추가: 상세 조회 시 이미지 목록
-  specs,              // nullable로 변경 (Car API에는 power/torque/zeroToHundred 없음)
+  id, brand, model, year, price, fuelType, imageUrl,  // 기존 필드 유지
+  String? trimName,           // 추가: API trim_name
+  String? transmission,       // 추가: API transmission
+  int? engineDisplacement,    // 추가: API engine_displacement
+  double? fuelEfficiency,     // specs에서 Vehicle 레벨로 이동 (API flat 구조)
+  String? status,             // 추가: API status
+  String? modelId,            // 추가: API model_id
+  List<VehicleImage>? images, // 추가: 상세 조회 시 이미지 목록
+  VehicleSpecs? specs,        // nullable로 변경 (Car API에는 power/torque/zeroToHundred 없음)
 )
 ```
 
@@ -279,15 +289,37 @@ class SocialTokenResponseDto extends TokenResponseDto {
 
 ### API 공통 응답 래퍼
 
+**주의:** json_serializable은 제네릭 T를 자동 역직렬화할 수 없음.
+ApiResponse는 타입 힌트용 클래스로만 사용하고, 실제 파싱은 Repository에서 수동 처리.
+
 ```dart
-@JsonSerializable()
-class ApiResponse<T> {
+/// 타입 힌트용 — fromJson은 사용하지 않음
+/// Repository에서 직접 파싱:
+///   final json = response.data as Map<String, dynamic>;
+///   final carDto = CarDto.fromJson(json['data']);
+///
+/// Auth 응답처럼 data가 래핑되는 경우:
+///   final data = json['data'] as Map<String, dynamic>;
+///   final tokens = TokenResponseDto.fromJson(data);
+///
+/// Cars/Brands 응답처럼 data 래핑 없는 경우:
+///   final items = (json['items'] as List).map((e) => CarDto.fromJson(e)).toList();
+class ApiResponse {
   final int status;
   final String code;
   final String? message;
-  final T? data;
+  final dynamic data;
 }
 ```
+
+**엔드포인트별 응답 구조 차이:**
+
+| 엔드포인트 | 래핑 | 파싱 방법 |
+|---|---|---|
+| `/auth/*` | `{status, code, data: {access_token, ...}}` | `json['data']`에서 DTO 역직렬화 |
+| `/cars`, `/brands` | `{items: [...], page, size, total}` | `json['items']`에서 DTO 리스트 역직렬화 |
+| `/cars/{id}` | flat object (래핑 없음) | `json` 자체를 DTO로 역직렬화 |
+| `/chat/sessions` | `{items: [...]}` or `{id, title, ...}` | 확인 필요 |
 
 ### Chat DTOs
 
