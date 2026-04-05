@@ -17,7 +17,40 @@
       "Bash(find /Users/avoler/Desktop/Private/Jung/AiCar-AutoCommerce/backoffice -name tailwind.config* -o -name package.json)",
       "Bash(grep -r \"SELECT\\\\|INSERT\\\\|UPDATE\" /Users/avoler/Desktop/Private/Jung/AiCar-AutoCommerce/backend/internal/infra/persistence/postgres/*.go)",
       "Bash(find /Users/avoler/Desktop/Private/Jung/AiCar-AutoCommerce/backend -name *.env* -o -name .env)",
-      "Bash(grep -r \"SSRF\\\\|http\\\\.\" /Users/avoler/Desktop/Private/Jung/AiCar-AutoCommerce/backend/internal/usecase/auth/*.go)"
+      "Bash(grep -r \"SSRF\\\\|http\\\\.\" /Users/avoler/Desktop/Private/Jung/AiCar-AutoCommerce/backend/internal/usecase/auth/*.go)",
+      "Bash(for branch:*)",
+      "Bash(do echo:*)",
+      "Bash(git log:*)",
+      "Bash(done)",
+      "mcp__carl-mcp__carl_v2_list_domains",
+      "Bash(curl -s http://18.191.163.53:8080/api/v1/brands)",
+      "Bash(curl -s \"http://18.191.163.53:8080/api/v1/cars?page=1&size=2\")",
+      "Bash(curl -s \"http://18.191.163.53:8080/api/v1/vehicles?page=1&size=2\")",
+      "Bash(curl -s \"http://18.191.163.53:8080/api/v1/vehicles/brands\")",
+      "Bash(curl -s \"http://18.191.163.53:8080/api/v1/cars/33333333-3333-3333-3333-333333333333\")",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s \"http://18.191.163.53:8080/api/v1/cars/33333333-3333-3333-3333-333333333333/images\")",
+      "mcp__carl-mcp__carl_log_decision",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(dart run:*)",
+      "Bash(flutter analyze:*)",
+      "Bash(curl -s -X POST http://18.191.163.53:8080/api/v1/auth/onboard -H \"Content-Type: application/json\" -d '{\"\"\"\"device_id\"\"\"\":\"\"\"\"TEST-FLUTTER-001\"\"\"\",\"\"\"\"device_type\"\"\"\":\"\"\"\"android\"\"\"\"}')",
+      "Bash(curl -s -X POST http://18.191.163.53:8080/api/v1/auth/onboard -H \"Content-Type: application/json\" -d '{\"\"\"\"device_id\"\"\"\":\"\"\"\"ANDROID-1749116400000\"\"\"\",\"\"\"\"device_type\"\"\"\":\"\"\"\"android\"\"\"\",\"\"\"\"model_name\"\"\"\":\"\"\"\"Galaxy S24\"\"\"\",\"\"\"\"os_version\"\"\"\":\"\"\"\"14.0\"\"\"\"}')",
+      "Bash(curl -s -X POST http://18.191.163.53:8080/api/v1/auth/refresh -H \"Content-Type: application/json\" -d '{\"\"\"\"refresh_token\"\"\"\":\"\"\"\"test\"\"\"\"}')",
+      "Bash(git status:*)",
+      "Bash(xargs ls:*)",
+      "Bash(ls /Users/lims/AiCar/backend/migrations/*.sql)",
+      "Bash(ls:*)",
+      "Bash(grep -r \"RefreshToken\\\\|tokens\" /Users/lims/AiCar/backend/internal/infra/persistence/postgres/*.go)",
+      "Bash(flutter build:*)"
     ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "carl-mcp"
+  ],
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true
   }
 }

@@ -167,6 +167,7 @@ class HomePage extends ConsumerWidget {
                 variant: card_widget.VehicleCardVariant.card,
                 name: '${vehicle.brand} ${vehicle.model}',
                 price: vehicle.formattedPrice,
+                imageUrl: vehicle.imageUrl,
                 subtitle: '${vehicle.year} · ${vehicle.fuelType}',
                 isBookmarked: isBookmarked,
                 onBookmarkTap: () => ref
@@ -254,6 +255,7 @@ class HomePage extends ConsumerWidget {
             variant: card_widget.VehicleCardVariant.list,
             name: '${vehicle.brand} ${vehicle.model}',
             price: vehicle.formattedPrice,
+            imageUrl: vehicle.imageUrl,
             subtitle: '${vehicle.year} · ${vehicle.fuelType}',
             isBookmarked: isBookmarked,
             onBookmarkTap: () => ref

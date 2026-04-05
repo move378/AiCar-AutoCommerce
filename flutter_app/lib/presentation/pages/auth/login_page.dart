@@ -66,10 +66,17 @@ class LoginPage extends ConsumerWidget {
                 onTap: () async {
                   try {
                     await ref.read(authProvider.notifier).loginWithKakao();
-                  } catch (_) {
-                    // 카카오 로그인 실패 시 무시 (SDK 미설정 등)
+                    if (context.mounted) context.push('/consent');
+                  } catch (e) {
+                    if (context.mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('카카오 로그인 실패: $e'),
+                          backgroundColor: const Color(0xFFEF4444),
+                        ),
+                      );
+                    }
                   }
-                  if (context.mounted) context.push('/consent');
                 },
               ),
               const SizedBox(height: AppSpacing.space3),

@@ -1,7 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:aicar/core/providers/auth_provider.dart';
 import 'package:aicar/core/theme/app_colors.dart';
 import 'package:aicar/core/theme/app_typography.dart';
 
@@ -21,8 +23,15 @@ class _SplashPageState extends ConsumerState<SplashPage> {
   }
 
   Future<void> _initAndNavigate() async {
-    // TODO: 앱 권한 획득 (카메라, 위치 등) — 추후 구현
-    await Future.delayed(const Duration(seconds: 2));
+    // 디바이스 온보딩 (guest 토큰 발급)
+    try {
+      await ref.read(authProvider.notifier).onboard();
+    } catch (e) {
+      debugPrint('[Splash] onboard 실패: $e');
+      // 온보딩 실패해도 앱 진입은 허용 (오프라인 모드)
+    }
+
+    await Future.delayed(const Duration(seconds: 1));
     if (!mounted) return;
 
     // 온보딩(차량 조회)으로 이동

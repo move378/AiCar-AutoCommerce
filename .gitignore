@@ -127,4 +127,6 @@ __pycache__/
 vehicle_crawler/sessions/
 vehicle_crawler/benz/sessions/
 vehicle_crawler/benz/data/
-vehicle_crawler/vehicles_debug.json
+vehicle_crawler/vehicles_debug.json.claude/settings.local.json
+.paul-backup/
+.claude/settings.local.json
