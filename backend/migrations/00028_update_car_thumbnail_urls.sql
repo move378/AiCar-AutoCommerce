@@ -54,10 +54,10 @@ WHERE id = 'ca000000-0000-0000-0000-000000000009';
 UPDATE car_images SET image_url = 'https://placehold.co/600x400/1A1A1A/C4A76C?text=Lexus+ES300h&font=montserrat'
 WHERE id = 'ci000000-0000-0000-0000-000000000009';
 
--- Volvo XC60
-UPDATE cars SET thumbnail_url = 'https://placehold.co/600x400/003057/FFFFFF?text=Volvo+XC60&font=montserrat'
+-- Volvo XC60 (GLE 300 d 이미지 대체)
+UPDATE cars SET thumbnail_url = 'https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/167109/806_056/iris.webp?q=COSY-EU-100-1713d0VXqaSFqtyO67PobzIr3eWsrrCsdRRzwQZQ9vZbMw3SGtGyUtsd2HdcUfp8qXGEuiYJ0l3ItOB2NQObApjTXI5uVfzQC3qXFkzNwTYm7jZ7ohKVFsM%25vqCtTyLRzLyYax7NYrH1KnOn8wsOfoiZUbXM4FG4MTg90vZ6PDBSbSeWAtRtsd5cpcUfSLWXGEtbSJ0lLHJOB2a8RbApenCI5us5xQC3Uh7kzNGJKm7j0hShKVBHF%25vqA8lyLRjc6YaxVoYrH1gObnMr%25E2fchI5uKMTQmIwlzkhQg59m7jGyvhKVUs9%25vq7vlyLRKG6YaxvNxrH1LmOn8wiOcoiZ4bIM4Fg4rTg9Pzn6PDeSoSevjzFoJpENtjvaKUNjWmtdDZGZMuMapgeLlHp7RKfJnzPk&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=600'
 WHERE id = 'ca000000-0000-0000-0000-000000000010';
-UPDATE car_images SET image_url = 'https://placehold.co/600x400/003057/FFFFFF?text=Volvo+XC60&font=montserrat'
+UPDATE car_images SET image_url = 'https://media.oneweb.mercedes-benz.com/images/dynamic/asia/KR/167109/806_056/iris.webp?q=COSY-EU-100-1713d0VXqaSFqtyO67PobzIr3eWsrrCsdRRzwQZQ9vZbMw3SGtGyUtsd2HdcUfp8qXGEuiYJ0l3ItOB2NQObApjTXI5uVfzQC3qXFkzNwTYm7jZ7ohKVFsM%25vqCtTyLRzLyYax7NYrH1KnOn8wsOfoiZUbXM4FG4MTg90vZ6PDBSbSeWAtRtsd5cpcUfSLWXGEtbSJ0lLHJOB2a8RbApenCI5us5xQC3Uh7kzNGJKm7j0hShKVBHF%25vqA8lyLRjc6YaxVoYrH1gObnMr%25E2fchI5uKMTQmIwlzkhQg59m7jGyvhKVUs9%25vq7vlyLRKG6YaxvNxrH1LmOn8wiOcoiZ4bIM4Fg4rTg9Pzn6PDeSoSevjzFoJpENtjvaKUNjWmtdDZGZMuMapgeLlHp7RKfJnzPk&BKGND=9&uni=m&cp=o1Yw6tbhjdvotoOJyaA8nQ&IMGT=W27&POV=BE090&imwidth=600'
 WHERE id = 'ci000000-0000-0000-0000-000000000010';
 
 -- +goose Down
