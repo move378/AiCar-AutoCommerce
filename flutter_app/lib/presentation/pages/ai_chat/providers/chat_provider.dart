@@ -61,14 +61,40 @@ class ChatNotifier extends Notifier<ChatState> {
     return const ChatState();
   }
 
+  /// 백엔드 세션 생성 (없으면 생성, 실패해도 상담 계속 진행)
+  Future<void> _ensureBackendSession() async {
+    if (_currentSessionId != null) return;
+    try {
+      final session = await _repository.createSession(title: 'AI 상담');
+      _currentSessionId = session.id;
+    } catch (_) {
+      // 백엔드 세션 생성 실패 시 로컬 ID 사용
+      _currentSessionId = DateTime.now().millisecondsSinceEpoch.toString();
+    }
+  }
+
+  /// 메시지를 백엔드에 저장 (실패해도 무시)
+  Future<void> _persistMessage(ChatMessage message) async {
+    if (_currentSessionId == null) return;
+    try {
+      await _repository.saveMessage(_currentSessionId!, message);
+    } catch (_) {
+      // 저장 실패해도 상담 계속 진행
+    }
+  }
+
   Future<void> _startConsultation() async {
+    await _ensureBackendSession();
+
     final greeting = ChatMessage(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       role: ChatRole.assistant,
       content: '안녕하세요! 에이카 AI 상담사입니다.\n맞춤 차량을 추천해 드릴게요!',
       createdAt: DateTime.now(),
+      sessionId: _currentSessionId,
     );
     state = state.copyWith(messages: [greeting]);
+    _persistMessage(greeting);
     await _askQuestion(ConsultationStep.brand);
   }
 
@@ -86,11 +112,12 @@ class ChatNotifier extends Notifier<ChatState> {
       consultationStep: step,
       currentChoices: () => question.choices,
     );
+    _persistMessage(aiMessage);
   }
 
   Future<void> handleChoice(String choice) async {
     if (state.isStreaming) return;
-    _currentSessionId ??= DateTime.now().millisecondsSinceEpoch.toString();
+    await _ensureBackendSession();
     final userMessage = ChatMessage(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       role: ChatRole.user,
@@ -102,6 +129,7 @@ class ChatNotifier extends Notifier<ChatState> {
       messages: [...state.messages, userMessage],
       currentChoices: () => null,
     );
+    _persistMessage(userMessage);
     _saveAnswer(state.consultationStep, choice);
     final nextStep = _getNextStep(state.consultationStep);
     if (nextStep == ConsultationStep.result) {
@@ -113,7 +141,7 @@ class ChatNotifier extends Notifier<ChatState> {
 
   Future<void> sendFreeTextAnswer(String text) async {
     if (text.trim().isEmpty || state.isStreaming) return;
-    _currentSessionId ??= DateTime.now().millisecondsSinceEpoch.toString();
+    await _ensureBackendSession();
     final userMessage = ChatMessage(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       role: ChatRole.user,
@@ -125,6 +153,7 @@ class ChatNotifier extends Notifier<ChatState> {
       messages: [...state.messages, userMessage],
       currentChoices: () => null,
     );
+    _persistMessage(userMessage);
     _answers.freeText = text.trim();
     await _showResults();
   }
@@ -195,6 +224,7 @@ class ChatNotifier extends Notifier<ChatState> {
       messages: [...state.messages, aiMessage],
       consultationStep: ConsultationStep.freeChat,
     );
+    _persistMessage(aiMessage);
   }
 
   void _saveAnswer(ConsultationStep step, String choice) {

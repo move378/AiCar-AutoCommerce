@@ -25,6 +25,7 @@ class AiChatPage extends ConsumerStatefulWidget {
 class _AiChatPageState extends ConsumerState<AiChatPage> {
   final _messageController = TextEditingController();
   final _focusNode = FocusNode();
+  final _scrollController = ScrollController();
   bool _hasText = false;
 
   @override
@@ -42,7 +43,20 @@ class _AiChatPageState extends ConsumerState<AiChatPage> {
   void dispose() {
     _messageController.dispose();
     _focusNode.dispose();
+    _scrollController.dispose();
     super.dispose();
+  }
+
+  void _scrollToBottom() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_scrollController.hasClients) {
+        _scrollController.animateTo(
+          _scrollController.position.maxScrollExtent,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeOut,
+        );
+      }
+    });
   }
 
   void _sendMessage([String? overrideText]) {
@@ -110,20 +124,18 @@ class _AiChatPageState extends ConsumerState<AiChatPage> {
 
   Widget _buildMessageList(ChatState chatState) {
     final messages = chatState.messages;
-    // 스트리밍 중이면 임시 메시지 추가
     final hasStreamingMessage = chatState.isStreaming;
-    final totalCount = messages.length + (hasStreamingMessage ? 1 : 0);
+
+    // 메시지가 변경될 때마다 하단으로 스크롤
+    _scrollToBottom();
 
     return ListView.builder(
-      reverse: true,
+      controller: _scrollController,
       padding: const EdgeInsets.symmetric(vertical: AppSpacing.space2),
-      itemCount: totalCount,
+      itemCount: messages.length + (hasStreamingMessage ? 1 : 0),
       itemBuilder: (context, index) {
-        // reverse: true이므로 index 0이 최하단(최신)
-        final reversedIndex = totalCount - 1 - index;
-
-        // 스트리밍 메시지 (마지막 항목)
-        if (hasStreamingMessage && reversedIndex == totalCount - 1) {
+        // 스트리밍 메시지 (마지막)
+        if (hasStreamingMessage && index == messages.length) {
           final streamingMessage = ChatMessage(
             id: 'streaming',
             role: ChatRole.assistant,
@@ -136,14 +148,14 @@ class _AiChatPageState extends ConsumerState<AiChatPage> {
           );
         }
 
-        final message = messages[reversedIndex];
+        final message = messages[index];
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             ChatBubble(message: message),
             if (message.isAssistant && _isRecommendationResponse(message.content))
               InlineCardCarousel(
-                query: _findUserQuery(messages, reversedIndex),
+                query: _findUserQuery(messages, index),
                 answers: ref.read(chatProvider.notifier).answers,
               ),
           ],
