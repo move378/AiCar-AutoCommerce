@@ -34,4 +34,8 @@ class AuthRepositoryImpl implements IAuthRepository {
   @override
   Future<User> getProfile() =>
       throw UnimplementedError('Supabase auth not implemented');
+
+  @override
+  Future<void> deleteAccount() =>
+      throw UnimplementedError('Supabase auth not implemented');
 }

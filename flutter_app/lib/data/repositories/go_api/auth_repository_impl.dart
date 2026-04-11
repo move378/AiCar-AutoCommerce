@@ -151,4 +151,13 @@ class AuthRepositoryImpl implements IAuthRepository {
       createdAt: DateTime.now(),
     );
   }
+
+  @override
+  Future<void> deleteAccount() async {
+    try {
+      await _dio.delete(ApiConstants.profile);
+    } finally {
+      await _tokenStorage.clearAll();
+    }
+  }
 }

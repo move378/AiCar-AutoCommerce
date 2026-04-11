@@ -403,10 +403,10 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage>
             ),
           ),
           TextButton(
-            onPressed: () {
+            onPressed: () async {
               Navigator.of(dialogContext).pop();
-              ref.read(authProvider.notifier).logout();
-              context.go('/home');
+              await ref.read(authProvider.notifier).deleteAccount();
+              if (context.mounted) context.go('/home');
             },
             child: Text(
               '탈퇴하기',

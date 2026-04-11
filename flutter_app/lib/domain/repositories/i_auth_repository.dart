@@ -29,4 +29,7 @@ abstract interface class IAuthRepository {
 
   /// 프로필 조회
   Future<User> getProfile();
+
+  /// 회원 탈퇴
+  Future<void> deleteAccount();
 }

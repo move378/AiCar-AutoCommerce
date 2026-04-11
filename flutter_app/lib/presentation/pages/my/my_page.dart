@@ -237,7 +237,7 @@ class _ProfileCard extends StatelessWidget {
                         ),
                         const SizedBox(height: AppSpacing.space1),
                         Text(
-                          'bada123@kakao.com',
+                          auth.userEmail ?? '',
                           style: AppTypography.bodySm.copyWith(
                             color: AppColors.textDisabled,
                           ),

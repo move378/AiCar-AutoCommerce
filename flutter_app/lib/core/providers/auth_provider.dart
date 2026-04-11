@@ -16,6 +16,7 @@ class AuthState {
     this.isGuest = false,
     this.hasConsented = false,
     this.userName,
+    this.userEmail,
     this.userId,
     this.provider,
   });
@@ -24,6 +25,7 @@ class AuthState {
   final bool isGuest;
   final bool hasConsented;
   final String? userName;
+  final String? userEmail;
   final String? userId;
   final String? provider;
 
@@ -32,6 +34,7 @@ class AuthState {
     bool? isGuest,
     bool? hasConsented,
     String? userName,
+    String? userEmail,
     String? userId,
     String? provider,
   }) {
@@ -40,6 +43,7 @@ class AuthState {
       isGuest: isGuest ?? this.isGuest,
       hasConsented: hasConsented ?? this.hasConsented,
       userName: userName ?? this.userName,
+      userEmail: userEmail ?? this.userEmail,
       userId: userId ?? this.userId,
       provider: provider ?? this.provider,
     );
@@ -100,6 +104,7 @@ class AuthNotifier extends Notifier<AuthState> {
       final user = await authRepo.getProfile();
       state = state.copyWith(
         userName: user.nickname ?? user.email,
+        userEmail: user.email,
         userId: user.id,
       );
     } catch (_) {
@@ -126,6 +131,7 @@ class AuthNotifier extends Notifier<AuthState> {
       final user = await authRepo.getProfile();
       state = state.copyWith(
         userName: user.nickname ?? user.email,
+        userEmail: user.email,
         userId: user.id,
       );
     } catch (_) {}
@@ -141,6 +147,16 @@ class AuthNotifier extends Notifier<AuthState> {
     try {
       final authRepo = ref.read(authRepositoryProvider);
       await authRepo.logout();
+    } finally {
+      state = const AuthState();
+    }
+  }
+
+  /// 회원 탈퇴
+  Future<void> deleteAccount() async {
+    try {
+      final authRepo = ref.read(authRepositoryProvider);
+      await authRepo.deleteAccount();
     } finally {
       state = const AuthState();
     }
