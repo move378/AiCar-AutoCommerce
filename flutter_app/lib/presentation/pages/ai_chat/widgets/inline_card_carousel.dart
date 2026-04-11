@@ -1,24 +1,29 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'package:aicar/core/providers/repository_providers.dart';
 import 'package:aicar/core/theme/app_colors.dart';
 import 'package:aicar/core/theme/app_elevation.dart';
 import 'package:aicar/core/theme/app_spacing.dart';
 import 'package:aicar/core/theme/app_typography.dart';
 import 'package:aicar/domain/entities/consultation_card.dart';
+import 'package:aicar/domain/entities/consultation_question.dart';
 import 'package:aicar/domain/entities/vehicle.dart';
 import 'package:aicar/presentation/pages/ai_card/card_back_widget.dart';
-import 'package:aicar/core/providers/repository_providers.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// 채팅 내 인라인 카드 캐러셀
 ///
 /// AI 추천 응답 아래에 수평 스크롤 카드 리스트를 표시한다.
 class InlineCardCarousel extends ConsumerStatefulWidget {
-  const InlineCardCarousel({super.key, required this.query});
+  const InlineCardCarousel({
+    super.key,
+    required this.query,
+    this.answers,
+  });
 
   final String query;
+  final ConsultationAnswers? answers;
 
   @override
   ConsumerState<InlineCardCarousel> createState() =>
@@ -37,7 +42,23 @@ class _InlineCardCarouselState extends ConsumerState<InlineCardCarousel> {
 
   Future<void> _loadCards() async {
     final repo = ref.read(vehicleRepositoryProvider);
-    final cards = await repo.searchVehicles(widget.query);
+    List<Vehicle> cards;
+    if (widget.answers != null) {
+      final all = await repo.getAllVehicles(size: 100);
+      cards = all.where((v) {
+        return widget.answers!.matchesVehicle(
+          vehicleBrand: v.brand,
+          vehiclePrice: v.price,
+          vehicleModel: v.model,
+          vehicleFuelType: v.fuelType,
+        );
+      }).toList();
+      if (cards.isEmpty) {
+        cards = all.take(5).toList();
+      }
+    } else {
+      cards = await repo.searchVehicles(widget.query);
+    }
     if (mounted) {
       setState(() {
         _cards = cards;
