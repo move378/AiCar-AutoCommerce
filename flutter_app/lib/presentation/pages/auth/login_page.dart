@@ -81,6 +81,29 @@ class LoginPage extends ConsumerWidget {
               ),
               const SizedBox(height: AppSpacing.space3),
               _SnsLoginButton(
+                label: 'Google로 시작하기',
+                backgroundColor: AppColors.background,
+                foregroundColor: AppColors.textPrimary,
+                icon: Icons.g_mobiledata_rounded,
+                borderColor: AppColors.textDisabled,
+                onTap: () async {
+                  try {
+                    await ref.read(authProvider.notifier).loginWithGoogle();
+                    if (context.mounted) context.push('/consent');
+                  } catch (e) {
+                    if (context.mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Google 로그인 실패: $e'),
+                          backgroundColor: const Color(0xFFEF4444),
+                        ),
+                      );
+                    }
+                  }
+                },
+              ),
+              const SizedBox(height: AppSpacing.space3),
+              _SnsLoginButton(
                 label: 'Apple로 시작하기',
                 backgroundColor: AppColors.background,
                 foregroundColor: AppColors.textPrimary,

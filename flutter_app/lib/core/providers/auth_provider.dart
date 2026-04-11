@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart' as kakao;
 
 import 'package:aicar/core/providers/dio_provider.dart';
@@ -104,6 +105,30 @@ class AuthNotifier extends Notifier<AuthState> {
     } catch (_) {
       // 프로필 조회 실패해도 로그인 유지
     }
+  }
+
+  /// Google 로그인
+  Future<void> loginWithGoogle() async {
+    final authRepo = ref.read(authRepositoryProvider);
+    final googleSignIn = GoogleSignIn(scopes: ['email', 'profile']);
+    final account = await googleSignIn.signIn();
+    if (account == null) return;
+    final auth = await account.authentication;
+    final accessToken = auth.accessToken;
+    if (accessToken == null) throw Exception('Google accessToken이 null입니다');
+    await authRepo.loginWithGoogle(accessToken);
+    state = state.copyWith(
+      isLoggedIn: true,
+      isGuest: false,
+      provider: 'google',
+    );
+    try {
+      final user = await authRepo.getProfile();
+      state = state.copyWith(
+        userName: user.nickname ?? user.email,
+        userId: user.id,
+      );
+    } catch (_) {}
   }
 
   /// 약관 동의
