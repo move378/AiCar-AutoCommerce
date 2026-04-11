@@ -79,6 +79,28 @@ class AuthRepositoryImpl implements IAuthRepository {
   }
 
   @override
+  Future<({AuthTokens tokens, bool isNewUser})> loginWithGoogle(
+      String googleAccessToken) async {
+    final request = SocialLoginRequestDto(providerToken: googleAccessToken);
+    final response = await _dio.post(
+      ApiConstants.googleLogin,
+      data: request.toJson(),
+    );
+    final json = response.data as Map<String, dynamic>;
+    final data = json['data'] as Map<String, dynamic>;
+    final socialResponse = SocialTokenResponseDto.fromJson(data);
+    final tokens = AuthTokens(
+      accessToken: socialResponse.accessToken,
+      refreshToken: socialResponse.refreshToken,
+    );
+    await _tokenStorage.saveTokens(
+      accessToken: tokens.accessToken,
+      refreshToken: tokens.refreshToken,
+    );
+    return (tokens: tokens, isNewUser: socialResponse.isNewUser);
+  }
+
+  @override
   Future<AuthTokens> refresh(String refreshToken) async {
     final request = RefreshRequestDto(refreshToken: refreshToken);
 

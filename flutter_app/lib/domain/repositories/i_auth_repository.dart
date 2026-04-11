@@ -17,6 +17,10 @@ abstract interface class IAuthRepository {
   Future<({AuthTokens tokens, bool isNewUser})> loginWithKakao(
       String kakaoAccessToken);
 
+  /// Google 소셜 로그인 — Google access_token → 서버 JWT
+  Future<({AuthTokens tokens, bool isNewUser})> loginWithGoogle(
+      String googleAccessToken);
+
   /// 토큰 갱신
   Future<AuthTokens> refresh(String refreshToken);
 

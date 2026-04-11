@@ -19,6 +19,11 @@ class AuthRepositoryImpl implements IAuthRepository {
       throw UnimplementedError('Supabase auth not implemented');
 
   @override
+  Future<({AuthTokens tokens, bool isNewUser})> loginWithGoogle(
+          String googleAccessToken) =>
+      throw UnimplementedError('Supabase auth not implemented');
+
+  @override
   Future<AuthTokens> refresh(String refreshToken) =>
       throw UnimplementedError('Supabase auth not implemented');
 
