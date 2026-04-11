@@ -40,6 +40,9 @@ func SetupRouter(c *container.Container) *gin.Engine {
 	//애플 테스트 html
 	r.StaticFile("/apple-test", "./apple-test.html")
 
+	// 차량 이미지 정적 파일 서빙
+	r.Static("/static", "/var/data")
+
 	v1 := r.Group("/api/v1")
 
 	public := v1.Group("/")
