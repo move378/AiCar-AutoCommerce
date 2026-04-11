@@ -23,11 +23,6 @@ class _BrandShowroom {
 
 const _brands = [
   _BrandShowroom(
-    name: 'BMW',
-    icon: Icons.directions_car,
-    url: 'https://www.bmw.co.kr/ko/fastlane/dealer-locator/showroom.html',
-  ),
-  _BrandShowroom(
     name: 'Mercedes-Benz',
     icon: Icons.directions_car,
     url:
@@ -42,21 +37,6 @@ const _brands = [
     name: 'Tesla',
     icon: Icons.electric_car,
     url: 'https://www.tesla.com/ko_KR/findus/list/stores/South+Korea',
-  ),
-  _BrandShowroom(
-    name: 'Audi',
-    icon: Icons.directions_car,
-    url: 'https://www.audi.co.kr/kr/web/ko/dealer-search.html',
-  ),
-  _BrandShowroom(
-    name: 'Lexus',
-    icon: Icons.directions_car,
-    url: 'https://www.lexus.co.kr/find-a-dealer',
-  ),
-  _BrandShowroom(
-    name: 'Volvo',
-    icon: Icons.directions_car,
-    url: 'https://www.volvocars.com/kr/dealers/',
   ),
 ];
 
