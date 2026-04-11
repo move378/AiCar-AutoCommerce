@@ -1,20 +1,20 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-
 import 'package:aicar/core/theme/app_colors.dart';
 import 'package:aicar/core/theme/app_spacing.dart';
 import 'package:aicar/core/theme/app_typography.dart';
 import 'package:aicar/domain/entities/chat_message.dart';
+import 'package:aicar/domain/entities/consultation_question.dart';
 import 'package:aicar/presentation/pages/ai_chat/providers/chat_provider.dart';
 import 'package:aicar/presentation/pages/ai_chat/widgets/chat_bubble.dart';
+import 'package:aicar/presentation/pages/ai_chat/widgets/choice_chips_bar.dart';
 import 'package:aicar/presentation/pages/ai_chat/widgets/inline_card_carousel.dart';
-import 'package:aicar/presentation/widgets/buttons/aicar_button.dart';
-import 'package:aicar/presentation/widgets/chips/aicar_chip.dart';
 import 'package:aicar/presentation/router/route_names.dart';
+import 'package:aicar/presentation/widgets/buttons/aicar_button.dart';
 import 'package:aicar/presentation/widgets/headers/aicar_header.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
-/// 챗봇 탭 — AI 상담 (키워드 매칭 MVP)
+/// 챗봇 탭 — AI 상담 (3단계 상담 흐름)
 class AiChatPage extends ConsumerStatefulWidget {
   const AiChatPage({super.key});
 
@@ -57,7 +57,6 @@ class _AiChatPageState extends ConsumerState<AiChatPage> {
   @override
   Widget build(BuildContext context) {
     final chatState = ref.watch(chatProvider);
-    final isEmpty = chatState.messages.isEmpty && !chatState.isStreaming;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -90,48 +89,23 @@ class _AiChatPageState extends ConsumerState<AiChatPage> {
 
           // 메시지 리스트 또는 빈 상태
           Expanded(
-            child: isEmpty
+            child: chatState.messages.isEmpty
                 ? _buildEmptyState()
                 : _buildMessageList(chatState),
           ),
 
-          // 퀵 액션 (대화 시작 전에만)
-          if (isEmpty) _buildQuickActions(),
+          // 상담 선택지 칩
+          _buildChoiceChips(chatState),
 
           // 하단 입력바
-          _buildInputBar(chatState.isStreaming),
+          _buildInputBar(chatState),
         ],
       ),
     );
   }
 
   Widget _buildEmptyState() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Icon(
-            Icons.chat_bubble_outline_rounded,
-            size: 48,
-            color: AppColors.textTertiary,
-          ),
-          const SizedBox(height: AppSpacing.space3),
-          Text(
-            '무엇이든 물어보세요',
-            style: AppTypography.headingXl.copyWith(
-              color: AppColors.textSecondary,
-            ),
-          ),
-          const SizedBox(height: AppSpacing.space2),
-          Text(
-            '수입차 구매에 관한 모든 것을 도와드릴게요',
-            style: AppTypography.bodySm.copyWith(
-              color: AppColors.textTertiary,
-            ),
-          ),
-        ],
-      ),
-    );
+    return const Center(child: CircularProgressIndicator());
   }
 
   Widget _buildMessageList(ChatState chatState) {
@@ -170,6 +144,7 @@ class _AiChatPageState extends ConsumerState<AiChatPage> {
             if (message.isAssistant && _isRecommendationResponse(message.content))
               InlineCardCarousel(
                 query: _findUserQuery(messages, reversedIndex),
+                answers: ref.read(chatProvider.notifier).answers,
               ),
           ],
         );
@@ -180,7 +155,8 @@ class _AiChatPageState extends ConsumerState<AiChatPage> {
   /// AI 응답이 차량 추천 내용인지 판별
   bool _isRecommendationResponse(String content) {
     return content.contains('추천해 드릴게요') ||
-        content.contains('안내해 드릴게요');
+        content.contains('안내해 드릴게요') ||
+        content.contains('추천드립니다');
   }
 
   /// AI 응답을 트리거한 사용자 메시지에서 쿼리 추출
@@ -194,37 +170,24 @@ class _AiChatPageState extends ConsumerState<AiChatPage> {
     return '';
   }
 
-  Widget _buildQuickActions() {
-    const quickActions = [
-      '5000만원 이하 SUV 추천해줘',
-      '유지비 적게 드는 차 뭐야?',
-      '가족들과 주말에 나들이 갈 때 쓸 SUV가 필요해요',
-    ];
-
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.space4,
-        vertical: AppSpacing.space2,
-      ),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: quickActions.map((text) {
-            return Padding(
-              padding: const EdgeInsets.only(right: AppSpacing.space2),
-              child: AiCarChip(
-                label: text,
-                isSelected: false,
-                onTap: () => _sendMessage(text),
-              ),
-            );
-          }).toList(),
-        ),
-      ),
+  Widget _buildChoiceChips(ChatState chatState) {
+    if (chatState.currentChoices == null || chatState.currentChoices!.isEmpty) {
+      return const SizedBox.shrink();
+    }
+    return ChoiceChipsBar(
+      choices: chatState.currentChoices!,
+      onSelected: (choice) {
+        ref.read(chatProvider.notifier).handleChoice(choice);
+      },
     );
   }
 
-  Widget _buildInputBar(bool isStreaming) {
+  Widget _buildInputBar(ChatState chatState) {
+    final isChipStep = chatState.isConsultationMode &&
+        chatState.consultationStep != ConsultationStep.freeText &&
+        chatState.consultationStep != ConsultationStep.freeChat;
+    final isDisabled = chatState.isStreaming || isChipStep;
+
     return Container(
       decoration: const BoxDecoration(
         color: AppColors.surface,
@@ -245,14 +208,14 @@ class _AiChatPageState extends ConsumerState<AiChatPage> {
                 child: TextField(
                   controller: _messageController,
                   focusNode: _focusNode,
-                  enabled: !isStreaming,
+                  enabled: !isDisabled,
                   textInputAction: TextInputAction.send,
                   onSubmitted: (_) => _sendMessage(),
                   style: AppTypography.bodyMd.copyWith(
                     color: AppColors.textPrimary,
                   ),
                   decoration: InputDecoration(
-                    hintText: '메시지를 입력하세요',
+                    hintText: isChipStep ? '위 선택지를 탭하세요' : '메시지를 입력하세요',
                     hintStyle: AppTypography.bodyMd.copyWith(
                       color: AppColors.textTertiary,
                     ),
@@ -267,7 +230,7 @@ class _AiChatPageState extends ConsumerState<AiChatPage> {
               const SizedBox(width: AppSpacing.space2),
               AiCarButton(
                 label: '',
-                onPressed: _hasText && !isStreaming ? _sendMessage : null,
+                onPressed: _hasText && !isDisabled ? _sendMessage : null,
                 size: AiCarButtonSize.sm,
                 style: AiCarButtonStyle.solid,
                 trailingIcon: Icons.send_rounded,
