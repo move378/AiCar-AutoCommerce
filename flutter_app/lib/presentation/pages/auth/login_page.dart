@@ -102,18 +102,6 @@ class LoginPage extends ConsumerWidget {
                   }
                 },
               ),
-              const SizedBox(height: AppSpacing.space3),
-              _SnsLoginButton(
-                label: 'Apple로 시작하기',
-                backgroundColor: AppColors.background,
-                foregroundColor: AppColors.textPrimary,
-                icon: Icons.apple,
-                borderColor: AppColors.textDisabled,
-                onTap: () {
-                  // TODO: Apple 로그인 구현 예정
-                  context.push('/consent');
-                },
-              ),
 
                   const SizedBox(height: AppSpacing.space10),
                 ],
