@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:aicar/core/providers/repository_providers.dart';
 import 'package:aicar/domain/entities/chat_message.dart';
+import 'package:aicar/domain/entities/consultation_question.dart';
 import 'package:aicar/domain/repositories/i_chat_repository.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// 채팅 상태
 @immutable
@@ -14,21 +14,34 @@ class ChatState {
     this.messages = const [],
     this.isStreaming = false,
     this.streamingText = '',
+    this.consultationStep = ConsultationStep.brand,
+    this.currentChoices,
+    this.isConsultationMode = true,
   });
 
   final List<ChatMessage> messages;
   final bool isStreaming;
   final String streamingText;
+  final ConsultationStep consultationStep;
+  final List<String>? currentChoices;
+  final bool isConsultationMode;
 
   ChatState copyWith({
     List<ChatMessage>? messages,
     bool? isStreaming,
     String? streamingText,
+    ConsultationStep? consultationStep,
+    List<String>? Function()? currentChoices,
+    bool? isConsultationMode,
   }) {
     return ChatState(
       messages: messages ?? this.messages,
       isStreaming: isStreaming ?? this.isStreaming,
       streamingText: streamingText ?? this.streamingText,
+      consultationStep: consultationStep ?? this.consultationStep,
+      currentChoices:
+          currentChoices != null ? currentChoices() : this.currentChoices,
+      isConsultationMode: isConsultationMode ?? this.isConsultationMode,
     );
   }
 }
@@ -38,41 +51,69 @@ class ChatNotifier extends Notifier<ChatState> {
   late final IChatRepository _repository;
   Timer? _streamingTimer;
   String? _currentSessionId;
+  final ConsultationAnswers _answers = ConsultationAnswers();
 
   @override
   ChatState build() {
     _repository = ref.read(chatRepositoryProvider);
     ref.onDispose(() => _streamingTimer?.cancel());
-
-    // 비동기 초기화: 이전 대화 로드
-    _loadHistory();
-
+    Future.microtask(() => _startConsultation());
     return const ChatState();
   }
 
-  Future<void> _loadHistory() async {
-    final history = await _repository.loadHistory();
-    if (history.isNotEmpty) {
-      state = state.copyWith(messages: history);
-      // 마지막 세션 ID 복원
-      _currentSessionId = history.last.sessionId;
+  Future<void> _startConsultation() async {
+    final greeting = ChatMessage(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      role: ChatRole.assistant,
+      content: '안녕하세요! 에이카 AI 상담사입니다.\n맞춤 차량을 추천해 드릴게요!',
+      createdAt: DateTime.now(),
+    );
+    state = state.copyWith(messages: [greeting]);
+    await _askQuestion(ConsultationStep.brand);
+  }
+
+  Future<void> _askQuestion(ConsultationStep step) async {
+    final question = consultationQuestions.firstWhere((q) => q.step == step);
+    final aiMessage = ChatMessage(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      role: ChatRole.assistant,
+      content: question.question,
+      createdAt: DateTime.now(),
+      sessionId: _currentSessionId,
+    );
+    state = state.copyWith(
+      messages: [...state.messages, aiMessage],
+      consultationStep: step,
+      currentChoices: () => question.choices,
+    );
+  }
+
+  Future<void> handleChoice(String choice) async {
+    if (state.isStreaming) return;
+    _currentSessionId ??= DateTime.now().millisecondsSinceEpoch.toString();
+    final userMessage = ChatMessage(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      role: ChatRole.user,
+      content: choice,
+      createdAt: DateTime.now(),
+      sessionId: _currentSessionId,
+    );
+    state = state.copyWith(
+      messages: [...state.messages, userMessage],
+      currentChoices: () => null,
+    );
+    _saveAnswer(state.consultationStep, choice);
+    final nextStep = _getNextStep(state.consultationStep);
+    if (nextStep == ConsultationStep.result) {
+      await _showResults();
+    } else {
+      await _askQuestion(nextStep);
     }
   }
 
-  /// 새 세션 시작
-  void startNewSession() {
-    _currentSessionId = null;
-    state = state.copyWith(messages: []);
-  }
-
-  /// 메시지 전송 + 키워드 매칭 응답 (스트리밍 효과)
-  Future<void> sendMessage(String text) async {
+  Future<void> sendFreeTextAnswer(String text) async {
     if (text.trim().isEmpty || state.isStreaming) return;
-
-    // 첫 메시지 시 새 세션 생성
     _currentSessionId ??= DateTime.now().millisecondsSinceEpoch.toString();
-
-    // 사용자 메시지 추가
     final userMessage = ChatMessage(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       role: ChatRole.user,
@@ -80,21 +121,33 @@ class ChatNotifier extends Notifier<ChatState> {
       createdAt: DateTime.now(),
       sessionId: _currentSessionId,
     );
-
     state = state.copyWith(
       messages: [...state.messages, userMessage],
+      currentChoices: () => null,
     );
-    await _repository.saveMessage(_currentSessionId!, userMessage);
+    _answers.freeText = text.trim();
+    await _showResults();
+  }
 
-    // AI 응답 획득
+  Future<void> sendMessage(String text) async {
+    if (text.trim().isEmpty || state.isStreaming) return;
+    if (state.isConsultationMode &&
+        state.consultationStep == ConsultationStep.freeText) {
+      return sendFreeTextAnswer(text);
+    }
+    _currentSessionId ??= DateTime.now().millisecondsSinceEpoch.toString();
+    final userMessage = ChatMessage(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      role: ChatRole.user,
+      content: text.trim(),
+      createdAt: DateTime.now(),
+      sessionId: _currentSessionId,
+    );
+    state = state.copyWith(messages: [...state.messages, userMessage]);
     final responseText = await _repository.getResponse(text);
-
-    // 스트리밍 효과 시작
     state = state.copyWith(isStreaming: true, streamingText: '');
-
     int charIndex = 0;
     final completer = Completer<void>();
-
     _streamingTimer?.cancel();
     _streamingTimer = Timer.periodic(
       const Duration(milliseconds: 30),
@@ -102,8 +155,6 @@ class ChatNotifier extends Notifier<ChatState> {
         if (charIndex >= responseText.length) {
           timer.cancel();
           _streamingTimer = null;
-
-          // 완성된 메시지 추가
           final assistantMessage = ChatMessage(
             id: (DateTime.now().millisecondsSinceEpoch + 1).toString(),
             role: ChatRole.assistant,
@@ -111,29 +162,93 @@ class ChatNotifier extends Notifier<ChatState> {
             createdAt: DateTime.now(),
             sessionId: _currentSessionId,
           );
-
           state = state.copyWith(
             messages: [...state.messages, assistantMessage],
             isStreaming: false,
             streamingText: '',
           );
-
-          _repository.saveMessage(_currentSessionId!, assistantMessage);
           completer.complete();
           return;
         }
-
         charIndex++;
         state = state.copyWith(
           streamingText: responseText.substring(0, charIndex),
         );
       },
     );
-
     await completer.future;
   }
 
-  /// 대화 기록 초기화
+  Future<void> _showResults() async {
+    state = state.copyWith(
+      consultationStep: ConsultationStep.result,
+      isConsultationMode: false,
+    );
+    final aiMessage = ChatMessage(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      role: ChatRole.assistant,
+      content: '고객님의 조건에 맞는 차량을 추천드립니다!',
+      createdAt: DateTime.now(),
+      sessionId: _currentSessionId,
+    );
+    state = state.copyWith(
+      messages: [...state.messages, aiMessage],
+      consultationStep: ConsultationStep.freeChat,
+    );
+  }
+
+  void _saveAnswer(ConsultationStep step, String choice) {
+    switch (step) {
+      case ConsultationStep.brand:
+        _answers.brand = choice;
+      case ConsultationStep.vehicleType:
+        _answers.vehicleType = choice;
+      case ConsultationStep.budget:
+        _answers.budgetRange = choice;
+      case ConsultationStep.driver:
+        _answers.driver = choice;
+      case ConsultationStep.purpose:
+        _answers.purpose = choice;
+      default:
+        break;
+    }
+  }
+
+  ConsultationStep _getNextStep(ConsultationStep current) {
+    switch (current) {
+      case ConsultationStep.brand:
+        return ConsultationStep.vehicleType;
+      case ConsultationStep.vehicleType:
+        return ConsultationStep.budget;
+      case ConsultationStep.budget:
+        return ConsultationStep.driver;
+      case ConsultationStep.driver:
+        return ConsultationStep.purpose;
+      case ConsultationStep.purpose:
+        return ConsultationStep.freeText;
+      case ConsultationStep.freeText:
+        return ConsultationStep.result;
+      default:
+        return ConsultationStep.freeChat;
+    }
+  }
+
+  ConsultationAnswers get answers => _answers;
+
+  void startNewSession() {
+    _streamingTimer?.cancel();
+    _streamingTimer = null;
+    _currentSessionId = null;
+    _answers.brand = null;
+    _answers.vehicleType = null;
+    _answers.budgetRange = null;
+    _answers.driver = null;
+    _answers.purpose = null;
+    _answers.freeText = null;
+    state = const ChatState();
+    Future.microtask(() => _startConsultation());
+  }
+
   Future<void> clearHistory() async {
     _streamingTimer?.cancel();
     _streamingTimer = null;
