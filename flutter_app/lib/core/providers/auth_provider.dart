@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart' as kakao;
 
+import 'package:aicar/core/providers/database_provider.dart';
 import 'package:aicar/core/providers/dio_provider.dart';
 import 'package:aicar/core/providers/repository_providers.dart';
 
@@ -148,6 +149,7 @@ class AuthNotifier extends Notifier<AuthState> {
       final authRepo = ref.read(authRepositoryProvider);
       await authRepo.logout();
     } finally {
+      await _clearLocalData();
       state = const AuthState();
     }
   }
@@ -158,7 +160,20 @@ class AuthNotifier extends Notifier<AuthState> {
       final authRepo = ref.read(authRepositoryProvider);
       await authRepo.deleteAccount();
     } finally {
+      await _clearLocalData();
       state = const AuthState();
+    }
+  }
+
+  /// 로컬 DB 초기화 (북마크, 차고, 채팅 캐시, 최근 본)
+  Future<void> _clearLocalData() async {
+    try {
+      final db = ref.read(appDatabaseProvider);
+      await db.delete(db.bookmarkTable).go();
+      await db.delete(db.cardCacheTable).go();
+      await db.delete(db.chatHistoryTable).go();
+    } catch (_) {
+      // 로컬 DB 초기화 실패해도 로그아웃은 진행
     }
   }
 }
