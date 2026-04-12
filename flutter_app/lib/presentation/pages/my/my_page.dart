@@ -193,9 +193,6 @@ class _ProfileCard extends StatelessWidget {
   final AuthState auth;
   final VoidCallback onEditProfile;
 
-  // mock 차량 정보
-  static const _mockPlate = '08나 6543';
-  static const _mockModel = '벤츠 CLE클래스';
 
   @override
   Widget build(BuildContext context) {
@@ -238,13 +235,6 @@ class _ProfileCard extends StatelessWidget {
                         const SizedBox(height: AppSpacing.space1),
                         Text(
                           auth.userEmail ?? '',
-                          style: AppTypography.bodySm.copyWith(
-                            color: AppColors.textDisabled,
-                          ),
-                        ),
-                        const SizedBox(height: AppSpacing.space3),
-                        Text(
-                          '$_mockPlate · $_mockModel',
                           style: AppTypography.bodySm.copyWith(
                             color: AppColors.textDisabled,
                           ),

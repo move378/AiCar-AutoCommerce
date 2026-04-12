@@ -143,7 +143,7 @@ class _ConsultationCardItem extends ConsumerWidget {
                   children: [
                     Text(
                       vehicle != null
-                          ? '${vehicle.brand} ${vehicle.model}'
+                          ? '${vehicle.brand} ${vehicle.displayName}'
                           : '차량 정보 로딩...',
                       style: AppTypography.headingXl.copyWith(
                         color: AppColors.textOnDark,

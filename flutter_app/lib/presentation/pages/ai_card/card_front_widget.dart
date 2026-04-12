@@ -66,7 +66,7 @@ class CardFrontWidget extends StatelessWidget {
 
                 // 모델명
                 Text(
-                  card.model,
+                  card.displayName,
                   style: AppTypography.headingXl.copyWith(
                     color: AppColors.textOnDark,
                   ),

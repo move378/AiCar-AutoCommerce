@@ -164,7 +164,7 @@ class _VehicleDetailPageState extends ConsumerState<VehicleDetailPage> {
           ),
           const SizedBox(height: AppSpacing.space1),
           Text(
-            vehicle.model,
+            vehicle.displayName,
             style: AppTypography.headingXl.copyWith(
               color: AppColors.textPrimary,
             ),

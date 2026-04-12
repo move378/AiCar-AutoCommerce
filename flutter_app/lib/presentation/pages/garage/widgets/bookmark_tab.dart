@@ -231,7 +231,7 @@ class _BookmarkVehicleCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '${vehicle.brand} ${vehicle.model}',
+                      '${vehicle.brand} ${vehicle.displayName}',
                       style: AppTypography.bodySm.copyWith(
                         color: AppColors.textPrimary,
                         fontWeight: FontWeight.w600,

@@ -165,7 +165,7 @@ class HomePage extends ConsumerWidget {
                   .contains(vehicle.id);
               return card_widget.VehicleCard(
                 variant: card_widget.VehicleCardVariant.card,
-                name: '${vehicle.brand} ${vehicle.model}',
+                name: '${vehicle.brand} ${vehicle.displayName}',
                 price: vehicle.formattedPrice,
                 imageUrl: vehicle.imageUrl,
                 subtitle: '${vehicle.year} · ${vehicle.fuelType}',
@@ -253,7 +253,7 @@ class HomePage extends ConsumerWidget {
               .contains(vehicle.id);
           return card_widget.VehicleCard(
             variant: card_widget.VehicleCardVariant.list,
-            name: '${vehicle.brand} ${vehicle.model}',
+            name: '${vehicle.brand} ${vehicle.displayName}',
             price: vehicle.formattedPrice,
             imageUrl: vehicle.imageUrl,
             subtitle: '${vehicle.year} · ${vehicle.fuelType}',

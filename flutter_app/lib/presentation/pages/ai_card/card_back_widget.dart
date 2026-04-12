@@ -40,7 +40,7 @@ class CardBackWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            card.model,
+            card.displayName,
             style: AppTypography.captionXs.copyWith(
               color: AppColors.textOnDark,
               fontWeight: FontWeight.w600,

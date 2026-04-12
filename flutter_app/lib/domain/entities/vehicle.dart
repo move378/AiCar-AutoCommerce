@@ -37,6 +37,14 @@ abstract class Vehicle with _$Vehicle {
   factory Vehicle.fromJson(Map<String, dynamic> json) =>
       _$VehicleFromJson(json);
 
+  /// 모델 + 트림명 (예: "E-Class E 200 AMG")
+  String get displayName {
+    if (trimName != null && trimName!.isNotEmpty) {
+      return '$model $trimName';
+    }
+    return model;
+  }
+
   /// 가격 포맷 (예: "2,300만원")
   String get formattedPrice {
     final inManwon = price ~/ 10000;

@@ -120,7 +120,7 @@ class _InlineCardCarouselState extends ConsumerState<InlineCardCarousel> {
     await garageRepo.saveToGarage(consultationCard);
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('${card.model} 가상차고에 저장')),
+        SnackBar(content: Text('${card.displayName} 가상차고에 저장')),
       );
     }
   }
@@ -248,7 +248,7 @@ class _CompactCardState extends State<_CompactCard>
                     ),
                   ),
                   Text(
-                    widget.card.model,
+                    widget.card.displayName,
                     style: AppTypography.bodySm.copyWith(
                       color: AppColors.textOnDark,
                       fontWeight: FontWeight.w600,

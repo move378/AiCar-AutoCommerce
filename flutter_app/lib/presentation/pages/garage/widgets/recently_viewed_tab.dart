@@ -214,7 +214,7 @@ class _RecentlyViewedCard extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            '${vehicle.brand} ${vehicle.model}',
+                            '${vehicle.brand} ${vehicle.displayName}',
                             style: AppTypography.bodyMd.copyWith(
                               color: AppColors.textPrimary,
                               fontWeight: FontWeight.w600,
