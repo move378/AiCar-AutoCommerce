@@ -56,10 +56,10 @@ def main():
 
                 # 현재 cars 테이블의 모델 정보 조회
                 cur.execute("""
-                    SELECT c.id, cm.model_name, cb.name as brand_name, c.thumbnail_url
+                    SELECT c.id, cm.name as model_name, b.name as brand_name, c.thumbnail_url
                     FROM cars c
                     JOIN car_models cm ON c.model_id = cm.id
-                    JOIN car_brands cb ON cm.brand_id = cb.id
+                    JOIN brands b ON cm.brand_id = b.id
                     WHERE c.thumbnail_url LIKE '%%placehold.co%%'
                        OR c.thumbnail_url IS NULL
                 """)
