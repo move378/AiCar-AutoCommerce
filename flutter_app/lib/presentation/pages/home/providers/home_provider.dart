@@ -66,6 +66,9 @@ class HomeNotifier extends Notifier<HomeState> {
   Future<void> _loadVehicles() async {
     final repository = ref.read(vehicleRepositoryProvider);
     final vehicles = await repository.getAllVehicles();
+    for (final v in vehicles) {
+      debugPrint('[Home] ${v.brand} ${v.model}: imageUrl=${v.imageUrl}');
+    }
     state = state.copyWith(vehicles: vehicles, isLoading: false);
   }
 

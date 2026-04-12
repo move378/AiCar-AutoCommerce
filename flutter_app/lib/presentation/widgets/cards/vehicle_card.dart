@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:aicar/core/theme/app_colors.dart';
@@ -78,15 +79,32 @@ class VehicleCard extends StatelessWidget {
   }
 
   Widget _buildImage() {
+    debugPrint('[VehicleCard] imageUrl=$imageUrl, name=$name');
     return Container(
       height: _imageHeight,
       width: double.infinity,
       color: AppColors.surface,
-      child: imageUrl != null
+      child: imageUrl != null && imageUrl!.isNotEmpty
           ? Image.network(
               imageUrl!,
               fit: BoxFit.cover,
-              errorBuilder: (_, __, ___) => _buildImagePlaceholder(),
+              loadingBuilder: (_, child, progress) {
+                if (progress == null) return child;
+                return Center(
+                  child: CircularProgressIndicator(
+                    value: progress.expectedTotalBytes != null
+                        ? progress.cumulativeBytesLoaded /
+                            progress.expectedTotalBytes!
+                        : null,
+                    strokeWidth: 2,
+                    color: AppColors.secondary,
+                  ),
+                );
+              },
+              errorBuilder: (_, error, __) {
+                debugPrint('[VehicleCard] Image load FAILED: $error');
+                return _buildImagePlaceholder();
+              },
             )
           : _buildImagePlaceholder(),
     );
