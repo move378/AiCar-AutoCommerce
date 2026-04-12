@@ -113,13 +113,21 @@ class _ConsultationCardItem extends ConsumerWidget {
                       top: Radius.circular(10),
                     ),
                   ),
-                  child: Center(
-                    child: Icon(
-                      Icons.directions_car,
-                      size: 80,
-                      color: AppColors.textDisabled,
-                    ),
-                  ),
+                  child: vehicle?.imageUrl != null && vehicle!.imageUrl!.isNotEmpty
+                      ? ClipRRect(
+                          borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
+                          child: Image.network(
+                            vehicle.imageUrl!,
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                            errorBuilder: (_, __, ___) => Center(
+                              child: Icon(Icons.directions_car, size: 80, color: AppColors.textDisabled),
+                            ),
+                          ),
+                        )
+                      : Center(
+                          child: Icon(Icons.directions_car, size: 80, color: AppColors.textDisabled),
+                        ),
                 ),
               ),
               // ── 차량 정보 ──

@@ -219,13 +219,21 @@ class _CompactCardState extends State<_CompactCard>
               color: Color(0xFF475569),
               borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
             ),
-            child: const Center(
-              child: Icon(
-                Icons.directions_car_rounded,
-                size: 32,
-                color: AppColors.textDisabled,
-              ),
-            ),
+            child: widget.card.imageUrl != null && widget.card.imageUrl!.isNotEmpty
+                ? ClipRRect(
+                    borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
+                    child: Image.network(
+                      widget.card.imageUrl!,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                      errorBuilder: (_, __, ___) => const Center(
+                        child: Icon(Icons.directions_car_rounded, size: 32, color: AppColors.textDisabled),
+                      ),
+                    ),
+                  )
+                : const Center(
+                    child: Icon(Icons.directions_car_rounded, size: 32, color: AppColors.textDisabled),
+                  ),
           ),
           Expanded(
             child: Padding(
