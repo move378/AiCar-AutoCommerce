@@ -37,12 +37,14 @@ abstract class Vehicle with _$Vehicle {
   factory Vehicle.fromJson(Map<String, dynamic> json) =>
       _$VehicleFromJson(json);
 
-  /// 모델 + 트림명 (예: "E-Class E 200 AMG")
+  /// 트림명 우선 표시 (예: "GLC 300 4MATIC")
+  /// trimName이 model명을 포함하면 trimName만, 아니면 "model trimName"
   String get displayName {
-    if (trimName != null && trimName!.isNotEmpty) {
-      return '$model $trimName';
-    }
-    return model;
+    if (trimName == null || trimName!.isEmpty) return model;
+    // trimName이 이미 model의 핵심 키워드를 포함하면 trimName만 사용
+    // 예: model="GLC", trimName="GLC 300 4MATIC" → "GLC 300 4MATIC"
+    // 예: model="3 Series", trimName="320i" → "320i"
+    return trimName!;
   }
 
   /// 가격 포맷 (예: "2,300만원")
