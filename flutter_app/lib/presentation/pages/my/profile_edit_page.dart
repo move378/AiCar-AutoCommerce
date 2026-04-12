@@ -421,12 +421,16 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage>
   }
 }
 
-/// 연결계정 카드 — 카카오/애플/구글 상태 표시
-class _ConnectedAccountsCard extends StatelessWidget {
+/// 연결계정 카드 — 실제 로그인 provider 기반 표시
+class _ConnectedAccountsCard extends ConsumerWidget {
   const _ConnectedAccountsCard();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final auth = ref.watch(authProvider);
+    final provider = auth.provider;
+    final email = auth.userEmail;
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(AppSpacing.space4),
@@ -436,11 +440,13 @@ class _ConnectedAccountsCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          _buildAccountRow('카카오', email: 'bada123@kakao.com', isConnected: true),
+          _buildAccountRow('카카오',
+              email: provider == 'kakao' ? email : null,
+              isConnected: provider == 'kakao'),
           const Divider(height: AppSpacing.space6, color: AppColors.surface),
-          _buildAccountRow('애플', isConnected: false),
-          const Divider(height: AppSpacing.space6, color: AppColors.surface),
-          _buildAccountRow('구글', isConnected: false),
+          _buildAccountRow('구글',
+              email: provider == 'google' ? email : null,
+              isConnected: provider == 'google'),
         ],
       ),
     );

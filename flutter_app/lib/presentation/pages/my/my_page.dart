@@ -227,7 +227,7 @@ class _ProfileCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          auth.userName ?? '사용자',
+                          auth.userName ?? auth.userEmail ?? '사용자',
                           style: AppTypography.headingXl.copyWith(
                             color: AppColors.textOnDark,
                           ),
