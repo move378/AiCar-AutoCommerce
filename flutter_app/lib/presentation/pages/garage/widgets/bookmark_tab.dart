@@ -192,11 +192,22 @@ class _BookmarkVehicleCard extends StatelessWidget {
                       top: Radius.circular(10),
                     ),
                   ),
-                  child: Icon(
-                    Icons.directions_car_outlined,
-                    size: 48,
-                    color: AppColors.textTertiary,
-                  ),
+                  child: vehicle.imageUrl != null && vehicle.imageUrl!.isNotEmpty
+                      ? ClipRRect(
+                          borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
+                          child: Image.network(
+                            vehicle.imageUrl!,
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                            height: 110,
+                            errorBuilder: (_, __, ___) => Icon(
+                              Icons.directions_car_outlined, size: 48, color: AppColors.textTertiary,
+                            ),
+                          ),
+                        )
+                      : Icon(
+                          Icons.directions_car_outlined, size: 48, color: AppColors.textTertiary,
+                        ),
                 ),
                 Positioned(
                   top: AppSpacing.space2,

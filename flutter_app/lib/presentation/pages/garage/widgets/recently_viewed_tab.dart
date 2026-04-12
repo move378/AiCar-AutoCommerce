@@ -186,13 +186,22 @@ class _RecentlyViewedCard extends StatelessWidget {
                   left: Radius.circular(10),
                 ),
               ),
-              child: Center(
-                child: Icon(
-                  Icons.directions_car_outlined,
-                  size: 48,
-                  color: AppColors.textTertiary,
-                ),
-              ),
+              child: vehicle.imageUrl != null && vehicle.imageUrl!.isNotEmpty
+                  ? ClipRRect(
+                      borderRadius: const BorderRadius.horizontal(left: Radius.circular(10)),
+                      child: Image.network(
+                        vehicle.imageUrl!,
+                        fit: BoxFit.cover,
+                        width: 140,
+                        height: double.infinity,
+                        errorBuilder: (_, __, ___) => Center(
+                          child: Icon(Icons.directions_car_outlined, size: 48, color: AppColors.textTertiary),
+                        ),
+                      ),
+                    )
+                  : Center(
+                      child: Icon(Icons.directions_car_outlined, size: 48, color: AppColors.textTertiary),
+                    ),
             ),
             // ── 우측 정보 ──
             Expanded(
