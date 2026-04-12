@@ -36,51 +36,61 @@ def main():
     try:
         with conn:
             with conn.cursor() as cur:
-                # 1. vehicles_trim_images 업데이트
+                # 1. vehicles_trim_images 업데이트 (테이블 존재 시)
                 updated_trim = 0
-                for m in mappings:
-                    cur.execute(
-                        "UPDATE vehicles_trim_images SET image_url = %s WHERE image_url = %s",
-                        (m["new_url"], m["old_url"]),
-                    )
-                    updated_trim += cur.rowcount
+                try:
+                    for m in mappings:
+                        cur.execute(
+                            "UPDATE vehicles_trim_images SET image_url = %s WHERE image_url = %s",
+                            (m["new_url"], m["old_url"]),
+                        )
+                        updated_trim += cur.rowcount
+                except Exception as e:
+                    print(f"vehicles_trim_images 스킵 (테이블 미존재): {e}")
+                    conn.rollback()
 
                 # 2. cars 테이블의 placehold.co URL을 exterior_front 이미지로 교체
-                # 각 브랜드의 첫 번째 exterior_front 이미지를 thumbnail로 사용
                 front_images = [
                     m for m in mappings if m["angle"] == "exterior_front"
                 ]
 
+                # 현재 cars 테이블의 모델 정보 조회
+                cur.execute("""
+                    SELECT c.id, cm.model_name, cb.name as brand_name, c.thumbnail_url
+                    FROM cars c
+                    JOIN car_models cm ON c.model_id = cm.id
+                    JOIN car_brands cb ON cm.brand_id = cb.id
+                    WHERE c.thumbnail_url LIKE '%%placehold.co%%'
+                       OR c.thumbnail_url IS NULL
+                """)
+                cars_to_update = cur.fetchall()
+                print(f"업데이트 대상 차량: {len(cars_to_update)}대")
+
                 updated_cars = 0
-                for img in front_images:
-                    # brand 이름으로 cars.thumbnail_url 업데이트
-                    brand_display = {
-                        "mercedes-benz": "Mercedes-Benz",
-                        "bmw": "BMW",
-                        "audi": "Audi",
-                        "volvo": "Volvo",
-                        "lexus": "Lexus",
-                        "tesla": "Tesla",
-                    }
-                    brand = brand_display.get(img["brand"], img["brand"])
-
-                    cur.execute(
-                        """
-                        UPDATE cars SET thumbnail_url = %s
-                        WHERE id IN (
-                            SELECT c.id FROM cars c
-                            JOIN car_models cm ON c.model_id = cm.id
-                            JOIN car_brands cb ON cm.brand_id = cb.id
-                            WHERE cb.name = %s
-                            AND c.thumbnail_url LIKE '%%placehold.co%%'
+                for car_id, model_name, brand_name, _ in cars_to_update:
+                    # 브랜드+모델 매칭으로 이미지 찾기
+                    model_lower = model_name.lower().replace(" ", "_")
+                    matched = None
+                    for img in front_images:
+                        if img["model"] in model_lower or model_lower in img["model"]:
+                            matched = img
+                            break
+                    # 브랜드 매칭 fallback
+                    if not matched:
+                        brand_lower = brand_name.lower().replace("-", "-")
+                        for img in front_images:
+                            if brand_lower in img["brand"] or img["brand"] in brand_lower:
+                                matched = img
+                                break
+                    if matched:
+                        cur.execute(
+                            "UPDATE cars SET thumbnail_url = %s WHERE id = %s",
+                            (matched["new_url"], car_id),
                         )
-                        LIMIT 1
-                        """,
-                        (img["new_url"], brand),
-                    )
-                    updated_cars += cur.rowcount
+                        updated_cars += cur.rowcount
+                        print(f"  [{brand_name} {model_name}] → {matched['new_url'][:80]}...")
 
-                # 3. placehold.co URL이 남아있는 cars 확인
+                # 3. 남은 placehold.co 확인
                 cur.execute(
                     "SELECT COUNT(*) FROM cars WHERE thumbnail_url LIKE '%%placehold.co%%'"
                 )
