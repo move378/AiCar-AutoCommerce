@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"time"
 
 	"github.com/google/uuid"
 	"gorm.io/gorm"
@@ -69,6 +70,48 @@ func (r *userRepo) Delete(ctx context.Context, id uuid.UUID) error {
 	result := GetTx(ctx, r.db).WithContext(ctx).Delete(&entity.User{}, "id = ?", id)
 	if result.Error != nil {
 		return fmt.Errorf("유저 삭제 실패: %w", result.Error)
+	}
+	if result.RowsAffected == 0 {
+		return errs.ErrNotFound
+	}
+	return nil
+}
+
+func (r *userRepo) SoftDelete(ctx context.Context, id uuid.UUID) error {
+	now := time.Now()
+	result := GetTx(ctx, r.db).WithContext(ctx).
+		Model(&entity.User{}).
+		Where("id = ? AND deleted_at IS NULL", id).
+		Updates(map[string]any{
+			"status":     entity.UserStatusDeleted,
+			"deleted_at": now,
+		})
+	if result.Error != nil {
+		return fmt.Errorf("유저 소프트 삭제 실패: %w", result.Error)
+	}
+	if result.RowsAffected == 0 {
+		return errs.ErrNotFound
+	}
+	return nil
+}
+
+func (r *userRepo) FindDeletedBefore(ctx context.Context, before time.Time) ([]entity.User, error) {
+	var users []entity.User
+	err := r.db.WithContext(ctx).
+		Where("status = ? AND deleted_at IS NOT NULL AND deleted_at < ?", entity.UserStatusDeleted, before).
+		Find(&users).Error
+	if err != nil {
+		return nil, fmt.Errorf("탈퇴 유저 조회 실패: %w", err)
+	}
+	return users, nil
+}
+
+func (r *userRepo) HardDelete(ctx context.Context, id uuid.UUID) error {
+	result := GetTx(ctx, r.db).WithContext(ctx).
+		Unscoped().
+		Delete(&entity.User{}, "id = ?", id)
+	if result.Error != nil {
+		return fmt.Errorf("유저 영구 삭제 실패: %w", result.Error)
 	}
 	if result.RowsAffected == 0 {
 		return errs.ErrNotFound

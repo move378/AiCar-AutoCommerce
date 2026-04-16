@@ -15,4 +15,5 @@ type ChatRepository interface {
 	CreateMessage(ctx context.Context, message *entity.ChatMessage) error
 	GetMessagesBySessionID(ctx context.Context, sessionID string) ([]entity.ChatMessage, error)
 	UpdateFeedback(ctx context.Context, messageID string, sessionUserID string, feedback string) error
+	DeleteAllByUserID(ctx context.Context, userID string) error
 }

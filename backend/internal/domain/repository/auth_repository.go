@@ -20,6 +20,9 @@ type UserRepository interface {
 	Create(ctx context.Context, user *entity.User) (*entity.User, error)
 	Update(ctx context.Context, user *entity.User) error
 	Delete(ctx context.Context, id uuid.UUID) error
+	SoftDelete(ctx context.Context, id uuid.UUID) error
+	FindDeletedBefore(ctx context.Context, before time.Time) ([]entity.User, error)
+	HardDelete(ctx context.Context, id uuid.UUID) error
 }
 
 type SocialRepository interface {

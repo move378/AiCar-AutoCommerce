@@ -3,6 +3,7 @@ package postgres
 import (
 	"context"
 	"errors"
+	"fmt"
 	"time"
 
 	"backend/internal/domain/entity"
@@ -80,6 +81,22 @@ func (r *chatRepo) GetMessagesBySessionID(ctx context.Context, sessionID string)
 		Order("created_at ASC").
 		Find(&messages).Error
 	return messages, err
+}
+
+func (r *chatRepo) DeleteAllByUserID(ctx context.Context, userID string) error {
+	// 메시지 먼저 삭제 (FK 참조)
+	if err := r.db.WithContext(ctx).
+		Where("session_id IN (SELECT id FROM chat_sessions WHERE user_id = ?)", userID).
+		Delete(&entity.ChatMessage{}).Error; err != nil {
+		return fmt.Errorf("채팅 메시지 삭제 실패: %w", err)
+	}
+	// 세션 삭제
+	if err := r.db.WithContext(ctx).
+		Where("user_id = ?", userID).
+		Delete(&entity.ChatSession{}).Error; err != nil {
+		return fmt.Errorf("채팅 세션 삭제 실패: %w", err)
+	}
+	return nil
 }
 
 func (r *chatRepo) UpdateFeedback(ctx context.Context, messageID string, sessionUserID string, feedback string) error {

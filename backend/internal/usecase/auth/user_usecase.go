@@ -171,27 +171,35 @@ func (u *userUsecase) DeleteAccount(ctx context.Context, userID uuid.UUID) error
 	}
 
 	if err := u.txManager.Transaction(ctx, func(ctx context.Context) error {
-		if err := u.socialRepo.DeleteByUserID(ctx, userID); err != nil {
-			return fmt.Errorf("소셜 유저 삭제 실패: %w", err)
+		// 소프트 삭제: status='deleted', deleted_at=now() 설정 (6개월간 데이터 보관)
+		if err := u.userRepo.SoftDelete(ctx, userID); err != nil {
+			return fmt.Errorf("유저 소프트 삭제 실패: %w", err)
 		}
 
+		// 소셜 계정 즉시 삭제 (재로그인 방지)
+		if err := u.socialRepo.DeleteByUserID(ctx, userID); err != nil {
+			return fmt.Errorf("소셜 계정 삭제 실패: %w", err)
+		}
+
+		// 리프레시 토큰 즉시 삭제 (보안)
+		if err := u.tokenCache.DeleteByUserID(ctx, userID); err != nil {
+			return fmt.Errorf("리프레시 토큰 삭제 실패: %w", err)
+		}
+
+		// 새 게스트 유저 생성 (디바이스 이전용)
 		us := &entity.User{
 			Latitude:  user.Latitude,
 			Longitude: user.Longitude,
 		}
 
 		newUser, newUserErr = u.userRepo.Create(ctx, us)
-
 		if newUserErr != nil {
 			return fmt.Errorf("유저 생성 실패: %w", newUserErr)
 		}
 
+		// 디바이스를 새 게스트 유저로 이전
 		if err := u.deviceRepo.UpdateUserID(ctx, userID, newUser.ID); err != nil {
 			return fmt.Errorf("디바이스 유저 아이디 업데이트 실패: %w", err)
-		}
-
-		if err := u.userRepo.Delete(ctx, userID); err != nil {
-			return fmt.Errorf("유저 삭제 실패: %w", err)
 		}
 
 		return nil

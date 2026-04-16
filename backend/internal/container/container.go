@@ -29,6 +29,7 @@ type Container struct {
 	VehicleUsecase          vehicleusecase.Usecase
 	ChatUsecase             chatusecase.Usecase
 	EstimateUsecase         estimateusecase.Usecase
+	PurgeUsecase            usecase.PurgeUsecase
 }
 
 func NewContainer(db *postgres.DB, rdb *redis.Redis) *Container {
@@ -77,5 +78,6 @@ func NewContainer(db *postgres.DB, rdb *redis.Redis) *Container {
 		VehicleUsecase:          vehicleUC,
 		ChatUsecase:             chatUC,
 		EstimateUsecase:         estimateusecase.NewUsecase(estimateRepo, promotionRepo, vehicleRepo),
+		PurgeUsecase:            usecase.NewPurgeUsecase(userRepo, chatRepo, myCarRepo, estimateRepo, txManager),
 	}
 }
