@@ -26,29 +26,18 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage>
   // 차량 보유 계정 폼
   final _ownerController = TextEditingController();
   final _plateController = TextEditingController();
-  bool _hasSearchResult = false;
 
   // 소셜 전용 계정 폼
   final _nicknameController = TextEditingController();
-
-  // Mock 차량 조회 결과
-  static const _mockVehicleResult = {
-    '모델명': '벤츠 CLE클래스',
-    '연식': '2026년형',
-    '최초등록': '2026년 1월 9일',
-  };
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
 
-    // mock 초기값
     final auth = ref.read(authProvider);
-    _ownerController.text = auth.userName ?? '';
-    _nicknameController.text = auth.userName ?? '';
-    _plateController.text = '08나 6543';
-    _hasSearchResult = true;
+    _ownerController.text = auth.userName ?? auth.userEmail ?? '';
+    _nicknameController.text = auth.userName ?? auth.userEmail ?? '';
   }
 
   @override
@@ -163,61 +152,19 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage>
           AiCarButton(
             label: '조회',
             onPressed: () {
-              setState(() => _hasSearchResult = true);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('차량 조회 기능은 준비 중입니다')),
+              );
             },
             size: AiCarButtonSize.lg,
             style: AiCarButtonStyle.solid,
             isExpanded: true,
           ),
-          if (_hasSearchResult) ...[
-            const SizedBox(height: AppSpacing.space4),
-            _buildVehicleResultCard(),
-          ],
           const SizedBox(height: AppSpacing.space8),
           _buildSectionTitle('연결계정'),
           const SizedBox(height: AppSpacing.space4),
           const _ConnectedAccountsCard(),
         ],
-      ),
-    );
-  }
-
-  Widget _buildVehicleResultCard() {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(AppSpacing.space4),
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.textDisabled),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        children: _mockVehicleResult.entries.map((entry) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: AppSpacing.space1),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 80,
-                  child: Text(
-                    entry.key,
-                    style: AppTypography.bodySm.copyWith(
-                      color: AppColors.textSecondary,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Text(
-                    entry.value,
-                    style: AppTypography.bodyMd.copyWith(
-                      color: AppColors.textPrimary,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-        }).toList(),
       ),
     );
   }
