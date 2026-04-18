@@ -43,6 +43,11 @@ class GarageNotifier extends Notifier<GarageState> {
     state = state.copyWith(cards: cards, isLoading: false);
   }
 
+  Future<void> addCard(ConsultationCard card) async {
+    await _repository.saveToGarage(card);
+    state = state.copyWith(cards: [...state.cards, card]);
+  }
+
   Future<void> removeCard(String cardId) async {
     await _repository.removeFromGarage(cardId);
     state = state.copyWith(

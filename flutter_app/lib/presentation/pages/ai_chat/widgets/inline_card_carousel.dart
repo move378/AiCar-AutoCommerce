@@ -9,6 +9,7 @@ import 'package:aicar/domain/entities/consultation_card.dart';
 import 'package:aicar/domain/entities/consultation_question.dart';
 import 'package:aicar/domain/entities/vehicle.dart';
 import 'package:aicar/presentation/pages/ai_card/card_back_widget.dart';
+import 'package:aicar/presentation/pages/garage/providers/garage_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -109,7 +110,6 @@ class _InlineCardCarouselState extends ConsumerState<InlineCardCarousel> {
   }
 
   Future<void> _saveToGarage(Vehicle card) async {
-    final garageRepo = ref.read(garageRepositoryProvider);
     final consultationCard = ConsultationCard(
       id: 'card-${card.id}-${DateTime.now().millisecondsSinceEpoch}',
       vehicleId: card.id,
@@ -117,7 +117,7 @@ class _InlineCardCarouselState extends ConsumerState<InlineCardCarousel> {
       matchScore: 0.8,
       createdAt: DateTime.now(),
     );
-    await garageRepo.saveToGarage(consultationCard);
+    await ref.read(garageProvider.notifier).addCard(consultationCard);
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('${card.displayName} 가상차고에 저장')),
