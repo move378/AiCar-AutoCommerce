@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:aicar/core/providers/repository_providers.dart';
+import 'package:aicar/presentation/router/route_names.dart';
 import 'package:aicar/core/theme/app_colors.dart';
 import 'package:aicar/core/theme/app_shape.dart';
 import 'package:aicar/core/theme/app_spacing.dart';
@@ -196,7 +198,7 @@ class _ConsultationCardItem extends ConsumerWidget {
                   AppSpacing.space4,
                 ),
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () => context.pushNamed(RouteNames.chatHistory),
                   child: Row(
                     children: [
                       Text(

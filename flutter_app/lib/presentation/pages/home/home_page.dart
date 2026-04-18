@@ -77,13 +77,14 @@ class HomePage extends ConsumerWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.notifications_outlined,
-              color: AppColors.textSecondary,
-            ),
-          ),
+          // TODO: 알림 기능 구현 후 복원
+          // IconButton(
+          //   onPressed: () {},
+          //   icon: const Icon(
+          //     Icons.notifications_outlined,
+          //     color: AppColors.textSecondary,
+          //   ),
+          // ),
         ],
       ),
     );

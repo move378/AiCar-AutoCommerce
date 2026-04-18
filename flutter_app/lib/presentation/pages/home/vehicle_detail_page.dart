@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:aicar/core/providers/repository_providers.dart';
 import 'package:aicar/core/theme/app_colors.dart';
@@ -331,10 +332,10 @@ class _VehicleDetailPageState extends ConsumerState<VehicleDetailPage> {
             ),
           ),
           const SizedBox(width: AppSpacing.space3),
-          // AI 상담하기 버튼
+          // AI 상담하기 버튼 → 챗봇 탭으로 이동
           Expanded(
             child: GestureDetector(
-              onTap: () {},
+              onTap: () => context.go('/chat'),
               child: Container(
                 height: 48,
                 decoration: BoxDecoration(
