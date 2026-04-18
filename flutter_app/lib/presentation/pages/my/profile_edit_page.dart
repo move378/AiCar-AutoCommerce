@@ -10,10 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-/// 회원정보 수정 — 프로필 정보 페이지
-///
-/// 2탭: 차량 보유 계정 / 소셜 전용 계정
-/// 하단: 변경하기 + 회원탈퇴
+/// 회원정보 수정 — 프로필 정보 페이지 (단일 화면)
 class ProfileEditPage extends ConsumerStatefulWidget {
   const ProfileEditPage({super.key});
 
@@ -21,54 +18,32 @@ class ProfileEditPage extends ConsumerStatefulWidget {
   ConsumerState<ProfileEditPage> createState() => _ProfileEditPageState();
 }
 
-class _ProfileEditPageState extends ConsumerState<ProfileEditPage>
-    with SingleTickerProviderStateMixin {
-  late final TabController _tabController;
-
-  // 차량 보유 계정 폼
-  final _ownerController = TextEditingController();
-  final _plateController = TextEditingController();
-  MyCar? _myCar;
-
-  // 소셜 전용 계정 폼
+class _ProfileEditPageState extends ConsumerState<ProfileEditPage> {
   final _nicknameController = TextEditingController();
+  MyCar? _myCar;
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
-
     final auth = ref.read(authProvider);
-    _ownerController.text = auth.userName ?? auth.userEmail ?? '';
     _nicknameController.text = auth.userName ?? auth.userEmail ?? '';
-
     _loadMyCar();
   }
 
   Future<void> _loadMyCar() async {
     final auth = ref.read(authProvider);
-    if (auth.userId == null) {
-      return;
-    }
+    if (auth.userId == null) return;
     try {
       final myCarRepo = ref.read(myCarRepositoryProvider);
       final cars = await myCarRepo.getMyCars(auth.userId!);
       if (cars.isNotEmpty && mounted) {
-        setState(() {
-          _myCar = cars.first;
-          _plateController.text = _myCar!.licensePlate;
-        });
-      } else {
-        }
-    } catch (_) {
-    }
+        setState(() => _myCar = cars.first);
+      }
+    } catch (_) {}
   }
 
   @override
   void dispose() {
-    _tabController.dispose();
-    _ownerController.dispose();
-    _plateController.dispose();
     _nicknameController.dispose();
     super.dispose();
   }
@@ -80,14 +55,31 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage>
       body: Column(
         children: [
           _buildHeader(),
-          _buildTabBar(),
           Expanded(
-            child: TabBarView(
-              controller: _tabController,
-              children: [
-                _buildVehicleOwnerTab(),
-                _buildSocialOnlyTab(),
-              ],
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(AppSpacing.space4),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: AppSpacing.space4),
+                  // ── 차량 정보 ──
+                  _buildVehicleSection(),
+                  const SizedBox(height: AppSpacing.space8),
+                  // ── 기본정보 ──
+                  _buildSectionTitle('기본정보'),
+                  const SizedBox(height: AppSpacing.space4),
+                  AiCarInputField(
+                    label: '닉네임',
+                    controller: _nicknameController,
+                    suffixIcon: _buildClearButton(_nicknameController),
+                  ),
+                  const SizedBox(height: AppSpacing.space8),
+                  // ── 연결계정 ──
+                  _buildSectionTitle('연결계정'),
+                  const SizedBox(height: AppSpacing.space4),
+                  const _ConnectedAccountsCard(),
+                ],
+              ),
             ),
           ),
           _buildBottomActions(),
@@ -96,7 +88,7 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage>
     );
   }
 
-  /// 헤더: "프로필 정보" + 우측 X 닫기
+  /// 헤더
   Widget _buildHeader() {
     return SafeArea(
       bottom: false,
@@ -104,7 +96,7 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage>
         height: 56,
         child: Row(
           children: [
-            const SizedBox(width: 56), // 좌측 밸런스용 빈 공간
+            const SizedBox(width: 56),
             Expanded(
               child: Center(
                 child: Text(
@@ -133,223 +125,104 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage>
     );
   }
 
-  /// 탭 바: 차량 보유 계정 / 소셜 전용 계정
-  Widget _buildTabBar() {
-    return TabBar(
-      controller: _tabController,
-      labelColor: AppColors.textPrimary,
-      unselectedLabelColor: AppColors.textTertiary,
-      labelStyle: AppTypography.bodyMd.copyWith(fontWeight: FontWeight.w600),
-      unselectedLabelStyle: AppTypography.bodyMd,
-      indicatorColor: AppColors.textPrimary,
-      indicatorWeight: 2,
-      tabs: const [
-        Tab(text: '차량 보유 계정'),
-        Tab(text: '소셜 전용 계정'),
-      ],
-    );
-  }
-
-  // ── 탭 1: 차량 보유 계정 ──────────────────────
-
-  Widget _buildVehicleOwnerTab() {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(AppSpacing.space4),
+  /// 차량 정보 섹션 — 등록된 차량이 있으면 카드, 없으면 안내
+  Widget _buildVehicleSection() {
+    if (_myCar != null) {
+      return _buildVehicleCard(_myCar!);
+    }
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(
+        vertical: AppSpacing.space6,
+        horizontal: AppSpacing.space4,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: AppColors.textDisabled),
+      ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: AppSpacing.space4),
-          _buildSectionTitle('차량정보'),
-          const SizedBox(height: AppSpacing.space4),
-          AiCarInputField(
-            label: '소유자',
-            controller: _ownerController,
-            suffixIcon: _buildClearButton(_ownerController),
+          Icon(Icons.directions_car_outlined, size: 40, color: AppColors.textTertiary),
+          const SizedBox(height: AppSpacing.space3),
+          Text(
+            '등록된 차량이 없습니다',
+            style: AppTypography.bodyMd.copyWith(color: AppColors.textSecondary),
           ),
-          const SizedBox(height: AppSpacing.space4),
-          AiCarInputField(
-            controller: _plateController,
-            hint: '차량번호 입력',
-            suffixIcon: _buildClearButton(_plateController),
+          const SizedBox(height: AppSpacing.space1),
+          Text(
+            '온보딩에서 차량을 등록하면 여기에 표시됩니다',
+            style: AppTypography.bodySm.copyWith(color: AppColors.textTertiary),
           ),
-          const SizedBox(height: AppSpacing.space4),
-          AiCarButton(
-            label: '조회',
-            onPressed: () async {
-              final plate = _plateController.text.trim();
-              if (plate.isEmpty) return;
-              final auth = ref.read(authProvider);
-              if (auth.userId == null) return;
-              try {
-                final myCarRepo = ref.read(myCarRepositoryProvider);
-                final car = await myCarRepo.registerCar(
-                  userId: auth.userId!,
-                  licensePlate: plate,
-                );
-                if (mounted) {
-                  setState(() => _myCar = car);
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('차량 등록 완료')),
-                  );
-                }
-              } catch (e) {
-                if (mounted) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('차량 조회 실패: $e')),
-                  );
-                }
-              }
-            },
-            size: AiCarButtonSize.lg,
-            style: AiCarButtonStyle.solid,
-            isExpanded: true,
-          ),
-          if (_myCar != null) ...[
-            const SizedBox(height: AppSpacing.space4),
-            _buildVehicleResultCard(),
-          ],
-          const SizedBox(height: AppSpacing.space8),
-          _buildSectionTitle('연결계정'),
-          const SizedBox(height: AppSpacing.space4),
-          const _ConnectedAccountsCard(),
         ],
       ),
     );
   }
 
-  Widget _buildVehicleResultCard() {
-    final car = _myCar!;
+  /// 등록된 차량 카드
+  Widget _buildVehicleCard(MyCar car) {
     final info = {
       '차량번호': car.licensePlate,
-      '브랜드': car.brand ?? '-',
-      '모델': car.model ?? '-',
-      '연식': car.year != null ? '${car.year}년형' : '-',
-      '연료': car.fuelType ?? '-',
+      if (car.brand != null) '브랜드': car.brand!,
+      if (car.model != null) '모델': car.model!,
+      if (car.year != null) '연식': '${car.year}년형',
+      if (car.fuelType != null) '연료': car.fuelType!,
     };
 
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(AppSpacing.space4),
       decoration: BoxDecoration(
-        border: Border.all(color: AppColors.textDisabled),
+        border: Border.all(color: AppColors.secondary),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
-        children: info.entries.map((entry) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: AppSpacing.space1),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 80,
-                  child: Text(
-                    entry.key,
-                    style: AppTypography.bodySm.copyWith(
-                      color: AppColors.textSecondary,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Text(
-                    entry.value,
-                    style: AppTypography.bodyMd.copyWith(
-                      color: AppColors.textPrimary,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-        }).toList(),
-      ),
-    );
-  }
-
-  // ── 탭 2: 소셜 전용 계정 ──────────────────────
-
-  Widget _buildSocialOnlyTab() {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(AppSpacing.space4),
-      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: AppSpacing.space4),
-          _buildNoVehiclePlaceholder(),
-          const SizedBox(height: AppSpacing.space8),
-          _buildSectionTitle('기본정보'),
-          const SizedBox(height: AppSpacing.space4),
-          AiCarInputField(
-            label: '닉네임',
-            controller: _nicknameController,
-            suffixIcon: _buildClearButton(_nicknameController),
+          Row(
+            children: [
+              Icon(Icons.directions_car, size: 20, color: AppColors.secondary),
+              const SizedBox(width: AppSpacing.space2),
+              Text(
+                '내 차량',
+                style: AppTypography.bodyMd.copyWith(
+                  color: AppColors.secondary,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: AppSpacing.space8),
-          _buildSectionTitle('연결계정'),
-          const SizedBox(height: AppSpacing.space4),
-          const _ConnectedAccountsCard(),
+          const SizedBox(height: AppSpacing.space3),
+          ...info.entries.map((entry) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: AppSpacing.space1),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 80,
+                    child: Text(
+                      entry.key,
+                      style: AppTypography.bodySm.copyWith(
+                        color: AppColors.textSecondary,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      entry.value,
+                      style: AppTypography.bodyMd.copyWith(
+                        color: AppColors.textPrimary,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }),
         ],
       ),
     );
   }
-
-  Widget _buildNoVehiclePlaceholder() {
-    return GestureDetector(
-      onTap: () => _tabController.animateTo(0),
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.symmetric(
-          vertical: AppSpacing.space6,
-          horizontal: AppSpacing.space4,
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(
-            color: AppColors.textDisabled,
-            style: BorderStyle.solid,
-          ),
-        ),
-        child: Column(
-          children: [
-            Text(
-              '등록된 차량이 없습니다',
-              style: AppTypography.bodyMd.copyWith(
-                color: AppColors.textSecondary,
-              ),
-            ),
-            const SizedBox(height: AppSpacing.space3),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 24,
-                  height: 24,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: AppColors.textSecondary),
-                  ),
-                  child: const Icon(
-                    Icons.add,
-                    size: 16,
-                    color: AppColors.textSecondary,
-                  ),
-                ),
-                const SizedBox(width: AppSpacing.space2),
-                Text(
-                  '차량번호로 차량등록하기',
-                  style: AppTypography.bodySm.copyWith(
-                    color: AppColors.textSecondary,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  // ── 공용 위젯 ──────────────────────────────
 
   Widget _buildSectionTitle(String title) {
     return Text(
@@ -367,24 +240,16 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage>
         controller.clear();
         setState(() {});
       },
-      child: const Icon(
-        Icons.cancel,
-        size: 20,
-        color: AppColors.textTertiary,
-      ),
+      child: const Icon(Icons.cancel, size: 20, color: AppColors.textTertiary),
     );
   }
 
-  /// 하단: 회원탈퇴 + 변경하기 버튼
   Widget _buildBottomActions() {
     return SafeArea(
       top: false,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(
-          AppSpacing.space4,
-          AppSpacing.space2,
-          AppSpacing.space4,
-          AppSpacing.space4,
+          AppSpacing.space4, AppSpacing.space2, AppSpacing.space4, AppSpacing.space4,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -404,7 +269,6 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage>
             AiCarButton(
               label: '변경하기',
               onPressed: () {
-                // MVP: 변경 완료 스낵바 표시 후 pop
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('프로필 정보가 변경되었습니다.')),
                 );
@@ -426,25 +290,16 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage>
       builder: (dialogContext) => AlertDialog(
         title: Text(
           '회원탈퇴',
-          style: AppTypography.headingXl.copyWith(
-            color: AppColors.textPrimary,
-          ),
+          style: AppTypography.headingXl.copyWith(color: AppColors.textPrimary),
         ),
         content: Text(
           '정말 탈퇴하시겠습니까?\n탈퇴 후 모든 데이터가 삭제됩니다.',
-          style: AppTypography.bodyMd.copyWith(
-            color: AppColors.textSecondary,
-          ),
+          style: AppTypography.bodyMd.copyWith(color: AppColors.textSecondary),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(dialogContext).pop(),
-            child: Text(
-              '취소',
-              style: AppTypography.bodyMd.copyWith(
-                color: AppColors.textSecondary,
-              ),
-            ),
+            child: Text('취소', style: AppTypography.bodyMd.copyWith(color: AppColors.textSecondary)),
           ),
           TextButton(
             onPressed: () async {
@@ -452,12 +307,7 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage>
               await ref.read(authProvider.notifier).deleteAccount();
               if (context.mounted) context.go('/home');
             },
-            child: Text(
-              '탈퇴하기',
-              style: AppTypography.bodyMd.copyWith(
-                color: AppColors.error,
-              ),
-            ),
+            child: Text('탈퇴하기', style: AppTypography.bodyMd.copyWith(color: AppColors.error)),
           ),
         ],
       ),
@@ -465,7 +315,7 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage>
   }
 }
 
-/// 연결계정 카드 — 실제 로그인 provider 기반 표시
+/// 연결계정 카드
 class _ConnectedAccountsCard extends ConsumerWidget {
   const _ConnectedAccountsCard();
 
@@ -496,31 +346,21 @@ class _ConnectedAccountsCard extends ConsumerWidget {
     );
   }
 
-  Widget _buildAccountRow(
-    String provider, {
-    String? email,
-    required bool isConnected,
-  }) {
+  Widget _buildAccountRow(String provider, {String? email, required bool isConnected}) {
     return Row(
       children: [
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                provider,
-                style: AppTypography.bodyMd.copyWith(
-                  color: AppColors.textPrimary,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
+              Text(provider, style: AppTypography.bodyMd.copyWith(
+                color: AppColors.textPrimary, fontWeight: FontWeight.w600,
+              )),
               const SizedBox(height: AppSpacing.space1),
               Text(
                 isConnected ? (email ?? '연결됨') : '미연결',
                 style: AppTypography.bodySm.copyWith(
-                  color: isConnected
-                      ? AppColors.textSecondary
-                      : AppColors.textTertiary,
+                  color: isConnected ? AppColors.textSecondary : AppColors.textTertiary,
                 ),
               ),
             ],
@@ -529,19 +369,13 @@ class _ConnectedAccountsCard extends ConsumerWidget {
         if (isConnected)
           Container(
             padding: const EdgeInsets.symmetric(
-              horizontal: AppSpacing.space3,
-              vertical: AppSpacing.space1,
+              horizontal: AppSpacing.space3, vertical: AppSpacing.space1,
             ),
             decoration: BoxDecoration(
               color: AppColors.primary,
               borderRadius: BorderRadius.circular(100),
             ),
-            child: Text(
-              '연결됨',
-              style: AppTypography.captionXs.copyWith(
-                color: AppColors.textOnDark,
-              ),
-            ),
+            child: Text('연결됨', style: AppTypography.captionXs.copyWith(color: AppColors.textOnDark)),
           ),
       ],
     );
