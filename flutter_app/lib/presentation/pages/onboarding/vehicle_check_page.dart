@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:aicar/core/providers/auth_provider.dart';
+import 'package:aicar/core/providers/repository_providers.dart';
 import 'package:aicar/core/theme/app_colors.dart';
 import 'package:aicar/core/theme/app_spacing.dart';
 import 'package:aicar/core/theme/app_typography.dart';
@@ -58,9 +60,22 @@ class _VehicleCheckPageState extends ConsumerState<VehicleCheckPage> {
     });
   }
 
-  void _onRegisterComplete() {
+  Future<void> _onRegisterComplete() async {
+    // 백엔드에 차량 등록
+    final auth = ref.read(authProvider);
+    if (auth.userId != null) {
+      try {
+        final myCarRepo = ref.read(myCarRepositoryProvider);
+        await myCarRepo.registerCar(
+          userId: auth.userId!,
+          licensePlate: _plateController.text.trim(),
+        );
+      } catch (_) {
+        // 등록 실패해도 온보딩은 계속 진행
+      }
+    }
+
     setState(() => _currentStep = _Step.complete);
-    // 2초 후 홈으로
     Future.delayed(const Duration(seconds: 2), () {
       if (mounted) context.go('/home');
     });
