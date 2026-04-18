@@ -1,7 +1,9 @@
 import 'package:aicar/core/providers/auth_provider.dart';
+import 'package:aicar/core/providers/repository_providers.dart';
 import 'package:aicar/core/theme/app_colors.dart';
 import 'package:aicar/core/theme/app_spacing.dart';
 import 'package:aicar/core/theme/app_typography.dart';
+import 'package:aicar/domain/entities/my_car.dart';
 import 'package:aicar/presentation/widgets/buttons/aicar_button.dart';
 import 'package:aicar/presentation/widgets/inputs/aicar_input_field.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +28,7 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage>
   // 차량 보유 계정 폼
   final _ownerController = TextEditingController();
   final _plateController = TextEditingController();
+  MyCar? _myCar;
 
   // 소셜 전용 계정 폼
   final _nicknameController = TextEditingController();
@@ -38,6 +41,27 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage>
     final auth = ref.read(authProvider);
     _ownerController.text = auth.userName ?? auth.userEmail ?? '';
     _nicknameController.text = auth.userName ?? auth.userEmail ?? '';
+
+    _loadMyCar();
+  }
+
+  Future<void> _loadMyCar() async {
+    final auth = ref.read(authProvider);
+    if (auth.userId == null) {
+      return;
+    }
+    try {
+      final myCarRepo = ref.read(myCarRepositoryProvider);
+      final cars = await myCarRepo.getMyCars(auth.userId!);
+      if (cars.isNotEmpty && mounted) {
+        setState(() {
+          _myCar = cars.first;
+          _plateController.text = _myCar!.licensePlate;
+        });
+      } else {
+        }
+    } catch (_) {
+    }
   }
 
   @override
@@ -151,20 +175,93 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage>
           const SizedBox(height: AppSpacing.space4),
           AiCarButton(
             label: '조회',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('차량 조회 기능은 준비 중입니다')),
-              );
+            onPressed: () async {
+              final plate = _plateController.text.trim();
+              if (plate.isEmpty) return;
+              final auth = ref.read(authProvider);
+              if (auth.userId == null) return;
+              try {
+                final myCarRepo = ref.read(myCarRepositoryProvider);
+                final car = await myCarRepo.registerCar(
+                  userId: auth.userId!,
+                  licensePlate: plate,
+                );
+                if (mounted) {
+                  setState(() => _myCar = car);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('차량 등록 완료')),
+                  );
+                }
+              } catch (e) {
+                if (mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('차량 조회 실패: $e')),
+                  );
+                }
+              }
             },
             size: AiCarButtonSize.lg,
             style: AiCarButtonStyle.solid,
             isExpanded: true,
           ),
+          if (_myCar != null) ...[
+            const SizedBox(height: AppSpacing.space4),
+            _buildVehicleResultCard(),
+          ],
           const SizedBox(height: AppSpacing.space8),
           _buildSectionTitle('연결계정'),
           const SizedBox(height: AppSpacing.space4),
           const _ConnectedAccountsCard(),
         ],
+      ),
+    );
+  }
+
+  Widget _buildVehicleResultCard() {
+    final car = _myCar!;
+    final info = {
+      '차량번호': car.licensePlate,
+      '브랜드': car.brand ?? '-',
+      '모델': car.model ?? '-',
+      '연식': car.year != null ? '${car.year}년형' : '-',
+      '연료': car.fuelType ?? '-',
+    };
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(AppSpacing.space4),
+      decoration: BoxDecoration(
+        border: Border.all(color: AppColors.textDisabled),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        children: info.entries.map((entry) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: AppSpacing.space1),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 80,
+                  child: Text(
+                    entry.key,
+                    style: AppTypography.bodySm.copyWith(
+                      color: AppColors.textSecondary,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    entry.value,
+                    style: AppTypography.bodyMd.copyWith(
+                      color: AppColors.textPrimary,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        }).toList(),
       ),
     );
   }
