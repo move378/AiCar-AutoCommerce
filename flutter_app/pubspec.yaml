@@ -64,6 +64,14 @@ dev_dependencies:
   drift_dev: ^2.31.0
   custom_lint: ^0.8.1
   riverpod_lint: ^3.1.0
+  flutter_launcher_icons: ^0.14.3
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/ic_launcher.png"
+  adaptive_icon_foreground: "assets/icons/ic_launcher_foreground.png"
+  adaptive_icon_background: "#FFFFFF"
 
 flutter:
   uses-material-design: true
