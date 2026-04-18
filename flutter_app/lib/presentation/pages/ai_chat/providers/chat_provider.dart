@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:aicar/core/providers/auth_provider.dart';
 import 'package:aicar/core/providers/repository_providers.dart';
 import 'package:aicar/domain/entities/chat_message.dart';
 import 'package:aicar/domain/entities/consultation_question.dart';
@@ -61,21 +62,27 @@ class ChatNotifier extends Notifier<ChatState> {
     return const ChatState();
   }
 
-  /// 백엔드 세션 생성 (없으면 생성, 실패해도 상담 계속 진행)
+  /// 로그인 상태 확인
+  bool get _isLoggedIn => ref.read(authProvider).isLoggedIn;
+
+  /// 백엔드 세션 생성 (로그인 시만, 실패해도 상담 계속 진행)
   Future<void> _ensureBackendSession() async {
     if (_currentSessionId != null) return;
+    if (!_isLoggedIn) {
+      _currentSessionId = DateTime.now().millisecondsSinceEpoch.toString();
+      return;
+    }
     try {
       final session = await _repository.createSession(title: 'AI 상담');
       _currentSessionId = session.id;
     } catch (_) {
-      // 백엔드 세션 생성 실패 시 로컬 ID 사용
       _currentSessionId = DateTime.now().millisecondsSinceEpoch.toString();
     }
   }
 
-  /// 메시지를 백엔드에 저장 (실패해도 무시)
+  /// 메시지를 백엔드에 저장 (로그인 시만, 실패해도 무시)
   Future<void> _persistMessage(ChatMessage message) async {
-    if (_currentSessionId == null) return;
+    if (_currentSessionId == null || !_isLoggedIn) return;
     try {
       await _repository.saveMessage(_currentSessionId!, message);
     } catch (_) {
