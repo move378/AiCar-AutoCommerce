@@ -148,7 +148,14 @@ class ChatRepositoryImpl implements IChatRepository {
         .toList();
   }
 
-  // ─── 로컬 (Drift, 하위 호환) ───
+  // ─── 로컬 (Drift) ───
+
+  @override
+  Future<void> saveMessageLocal(ChatMessage message) async {
+    await _db.into(_db.chatHistoryTable).insert(
+          ChatMessageMapper.toDrift(message),
+        );
+  }
 
   @override
   Future<List<ChatMessage>> loadHistory() async {
@@ -159,6 +166,56 @@ class ChatRepositoryImpl implements IChatRepository {
           ]))
         .get();
     return rows.map(ChatMessageMapper.fromDrift).toList();
+  }
+
+  @override
+  Future<List<ChatMessage>> loadLocalMessages(String sessionId) async {
+    final rows = await (_db.select(_db.chatHistoryTable)
+          ..where((t) => t.sessionId.equals(sessionId))
+          ..orderBy([
+            (t) =>
+                OrderingTerm(expression: t.createdAt, mode: OrderingMode.asc),
+          ]))
+        .get();
+    return rows.map(ChatMessageMapper.fromDrift).toList();
+  }
+
+  @override
+  Future<List<ChatSession>> getLocalSessions() async {
+    // sessionId로 그룹화하여 세션 목록 생성
+    final rows = await (_db.select(_db.chatHistoryTable)
+          ..orderBy([
+            (t) =>
+                OrderingTerm(expression: t.createdAt, mode: OrderingMode.desc),
+          ]))
+        .get();
+
+    final sessionMap = <String, ChatHistoryTableData>{};
+    final sessionCounts = <String, int>{};
+
+    for (final row in rows) {
+      final sid = row.sessionId ?? 'unknown';
+      sessionCounts[sid] = (sessionCounts[sid] ?? 0) + 1;
+      // 첫 번째 메시지(가장 오래된)를 대표로 저장
+      sessionMap.putIfAbsent(sid, () => row);
+    }
+
+    return sessionMap.entries.map((entry) {
+      final row = entry.value;
+      return ChatSession(
+        id: entry.key,
+        title: 'AI 상담',
+        createdAt: row.createdAt,
+        messageCount: sessionCounts[entry.key] ?? 0,
+      );
+    }).toList();
+  }
+
+  @override
+  Future<void> deleteLocalSession(String sessionId) async {
+    await (_db.delete(_db.chatHistoryTable)
+          ..where((t) => t.sessionId.equals(sessionId)))
+        .go();
   }
 
   @override

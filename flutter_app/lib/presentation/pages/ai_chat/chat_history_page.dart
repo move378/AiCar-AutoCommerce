@@ -30,30 +30,16 @@ class _ChatHistoryPageState extends ConsumerState<ChatHistoryPage> {
 
   Future<void> _loadSessions() async {
     final repo = ref.read(chatRepositoryProvider);
-    final chatSessions = await repo.getSessions();
+    final chatSessions = await repo.getLocalSessions();
 
     final sessions = <_SessionPreview>[];
     for (final session in chatSessions) {
-      final messages = await repo.loadMessages(session.id);
-      if (messages.isNotEmpty) {
-        final firstUserMessage = messages.firstWhere(
-          (m) => m.isUser,
-          orElse: () => messages.first,
-        );
-        sessions.add(_SessionPreview(
-          sessionId: session.id,
-          preview: session.title ?? firstUserMessage.content,
-          date: session.createdAt,
-          messageCount: messages.length,
-        ));
-      } else {
-        sessions.add(_SessionPreview(
-          sessionId: session.id,
-          preview: session.title ?? '새 상담',
-          date: session.createdAt,
-          messageCount: 0,
-        ));
-      }
+      sessions.add(_SessionPreview(
+        sessionId: session.id,
+        preview: session.title ?? 'AI 상담',
+        date: session.createdAt,
+        messageCount: session.messageCount,
+      ));
     }
 
     if (mounted) {
@@ -66,7 +52,7 @@ class _ChatHistoryPageState extends ConsumerState<ChatHistoryPage> {
 
   Future<void> _deleteSession(String sessionId) async {
     final repo = ref.read(chatRepositoryProvider);
-    await repo.deleteSession(sessionId);
+    await repo.deleteLocalSession(sessionId);
     setState(() {
       _sessions?.removeWhere((s) => s.sessionId == sessionId);
     });
@@ -74,7 +60,7 @@ class _ChatHistoryPageState extends ConsumerState<ChatHistoryPage> {
 
   void _showSessionDetail(String sessionId) async {
     final repo = ref.read(chatRepositoryProvider);
-    final messages = await repo.loadMessages(sessionId);
+    final messages = await repo.loadLocalMessages(sessionId);
 
     if (!mounted) return;
 

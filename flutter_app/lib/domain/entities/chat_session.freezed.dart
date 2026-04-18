@@ -17,7 +17,8 @@ mixin _$ChatSession {
   String get id;
   String? get title;
   DateTime get createdAt;
-  DateTime get updatedAt;
+  DateTime? get updatedAt;
+  int get messageCount;
 
   /// Create a copy of ChatSession
   /// with the given fields replaced by the non-null parameter values.
@@ -39,16 +40,19 @@ mixin _$ChatSession {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            (identical(other.messageCount, messageCount) ||
+                other.messageCount == messageCount));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, createdAt, updatedAt);
+  int get hashCode =>
+      Object.hash(runtimeType, id, title, createdAt, updatedAt, messageCount);
 
   @override
   String toString() {
-    return 'ChatSession(id: $id, title: $title, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'ChatSession(id: $id, title: $title, createdAt: $createdAt, updatedAt: $updatedAt, messageCount: $messageCount)';
   }
 }
 
@@ -58,7 +62,12 @@ abstract mixin class $ChatSessionCopyWith<$Res> {
           ChatSession value, $Res Function(ChatSession) _then) =
       _$ChatSessionCopyWithImpl;
   @useResult
-  $Res call({String id, String? title, DateTime createdAt, DateTime updatedAt});
+  $Res call(
+      {String id,
+      String? title,
+      DateTime createdAt,
+      DateTime? updatedAt,
+      int messageCount});
 }
 
 /// @nodoc
@@ -76,7 +85,8 @@ class _$ChatSessionCopyWithImpl<$Res> implements $ChatSessionCopyWith<$Res> {
     Object? id = null,
     Object? title = freezed,
     Object? createdAt = null,
-    Object? updatedAt = null,
+    Object? updatedAt = freezed,
+    Object? messageCount = null,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -91,10 +101,14 @@ class _$ChatSessionCopyWithImpl<$Res> implements $ChatSessionCopyWith<$Res> {
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      updatedAt: null == updatedAt
+      updatedAt: freezed == updatedAt
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
+      messageCount: null == messageCount
+          ? _self.messageCount
+          : messageCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -192,16 +206,16 @@ extension ChatSessionPatterns on ChatSession {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            String id, String? title, DateTime createdAt, DateTime updatedAt)?
+    TResult Function(String id, String? title, DateTime createdAt,
+            DateTime? updatedAt, int messageCount)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _ChatSession() when $default != null:
-        return $default(
-            _that.id, _that.title, _that.createdAt, _that.updatedAt);
+        return $default(_that.id, _that.title, _that.createdAt, _that.updatedAt,
+            _that.messageCount);
       case _:
         return orElse();
     }
@@ -222,15 +236,15 @@ extension ChatSessionPatterns on ChatSession {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(
-            String id, String? title, DateTime createdAt, DateTime updatedAt)
+    TResult Function(String id, String? title, DateTime createdAt,
+            DateTime? updatedAt, int messageCount)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ChatSession():
-        return $default(
-            _that.id, _that.title, _that.createdAt, _that.updatedAt);
+        return $default(_that.id, _that.title, _that.createdAt, _that.updatedAt,
+            _that.messageCount);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -250,15 +264,15 @@ extension ChatSessionPatterns on ChatSession {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            String id, String? title, DateTime createdAt, DateTime updatedAt)?
+    TResult? Function(String id, String? title, DateTime createdAt,
+            DateTime? updatedAt, int messageCount)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ChatSession() when $default != null:
-        return $default(
-            _that.id, _that.title, _that.createdAt, _that.updatedAt);
+        return $default(_that.id, _that.title, _that.createdAt, _that.updatedAt,
+            _that.messageCount);
       case _:
         return null;
     }
@@ -273,7 +287,8 @@ class _ChatSession implements ChatSession {
       {required this.id,
       this.title,
       required this.createdAt,
-      required this.updatedAt});
+      this.updatedAt,
+      this.messageCount = 0});
   factory _ChatSession.fromJson(Map<String, dynamic> json) =>
       _$ChatSessionFromJson(json);
 
@@ -284,7 +299,10 @@ class _ChatSession implements ChatSession {
   @override
   final DateTime createdAt;
   @override
-  final DateTime updatedAt;
+  final DateTime? updatedAt;
+  @override
+  @JsonKey()
+  final int messageCount;
 
   /// Create a copy of ChatSession
   /// with the given fields replaced by the non-null parameter values.
@@ -311,16 +329,19 @@ class _ChatSession implements ChatSession {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            (identical(other.messageCount, messageCount) ||
+                other.messageCount == messageCount));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, createdAt, updatedAt);
+  int get hashCode =>
+      Object.hash(runtimeType, id, title, createdAt, updatedAt, messageCount);
 
   @override
   String toString() {
-    return 'ChatSession(id: $id, title: $title, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'ChatSession(id: $id, title: $title, createdAt: $createdAt, updatedAt: $updatedAt, messageCount: $messageCount)';
   }
 }
 
@@ -332,7 +353,12 @@ abstract mixin class _$ChatSessionCopyWith<$Res>
       __$ChatSessionCopyWithImpl;
   @override
   @useResult
-  $Res call({String id, String? title, DateTime createdAt, DateTime updatedAt});
+  $Res call(
+      {String id,
+      String? title,
+      DateTime createdAt,
+      DateTime? updatedAt,
+      int messageCount});
 }
 
 /// @nodoc
@@ -350,7 +376,8 @@ class __$ChatSessionCopyWithImpl<$Res> implements _$ChatSessionCopyWith<$Res> {
     Object? id = null,
     Object? title = freezed,
     Object? createdAt = null,
-    Object? updatedAt = null,
+    Object? updatedAt = freezed,
+    Object? messageCount = null,
   }) {
     return _then(_ChatSession(
       id: null == id
@@ -365,10 +392,14 @@ class __$ChatSessionCopyWithImpl<$Res> implements _$ChatSessionCopyWith<$Res> {
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      updatedAt: null == updatedAt
+      updatedAt: freezed == updatedAt
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
+      messageCount: null == messageCount
+          ? _self.messageCount
+          : messageCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }

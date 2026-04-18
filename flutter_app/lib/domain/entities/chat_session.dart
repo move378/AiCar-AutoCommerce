@@ -11,7 +11,8 @@ abstract class ChatSession with _$ChatSession {
     required String id,
     String? title,
     required DateTime createdAt,
-    required DateTime updatedAt,
+    DateTime? updatedAt,
+    @Default(0) int messageCount,
   }) = _ChatSession;
 
   factory ChatSession.fromJson(Map<String, dynamic> json) =>

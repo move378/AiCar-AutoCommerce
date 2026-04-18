@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:aicar/core/providers/auth_provider.dart';
 import 'package:aicar/core/providers/repository_providers.dart';
 import 'package:aicar/domain/entities/chat_message.dart';
 import 'package:aicar/domain/entities/consultation_question.dart';
@@ -62,62 +61,28 @@ class ChatNotifier extends Notifier<ChatState> {
     return const ChatState();
   }
 
-  /// 로그인 상태 확인
-  bool get _isLoggedIn => ref.read(authProvider).isLoggedIn;
-
-  /// 백엔드 세션 ID인지 (UUID 형식) vs 로컬 ID인지 판별
-  bool get _hasBackendSession =>
-      _currentSessionId != null && _currentSessionId!.contains('-');
-
-  /// 백엔드 세션 생성 (로그인 시만, 실패해도 상담 계속 진행)
-  Future<void> _ensureBackendSession() async {
-    // 이미 백엔드 세션이면 스킵
-    if (_hasBackendSession) return;
-
-    if (!_isLoggedIn) {
-      _currentSessionId ??= DateTime.now().millisecondsSinceEpoch.toString();
-      return;
-    }
-
-    try {
-      final session = await _repository.createSession(title: 'AI 상담');
-      _currentSessionId = session.id;
-    } catch (e) {
-      debugPrint('[ChatProvider] 세션 생성 실패: $e');
-      _currentSessionId ??= DateTime.now().millisecondsSinceEpoch.toString();
-    }
+  /// 세션 ID 확보 (로컬 전용)
+  void _ensureSessionId() {
+    _currentSessionId ??= DateTime.now().millisecondsSinceEpoch.toString();
   }
 
-  /// 로그인 후 백엔드 세션 업그레이드 (로컬→백엔드)
-  Future<void> _upgradeToBackendSession() async {
-    if (_hasBackendSession || !_isLoggedIn) return;
-    try {
-      final session = await _repository.createSession(title: 'AI 상담');
-      _currentSessionId = session.id;
-
-      // 기존 메시지들을 백엔드에 저장
-      for (final msg in state.messages) {
-        try {
-          await _repository.saveMessage(_currentSessionId!, msg);
-        } catch (_) {}
-      }
-    } catch (e) {
-      debugPrint('[ChatProvider] 세션 업그레이드 실패: $e');
-    }
-  }
-
-  /// 메시지를 백엔드에 저장 (백엔드 세션 시만, 실패해도 무시)
+  /// 메시지를 로컬 Drift DB에 저장
   Future<void> _persistMessage(ChatMessage message) async {
-    if (!_hasBackendSession) return;
+    if (_currentSessionId == null) return;
     try {
-      await _repository.saveMessage(_currentSessionId!, message);
-    } catch (_) {
-      // 저장 실패해도 상담 계속 진행
-    }
+      final msg = ChatMessage(
+        id: message.id,
+        role: message.role,
+        content: message.content,
+        createdAt: message.createdAt,
+        sessionId: _currentSessionId,
+      );
+      await _repository.saveMessageLocal(msg);
+    } catch (_) {}
   }
 
   Future<void> _startConsultation() async {
-    await _ensureBackendSession();
+    _ensureSessionId();
 
     final greeting = ChatMessage(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
@@ -150,7 +115,7 @@ class ChatNotifier extends Notifier<ChatState> {
 
   Future<void> handleChoice(String choice) async {
     if (state.isStreaming) return;
-    await _ensureBackendSession();
+    _ensureSessionId();
     final userMessage = ChatMessage(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       role: ChatRole.user,
@@ -174,7 +139,7 @@ class ChatNotifier extends Notifier<ChatState> {
 
   Future<void> sendFreeTextAnswer(String text) async {
     if (text.trim().isEmpty || state.isStreaming) return;
-    await _ensureBackendSession();
+    _ensureSessionId();
     final userMessage = ChatMessage(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       role: ChatRole.user,
@@ -299,11 +264,6 @@ class ChatNotifier extends Notifier<ChatState> {
   ConsultationAnswers get answers => _answers;
 
   void startNewSession() {
-    // 현재 세션이 로컬 ID이고 로그인 상태면, 먼저 백엔드에 저장 시도
-    if (!_hasBackendSession && _isLoggedIn && state.messages.isNotEmpty) {
-      _upgradeToBackendSession();
-    }
-
     _streamingTimer?.cancel();
     _streamingTimer = null;
     _currentSessionId = null;
