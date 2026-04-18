@@ -61,19 +61,11 @@ class _VehicleCheckPageState extends ConsumerState<VehicleCheckPage> {
   }
 
   Future<void> _onRegisterComplete() async {
-    // 백엔드에 차량 등록
-    final auth = ref.read(authProvider);
-    if (auth.userId != null) {
-      try {
-        final myCarRepo = ref.read(myCarRepositoryProvider);
-        await myCarRepo.registerCar(
-          userId: auth.userId!,
-          licensePlate: _plateController.text.trim(),
-        );
-      } catch (_) {
-        // 등록 실패해도 온보딩은 계속 진행
-      }
-    }
+    // AuthState에 차량 정보 저장 (로컬)
+    ref.read(authProvider.notifier).registerCar(
+      plate: _plateController.text.trim(),
+      owner: _ownerController.text.trim(),
+    );
 
     setState(() => _currentStep = _Step.complete);
     Future.delayed(const Duration(seconds: 2), () {

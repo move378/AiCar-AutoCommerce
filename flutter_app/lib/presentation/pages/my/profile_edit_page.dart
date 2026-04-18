@@ -1,9 +1,7 @@
 import 'package:aicar/core/providers/auth_provider.dart';
-import 'package:aicar/core/providers/repository_providers.dart';
 import 'package:aicar/core/theme/app_colors.dart';
 import 'package:aicar/core/theme/app_spacing.dart';
 import 'package:aicar/core/theme/app_typography.dart';
-import 'package:aicar/domain/entities/my_car.dart';
 import 'package:aicar/presentation/widgets/buttons/aicar_button.dart';
 import 'package:aicar/presentation/widgets/inputs/aicar_input_field.dart';
 import 'package:flutter/material.dart';
@@ -21,26 +19,12 @@ class ProfileEditPage extends ConsumerStatefulWidget {
 class _ProfileEditPageState extends ConsumerState<ProfileEditPage> {
   final _nicknameController = TextEditingController();
   final _plateController = TextEditingController();
-  MyCar? _myCar;
 
   @override
   void initState() {
     super.initState();
     final auth = ref.read(authProvider);
     _nicknameController.text = auth.userName ?? auth.userEmail ?? '';
-    _loadMyCar();
-  }
-
-  Future<void> _loadMyCar() async {
-    final auth = ref.read(authProvider);
-    if (auth.userId == null) return;
-    try {
-      final myCarRepo = ref.read(myCarRepositoryProvider);
-      final cars = await myCarRepo.getMyCars(auth.userId!);
-      if (cars.isNotEmpty && mounted) {
-        setState(() => _myCar = cars.first);
-      }
-    } catch (_) {}
   }
 
   @override
@@ -127,11 +111,40 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage> {
     );
   }
 
-  /// 차량 정보 섹션 — 등록된 차량이 있으면 카드, 없으면 안내
+  /// 차량 정보 섹션
   Widget _buildVehicleSection() {
-    if (_myCar != null) {
-      return _buildVehicleCard(_myCar!);
+    final auth = ref.watch(authProvider);
+    final hasVehicle = auth.carPlate != null && auth.carPlate!.isNotEmpty;
+
+    if (hasVehicle) {
+      return Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(AppSpacing.space4),
+        decoration: BoxDecoration(
+          border: Border.all(color: AppColors.secondary),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Icon(Icons.directions_car, size: 20, color: AppColors.secondary),
+                const SizedBox(width: AppSpacing.space2),
+                Text('내 차량', style: AppTypography.bodyMd.copyWith(
+                  color: AppColors.secondary, fontWeight: FontWeight.w600,
+                )),
+              ],
+            ),
+            const SizedBox(height: AppSpacing.space3),
+            _buildInfoRow('차량번호', auth.carPlate!),
+            if (auth.carOwner != null && auth.carOwner!.isNotEmpty)
+              _buildInfoRow('소유자', auth.carOwner!),
+          ],
+        ),
+      );
     }
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(AppSpacing.space4),
@@ -143,10 +156,8 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage> {
         children: [
           Icon(Icons.directions_car_outlined, size: 40, color: AppColors.textTertiary),
           const SizedBox(height: AppSpacing.space3),
-          Text(
-            '등록된 차량이 없습니다',
-            style: AppTypography.bodyMd.copyWith(color: AppColors.textSecondary),
-          ),
+          Text('등록된 차량이 없습니다',
+            style: AppTypography.bodyMd.copyWith(color: AppColors.textSecondary)),
           const SizedBox(height: AppSpacing.space4),
           AiCarInputField(
             hint: '차량번호 입력 (예: 08나 6543)',
@@ -157,7 +168,12 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage> {
           AiCarButton(
             label: '차량 등록',
             onPressed: _plateController.text.trim().isNotEmpty
-                ? _registerCar
+                ? () {
+                    ref.read(authProvider.notifier).registerCar(
+                      plate: _plateController.text.trim(),
+                      owner: '',
+                    );
+                  }
                 : null,
             size: AiCarButtonSize.lg,
             style: AiCarButtonStyle.solid,
@@ -168,96 +184,19 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage> {
     );
   }
 
-  /// 등록된 차량 카드
-  Widget _buildVehicleCard(MyCar car) {
-    final info = {
-      '차량번호': car.licensePlate,
-      if (car.brand != null) '브랜드': car.brand!,
-      if (car.model != null) '모델': car.model!,
-      if (car.year != null) '연식': '${car.year}년형',
-      if (car.fuelType != null) '연료': car.fuelType!,
-    };
-
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(AppSpacing.space4),
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.secondary),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+  Widget _buildInfoRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: AppSpacing.space1),
+      child: Row(
         children: [
-          Row(
-            children: [
-              Icon(Icons.directions_car, size: 20, color: AppColors.secondary),
-              const SizedBox(width: AppSpacing.space2),
-              Text(
-                '내 차량',
-                style: AppTypography.bodyMd.copyWith(
-                  color: AppColors.secondary,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: AppSpacing.space3),
-          ...info.entries.map((entry) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: AppSpacing.space1),
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 80,
-                    child: Text(
-                      entry.key,
-                      style: AppTypography.bodySm.copyWith(
-                        color: AppColors.textSecondary,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      entry.value,
-                      style: AppTypography.bodyMd.copyWith(
-                        color: AppColors.textPrimary,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }),
+          SizedBox(width: 80, child: Text(label,
+            style: AppTypography.bodySm.copyWith(color: AppColors.textSecondary))),
+          Expanded(child: Text(value,
+            style: AppTypography.bodyMd.copyWith(
+              color: AppColors.textPrimary, fontWeight: FontWeight.w500))),
         ],
       ),
     );
-  }
-
-  Future<void> _registerCar() async {
-    final plate = _plateController.text.trim();
-    if (plate.isEmpty) return;
-    final auth = ref.read(authProvider);
-    if (auth.userId == null) return;
-    try {
-      final myCarRepo = ref.read(myCarRepositoryProvider);
-      final car = await myCarRepo.registerCar(
-        userId: auth.userId!,
-        licensePlate: plate,
-      );
-      if (mounted) {
-        setState(() => _myCar = car);
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('차량 등록 완료')),
-        );
-      }
-    } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('차량 등록 실패: $e')),
-        );
-      }
-    }
   }
 
   Widget _buildSectionTitle(String title) {

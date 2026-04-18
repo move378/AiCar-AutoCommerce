@@ -21,6 +21,8 @@ class AuthState {
     this.userEmail,
     this.userId,
     this.provider,
+    this.carPlate,
+    this.carOwner,
   });
 
   final bool isLoggedIn;
@@ -30,6 +32,8 @@ class AuthState {
   final String? userEmail;
   final String? userId;
   final String? provider;
+  final String? carPlate;
+  final String? carOwner;
 
   AuthState copyWith({
     bool? isLoggedIn,
@@ -39,6 +43,8 @@ class AuthState {
     String? userEmail,
     String? userId,
     String? provider,
+    String? carPlate,
+    String? carOwner,
   }) {
     return AuthState(
       isLoggedIn: isLoggedIn ?? this.isLoggedIn,
@@ -48,6 +54,8 @@ class AuthState {
       userEmail: userEmail ?? this.userEmail,
       userId: userId ?? this.userId,
       provider: provider ?? this.provider,
+      carPlate: carPlate ?? this.carPlate,
+      carOwner: carOwner ?? this.carOwner,
     );
   }
 }
@@ -161,6 +169,11 @@ class AuthNotifier extends Notifier<AuthState> {
     } catch (_) {
       // 프로필 조회 실패해도 로그인 유지
     }
+  }
+
+  /// 온보딩 차량 등록 (로컬 상태 저장)
+  void registerCar({required String plate, required String owner}) {
+    state = state.copyWith(carPlate: plate, carOwner: owner);
   }
 
   /// 약관 동의
