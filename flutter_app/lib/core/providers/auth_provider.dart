@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -51,6 +52,21 @@ class AuthState {
   }
 }
 
+/// JWT payload에서 user_id 추출
+String? _extractUserIdFromJwt(String token) {
+  try {
+    final parts = token.split('.');
+    if (parts.length != 3) return null;
+    var payload = parts[1];
+    payload = base64Url.normalize(payload);
+    final decoded = utf8.decode(base64Url.decode(payload));
+    final map = jsonDecode(decoded) as Map<String, dynamic>;
+    return map['user_id'] as String?;
+  } catch (_) {
+    return null;
+  }
+}
+
 /// 인증 상태 관리
 class AuthNotifier extends Notifier<AuthState> {
   @override
@@ -92,25 +108,20 @@ class AuthNotifier extends Notifier<AuthState> {
     }
 
     // 백엔드에 카카오 토큰 전송
-    await authRepo.loginWithKakao(kakaoToken.accessToken);
+    final result = await authRepo.loginWithKakao(kakaoToken.accessToken);
+
+    // JWT에서 userId 추출
+    final userId = _extractUserIdFromJwt(result.tokens.accessToken);
 
     state = state.copyWith(
       isLoggedIn: true,
       isGuest: false,
       provider: 'kakao',
+      userId: userId,
     );
 
     // 프로필 조회
-    try {
-      final user = await authRepo.getProfile();
-      state = state.copyWith(
-        userName: user.nickname ?? user.email,
-        userEmail: user.email,
-        userId: user.id,
-      );
-    } catch (_) {
-      // 프로필 조회 실패해도 로그인 유지
-    }
+    await _loadProfile();
   }
 
   /// Google 로그인
@@ -122,20 +133,34 @@ class AuthNotifier extends Notifier<AuthState> {
     final auth = await account.authentication;
     final accessToken = auth.accessToken;
     if (accessToken == null) throw Exception('Google accessToken이 null입니다');
-    await authRepo.loginWithGoogle(accessToken);
+    final result = await authRepo.loginWithGoogle(accessToken);
+
+    // JWT에서 userId 추출
+    final userId = _extractUserIdFromJwt(result.tokens.accessToken);
+
     state = state.copyWith(
       isLoggedIn: true,
       isGuest: false,
       provider: 'google',
+      userId: userId,
     );
+
+    // 프로필 조회
+    await _loadProfile();
+  }
+
+  /// 프로필 조회 (로그인 후 호출)
+  Future<void> _loadProfile() async {
     try {
+      final authRepo = ref.read(authRepositoryProvider);
       final user = await authRepo.getProfile();
       state = state.copyWith(
-        userName: user.nickname ?? user.email,
-        userEmail: user.email,
-        userId: user.id,
+        userName: user.nickname,
+        userEmail: user.email.isNotEmpty ? user.email : null,
       );
-    } catch (_) {}
+    } catch (_) {
+      // 프로필 조회 실패해도 로그인 유지
+    }
   }
 
   /// 약관 동의
