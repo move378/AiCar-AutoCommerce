@@ -76,14 +76,14 @@ class SocialTokenResponseDto {
 @JsonSerializable(fieldRename: FieldRename.snake)
 class UserProfileDto {
   const UserProfileDto({
-    required this.id,
+    this.id,
     this.name,
     this.email,
     this.profileUrl,
     this.status,
   });
 
-  final String id;
+  final String? id;
   final String? name;
   final String? email;
   final String? profileUrl;

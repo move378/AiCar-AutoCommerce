@@ -144,7 +144,7 @@ class AuthRepositoryImpl implements IAuthRepository {
     final profile = UserProfileDto.fromJson(data);
 
     return User(
-      id: profile.id,
+      id: profile.id ?? '',
       email: profile.email ?? '',
       nickname: profile.name,
       profileImageUrl: profile.profileUrl,
