@@ -20,6 +20,7 @@ class ProfileEditPage extends ConsumerStatefulWidget {
 
 class _ProfileEditPageState extends ConsumerState<ProfileEditPage> {
   final _nicknameController = TextEditingController();
+  final _plateController = TextEditingController();
   MyCar? _myCar;
 
   @override
@@ -45,6 +46,7 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage> {
   @override
   void dispose() {
     _nicknameController.dispose();
+    _plateController.dispose();
     super.dispose();
   }
 
@@ -132,10 +134,7 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage> {
     }
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(
-        vertical: AppSpacing.space6,
-        horizontal: AppSpacing.space4,
-      ),
+      padding: const EdgeInsets.all(AppSpacing.space4),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(color: AppColors.textDisabled),
@@ -148,10 +147,21 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage> {
             '등록된 차량이 없습니다',
             style: AppTypography.bodyMd.copyWith(color: AppColors.textSecondary),
           ),
-          const SizedBox(height: AppSpacing.space1),
-          Text(
-            '온보딩에서 차량을 등록하면 여기에 표시됩니다',
-            style: AppTypography.bodySm.copyWith(color: AppColors.textTertiary),
+          const SizedBox(height: AppSpacing.space4),
+          AiCarInputField(
+            hint: '차량번호 입력 (예: 08나 6543)',
+            controller: _plateController,
+            onChanged: (_) => setState(() {}),
+          ),
+          const SizedBox(height: AppSpacing.space3),
+          AiCarButton(
+            label: '차량 등록',
+            onPressed: _plateController.text.trim().isNotEmpty
+                ? _registerCar
+                : null,
+            size: AiCarButtonSize.lg,
+            style: AiCarButtonStyle.solid,
+            isExpanded: true,
           ),
         ],
       ),
@@ -222,6 +232,32 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage> {
         ],
       ),
     );
+  }
+
+  Future<void> _registerCar() async {
+    final plate = _plateController.text.trim();
+    if (plate.isEmpty) return;
+    final auth = ref.read(authProvider);
+    if (auth.userId == null) return;
+    try {
+      final myCarRepo = ref.read(myCarRepositoryProvider);
+      final car = await myCarRepo.registerCar(
+        userId: auth.userId!,
+        licensePlate: plate,
+      );
+      if (mounted) {
+        setState(() => _myCar = car);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('차량 등록 완료')),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('차량 등록 실패: $e')),
+        );
+      }
+    }
   }
 
   Widget _buildSectionTitle(String title) {
