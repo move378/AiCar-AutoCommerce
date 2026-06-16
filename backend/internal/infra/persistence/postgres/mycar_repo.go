@@ -43,6 +43,12 @@ func (r *myCarRepo) FindByUserID(ctx context.Context, userID string) ([]entity.M
 	return cars, nil
 }
 
+func (r *myCarRepo) DeleteByUserID(ctx context.Context, userID string) error {
+	return r.db.WithContext(ctx).
+		Where("user_id = ?", userID).
+		Delete(&entity.MyCar{}).Error
+}
+
 func (r *myCarRepo) FindByUserIDAndPlate(ctx context.Context, userID, licensePlate string) (*entity.MyCar, error) {
 	var car entity.MyCar
 

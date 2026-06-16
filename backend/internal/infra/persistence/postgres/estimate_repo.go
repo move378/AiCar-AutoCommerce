@@ -39,6 +39,12 @@ func (r *estimateRepo) GetByID(ctx context.Context, id string, userID string) (*
 	return &estimate, nil
 }
 
+func (r *estimateRepo) DeleteByUserID(ctx context.Context, userID string) error {
+	return r.db.WithContext(ctx).
+		Where("user_id = ?", userID).
+		Delete(&entity.Estimate{}).Error
+}
+
 func (r *estimateRepo) GetByUserID(ctx context.Context, userID string) ([]entity.Estimate, error) {
 	var estimates []entity.Estimate
 	err := r.db.WithContext(ctx).
